@@ -1,4 +1,4 @@
-package com.example.talproject;
+package com.example.project;
 
 import android.content.Intent;
 import android.os.Bundle;

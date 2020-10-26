@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.talproject">
+    package="com.example.project">
 
     <application
         android:allowBackup="true"
@@ -11,21 +11,21 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activityPosition" />
+        <activity android:name="com.example.project.activityPosition" />
 
-        <activity android:name="com.example.talproject.MyProfile"
+        <activity android:name="com.example.project.MyProfile"
             android:theme="@style/Theme.AppCompat"
             />
-        <activity android:name="com.example.talproject.QuestionnairePage"
+        <activity android:name="com.example.project.QuestionnairePage"
             android:theme="@style/Theme.AppCompat"
             />
-        <activity android:name="com.example.talproject.ProfilePage"
+        <activity android:name="com.example.project.ProfilePage"
             android:theme="@style/Theme.AppCompat"
             />
-        <activity android:name="com.example.talproject.SignUpPage"
+        <activity android:name="com.example.project.SignUpPage"
             android:theme="@style/Theme.AppCompat"
             />
-        <activity android:name="com.example.talproject.MainPage"
+        <activity android:name="com.example.project.MainPage"
             android:theme="@style/Theme.AppCompat"
             >
             <intent-filter>

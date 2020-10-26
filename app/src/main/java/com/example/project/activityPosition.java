@@ -1,9 +1,9 @@
-package com.example.talproject;
+package com.example.project;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.talproject.R;
+import com.example.project.R;
 
 public class activityPosition extends AppCompatActivity {
 
