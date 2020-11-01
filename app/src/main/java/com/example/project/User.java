@@ -12,7 +12,7 @@ public class User {
     private String country;
     private String bloodType;
     private Date birthDate;
-    public User(){}
+
     public User(String fullName, String ID, String email, String phoneNumber, String password, String country, String bloodType, Date birthDate) {
         this.fullName = fullName;
         this.ID = ID;

@@ -89,8 +89,8 @@ public class SignUpPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                User user = new User(signUp_EDT_name.getText().toString(),signUp_EDT_id.getText().toString(),signUp_EDT_phone.getText().toString(),signUp_EDT_email.getText().toString(),
-                        signUp_EDT_phone.getText().toString(),signUp_EDT_password.getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(),date);    ;
+                User user = new User(signUp_EDT_name.getText().toString(),signUp_EDT_id.getText().toString(),signUp_EDT_email.getText().toString(),
+                        signUp_EDT_phone.getText().toString(),signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(),signUp_SPI_bloodTypes.getSelectedItem().toString(),date);    ;
 
                         if(MainPage.allUsers!=null) {
                             MainPage.allUsers.addToList(user);
