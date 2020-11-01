@@ -92,9 +92,16 @@ public class SignUpPage extends AppCompatActivity {
                 User user = new User(signUp_EDT_name.getText().toString(),signUp_EDT_id.getText().toString(),signUp_EDT_phone.getText().toString(),signUp_EDT_email.getText().toString(),
                         signUp_EDT_phone.getText().toString(),signUp_EDT_password.getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(),date);    ;
 
-                myRef.child("or").setValue("Hello, World!");
-                myRef.setValue(user);
+                        if(MainPage.allUsers!=null) {
+                            MainPage.allUsers.addToList(user);
+                        }
+                        else{
+                            MainPage.allUsers = new AllUsers();
+                            MainPage.allUsers.addToList(user);
+                        }
+                myRef.setValue(MainPage.allUsers);
                 startActivity(new Intent(SignUpPage.this, ProfilePage.class));
+
             }
         });
 

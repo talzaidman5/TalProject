@@ -33,10 +33,10 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="User Name"
+        android:text="ID"
         android:layout_marginTop="10dp"
         android:textColor="@color/black"
-        android:id="@+id/mainPage_EDIT_name"/>
+        android:id="@+id/mainPage_EDIT_id"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

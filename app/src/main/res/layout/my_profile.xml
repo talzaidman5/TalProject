@@ -117,7 +117,7 @@ android:background="@drawable/pencil"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:text="Email:"></TextView>
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/myProfile_TXT_emailToFill"
@@ -127,13 +127,13 @@ android:background="@drawable/pencil"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
             android:textStyle="bold">
-        </TextView>
+        </EditText>
+
         <Button
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-android:textColor="@color/black"
-            android:background="@drawable/pencil">
-        </Button>
+            android:layout_width="1dp"
+            android:layout_height="12dp"
+            android:background="@drawable/pencil"
+            android:textColor="@color/black"></Button>
     </LinearLayout>
 
     <LinearLayout
@@ -154,7 +154,7 @@ android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Phone Number:"></TextView>
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/myProfile_TXT_phoneNumberToFill"
@@ -165,7 +165,7 @@ android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold">
 
-        </TextView>
+        </EditText>
         <Button
             android:layout_width="15dp"
             android:layout_height="15dp"
@@ -191,7 +191,7 @@ android:textColor="@color/black"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:text="Password:"></TextView>
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/myProfile_TXT_passwordToFill"
@@ -201,7 +201,7 @@ android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
             android:textStyle="bold">
-        </TextView>
+        </EditText>
         <Button
             android:layout_width="15dp"
             android:layout_height="15dp"
@@ -227,7 +227,7 @@ android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Country:"></TextView>
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/myProfile_TXT_countryToFill"
@@ -237,7 +237,7 @@ android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
             android:textStyle="bold">
-        </TextView>
+        </EditText>
         <Button
             android:layout_width="15dp"
             android:layout_height="15dp"
@@ -263,7 +263,7 @@ android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Blood Type:"></TextView>
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/myProfile_TXT_bloodTypeToFill"
@@ -273,7 +273,7 @@ android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
             android:textStyle="bold">
-        </TextView>
+        </EditText>
         <Button
             android:layout_width="15dp"
             android:layout_height="15dp"
@@ -299,17 +299,17 @@ android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Date Birth:"></TextView>
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/myProfile_TXT_dateBirthToFill"
-            android:layout_toRightOf="@+id/myProfile_TXT_name"
+            android:layout_toRightOf="@+id/myProfile_TXT_dateBirth"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold">
-        </TextView>
+        </EditText>
         <Button
             android:layout_width="15dp"
             android:layout_height="15dp"
