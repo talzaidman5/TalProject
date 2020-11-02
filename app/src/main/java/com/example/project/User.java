@@ -1,5 +1,7 @@
 package com.example.project;
 
+import com.google.gson.Gson;
+
 import java.util.Date;
 
 public class User {
@@ -22,6 +24,33 @@ public class User {
         this.country = country;
         this.bloodType = bloodType;
         this.birthDate = birthDate;
+    }
+    public User(String data)
+    {
+       this(createUserFromString(data));
+    }
+
+    public User(User other) {
+        this.fullName = other.fullName;
+        this.ID = other.ID;
+        this.email = other.email;
+        this.phoneNumber = other.phoneNumber;
+        this.password = other.password;
+        this.country = other.country;
+        this.bloodType = other.bloodType;
+        this.birthDate = other.birthDate;
+    }
+
+    private static User createUserFromString(String data) {
+       User temp;
+        if (data == "NA")
+            temp = new User();
+        else
+            temp = new Gson().fromJson(data, User.class);
+        return temp;
+    }
+
+    public User() {
     }
 
     public String getFullName() {

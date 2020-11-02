@@ -8,29 +8,36 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 
 public class MyProfile extends AppCompatActivity {
+    public static final String KEY_MSP  = "user";
+    public static final String KEY_MSP_ALL  = "allUsers1";
 
     private EditText myProfile_TXT_nameToFill,myProfile_TXT_emailToFill,myProfile_TXT_phoneNumberToFill,myProfile_TXT_passwordToFill,
             myProfile_TXT_countryToFill,myProfile_TXT_dateBirthToFill,myProfile_TXT_bloodTypeToFill;
     private TextView myProfile_TXT_IDToFill;
     private Button myProfile_BTN_back;
+    private MySheredP msp;
+    private Gson gson = new Gson();
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("message");
     private Button myProfile_BTN_nameEdit,myProfile_BTN_nameDone;
+    private User currentUser = new User();
+    private AllUsers allUsers;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_profile);
+        msp = new MySheredP(this);
+        getSupportActionBar().hide();
         findView();
+        getFromMSP();
         initData();
-
         myProfile_BTN_nameDone.setVisibility(View.INVISIBLE);
         myProfile_TXT_nameToFill.setEnabled(false);
 
@@ -66,15 +73,24 @@ public class MyProfile extends AppCompatActivity {
 
     }
     public void initData(){
-        if(MainPage.currentUser!=null) {
-            myProfile_TXT_phoneNumberToFill.setText(MainPage.currentUser.getPhoneNumber());
-            myProfile_TXT_passwordToFill.setText(MainPage.currentUser.getPassword());
-            myProfile_TXT_countryToFill.setText(MainPage.currentUser.getCountry());
-            myProfile_TXT_nameToFill.setText(MainPage.currentUser.getFullName());
-            myProfile_TXT_dateBirthToFill.setText(MainPage.currentUser.getBirthDate().toString());
-            myProfile_TXT_IDToFill.setText(MainPage.currentUser.getID());
-            myProfile_TXT_bloodTypeToFill.setText(MainPage.currentUser.getBloodType());
+        if(currentUser!=null) {
+            myProfile_TXT_phoneNumberToFill.setText(currentUser.getPhoneNumber());
+            myProfile_TXT_passwordToFill.setText(currentUser.getPassword());
+            myProfile_TXT_countryToFill.setText(currentUser.getCountry());
+            myProfile_TXT_nameToFill.setText(currentUser.getFullName());
+            myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().toString());
+            myProfile_TXT_IDToFill.setText(currentUser.getID());
+            myProfile_TXT_bloodTypeToFill.setText(currentUser.getBloodType());
         }
         
     }
+
+    private AllUsers getFromMSP(){
+        String data  = msp.getString(KEY_MSP, "NA");
+        String dataAll  = msp.getString(KEY_MSP_ALL, "NA");
+        currentUser = new User(data);
+        allUsers = new AllUsers(dataAll);
+        return allUsers;
+    }
+
 }

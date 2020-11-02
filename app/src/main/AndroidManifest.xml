@@ -11,22 +11,28 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.example.project.activityPosition" />
+        <activity android:name="com.example.project.activityPosition"
+            />
 
         <activity android:name="com.example.project.MyProfile"
             android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="stateAlwaysHidden"
             />
         <activity android:name="com.example.project.QuestionnairePage"
             android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="stateAlwaysHidden"
             />
         <activity android:name="com.example.project.ProfilePage"
             android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="stateAlwaysHidden"
             />
         <activity android:name="com.example.project.SignUpPage"
             android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="stateAlwaysHidden"
             />
         <activity android:name="com.example.project.MainPage"
             android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="stateAlwaysHidden"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

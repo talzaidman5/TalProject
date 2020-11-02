@@ -53,6 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:textColorHint="@color/black"
                 android:textColor="@color/black"
                 android:inputType="textPersonName"
                 android:hint="Enter your name"
@@ -68,6 +69,7 @@
                 android:inputType="number"
                 android:textColor="@color/black"
                 android:hint="Enter your id"
+                android:textColorHint="@color/black"
                 android:layout_below="@+id/signUp_EDT_name"
                 />
 
@@ -80,6 +82,7 @@
                 android:inputType="textEmailAddress"
                 android:hint="Enter your email"
                 android:layout_marginTop="10dp"
+                android:textColorHint="@color/black"
                 />
 
             <EditText
@@ -89,6 +92,7 @@
                 android:ems="10"
                 android:textColor="@color/black"
                 android:inputType="textEmailAddress"
+                android:textColorHint="@color/black"
                 android:hint="Enter your phone number"
                 android:layout_below="@+id/signUp_EDT_email"
                 android:layout_marginTop="10dp"
@@ -102,6 +106,7 @@
                 android:textColor="@color/black"
                 android:inputType="numberPassword"
                 android:hint="Choose password"
+                android:textColorHint="@color/black"
                 android:layout_below="@+id/signUp_EDT_phone"
                 android:layout_marginTop="6dp"
                 />

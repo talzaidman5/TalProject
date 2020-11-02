@@ -19,6 +19,8 @@ public class ProfilePage extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.profile_page);
+        getSupportActionBar().hide();
+
         profilePage_BTN_fillQ = findViewById(R.id.profilePage_BTN_fillQ);
         profilePage_BTN_profile = findViewById(R.id.profilePage_BTN_profile);
         profilePage_BTN_fillQ.setOnClickListener(new View.OnClickListener() {

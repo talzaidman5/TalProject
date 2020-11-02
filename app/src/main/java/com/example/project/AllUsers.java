@@ -1,6 +1,6 @@
 package com.example.project;
 
-import com.example.project.User;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +8,6 @@ import java.util.List;
 public class AllUsers {
 
     private List<User> allUser;
-
-
-    public AllUsers(){
-        allUser= new ArrayList<User>();
-    }
-    public AllUsers(List<User> allUser) {
-        this.allUser = allUser;
-    }
 
     public List<User> getAllUser() {
         return allUser;
@@ -25,21 +17,42 @@ public class AllUsers {
         this.allUser = allUser;
     }
 
-    public User checkUser(String ID) {
-        for (User user:allUser) {
-            if(user.getID().equals(ID))
-                return user;
-        }
-        return null;
+
+    public AllUsers(String data) {
+        createUsersFromString(data);
     }
+
+    public AllUsers() {
+        this.allUser = new ArrayList<>();
+    }
+
+    private static AllUsers createUsersFromString(String data) {
+        AllUsers tempUsers;
+        if (data == "NA") {
+            tempUsers = new AllUsers();
+        }
+        else {
+            tempUsers = new Gson().fromJson(data, AllUsers.class);
+        }
+        return tempUsers;
+    }
+
     public void addToList(User user){
         if(allUser!=null) {
-            if (checkUser(user.getID()) == null)
+            if (getUserByID(user.getID()) == null)
                 allUser.add(user);
         }
         else {
             allUser = new ArrayList<User>();
             allUser.add(user);
         }
+    }
+
+    public User getUserByID(String id){
+        for (User u: allUser) {
+            if(u.getID().equals(id))
+                return  u;
+        }
+        return null;
     }
 }

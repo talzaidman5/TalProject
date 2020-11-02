@@ -20,11 +20,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import java.util.Calendar;
 import java.util.Date;
 
 public class SignUpPage extends AppCompatActivity {
+    public static final String KEY_MSP  = "user";
+    public static final String KEY_MSP_ALL  = "allUsers1";
+
     private Button signUp_BTN_signUp;
     private Spinner signUp_SPI_country,signUp_SPI_bloodTypes;
     private EditText signUp_EDT_name,signUp_EDT_id,signUp_EDT_email,signUp_EDT_phone,signUp_EDT_password;
@@ -32,22 +36,26 @@ public class SignUpPage extends AppCompatActivity {
     private TextView signUp_TXT_birthDatePicker;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     public static SharedPreferences sharedpreferences;
-    public static final String MyPREFERENCES = "MyPrefs" ;
-    public static final String Name = "nameKey";
+
     public static Date date;
+    private MySheredP msp;
+    private Gson gson = new Gson();
+
     // Write a message to the database
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("message");
-
-
+    private AllUsers allUsers =  new AllUsers();
+    private  User newUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        msp = new MySheredP(this);
         setContentView(R.layout.sign_up_page);
         findView(view);
+        getSupportActionBar().hide();
+
         ArrayAdapter<CharSequence> adapterCountries = ArrayAdapter.createFromResource(this,
                 R.array.countries, android.R.layout.simple_spinner_item);
         adapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -89,23 +97,28 @@ public class SignUpPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                User user = new User(signUp_EDT_name.getText().toString(),signUp_EDT_id.getText().toString(),signUp_EDT_email.getText().toString(),
+                 newUser = new User(signUp_EDT_name.getText().toString(),signUp_EDT_id.getText().toString(),signUp_EDT_email.getText().toString(),
                         signUp_EDT_phone.getText().toString(),signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(),signUp_SPI_bloodTypes.getSelectedItem().toString(),date);    ;
-
-                        if(MainPage.allUsers!=null) {
-                            MainPage.allUsers.addToList(user);
-                        }
-                        else{
-                            MainPage.allUsers = new AllUsers();
-                            MainPage.allUsers.addToList(user);
-                        }
-                myRef.setValue(MainPage.allUsers);
+                       getFromMSP();
+                       putOnMSP();
+                        allUsers.addToList(newUser);
+                myRef.child("Users").child(signUp_EDT_id.getText().toString()).setValue(newUser);
+                putOnMSP();
                 startActivity(new Intent(SignUpPage.this, ProfilePage.class));
 
             }
         });
 
 
+    }
+    private AllUsers getFromMSP(){
+        String data  = msp.getString(KEY_MSP_ALL, "NA");
+        allUsers = new AllUsers(data);
+        return allUsers;
+    }
+    private void putOnMSP(){
+        String json = gson.toJson(newUser);
+        msp.putString(KEY_MSP,json);
     }
 
     private void findView(View view) {
