@@ -1,7 +1,6 @@
 package com.example.project;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,7 +24,6 @@ public class MyProfile extends AppCompatActivity {
     private Gson gson = new Gson();
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("message");
-    private Button myProfile_BTN_nameEdit,myProfile_BTN_nameDone;
     private User currentUser = new User();
     private AllUsers allUsers;
 
@@ -38,10 +36,10 @@ public class MyProfile extends AppCompatActivity {
         findView();
         getFromMSP();
         initData();
-        myProfile_BTN_nameDone.setVisibility(View.INVISIBLE);
+        //myProfile_BTN_nameDone.setVisibility(View.INVISIBLE);
         myProfile_TXT_nameToFill.setEnabled(false);
 
-        myProfile_BTN_nameEdit.setOnClickListener(new View.OnClickListener() {
+      /*  myProfile_BTN_nameEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 myProfile_BTN_nameDone.setVisibility(View.VISIBLE);
@@ -56,11 +54,9 @@ public class MyProfile extends AppCompatActivity {
                     }
                 });
             }
-        });
+        });*/
     }
     public void findView(){
-        myProfile_BTN_nameEdit=findViewById(R.id.myProfile_BTN_nameEdit);
-        myProfile_BTN_nameDone=findViewById(R.id.myProfile_BTN_nameDone);
         myProfile_TXT_emailToFill=findViewById(R.id.myProfile_TXT_emailToFill);
         myProfile_TXT_phoneNumberToFill=findViewById(R.id.myProfile_TXT_phoneNumberToFill);
         myProfile_TXT_passwordToFill=findViewById(R.id.myProfile_TXT_passwordToFill);
