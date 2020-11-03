@@ -50,17 +50,13 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 readFromFireBase();
-
-
             }
         });
         main_page_BTN_signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openSignUpPage();
-
             }
-
         });
 
     }

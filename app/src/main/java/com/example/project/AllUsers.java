@@ -49,9 +49,9 @@ public class AllUsers {
     }
 
     public User getUserByID(String id){
-        for (User u: allUser) {
-            if(u.getID().equals(id))
-                return  u;
+        for (User tempUser: allUser) {
+            if(tempUser.getID().equals(id))
+                return  tempUser;
         }
         return null;
     }

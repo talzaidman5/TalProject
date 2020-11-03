@@ -1,8 +1,10 @@
 package com.example.project;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +22,7 @@ public class MyProfile extends AppCompatActivity {
             myProfile_TXT_countryToFill,myProfile_TXT_dateBirthToFill,myProfile_TXT_bloodTypeToFill;
     private TextView myProfile_TXT_IDToFill;
     private Button myProfile_BTN_back;
+    ImageButton myProfile_BTN_edit;
     private MySheredP msp;
     private Gson gson = new Gson();
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -36,27 +39,24 @@ public class MyProfile extends AppCompatActivity {
         findView();
         getFromMSP();
         initData();
-        //myProfile_BTN_nameDone.setVisibility(View.INVISIBLE);
         myProfile_TXT_nameToFill.setEnabled(false);
 
-      /*  myProfile_BTN_nameEdit.setOnClickListener(new View.OnClickListener() {
+        myProfile_BTN_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myProfile_BTN_nameDone.setVisibility(View.VISIBLE);
-                myProfile_BTN_nameEdit.setVisibility(View.INVISIBLE);
+                myProfile_TXT_IDToFill.setEnabled(true);
+                myProfile_TXT_passwordToFill.setEnabled(true);
+                myProfile_TXT_bloodTypeToFill.setEnabled(true);
+                myProfile_TXT_countryToFill.setEnabled(true);
+                myProfile_TXT_dateBirthToFill.setEnabled(true);
+                myProfile_TXT_emailToFill.setEnabled(true);
                 myProfile_TXT_nameToFill.setEnabled(true);
-                myProfile_BTN_nameDone.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //TODO: to search the user into the DB and change the details
-                        myProfile_TXT_nameToFill.setEnabled(false);
-                        myProfile_BTN_nameEdit.setVisibility(View.VISIBLE);
-                    }
-                });
+                myProfile_TXT_phoneNumberToFill.setEnabled(true);
             }
-        });*/
+        });
     }
     public void findView(){
+        myProfile_BTN_edit=findViewById(R.id.myProfile_BTN_edit);
         myProfile_TXT_emailToFill=findViewById(R.id.myProfile_TXT_emailToFill);
         myProfile_TXT_phoneNumberToFill=findViewById(R.id.myProfile_TXT_phoneNumberToFill);
         myProfile_TXT_passwordToFill=findViewById(R.id.myProfile_TXT_passwordToFill);
@@ -69,6 +69,15 @@ public class MyProfile extends AppCompatActivity {
 
     }
     public void initData(){
+        myProfile_TXT_IDToFill.setEnabled(false);
+        myProfile_TXT_passwordToFill.setEnabled(false);
+        myProfile_TXT_bloodTypeToFill.setEnabled(false);
+        myProfile_TXT_countryToFill.setEnabled(false);
+        myProfile_TXT_dateBirthToFill.setEnabled(false);
+        myProfile_TXT_emailToFill.setEnabled(false);
+        myProfile_TXT_nameToFill.setEnabled(false);
+        myProfile_TXT_phoneNumberToFill.setEnabled(false);
+
         if(currentUser!=null) {
             myProfile_TXT_phoneNumberToFill.setText(currentUser.getPhoneNumber());
             myProfile_TXT_passwordToFill.setText(currentUser.getPassword());

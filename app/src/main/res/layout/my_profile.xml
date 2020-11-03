@@ -15,11 +15,12 @@
         android:id="@+id/myProfile_top"
         >
         <ImageButton
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_margin="20dp"
+            android:id="@+id/myProfile_BTN_edit"
             android:layout_alignParentRight="true"
-            android:background="@drawable/bell"/>
+            android:background="@drawable/pencil"/>
 
         <ImageButton
             android:layout_width="30dp"
@@ -94,12 +95,7 @@
             android:textSize="20dp"
             android:textStyle="bold">
         </EditText>
-        <Button
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-android:background="@drawable/pencil"
-            android:textColor="@color/black">
-        </Button>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -131,11 +127,7 @@ android:background="@drawable/pencil"
             android:textStyle="bold">
         </EditText>
 
-        <Button
-            android:layout_width="1dp"
-            android:layout_height="12dp"
-            android:background="@drawable/pencil"
-            android:textColor="@color/black"></Button>
+
     </LinearLayout>
 
     <LinearLayout
@@ -168,49 +160,41 @@ android:background="@drawable/pencil"
             android:textStyle="bold">
 
         </EditText>
-        <Button
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-android:textColor="@color/black"
-            android:background="@drawable/pencil">
-        </Button>
+
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:id="@+id/myProfile_Linear6"
-        android:layout_below="@+id/myProfile_Linear5"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_password"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:text="Password:"></TextView>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_passwordToFill"
-            android:textColor="@color/black"
-            android:layout_toRightOf="@+id/myProfile_TXT_name"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:textStyle="bold">
-        </EditText>
-        <Button
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-android:textColor="@color/black"
- android:background="@drawable/pencil">
-        </Button>
-    </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/myProfile_Linear6"
+                android:layout_width="163dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/myProfile_Linear5"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/myProfile_TXT_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:text="Password:"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold"></TextView>
+
+                <EditText
+                    android:id="@+id/myProfile_TXT_passwordToFill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/myProfile_TXT_name"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold"></EditText>
+
+
+            </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -240,12 +224,7 @@ android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold">
         </EditText>
-        <Button
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-android:textColor="@color/black"
- android:background="@drawable/pencil">
-        </Button>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -276,12 +255,7 @@ android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold">
         </EditText>
-        <Button
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-android:textColor="@color/black"
- android:background="@drawable/pencil">
-        </Button>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
@@ -312,12 +286,7 @@ android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold">
         </EditText>
-        <Button
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-android:textColor="@color/black"
- android:background="@drawable/pencil">
-        </Button>
+
 
     </LinearLayout>
         </LinearLayout>
