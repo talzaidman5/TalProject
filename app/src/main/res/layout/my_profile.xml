@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="180dp"
         android:background="@drawable/red"
         android:id="@+id/myProfile_top"
         >
@@ -21,6 +21,14 @@
             android:id="@+id/myProfile_BTN_edit"
             android:layout_alignParentRight="true"
             android:background="@drawable/pencil"/>
+
+        <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_margin="20dp"
+            android:id="@+id/myProfile_BTN_alerts"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bell"/>
 
         <ImageButton
             android:layout_width="30dp"
@@ -50,7 +58,7 @@
             android:textSize="22dp"
             android:layout_below="@id/logo"
             android:layout_centerInParent="true"
-            android:textStyle="bold"/>
+            />
 
     </RelativeLayout>
 
@@ -70,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/myProfile_Linear2"
         android:layout_below="@+id/myProfile_Linear1"
         >
@@ -82,7 +90,6 @@
             android:layout_marginLeft="20dp"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:textStyle="bold"
             android:text="ID:"></TextView>
         <EditText
             android:layout_width="wrap_content"
@@ -93,7 +100,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
-            android:textStyle="bold">
+            >
         </EditText>
 
     </LinearLayout>
@@ -101,7 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/myProfile_Linear3"
         android:layout_below="@+id/myProfile_Linear2"
         >
@@ -112,7 +119,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
-            android:textStyle="bold"
+
             android:textColor="@color/black"
             android:text="Email:"></TextView>
         <EditText
@@ -124,7 +131,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
-            android:textStyle="bold">
+            >
         </EditText>
 
 
@@ -134,7 +141,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/myProfile_Linear5"
         android:layout_below="@+id/myProfile_Linear3"
         >
@@ -146,7 +153,7 @@
             android:layout_marginLeft="20dp"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:textStyle="bold"
+
             android:text="Phone Number:"></TextView>
         <EditText
             android:layout_width="wrap_content"
@@ -157,7 +164,7 @@
             android:layout_marginLeft="20dp"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:textStyle="bold">
+            >
 
         </EditText>
 
@@ -168,7 +175,7 @@
                 android:layout_width="163dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/myProfile_Linear5"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -179,8 +186,7 @@
                     android:layout_marginLeft="20dp"
                     android:text="Password:"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold"></TextView>
+                    android:textSize="20dp"/>
 
                 <EditText
                     android:id="@+id/myProfile_TXT_passwordToFill"
@@ -191,7 +197,7 @@
                     android:layout_toRightOf="@+id/myProfile_TXT_name"
                     android:textColor="@color/black"
                     android:textSize="20dp"
-                    android:textStyle="bold"></EditText>
+                    ></EditText>
 
 
             </LinearLayout>
@@ -199,7 +205,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/myProfile_Linear7"
         android:layout_below="@+id/myProfile_Linear6"
         >
@@ -211,7 +217,7 @@
             android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
-            android:textStyle="bold"
+
             android:text="Country:"></TextView>
         <EditText
             android:layout_width="wrap_content"
@@ -222,15 +228,14 @@
             android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
-            android:textStyle="bold">
-        </EditText>
+            />
 
     </LinearLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/myProfile_Linear8"
         android:layout_below="@+id/myProfile_Linear7"
         >
@@ -242,7 +247,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
-            android:textStyle="bold"
+
             android:text="Blood Type:"></TextView>
         <EditText
             android:layout_width="wrap_content"
@@ -253,7 +258,7 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
-            android:textStyle="bold">
+            >
         </EditText>
 
     </LinearLayout>
@@ -261,7 +266,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/myProfile_Linear9"
         android:layout_below="@+id/myProfile_Linear8"
         >
@@ -271,9 +276,9 @@
             android:id="@+id/myProfile_TXT_dateBirth"
             android:layout_alignParentLeft="true"
             android:textColor="@color/black"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:textSize="20dp"
-            android:textStyle="bold"
+
             android:text="Date Birth:"></TextView>
         <EditText
             android:layout_width="wrap_content"
@@ -284,7 +289,7 @@
             android:layout_marginLeft="20dp"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:textStyle="bold">
+          >
         </EditText>
 
 

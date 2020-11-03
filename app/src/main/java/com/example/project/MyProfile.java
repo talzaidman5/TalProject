@@ -83,7 +83,7 @@ public class MyProfile extends AppCompatActivity {
             myProfile_TXT_passwordToFill.setText(currentUser.getPassword());
             myProfile_TXT_countryToFill.setText(currentUser.getCountry());
             myProfile_TXT_nameToFill.setText(currentUser.getFullName());
-            myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().toString());
+            myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().getDay()+"/"+currentUser.getBirthDate().getMonth()+"/"+currentUser.getBirthDate().getYear());
             myProfile_TXT_IDToFill.setText(currentUser.getID());
             myProfile_TXT_bloodTypeToFill.setText(currentUser.getBloodType());
         }
