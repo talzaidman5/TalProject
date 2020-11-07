@@ -1,5 +1,7 @@
 package com.example.project;
 
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 
 public class MyProfile extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
@@ -21,12 +26,10 @@ public class MyProfile extends AppCompatActivity {
     private EditText myProfile_TXT_nameToFill,myProfile_TXT_emailToFill,myProfile_TXT_phoneNumberToFill,myProfile_TXT_passwordToFill,
             myProfile_TXT_countryToFill,myProfile_TXT_dateBirthToFill,myProfile_TXT_bloodTypeToFill;
     private TextView myProfile_TXT_IDToFill;
-    private Button myProfile_BTN_back;
+    private Button myProfile_BTN_back,myProfile_BTN_logo;
     ImageButton myProfile_BTN_edit;
     private MySheredP msp;
     private Gson gson = new Gson();
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final DatabaseReference myRef = database.getReference("message");
     private User currentUser = new User();
     private AllUsers allUsers;
 
@@ -57,6 +60,7 @@ public class MyProfile extends AppCompatActivity {
     }
     public void findView(){
         myProfile_BTN_edit=findViewById(R.id.myProfile_BTN_edit);
+        myProfile_BTN_logo=findViewById(R.id.myProfile_BTN_logo);
         myProfile_TXT_emailToFill=findViewById(R.id.myProfile_TXT_emailToFill);
         myProfile_TXT_phoneNumberToFill=findViewById(R.id.myProfile_TXT_phoneNumberToFill);
         myProfile_TXT_passwordToFill=findViewById(R.id.myProfile_TXT_passwordToFill);
@@ -86,6 +90,16 @@ public class MyProfile extends AppCompatActivity {
             myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().getDay()+"/"+currentUser.getBirthDate().getMonth()+"/"+currentUser.getBirthDate().getYear());
             myProfile_TXT_IDToFill.setText(currentUser.getID());
             myProfile_TXT_bloodTypeToFill.setText(currentUser.getBloodType());
+            InputStream inputStream = null;
+            try {
+                Uri myUri = Uri.parse(currentUser.getImageUser());
+                inputStream = getContentResolver().openInputStream(myUri);
+                myProfile_BTN_logo.setBackground(Drawable.createFromStream(inputStream, myUri.toString()));
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
         }
         
     }
