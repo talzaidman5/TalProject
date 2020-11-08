@@ -4,106 +4,114 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/white"
     tools:context="com.example.project.QuestionnairePage">
-    <ImageView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <ImageView
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:id="@+id/logo"
         android:layout_margin="5dp"
+            android:layout_gravity="center"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo"/>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="500dp"
-    android:id="@+id/scroll"
-    android:layout_below="@id/logo"
-    android:layout_marginTop="10dp"
-    >
-    <LinearLayout
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textColor="@color/black"
+      android:textSize="9dp"
+      android:layout_below="@id/logo"
+      android:layout_marginTop="7dp"
+      android:id="@+id/questionnairePage_TXT_1"
+      android:text="אנו מודים לך על נכונותך לתרום דם. תרומת הדם מצילה חיי אדם ועשויה לעזור למספר חולים, אם מצב בריאותך תקין. כל מנות הדם עוברות בדיקות קפדניות בבנק הדם, כדי לשלול נוכחות נגיפים, אולם לא תמיד ניתן לזהות נגיפים מסוימים, כמו: איידס או דלקת כבד ('צהבת') בשלב מוקדם של ההדבקה. אם נחשפת לנגיפים בדרך כלשהי, דמך עלול להעביר מחלות ולפגוע בחולים שיקבלו את המנה. לפי הנחיות משרד הבריאות, הנך נדרש/ת להשיב על השאלות בשאלון זה. חשוב שהמידע שתמסור/י בו, יהיה אמין כדי להגן על בריאותך ועל בריאות מקבלי המנה. אי מילוי שאלון זה לא יאפשר לנו להתרים אותך. על המידע שתמסור/י, כמו גם על תוצאות הבדיקות שיבוצעו במנה, חל חיסיון מלא והם לא יועברו לגורם אחר, אלא אם העברה זו נדרשת על פי דין, ו/או במקרה של צורך רפואי. אם ברצונך לבדוק חשיפה לאיידס, פנה/י לאחד המרכזים הרפואיים בהם מתבצעות בדיקות איידס, לוועד למלחמה באיידס, או לרופא המשפחה, ואל תתרום/י דם. בכל שלב וכל/י ליידע את בנק הדם, על רצונך להפסיק את התרומה, להורות שלא יעשה שימוש במנה שתרמת, או לעדכן על כל שינוי במצב בריאותך, גם לאחר התרומה.'"></TextView>
+<TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
-
-    <Switch
+    android:textStyle="bold"
+    android:gravity="center"
+    android:textColor="@color/black"
+    android:layout_marginTop="10dp"
+    android:textSize="9dp"
+    android:layout_below="@+id/questionnairePage_TXT_1"
+    android:text="לידיעתך, תהליך תרומת דם מלא אורך כ- 30 דקות. תהליך תרומת מרכיבי דם בשיטת אפרזיס, אורך כשעתיים וחצי.
+.מומלץ לאכול משהו קל ולשתות לפני תרומת דם ומרכיביו"
+    android:id="@+id/questionnairePage_TXT_2"></TextView>
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Do you weight under 50kg?  "
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="10dp"
-        android:background="@color/grey"
-        android:textSize="22dp">
-    </Switch>
-    <Switch
+        android:textColor="@color/black"
+        android:textSize="11dp"
+        android:textStyle="italic|bold"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:shadowColor="@color/black"
+        android:id="@+id/questionnairePage_TXT_3"
+        android:text="לפני תרומת הדם חובה להציג תעודה מזהה, הכוללת מספר תעודת זהות ותמונה"
+        android:layout_below="@id/questionnairePage_TXT_2"></TextView>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="have you been pregnant/ in labor in the last 6 months?"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:textSize="22dp">
-    </Switch>
-
-    <Switch
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Have you had a dental implant in the last three months?"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:background="@color/grey"
-        android:textSize="22dp">
-    </Switch>
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Do you/your partner have HIV? "
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:textSize="22dp">
-    </Switch>
-
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Are you using drugs?   "
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:background="@color/grey"
-        android:textSize="22dp">
-    </Switch>
-
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Did you do a tattoo/earring in the last 6 months?"
-        android:layout_marginTop="20dp"
-android:layout_marginLeft="10dp"
-        android:textSize="22dp">
-    </Switch>
-    <Switch
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Are you a diabetic/ epileptic/ have heart disease?"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:background="@color/grey"
-        android:textSize="22dp">
-    </Switch>
-
-</LinearLayout>
-</ScrollView>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:text="Confirm and send"
-        android:background="@drawable/gradient_button"
-        android:layout_margin="20dp"
-        android:id="@+id/fill_BTN_send"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentBottom="true"
-        >
-    </Button>
+        android:textColor="@color/black"
+        android:textSize="9dp"
+        android:layout_below="@id/questionnairePage_TXT_3"
+        android:layout_marginTop="9dp"
+        android:gravity="center"
+        android:id="@+id/questionnairePage_TXT_4"
+        android:text="לכל תורם בגיל 17-18 נדרשים גם: אישור הורים או אפוטרופוס חוקי
+לתורם מעל גיל 60 נדרש אישור רפואי בעת תרומה ראשונה, ולכל תורם מעל גיל 65 נדרש אישור רפואי אחת לשנה"></TextView>
 
 
 
+    <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="220dp"
+    android:src="@drawable/errors"
+        android:id="@+id/errors"
+    android:layout_below="@id/questionnairePage_TXT_4"></ImageView>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:text=":חלק א' -פרטים אישיים"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/black"
+                    android:ems="10"></EditText>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/errors"
+                    android:textColor="@color/black"
+                    android:gravity="right"
+                    android:text="מספר זיהוי זמני:">
+                </TextView>
+
+            </LinearLayout>
+            <Button
+                android:id="@+id/fill_BTN_send"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="35dp"
+                android:background="@drawable/gradient_button"
+                android:text="Confirm and send"></Button>
+            </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
