@@ -48,11 +48,7 @@
             android:layout_centerInParent="true"
             android:background="@drawable/profile"
             tools:ignore="MissingClass" />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="upload"
-            android:id="@+id/upload"/>
+
 
         <EditText
             android:layout_width="wrap_content"
@@ -80,12 +76,12 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:id="@+id/myProfile_Linear2"
                 android:gravity="right"
+                android:layout_marginTop="20dp"
+                android:id="@+id/myProfile_Linear2"
                 android:layout_below="@+id/myProfile_Linear1"
                 >
 
@@ -109,9 +105,10 @@
                     android:text="תעודת זהות:"></TextView>
             </LinearLayout>
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="right"
                 android:layout_marginTop="10dp"
                 android:id="@+id/myProfile_Linear3"
                 android:layout_below="@+id/myProfile_Linear2"
@@ -144,65 +141,57 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:gravity="right"
                 android:layout_marginTop="10dp"
                 android:id="@+id/myProfile_Linear5"
                 android:layout_below="@+id/myProfile_Linear3"
                 >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/myProfile_TXT_phoneNumber"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="20dp"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
 
-                    android:text="Phone Number:"></TextView>
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/myProfile_TXT_phoneNumberToFill"
-                    android:layout_toRightOf="@+id/myProfile_TXT_name"
-                    android:layout_alignParentLeft="true"
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
-                    >
-
+                    android:textSize="20dp">
                 </EditText>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/myProfile_TXT_phoneNumber"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:text="מספר טלפון:"></TextView>
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/myProfile_Linear6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/myProfile_Linear5"
+                android:gravity="right"
                 android:layout_marginTop="10dp"
+                android:layout_below="@+id/myProfile_Linear5"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/myProfile_TXT_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="20dp"
-                    android:text="Password:"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"/>
 
                 <EditText
                     android:id="@+id/myProfile_TXT_passwordToFill"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
                     android:layout_marginLeft="20dp"
-                    android:ems="30"
-                    android:layout_toRightOf="@+id/myProfile_TXT_name"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     ></EditText>
 
+                <TextView
+                    android:id="@+id/myProfile_TXT_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="סיסמא:"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -210,60 +199,50 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:gravity="right"
                 android:id="@+id/myProfile_Linear7"
                 android:layout_below="@+id/myProfile_Linear6"
                 >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/myProfile_TXT_country"
-                    android:layout_alignParentLeft="true"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="20dp"
 
-                    android:text="Country:"></TextView>
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/myProfile_TXT_countryToFill"
-                    android:layout_toRightOf="@+id/myProfile_TXT_name"
-                    android:layout_alignParentLeft="true"
                     android:textColor="@color/black"
-                    android:layout_marginLeft="20dp"
                     android:textSize="20dp"
                     />
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_country"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:text="מדינה:"></TextView>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:gravity="right"
                 android:id="@+id/myProfile_Linear8"
                 android:layout_below="@+id/myProfile_Linear7"
                 >
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_bloodTypeToFill"
+                    android:textColor="@color/black"
+                    android:textSize="20dp">
+                </EditText>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:id="@+id/myProfile_TXT_bloodType"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="20dp"
                     android:textSize="20dp"
-
-                    android:text="Blood Type:"></TextView>
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/myProfile_TXT_bloodTypeToFill"
-                    android:layout_toRightOf="@+id/myProfile_TXT_name"
-                    android:textColor="@color/black"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="20dp"
-                    android:textSize="20dp"
-                    >
-                </EditText>
+                    android:text="סוג דם:"></TextView>
 
             </LinearLayout>
             <LinearLayout
@@ -271,45 +250,44 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginTop="10dp"
+                android:gravity="right"
                 android:id="@+id/myProfile_Linear9"
                 android:layout_below="@+id/myProfile_Linear8"
                 >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/myProfile_TXT_dateBirth"
-                    android:layout_alignParentLeft="true"
-                    android:textColor="@color/black"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="20dp"
-
-                    android:text="Date Birth:"></TextView>
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/myProfile_TXT_dateBirthToFill"
-                    android:layout_toRightOf="@+id/myProfile_TXT_dateBirth"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="20dp"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     >
                 </EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_dateBirth"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:text="תאריך לידה:"></TextView>
 
 
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/myProfile_BTN_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:id="@+id/myProfile_BTN_back"
-        android:layout_alignParentRight="true"
-        app:cornerRadius="100dp"
+        android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="10dp"
+        android:textColor="@color/black"
+        android:text="חזור"
+        android:background="@drawable/button_s"
+        />
 
-        android:text="Backi"/>
 
 </RelativeLayout>
