@@ -115,7 +115,7 @@ public class SignUpPage extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkData()) {
                     newUser = new User(signUp_EDT_name.getText().toString(), signUp_EDT_id.getText().toString(), signUp_EDT_email.getText().toString(),
-                            signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, imageData);
+                            signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date);
                     getFromMSP();
                     putOnMSP();
                     allUsers.addToList(newUser);

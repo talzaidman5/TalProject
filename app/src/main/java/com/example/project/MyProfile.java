@@ -90,15 +90,15 @@ public class MyProfile extends AppCompatActivity {
             myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().getDay()+"/"+currentUser.getBirthDate().getMonth()+"/"+currentUser.getBirthDate().getYear());
             myProfile_TXT_IDToFill.setText(currentUser.getID());
             myProfile_TXT_bloodTypeToFill.setText(currentUser.getBloodType());
-            InputStream inputStream = null;
-            try {
-                Uri myUri = Uri.parse(currentUser.getImageUser());
-                inputStream = getContentResolver().openInputStream(myUri);
-                myProfile_BTN_logo.setBackground(Drawable.createFromStream(inputStream, myUri.toString()));
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+//            InputStream inputStream = null;
+//            try {
+//                Uri myUri = Uri.parse(currentUser.getImageUser());
+//                inputStream = getContentResolver().openInputStream(myUri);
+//                myProfile_BTN_logo.setBackground(Drawable.createFromStream(inputStream, myUri.toString()));
+//
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            }
 
         }
         
