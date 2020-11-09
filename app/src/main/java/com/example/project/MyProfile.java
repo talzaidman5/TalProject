@@ -1,7 +1,5 @@
 package com.example.project;
 
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,12 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 
 public class MyProfile extends AppCompatActivity {
@@ -33,12 +26,20 @@ public class MyProfile extends AppCompatActivity {
     private User currentUser = new User();
     private AllUsers allUsers;
 
+ //   StorageReference storageRef = storage.getReference();
+  //  UploadTask uploadTask = mountainsRef.putBytes(data);
+
+    public MyProfile() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_profile);
         msp = new MySheredP(this);
         getSupportActionBar().hide();
+     //   mStorageRef = FirebaseStorage.getInstance().getReference();
+
         findView();
         getFromMSP();
         initData();
@@ -55,6 +56,29 @@ public class MyProfile extends AppCompatActivity {
                 myProfile_TXT_emailToFill.setEnabled(true);
                 myProfile_TXT_nameToFill.setEnabled(true);
                 myProfile_TXT_phoneNumberToFill.setEnabled(true);
+            }
+        });
+
+        myProfile_BTN_logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+           public void onClick(View view) {
+          /*       Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
+                StorageReference riversRef = mStorageRef.child("images/"+file.getLastPathSegment());
+                uploadTask = riversRef.putFile(file);
+
+// Register observers to listen for when the download is done or if it fails
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                        // ...
+                    }
+                });*/
             }
         });
     }
@@ -89,16 +113,17 @@ public class MyProfile extends AppCompatActivity {
             myProfile_TXT_nameToFill.setText(currentUser.getFullName());
             myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().getDay()+"/"+currentUser.getBirthDate().getMonth()+"/"+currentUser.getBirthDate().getYear());
             myProfile_TXT_IDToFill.setText(currentUser.getID());
+            myProfile_TXT_emailToFill.setText(currentUser.getEmail());
             myProfile_TXT_bloodTypeToFill.setText(currentUser.getBloodType());
-//            InputStream inputStream = null;
-//            try {
-//                Uri myUri = Uri.parse(currentUser.getImageUser());
-//                inputStream = getContentResolver().openInputStream(myUri);
-//                myProfile_BTN_logo.setBackground(Drawable.createFromStream(inputStream, myUri.toString()));
-//
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            }
+         /*   InputStream inputStream = null;
+            try {
+                Uri myUri = Uri.parse(currentUserת.getImageUser());
+                inputStream = getContentResolver().openInputStream(myUri);
+                myProfile_BTN_logo.setBackground(Drawable.createFromStream(inputStream, myUri.toString()));
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }*/
 
         }
         
