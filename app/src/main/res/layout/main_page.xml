@@ -57,7 +57,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textColor="@color/grey"
-        android:text="זכור אותי"/>
+        android:layoutDirection="rtl"
+        android:buttonTint="@color/grey"
+
+        android:text=" זכור אותי"/>
 
     <Button
         android:id="@+id/mainPage_BTN_signIn"
