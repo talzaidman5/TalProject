@@ -29,8 +29,8 @@ public class MyProfile extends AppCompatActivity {
     private User currentUser = new User();
     private AllUsers allUsers;
 
- //   StorageReference storageRef = storage.getReference();
-  //  UploadTask uploadTask = mountainsRef.putBytes(data);
+    //   StorageReference storageRef = storage.getReference();
+    //  UploadTask uploadTask = mountainsRef.putBytes(data);
 
     public MyProfile() {
     }
@@ -41,7 +41,7 @@ public class MyProfile extends AppCompatActivity {
         setContentView(R.layout.my_profile);
         msp = new MySheredP(this);
         getSupportActionBar().hide();
-     //   mStorageRef = FirebaseStorage.getInstance().getReference();
+        //   mStorageRef = FirebaseStorage.getInstance().getReference();
 
         findView();
         getFromMSP();
@@ -127,7 +127,7 @@ public class MyProfile extends AppCompatActivity {
                     .into(myProfile_BTN_logo);
 
         }
-        
+
     }
 
     private AllUsers getFromMSP(){

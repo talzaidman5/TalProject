@@ -269,13 +269,11 @@
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:text="תאריך לידה:"></TextView>
-
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/myProfile_BTN_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
