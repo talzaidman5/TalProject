@@ -56,7 +56,7 @@ public class SignUpPage extends AppCompatActivity {
     public static Date date;
     private MySheredP msp;
     private Gson gson = new Gson();
-    private String imageUrl;
+    String imageUrl;
 
     // InputStream inputStream = null;
     private ImageView imgView;
@@ -139,9 +139,8 @@ public class SignUpPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkData()) {
-                    imageUrl = "images/"+ UUID.randomUUID().toString();
                     newUser = new User(signUp_EDT_name.getText().toString(), signUp_EDT_id.getText().toString(), signUp_EDT_email.getText().toString(),
-                            signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date,imageUrl);
+                            signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date,filePath.toString());
                     getFromMSP();
                     putOnMSP();
                     allUsers.addToList(newUser);
@@ -278,7 +277,7 @@ public class SignUpPage extends AppCompatActivity {
             progressDialog.show();
 
             // Defining the child of storageReference
-
+            imageUrl = "images/"+ UUID.randomUUID().toString();
             StorageReference ref = storageReference.child(imageUrl);
             newUser.setImageUser(imageUrl);
             // adding listeners on upload
