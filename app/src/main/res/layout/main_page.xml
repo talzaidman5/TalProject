@@ -59,7 +59,7 @@
         android:textColor="@color/grey"
         android:layoutDirection="rtl"
         android:buttonTint="@color/grey"
-
+        android:id="@+id/main_page_CHECK_remember"
         android:text=" זכור אותי"/>
 
     <Button
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/mainPage_PNG_logo"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/gradient_button"
         android:layout_centerHorizontal="true"
         android:textSize="25dp"
@@ -93,7 +93,7 @@
             android:textColor="#33043A"
             android:textSize="15dp"
             android:textStyle="bold"/>
-   
+
     </LinearLayout>
 
         <LinearLayout

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +30,7 @@ public class MainPage extends AppCompatActivity {
     private EditText mainPage_EDIT_id, mainPage_EDIT_password;
     private MySheredP msp;
     private Gson gson = new Gson();
+    private CheckBox main_page_CHECK_remember;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,8 +46,11 @@ public class MainPage extends AppCompatActivity {
         mainPage_BTN_signIn = findViewById(R.id.mainPage_BTN_signIn);
         mainPage_EDIT_password = findViewById(R.id.mainPage_EDIT_password);
         main_page_BTN_signUp = findViewById(R.id.main_page_BTN_signUp);
+        main_page_CHECK_remember = findViewById(R.id.main_page_CHECK_remember);
+
         msp = new MySheredP(this);
-      //  getFromMSP();
+
+        getFromMSP();
         mainPage_BTN_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,12 +64,16 @@ public class MainPage extends AppCompatActivity {
             }
         });
 
+
+
     }
 
-    private AllUsers getFromMSP(){
-        String data  = msp.getString(KEY_MSP_ALL, "NA");
-        allUsers = new AllUsers(data);
-        return allUsers;
+    private User getFromMSP(){
+        String data  = msp.getString(KEY_MSP, "NA");
+        newUser = new User(data);
+        if(newUser.getRemember())
+            startActivity(new Intent(MainPage.this, Menu.class));
+        return newUser;
     }
     public void openSignUpPage() {
 
@@ -81,7 +90,10 @@ public class MainPage extends AppCompatActivity {
                 }
                 if (allUsers.getAllUser().size()!= 0) {
                     newUser = allUsers.getUserByID(mainPage_EDIT_id.getText().toString());
-                    putOnMSP();
+                    if(main_page_CHECK_remember.isChecked()) {
+                        newUser.setRemember(true);
+                        myRef.child("Users").child(newUser.getID()).setValue(newUser);
+                    }putOnMSP();
 
                     if (newUser != null)
                     if (newUser.getPassword().equals(mainPage_EDIT_password.getText().toString()))
