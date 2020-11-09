@@ -5,10 +5,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 
@@ -19,7 +21,8 @@ public class MyProfile extends AppCompatActivity {
     private EditText myProfile_TXT_nameToFill,myProfile_TXT_emailToFill,myProfile_TXT_phoneNumberToFill,myProfile_TXT_passwordToFill,
             myProfile_TXT_countryToFill,myProfile_TXT_dateBirthToFill,myProfile_TXT_bloodTypeToFill;
     private TextView myProfile_TXT_IDToFill;
-    private Button myProfile_BTN_back,myProfile_BTN_logo;
+    private Button myProfile_BTN_back;
+    ImageView myProfile_BTN_logo;
     ImageButton myProfile_BTN_edit;
     private MySheredP msp;
     private Gson gson = new Gson();
@@ -59,10 +62,10 @@ public class MyProfile extends AppCompatActivity {
             }
         });
 
-        myProfile_BTN_logo.setOnClickListener(new View.OnClickListener() {
+     /*    myProfile_BTN_logo.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View view) {
-          /*       Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
+                Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
                 StorageReference riversRef = mStorageRef.child("images/"+file.getLastPathSegment());
                 uploadTask = riversRef.putFile(file);
 
@@ -78,9 +81,9 @@ public class MyProfile extends AppCompatActivity {
                         // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
                         // ...
                     }
-                });*/
+                });
             }
-        });
+        });*/
     }
     public void findView(){
         myProfile_BTN_edit=findViewById(R.id.myProfile_BTN_edit);
@@ -115,15 +118,13 @@ public class MyProfile extends AppCompatActivity {
             myProfile_TXT_IDToFill.setText(currentUser.getID());
             myProfile_TXT_emailToFill.setText(currentUser.getEmail());
             myProfile_TXT_bloodTypeToFill.setText(currentUser.getBloodType());
-         /*   InputStream inputStream = null;
-            try {
-                Uri myUri = Uri.parse(currentUserת.getImageUser());
-                inputStream = getContentResolver().openInputStream(myUri);
-                myProfile_BTN_logo.setBackground(Drawable.createFromStream(inputStream, myUri.toString()));
 
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }*/
+
+            String urlImage =currentUser.getImageUser();
+
+            Glide.with(MyProfile.this)
+                    .load(urlImage)
+                    .into(myProfile_BTN_logo);
 
         }
         
