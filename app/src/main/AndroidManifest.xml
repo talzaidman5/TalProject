@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.project">
-<uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,30 +13,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-
-        <activity android:name="com.example.project.activityPosition"
-            />
-
-        <activity android:name="com.example.project.MyProfile"
+        <activity
+            android:name=".DialogActivityActivity"
+            android:label="@string/title_activity_dialog_activity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activityPosition" />
+        <activity
+            android:name=".MyProfile"
             android:theme="@style/Theme.AppCompat"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.example.project.QuestionnairePage"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".QuestionnairePage"
             android:theme="@style/Theme.AppCompat"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.example.project.Menu"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Menu"
             android:theme="@style/Theme.AppCompat"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.example.project.SignUpPage"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".SignUpPage"
             android:theme="@style/Theme.AppCompat"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.example.project.MainPage"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".MainPage"
             android:theme="@style/Theme.AppCompat"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            >
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

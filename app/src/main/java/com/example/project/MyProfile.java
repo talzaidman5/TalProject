@@ -1,5 +1,6 @@
 package com.example.project;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,12 +20,12 @@ public class MyProfile extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
     public static final String KEY_MSP_ALL  = "allUsers1";
 
-    private EditText myProfile_TXT_nameToFill,myProfile_TXT_emailToFill,myProfile_TXT_phoneNumberToFill,myProfile_TXT_passwordToFill,
+    private EditText myProfile_TXT_emailToFill,myProfile_TXT_phoneNumberToFill,myProfile_TXT_passwordToFill,
             myProfile_TXT_countryToFill,myProfile_TXT_dateBirthToFill,myProfile_TXT_bloodTypeToFill;
-    private TextView myProfile_TXT_IDToFill;
+    private TextView myProfile_TXT_IDToFill,myProfile_TXT_nameToFill;
     private Button myProfile_BTN_back;
-    CircleImageView myProfile_BTN_logo;
-    ImageButton myProfile_BTN_edit;
+    private CircleImageView myProfile_BTN_logo;
+    private ImageButton myProfile_BTN_edit;
     private MySheredP msp;
     private Gson gson = new Gson();
     private User currentUser = new User();

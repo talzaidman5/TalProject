@@ -26,9 +26,13 @@ public class Menu extends AppCompatActivity {
         menu_BTN_fillQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openQuesPage();
-            }
-        });
+                        newEventDialog exNewEventDialog = new newEventDialog();
+                        exNewEventDialog.show(getSupportFragmentManager(),"exe");
+
+                    }
+                });
+              //  openQuesPage();
+
         menu_BTN_profile.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
