@@ -45,7 +45,8 @@ public class SignUpPage extends AppCompatActivity {
     public static final String KEY_MSP_ALL  = "allUsers1";
     public static final int PICK_IMAGE = 1;
     public String imageData;
-    private Button signUp_BTN_signUp,sign_up_BTN_logo;
+    private Button signUp_BTN_signUp;
+    ImageView sign_up_IMG_logo;
     private Spinner signUp_SPI_country,signUp_SPI_bloodTypes;
     private EditText signUp_EDT_name,signUp_EDT_id,signUp_EDT_email,signUp_EDT_phone,signUp_EDT_password;
     private View view;
@@ -59,7 +60,7 @@ public class SignUpPage extends AppCompatActivity {
     String imageUrl;
 
     // InputStream inputStream = null;
-    private ImageView imgView;
+  //  private ImageView imgView;
     // Uri indicates, where the image will be picked from
     private Uri filePath;
     // request code
@@ -99,7 +100,7 @@ public class SignUpPage extends AppCompatActivity {
         adapterBloodTypes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         signUp_SPI_bloodTypes.setAdapter(adapterBloodTypes);
 
-        sign_up_BTN_logo.setOnClickListener(new View.OnClickListener() {
+        sign_up_IMG_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             /*    Intent intent = new Intent();
@@ -210,8 +211,8 @@ public class SignUpPage extends AppCompatActivity {
         signUp_SPI_country =  findViewById(R.id.signUp_SPI_country);
         signUp_SPI_bloodTypes =  findViewById(R.id.signUp_SPI_bloodTypes);
         signUp_TXT_birthDatePicker = findViewById(R.id.signUp_TXT_birthDatePicker);
-        sign_up_BTN_logo = findViewById(R.id.sign_up_BTN_logo);
-        imgView = findViewById(R.id.imgView);
+        sign_up_IMG_logo = findViewById(R.id.sign_up_IMG_logo);
+       // imgView = findViewById(R.id.imgView);
 
     }
 
@@ -256,7 +257,7 @@ public class SignUpPage extends AppCompatActivity {
                         .Images
                         .Media
                         .getBitmap(getContentResolver(), filePath);
-                imgView.setImageBitmap(bitmap);
+                sign_up_IMG_logo.setImageBitmap(bitmap);
             }
 
             catch (IOException e) {
