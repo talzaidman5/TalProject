@@ -74,6 +74,9 @@ public class SignUpPage extends AppCompatActivity {
     final DatabaseReference myRef = database.getReference("message");
     private AllUsers allUsers =  new AllUsers();
     private  User newUser;
+    private Boolean isImage= false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,11 +107,7 @@ public class SignUpPage extends AppCompatActivity {
         sign_up_IMG_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            /*    Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
-           */
+                isImage = true;
                 SelectImage();
             }
         });
@@ -141,8 +140,13 @@ public class SignUpPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkData()) {
+                    if(isImage)
                     newUser = new User(signUp_EDT_name.getText().toString(), signUp_EDT_id.getText().toString(), signUp_EDT_email.getText().toString(),
                             signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date,filePath.toString(),false);
+                 else
+                        newUser = new User(signUp_EDT_name.getText().toString(), signUp_EDT_id.getText().toString(), signUp_EDT_email.getText().toString(),
+                                signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date,"https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e",false);
+
                     getFromMSP();
                     putOnMSP();
                     allUsers.addToList(newUser);
