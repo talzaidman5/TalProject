@@ -9,8 +9,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ProfilePage extends AppCompatActivity {
-    Button profilePage_BTN_fillQ,profilePage_BTN_profile;
+public class Menu extends AppCompatActivity {
+    Button menu_BTN_fillQ,menu_BTN_profile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,30 +18,30 @@ public class ProfilePage extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.profile_page);
+        setContentView(R.layout.activity_menu);
         getSupportActionBar().hide();
 
-        profilePage_BTN_fillQ = findViewById(R.id.profilePage_BTN_fillQ);
-        profilePage_BTN_profile = findViewById(R.id.profilePage_BTN_profile);
-        profilePage_BTN_fillQ.setOnClickListener(new View.OnClickListener() {
+        menu_BTN_fillQ = findViewById(R.id.menu_BTN_fillQ);
+        menu_BTN_profile = findViewById(R.id.menu_BTN_profile);
+        menu_BTN_fillQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openQuesPage();
             }
         });
-        profilePage_BTN_profile.setOnClickListener(new View.OnClickListener(){
+        menu_BTN_profile.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                openProfilePage();
+                openmenu();
             }
         });
     }
 
 
     void openQuesPage(){
-        startActivity(new Intent(ProfilePage.this, QuestionnairePage.class));
+        startActivity(new Intent(Menu.this, QuestionnairePage.class));
     }
-    void openProfilePage(){ startActivity(new Intent(ProfilePage.this, MyProfile.class));
+    void openmenu(){ startActivity(new Intent(Menu.this, MyProfile.class));
     }
 
 }

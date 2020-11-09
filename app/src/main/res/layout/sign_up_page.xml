@@ -13,16 +13,16 @@
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:id="@+id/img"/>
-
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <Button
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/sign_up_BTN_logo"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:background="@drawable/profile"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        tools:ignore="MissingClass" />
+        android:background="@drawable/profile" />
     <ScrollView
         android:background="@drawable/corners"
         android:layout_width="match_parent"

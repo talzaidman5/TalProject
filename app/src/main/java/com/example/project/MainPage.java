@@ -85,7 +85,7 @@ public class MainPage extends AppCompatActivity {
 
                     if (newUser != null)
                     if (newUser.getPassword().equals(mainPage_EDIT_password.getText().toString()))
-                        startActivity(new Intent(MainPage.this, ProfilePage.class));
+                        startActivity(new Intent(MainPage.this, Menu.class));
                     else
                         mainPage_EDIT_id.setText("invalid");
                     else

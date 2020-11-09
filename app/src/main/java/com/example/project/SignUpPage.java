@@ -1,14 +1,15 @@
 package com.example.project;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,20 +17,28 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.UUID;
 
 public class SignUpPage extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
@@ -47,7 +56,16 @@ public class SignUpPage extends AppCompatActivity {
     public static Date date;
     private MySheredP msp;
     private Gson gson = new Gson();
-    InputStream inputStream = null;
+
+
+   // InputStream inputStream = null;
+    private ImageView imgView;
+    // Uri indicates, where the image will be picked from
+    private Uri filePath;
+    // request code
+    private final int PICK_IMAGE_REQUEST = 22;
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     // Write a message to the database
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -64,6 +82,11 @@ public class SignUpPage extends AppCompatActivity {
         findView(view);
         getSupportActionBar().hide();
 
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
+
         ArrayAdapter<CharSequence> adapterCountries = ArrayAdapter.createFromResource(this,
                 R.array.countries, android.R.layout.simple_spinner_item);
         adapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -79,10 +102,12 @@ public class SignUpPage extends AppCompatActivity {
         sign_up_BTN_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
+            /*    Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+           */
+                SelectImage();
             }
         });
 
@@ -121,7 +146,7 @@ public class SignUpPage extends AppCompatActivity {
                     allUsers.addToList(newUser);
                     myRef.child("Users").child(signUp_EDT_id.getText().toString()).setValue(newUser);
                     putOnMSP();
-                    startActivity(new Intent(SignUpPage.this, ProfilePage.class));
+                    startActivity(new Intent(SignUpPage.this, Menu.class));
                 }
             }
         });
@@ -185,10 +210,11 @@ public class SignUpPage extends AppCompatActivity {
         signUp_SPI_bloodTypes =  findViewById(R.id.signUp_SPI_bloodTypes);
         signUp_TXT_birthDatePicker = findViewById(R.id.signUp_TXT_birthDatePicker);
         sign_up_BTN_logo = findViewById(R.id.sign_up_BTN_logo);
+        imgView = findViewById(R.id.imgView);
 
     }
 
-    @Override
+  /*  @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
@@ -201,6 +227,129 @@ public class SignUpPage extends AppCompatActivity {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+    }*/
+
+
+    // Select Image method
+    private void SelectImage()
+    {
+
+        // Defining Implicit Intent to mobile gallery
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(
+                Intent.createChooser(
+                        intent,
+                        "Select Image from here..."),
+                PICK_IMAGE_REQUEST);
+    }
+
+    // Override onActivityResult method
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+       super.onActivityResult(requestCode, resultCode, data);
+
+        // checking request code and result code
+        // if request code is PICK_IMAGE_REQUEST and
+        // resultCode is RESULT_OK
+        // then set image in the image view
+        if (requestCode == PICK_IMAGE_REQUEST
+                && resultCode == RESULT_OK
+                && data != null
+                && data.getData() != null) {
+
+            // Get the Uri of data
+            filePath = data.getData();
+            try {
+                // Setting image on image view using Bitmap
+                Bitmap bitmap = MediaStore
+                        .Images
+                        .Media
+                        .getBitmap(getContentResolver(), filePath);
+                imgView.setImageBitmap(bitmap);
+            }
+
+            catch (IOException e) {
+                // Log the exception
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // UploadImage method
+    private void uploadImage()
+    {
+        if (filePath != null) {
+
+            // Code for showing progressDialog while uploading
+            ProgressDialog progressDialog
+                    = new ProgressDialog(this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            // Defining the child of storageReference
+            StorageReference ref
+                    = storageReference
+                    .child(
+                            "images/"
+                                    + UUID.randomUUID().toString());
+
+            // adding listeners on upload
+            // or failure of image
+            ref.putFile(filePath)
+                    .addOnSuccessListener(
+                            new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+                                @Override
+                                public void onSuccess(
+                                        UploadTask.TaskSnapshot taskSnapshot)
+                                {
+
+                                    // Image uploaded successfully
+                                    // Dismiss dialog
+                                    progressDialog.dismiss();
+                                    Toast.makeText(SignUpPage.this,
+                                                    "Image Uploaded!!",
+                                                    Toast.LENGTH_SHORT)
+                                            .show();
+                                }
+                            })
+
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e)
+                        {
+
+                            // Error, Image not uploaded
+                            progressDialog.dismiss();
+                            Toast
+                                    .makeText(SignUpPage.this,
+                                            "Failed " + e.getMessage(),
+                                            Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    })
+                    .addOnProgressListener(
+                            new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                                // Progress Listener for loading
+                                // percentage on the dialog box
+                                @Override
+                                public void onProgress(
+                                        UploadTask.TaskSnapshot taskSnapshot)
+                                {
+                                    double progress
+                                            = (100.0
+                                            * taskSnapshot.getBytesTransferred()
+                                            / taskSnapshot.getTotalByteCount());
+                                    progressDialog.setMessage(
+                                            "Uploaded "
+                                                    + (int)progress + "%");
+                                }
+                            });
         }
     }
 }

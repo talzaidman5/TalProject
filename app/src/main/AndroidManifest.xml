@@ -23,7 +23,7 @@
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
-        <activity android:name="com.example.project.ProfilePage"
+        <activity android:name="com.example.project.Menu"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
