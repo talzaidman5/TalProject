@@ -79,101 +79,99 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/myProfile_Linear2"
-        android:layout_below="@+id/myProfile_Linear1"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_ID"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:text="ID:"></TextView>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_IDToFill"
-            android:textColor="@color/black"
-            android:layout_toRightOf="@+id/myProfile_TXT_name"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            >
-        </EditText>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:id="@+id/myProfile_Linear2"
+                android:gravity="right"
+                android:layout_below="@+id/myProfile_Linear1"
+                >
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/myProfile_Linear3"
-        android:layout_below="@+id/myProfile_Linear2"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_email"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_IDToFill"
+                    android:textColor="@color/black"
+                    android:layout_toLeftOf="@+id/myProfile_TXT_name"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"
+                    >
+                </EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_ID"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:text="תעודת זהות:"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:id="@+id/myProfile_Linear3"
+                android:layout_below="@+id/myProfile_Linear2"
+                >
 
-            android:textColor="@color/black"
-            android:text="Email:"></TextView>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_emailToFill"
-            android:textColor="@color/black"
-            android:layout_toRightOf="@+id/myProfile_TXT_email"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            >
-        </EditText>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_emailToFill"
+                    android:textColor="@color/black"
+                    android:layout_toRightOf="@+id/myProfile_TXT_email"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"
+                    >
+                </EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_email"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:text="כתובת מייל:"></TextView>
 
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:id="@+id/myProfile_Linear5"
+                android:layout_below="@+id/myProfile_Linear3"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_phoneNumber"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/myProfile_Linear5"
-        android:layout_below="@+id/myProfile_Linear3"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_phoneNumber"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/black"
-            android:textSize="20dp"
+                    android:text="Phone Number:"></TextView>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_phoneNumberToFill"
+                    android:layout_toRightOf="@+id/myProfile_TXT_name"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    >
 
-            android:text="Phone Number:"></TextView>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_phoneNumberToFill"
-            android:layout_toRightOf="@+id/myProfile_TXT_name"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            >
+                </EditText>
 
-        </EditText>
-
-    </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/myProfile_Linear6"
@@ -207,99 +205,99 @@
 
 
             </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/myProfile_Linear7"
-        android:layout_below="@+id/myProfile_Linear6"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_country"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/black"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:id="@+id/myProfile_Linear7"
+                android:layout_below="@+id/myProfile_Linear6"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_country"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"
 
-            android:text="Country:"></TextView>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_countryToFill"
-            android:layout_toRightOf="@+id/myProfile_TXT_name"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/black"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            />
+                    android:text="Country:"></TextView>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_countryToFill"
+                    android:layout_toRightOf="@+id/myProfile_TXT_name"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"
+                    />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/myProfile_Linear8"
-        android:layout_below="@+id/myProfile_Linear7"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:id="@+id/myProfile_TXT_bloodType"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:id="@+id/myProfile_Linear8"
+                android:layout_below="@+id/myProfile_Linear7"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:id="@+id/myProfile_TXT_bloodType"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"
 
-            android:text="Blood Type:"></TextView>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_bloodTypeToFill"
-            android:layout_toRightOf="@+id/myProfile_TXT_name"
-            android:textColor="@color/black"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            >
-        </EditText>
+                    android:text="Blood Type:"></TextView>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_bloodTypeToFill"
+                    android:layout_toRightOf="@+id/myProfile_TXT_name"
+                    android:textColor="@color/black"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="20dp"
+                    >
+                </EditText>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:id="@+id/myProfile_Linear9"
-        android:layout_below="@+id/myProfile_Linear8"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_dateBirth"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:textSize="20dp"
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:id="@+id/myProfile_Linear9"
+                android:layout_below="@+id/myProfile_Linear8"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_dateBirth"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="20dp"
 
-            android:text="Date Birth:"></TextView>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/myProfile_TXT_dateBirthToFill"
-            android:layout_toRightOf="@+id/myProfile_TXT_dateBirth"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-          >
-        </EditText>
+                    android:text="Date Birth:"></TextView>
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/myProfile_TXT_dateBirthToFill"
+                    android:layout_toRightOf="@+id/myProfile_TXT_dateBirth"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    >
+                </EditText>
 
 
-    </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
