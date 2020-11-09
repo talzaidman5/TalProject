@@ -15,8 +15,9 @@ public class User {
     private String bloodType;
     private Date birthDate;
     private String imageUser;
+    private Boolean remember;
 
-    public User(String fullName, String ID, String email, String phoneNumber, String password, String country, String bloodType, Date birthDate, String image) {
+    public User(String fullName, String ID, String email, String phoneNumber, String password, String country, String bloodType, Date birthDate, String image, Boolean isRemember) {
         this.fullName = fullName;
         this.ID = ID;
         this.email = email;
@@ -26,11 +27,13 @@ public class User {
         this.bloodType = bloodType;
         this.birthDate = birthDate;
         this.imageUser = image;
+        this.remember = isRemember;
     }
     public User(String data)
     {
        this(createUserFromString(data));
     }
+
 
     public User(User other) {
         this.fullName = other.fullName;
@@ -42,6 +45,7 @@ public class User {
         this.bloodType = other.bloodType;
         this.birthDate = other.birthDate;
         this.imageUser = other.imageUser;
+        this.remember = other.remember;
     }
 
     public void setImageUser(String imageUser) {
@@ -52,9 +56,17 @@ public class User {
         return imageUser;
     }
 
+    public Boolean getRemember() {
+        return remember;
+    }
+
+    public void setRemember(Boolean remember) {
+        this.remember = remember;
+    }
+
     private static User createUserFromString(String data) {
        User temp;
-        if (data == "NA")
+        if (data == "NA" || data.equals("null"))
             temp = new User();
         else
             temp = new Gson().fromJson(data, User.class);
@@ -62,6 +74,7 @@ public class User {
     }
 
     public User() {
+        remember = false;
     }
 
     public String getFullName() {

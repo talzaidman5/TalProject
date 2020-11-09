@@ -102,11 +102,11 @@ public class MyProfile extends AppCompatActivity {
 
 
             String urlImage =currentUser.getImageUser();
-            myProfile_BTN_logo.setImageResource(android.R.color.transparent);
-            Glide.with(MyProfile.this)
-                    .load(urlImage)
-                    .circleCrop()
-                    .into(myProfile_BTN_logo);
+                myProfile_BTN_logo.setImageResource(android.R.color.transparent);
+                Glide.with(MyProfile.this)
+                        .load(urlImage)
+                        .circleCrop()
+                        .into(myProfile_BTN_logo);
 
         }
 
