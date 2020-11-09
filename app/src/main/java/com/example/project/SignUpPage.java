@@ -17,7 +17,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,13 +39,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class SignUpPage extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
     public static final String KEY_MSP_ALL  = "allUsers1";
     public static final int PICK_IMAGE = 1;
     public String imageData;
     private Button signUp_BTN_signUp;
-    ImageView sign_up_IMG_logo;
+    CircleImageView sign_up_IMG_logo;
     private Spinner signUp_SPI_country,signUp_SPI_bloodTypes;
     private EditText signUp_EDT_name,signUp_EDT_id,signUp_EDT_email,signUp_EDT_phone,signUp_EDT_password;
     private View view;
@@ -212,7 +213,7 @@ public class SignUpPage extends AppCompatActivity {
         signUp_SPI_bloodTypes =  findViewById(R.id.signUp_SPI_bloodTypes);
         signUp_TXT_birthDatePicker = findViewById(R.id.signUp_TXT_birthDatePicker);
         sign_up_IMG_logo = findViewById(R.id.sign_up_IMG_logo);
-       // imgView = findViewById(R.id.imgView);
+
 
     }
 
@@ -258,6 +259,7 @@ public class SignUpPage extends AppCompatActivity {
                         .Media
                         .getBitmap(getContentResolver(), filePath);
                 sign_up_IMG_logo.setImageBitmap(bitmap);
+
             }
 
             catch (IOException e) {

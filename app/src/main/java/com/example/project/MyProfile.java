@@ -5,13 +5,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MyProfile extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class MyProfile extends AppCompatActivity {
             myProfile_TXT_countryToFill,myProfile_TXT_dateBirthToFill,myProfile_TXT_bloodTypeToFill;
     private TextView myProfile_TXT_IDToFill;
     private Button myProfile_BTN_back;
-    ImageView myProfile_BTN_logo;
+    CircleImageView myProfile_BTN_logo;
     ImageButton myProfile_BTN_edit;
     private MySheredP msp;
     private Gson gson = new Gson();
@@ -62,28 +63,7 @@ public class MyProfile extends AppCompatActivity {
             }
         });
 
-     /*    myProfile_BTN_logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-           public void onClick(View view) {
-                Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
-                StorageReference riversRef = mStorageRef.child("images/"+file.getLastPathSegment());
-                uploadTask = riversRef.putFile(file);
 
-// Register observers to listen for when the download is done or if it fails
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
-                        // ...
-                    }
-                });
-            }
-        });*/
     }
     public void findView(){
         myProfile_BTN_edit=findViewById(R.id.myProfile_BTN_edit);
@@ -121,9 +101,10 @@ public class MyProfile extends AppCompatActivity {
 
 
             String urlImage =currentUser.getImageUser();
-
+            myProfile_BTN_logo.setImageResource(android.R.color.transparent);
             Glide.with(MyProfile.this)
                     .load(urlImage)
+                    .circleCrop()
                     .into(myProfile_BTN_logo);
 
         }
