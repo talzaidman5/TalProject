@@ -43,7 +43,7 @@
     android:layout_below="@+id/questionnairePage_TXT_1"
     android:text="לידיעתך, תהליך תרומת דם מלא אורך כ- 30 דקות. תהליך תרומת מרכיבי דם בשיטת אפרזיס, אורך כשעתיים וחצי.
 .מומלץ לאכול משהו קל ולשתות לפני תרומת דם ומרכיביו"
-    android:id="@+id/questionnairePage_TXT_2"></TextView>
+    android:id="@+id/questionnairePage_TXT_2"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
         android:layout_margin="5dp"
         android:id="@+id/questionnairePage_TXT_3"
         android:text="לפני תרומת הדם חובה להציג תעודה מזהה, הכוללת מספר תעודת זהות ותמונה"
-        android:layout_below="@id/questionnairePage_TXT_2"></TextView>
+        android:layout_below="@id/questionnairePage_TXT_2"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

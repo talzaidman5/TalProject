@@ -1,7 +1,5 @@
 package com.example.project;
 
-import android.net.Uri;
-
 import com.google.gson.Gson;
 
 import java.util.Date;
@@ -16,9 +14,9 @@ public class User {
     private String country;
     private String bloodType;
     private Date birthDate;
-   // private String imageUser;
+    private String imageUser;
 
-    public User(String fullName, String ID, String email, String phoneNumber, String password, String country, String bloodType, Date birthDate) {
+    public User(String fullName, String ID, String email, String phoneNumber, String password, String country, String bloodType, Date birthDate, String image) {
         this.fullName = fullName;
         this.ID = ID;
         this.email = email;
@@ -27,7 +25,7 @@ public class User {
         this.country = country;
         this.bloodType = bloodType;
         this.birthDate = birthDate;
-    //    this.imageUser = image;
+        this.imageUser = image;
     }
     public User(String data)
     {
@@ -43,7 +41,15 @@ public class User {
         this.country = other.country;
         this.bloodType = other.bloodType;
         this.birthDate = other.birthDate;
-     //   this.imageUser = other.imageUser;
+        this.imageUser = other.imageUser;
+    }
+
+    public void setImageUser(String imageUser) {
+        this.imageUser = imageUser;
+    }
+
+    public String getImageUser() {
+        return imageUser;
     }
 
     private static User createUserFromString(String data) {

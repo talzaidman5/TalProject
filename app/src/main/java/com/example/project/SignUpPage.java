@@ -56,9 +56,9 @@ public class SignUpPage extends AppCompatActivity {
     public static Date date;
     private MySheredP msp;
     private Gson gson = new Gson();
+    private String imageUrl;
 
-
-   // InputStream inputStream = null;
+    // InputStream inputStream = null;
     private ImageView imgView;
     // Uri indicates, where the image will be picked from
     private Uri filePath;
@@ -139,14 +139,16 @@ public class SignUpPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkData()) {
+                    imageUrl = "images/"+ UUID.randomUUID().toString();
                     newUser = new User(signUp_EDT_name.getText().toString(), signUp_EDT_id.getText().toString(), signUp_EDT_email.getText().toString(),
-                            signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date);
+                            signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date,imageUrl);
                     getFromMSP();
                     putOnMSP();
                     allUsers.addToList(newUser);
                     myRef.child("Users").child(signUp_EDT_id.getText().toString()).setValue(newUser);
                     putOnMSP();
                     startActivity(new Intent(SignUpPage.this, Menu.class));
+                    uploadImage();
                 }
             }
         });
@@ -214,21 +216,7 @@ public class SignUpPage extends AppCompatActivity {
 
     }
 
-  /*  @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && data != null) {
-            imageData = data.getData().toString();
 
-            try {
-                Uri myUri = Uri.parse(imageData);
-                inputStream = getContentResolver().openInputStream(myUri);
-                sign_up_BTN_logo.setBackground(Drawable.createFromStream(inputStream, myUri.toString()));
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
 
 
     // Select Image method
@@ -285,29 +273,21 @@ public class SignUpPage extends AppCompatActivity {
         if (filePath != null) {
 
             // Code for showing progressDialog while uploading
-            ProgressDialog progressDialog
-                    = new ProgressDialog(this);
+            ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
             // Defining the child of storageReference
-            StorageReference ref
-                    = storageReference
-                    .child(
-                            "images/"
-                                    + UUID.randomUUID().toString());
 
+            StorageReference ref = storageReference.child(imageUrl);
+            newUser.setImageUser(imageUrl);
             // adding listeners on upload
             // or failure of image
-            ref.putFile(filePath)
-                    .addOnSuccessListener(
-                            new OnSuccessListener<UploadTask.TaskSnapshot>() {
-
+            ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(
                                         UploadTask.TaskSnapshot taskSnapshot)
                                 {
-
                                     // Image uploaded successfully
                                     // Dismiss dialog
                                     progressDialog.dismiss();
@@ -325,11 +305,7 @@ public class SignUpPage extends AppCompatActivity {
 
                             // Error, Image not uploaded
                             progressDialog.dismiss();
-                            Toast
-                                    .makeText(SignUpPage.this,
-                                            "Failed " + e.getMessage(),
-                                            Toast.LENGTH_SHORT)
-                                    .show();
+                            Toast.makeText(SignUpPage.this,"Failed " + e.getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(
