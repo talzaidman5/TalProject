@@ -22,20 +22,23 @@
     android:layout_below="@+id/mainPage_PNG_logo"
     android:layout_centerHorizontal="true"
     android:orientation="vertical"
+    android:gravity="right"
     android:background="@drawable/corners">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign In"
+        android:text="התחברות"
+        android:gravity="center"
+        android:textStyle="bold"
         android:textSize="20dp"
         android:textColor="@color/black"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ID"
+        android:hint="תעודת זהות"
         android:layout_marginTop="10dp"
-        android:textColorHint="@color/black"
+        android:textColorHint="@color/grey"
         android:textColor="@color/black"
         android:id="@+id/mainPage_EDIT_id"/>
     <EditText
@@ -43,8 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:inputType="numberPassword"
-        android:hint="Password"
-        android:textColorHint="@color/black"
+        android:hint="סיסמא"
+        android:gravity="right"
+        android:textColorHint="@color/grey"
         android:textColor="@color/black"
         android:id="@+id/mainPage_EDIT_password"/>
 
@@ -52,8 +56,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:text="Remember me"/>
+        android:textColor="@color/grey"
+        android:text="זכור אותי"/>
 
     <Button
         android:id="@+id/mainPage_BTN_signIn"
@@ -65,30 +69,32 @@
         android:layout_centerHorizontal="true"
         android:textSize="25dp"
         android:textColor="@color/black"
-        android:text="Sign In" />
+        android:text="התחבר" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:gravity="right"
         android:orientation="horizontal">
+        <Button
+            android:id="@+id/main_page_BTN_signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mainPage_BTN_signIn"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/transparent"
+            android:text="צור חשבון"
+            android:textColor="#33043A"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Still not Connected?"
+    android:text="עדיין ללא חשבון?"
     android:textColor="@color/black"
     android:textSize="16dp"/>
 
-    <Button
-        android:id="@+id/main_page_BTN_signUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/mainPage_BTN_signIn"
-        android:layout_centerHorizontal="true"
-        android:background="@android:color/transparent"
-        android:text="Sign Up"
-        android:textColor="#33043A"
-        android:textSize="14dp"
-        android:textStyle="bold"/>
+
     </LinearLayout>
 </LinearLayout>
 </RelativeLayout>
