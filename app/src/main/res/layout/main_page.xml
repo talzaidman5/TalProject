@@ -68,7 +68,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/mainPage_PNG_logo"
         android:layout_marginTop="35dp"
-        android:background="@drawable/gradient_button"
+        android:background="@drawable/button_s"
         android:layout_centerHorizontal="true"
         android:textSize="25dp"
         android:textColor="@color/black"
@@ -90,6 +90,7 @@
             android:layout_centerHorizontal="true"
             android:background="@android:color/transparent"
             android:text="שכחתי סיסמא"
+            android:layout_marginRight="10dp"
             android:textColor="#33043A"
             android:textSize="15dp"
             android:textStyle="bold"/>

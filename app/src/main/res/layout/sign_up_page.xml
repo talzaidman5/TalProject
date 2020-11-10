@@ -182,9 +182,10 @@
         android:layout_height="30dp"
         android:text="התחבר"
         android:layout_centerHorizontal="true"
-        android:textSize="25dp"
+        android:textSize="23dp"
+        android:textStyle="bold"
         android:layout_marginBottom="15dp"
-        android:background="@drawable/gradient_button"
+        android:background="@drawable/button_s"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"/>
 </RelativeLayout>

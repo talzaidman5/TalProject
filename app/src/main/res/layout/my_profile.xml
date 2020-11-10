@@ -282,7 +282,7 @@
         android:layout_margin="10dp"
         android:layout_centerHorizontal="true"
         android:layout_marginRight="10dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="חזור"
         android:background="@drawable/button_s"
         />

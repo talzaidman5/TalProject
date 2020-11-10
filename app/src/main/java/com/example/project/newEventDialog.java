@@ -28,6 +28,7 @@ public class newEventDialog extends AppCompatDialogFragment {
         dialog_BTN_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dialog.dismiss();
                 Intent intent = new Intent(view.getContext(),QuestionnairePage.class);
                 startActivity(intent);
             }

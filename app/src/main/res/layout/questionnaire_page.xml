@@ -124,7 +124,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="35dp"
-                android:background="@drawable/gradient_button"
+                android:background="@drawable/button_s"
                 android:text="אשר ושלח"></Button>
             </LinearLayout>
     </ScrollView>
