@@ -49,7 +49,12 @@ public class MyProfile extends AppCompatActivity {
         getFromMSP();
         initData();
         myProfile_TXT_nameToFill.setEnabled(false);
-
+        myProfile_BTN_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         myProfile_BTN_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

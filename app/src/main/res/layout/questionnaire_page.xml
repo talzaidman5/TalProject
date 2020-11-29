@@ -6,126 +6,589 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context="com.example.project.QuestionnairePage">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
-
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/errors"
-                android:textColor="@color/black"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:text="חלק א' -פרטים אישיים:"></TextView>
+                android:layout_marginTop="15dp"
+                android:text="חלק א' -פרטים אישיים:"
+                android:textColor="@color/black"
+                android:textStyle="bold"></TextView>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/black"
-                    android:ems="10"></EditText>
+                    android:ems="8"
+                    android:textColorHint="@color/black"></EditText>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/errors"
-                    android:textColor="@color/grey"
                     android:gravity="center"
-                    android:text="מספר זיהוי זמני:">
-                </TextView>
+                    android:text="מספר זיהוי זמני:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></TextView>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textColorHint="@color/grey"
-                    android:textStyle="bold"
-                    android:textSize="12dp"
-                    android:layout_weight="1"
                     android:id="@+id/questionnairePage_EDT_id"
-                    android:hint="מספר תעודת זהות מלא בלבד:"></EditText>
-                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textSize="12dp"
                     android:layout_weight="1"
-                    android:textColorHint="@color/grey"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="מספר תעודת זהות מלא בלבד:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold"></EditText>
+
+                <EditText
                     android:id="@+id/questionnairePage_EDT_first_name"
-                    android:hint="שם פרטי:"></EditText>
-                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:gravity="right"
                     android:layout_weight="1"
-                    android:textColorHint="@color/grey"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="שם פרטי:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
                     android:id="@+id/questionnairePage_EDT_family_name"
-                    android:hint="שם משפחה:"></EditText>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="שם משפחה:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:gravity="right"
-                    android:layout_weight="1"
-                    android:textColorHint="@color/grey"
                     android:id="@+id/questionnairePage_EDT_lastName"
-                    android:hint="שם קודם פרטי+משפחה:"></EditText>
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColorHint="@color/grey"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="שם קודם
+                    פרטי+משפחה:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
                     android:id="@+id/questionnairePage_EDT_age"
-                    android:hint="גיל:"></EditText>
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textSize="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textColorHint="@color/grey"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="גיל:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
                     android:id="@+id/questionnairePage_EDT_dateBirth"
-                    android:hint="תאריך לידה:"></EditText>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="תאריך לידה:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
 
                 <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/questionnairePage_EDT_gender"
-                    android:textColor="@color/grey"
-                    android:text="מין:זכר/נקבה:"></CheckBox>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:text="מין: זכר/נקבה"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"></CheckBox>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="עיר/ישוב:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_postal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="מיקוד:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_street"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="רחוב ומס' בית
+                    ת.ד
+ד.נ"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint=":e-mail"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_mobilePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="טלפון נייד:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_OfficePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="טלפון בעבודה:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_HomePhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="טלפון בבית:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_bloodDonationAgain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="מסכים לזימון לתרום דם
+בעתיד: כן / לא"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_MotherCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="ארץ לידת אם:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_fatherCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="ארץ לידת אב:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_yearImmigration"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="שנת עליה/הגעה לישראל:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+
+                <EditText
+                    android:id="@+id/questionnairePage_EDT_CountryBirth"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_color"
+                    android:gravity="right"
+                    android:hint="ארץ לידה:"
+                    android:textColorHint="@color/black"
+                    android:textSize="12dp"></EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/border_color"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/questionnairePage_EDT_patientName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:ems="2"
+                        android:textColorHint="@color/black"></EditText>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/errors"
+                        android:text="במידה שמעוניין לרשום לזכות:
+\nעבור חולה, שם החולה:"
+                        android:textColor="@color/black"
+                        android:textSize="11dp"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:background="@drawable/border_color">
+
+                    <Switch
+                        android:id="@+id/questionnairePage_EDT_research"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="7dp"
+                        android:background="@color/white"></Switch>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/errors"
+                    android:background="@color/white"
+                    android:text="אני מסכים/מה שחלקים מהמנה\n והדגימות שתרמתי ישמשו למחקר:"
+                    android:textColor="@color/black"
+                    android:textSize="11dp"></TextView>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="center"
+                android:text="שאלון תורם דם ומרכיביו"
+                android:textColor="@color/black"
+                android:layout_marginTop="14dp"
+                android:textSize="19dp"
+                android:textStyle="bold"></TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_color_red"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginLeft="3dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="center"
+                android:text="חלק ב' - המצבים שבהם אסור להשתמש במנת הדם:"
+                android:textColor="@color/red"
+                android:textSize="15dp"
+                android:textStyle="bold"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/errors"
+                android:gravity="center"
+                android:text="\nאם אחד המצבים המפורטים מטה חל עליך, אל תתרום/י דם או ציין/י בסעיף 13 שהמנה לא לעירוי.
+מנה זו לא תינתן לחולה - כדי לא לסכן את בריאותו."
+                android:textColor="@color/red"
+                android:textSize="12dp"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:text="1 .קיבלת טיפול בהורמון גדילה ממקור אנושי, או עברת השתלת קרומי מח או קרנית, ממקור אנושי. "
+                android:textColor="@color/red"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="2 .במשפחתך הקרובה יש מחלת עצבים בשם: 'יעקב-קרויצפלד', או נאמר לך שבמשפחתך קיים סיכון למחלה זו."
+                android:textColor="@color/red"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="3 .שהית בבריטניה בפרק זמן מצטבר של 6 חודשים, בין השנים 1980-1996 ,או קיבלת עירוי דם/ניתוח בבריטניה מאז 1980."
+                android:textColor="@color/red"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:text="4 .קיבלת תשלום עבור יחסי מין."
+                android:textColor="@color/red"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:layout_marginRight="4dp"
+                android:gravity="right"
+                android:text="5 .את/ה או בן/בת זוגך, נבדקתם ונמצאתם חיוביים לנוכחות נוגדנים לנגיף האיידס(HIV)."
+                android:textColor="@color/red"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="6 .את/ה חולה המופיליה."
+                android:textColor="@color/red"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="7 .הזרקת תרופות ללא מרשם רופא (כולל סטרואידים אנבולים)."
+                android:textColor="@color/red"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="8 .שימוש בסמים בהזרקה או ב'הסנפה'."
+                android:textColor="@color/red"
+                android:textSize="12dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="9 .את/ה נשא/ית של דלקת כבד (הפטיטיס-'צהבת') מסוג B או C"
+                android:textColor="@color/red"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_color"
+                android:gravity="right">
+                <Switch
+                    android:id="@+id/questionnairePage_SWI_Sections9_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/white"></Switch>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:text="האם אחד מהמצבים המפורטים בסעיפים 9-1 חל עליך?"
+                android:textColor="@color/red"
+                android:textSize="12dp"></TextView>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="10 .שהיה מעל שנה בארץ בה שכיחות האיידס גבוהה וטרם עברו 12 חודשים מאז עזיבת האזור האנדמי."
+                android:textColor="@color/red"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="11 .קיום יחסי מין בין גברים ב- 12 החודשים האחרונים."
+                android:textColor="@color/red"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/errors"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="12 .קיום יחסי מין ב -12 החודשים האחרונים עם אנשים שהאמור בסעיפים 11-4 חל עליהם."
+                android:textColor="@color/red"
+                android:background="@drawable/border_color"
+                android:textSize="12dp"></TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_color"
+                android:gravity="right">
+                <Switch
+                    android:id="@+id/questionnairePage_SWI_Sections12_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/white"></Switch>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/errors"
+                    android:gravity="right"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    android:text="האם אחד מהמצבים המפורטים בסעיפים 12-10 חל עליך?"
+                    android:textColor="@color/red"
+                    android:textSize="12dp"></TextView>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="@drawable/border_color"
+                android:gravity="right">
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></CheckBox>
+                <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="13 .אם קיימות סיבות אישיות או אחרות, שבגללן לא ניתן להשתמ\n במנת הדם שתתרום לעירוי לחולה, נא סמן/י במשבצת לא לעירוי."
+                android:textColor="@color/red"
+                android:textSize="12dp"></TextView>
+                           </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginRight="4dp"
+                android:text="אם אחד מהמצבים המפורטים בחלק ב' חל עליך, המנה שתרמת לא תשמש לצורכי עירוי."
+                android:textColor="@color/red"
+                android:textStyle="bold"
+                android:textSize="12dp"></TextView>
+        </LinearLayout>
             <Button
                 android:id="@+id/fill_BTN_send"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
+                android:layout_margin="5dp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="35dp"
                 android:background="@drawable/button_s"
-                android:text="אשר ושלח"></Button>
-            </LinearLayout>
+                android:text="אשר ושלח"
+                android:textColor="@color/black"></Button>
+        </LinearLayout>
     </ScrollView>
 </RelativeLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.project.activityPosition">
+    tools:context=".activityPosition">
 
     <TextView
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                 android:textColor="#000"
                 android:text="Address"/>
             <TextView
-                android:id="@+id/age"
+                android:id="@+id/startHour"
                 android:textColor="#000"
                 android:fontFamily="serif"
                 android:layout_height="wrap_content"
@@ -56,14 +56,47 @@
                 android:text="Start hour"/>
             <TextView
                 android:textColor="#000"
-                android:id="@+id/position"
+                android:id="@+id/endHour"
                 android:fontFamily="serif"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:text="End hour"/>
+        </TableRow>
 
-
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/table_row2"
+            android:padding="5dp">
+            <TextView
+                android:id="@+id/date1"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/name1"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/startHour1"
+                android:textColor="#000"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"/>
+            <TextView
+                android:textColor="#000"
+                android:id="@+id/endHour1"
+                android:fontFamily="serif"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"/>
         </TableRow>
         <View
             android:layout_height="3dip"

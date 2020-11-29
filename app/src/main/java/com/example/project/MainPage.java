@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
+import java.util.Date;
+
 public class MainPage extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
     public static final String KEY_MSP_ALL  = "allUsers1";
@@ -41,6 +43,10 @@ public class MainPage extends AppCompatActivity {
 
         setContentView(R.layout.main_page);
         getSupportActionBar().hide();
+//        myRef.child("Activity Position").child("0").setValue(new Position("Tel Aviv","Riding",2,new Date(),"09:00","17:00"));
+//        myRef.child("Activity Position").child("1").setValue(new Position("Tel Aviv","Namir",14,new Date(),"16:00","19:00"));
+//        myRef.child("Activity Position").child("2").setValue(new Position("Haifa","Yafo",22,new Date(),"09:00","20:00:00"));
+//        myRef.child("Activity Position").child("3").setValue(new Position("Haifa","Norit",151,new Date(),"16:00","20:00:00"));
 
         mainPage_EDIT_id = findViewById(R.id.mainPage_EDIT_id);
         mainPage_BTN_signIn = findViewById(R.id.mainPage_BTN_signIn);

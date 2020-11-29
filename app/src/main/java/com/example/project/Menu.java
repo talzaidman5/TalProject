@@ -10,7 +10,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Menu extends AppCompatActivity {
-    Button menu_BTN_fillQ,menu_BTN_profile;
+    Button menu_BTN_fillQ,menu_BTN_profile,menu_BTN_activityPosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,14 @@ public class Menu extends AppCompatActivity {
 
         menu_BTN_fillQ = findViewById(R.id.menu_BTN_fillQ);
         menu_BTN_profile = findViewById(R.id.menu_BTN_profile);
+        menu_BTN_activityPosition = findViewById(R.id.menu_BTN_activityPosition);
+        menu_BTN_activityPosition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Menu.this,activityPosition.class);
+                startActivity(intent);
+            }
+        });
         menu_BTN_fillQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

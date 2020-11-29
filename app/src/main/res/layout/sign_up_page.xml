@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
-    tools:context="com.example.project.SignUpPage">
+    android:background="@drawable/gradient1"
+    tools:context=".SignUpPage">
 
     <ImageView
         android:layout_width="match_parent"
@@ -126,8 +126,8 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp"
-                android:outlineAmbientShadowColor="@color/black"
-                android:outlineSpotShadowColor="@color/black"
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
                 android:background="@color/grey"
                 />
 

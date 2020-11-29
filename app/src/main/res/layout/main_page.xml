@@ -4,11 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.project.MainPage"
-    android:background="@drawable/gradient"
+    tools:context=".MainPage"
+    android:background="@drawable/gradient1"
 
     tools:ignore="MissingDefaultResource">
-
     <ImageView
         android:id="@+id/mainPage_PNG_logo"
         android:layout_width="match_parent"
