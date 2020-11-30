@@ -59,7 +59,7 @@ public class activityPosition extends AppCompatActivity {
             }
         });
 
-    }
+     }
 
     private void updateData() {
         date1.setText(allPositions.get(0).getDate().toString());
