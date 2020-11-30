@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.activitis;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,14 +11,16 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project.R;
+import com.example.project.data.AllUsers;
+import com.example.project.data.User;
+import com.example.project.utils.MySheredP;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-
-import java.util.Date;
 
 public class MainPage extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
@@ -43,11 +45,11 @@ public class MainPage extends AppCompatActivity {
 
         setContentView(R.layout.main_page);
         getSupportActionBar().hide();
-        myRef.child("ActivityPosition").child("0").setValue(new Position("Tel Aviv","Riding",2,new Date(),"09:00","17:00"));
+    /*    myRef.child("ActivityPosition").child("0").setValue(new Position("Tel Aviv","Riding",2,new Date(),"09:00","17:00"));
         myRef.child("ActivityPosition").child("1").setValue(new Position("Tel Aviv","Namir",14,new Date(),"16:00","19:00"));
         myRef.child("ActivityPosition").child("2").setValue(new Position("Haifa","Yafo",22,new Date(),"09:00","20:00:00"));
         myRef.child("ActivityPosition").child("3").setValue(new Position("Haifa","Norit",151,new Date(),"16:00","20:00:00"));
-
+*/
         mainPage_EDIT_id = findViewById(R.id.mainPage_EDIT_id);
         mainPage_BTN_signIn = findViewById(R.id.mainPage_BTN_signIn);
         mainPage_EDIT_password = findViewById(R.id.mainPage_EDIT_password);

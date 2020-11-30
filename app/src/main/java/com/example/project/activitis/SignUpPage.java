@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.activitis;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -24,6 +24,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project.data.AllUsers;
+import com.example.project.utils.MySheredP;
+import com.example.project.R;
+import com.example.project.data.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -73,7 +77,7 @@ public class SignUpPage extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("message");
     private AllUsers allUsers =  new AllUsers();
-    private  User newUser;
+    private User newUser;
     private Boolean isImage= false;
 
 

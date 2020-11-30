@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.data;
 
 import com.google.gson.Gson;
 

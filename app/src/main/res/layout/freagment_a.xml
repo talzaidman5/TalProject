@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/errors"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="15dp"
+        android:text="חלק א' -פרטים אישיים:"
+        android:textColor="@color/black"
+        android:textStyle="bold"></TextView>
+        
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/errors"
+            android:text="מספר זיהוי זמני:"
+           android:textSize="16dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="מספר תעודת זהות מלא בלבד:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_first_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="שם פרטי:"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_family_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="שם משפחה:"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"></EditText>
+
+
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_lastName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="שם קודם
+                    פרטי+משפחה:"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_age"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="גיל:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_dateBirth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="תאריך לידה:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <CheckBox
+            android:id="@+id/questionnairePage_EDT_gender"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:text="מין: זכר/נקבה"
+            android:textColor="@color/black"
+           android:textSize="16dp"/>
+
+
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_city"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="עיר/ישוב:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_postal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="מיקוד:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_street"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="רחוב ומס' בית"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_email"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint=":e-mail"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_mobilePhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="טלפון נייד:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_OfficePhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="טלפון בעבודה:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_HomePhone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="טלפון בבית:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_bloodDonationAgain"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="מסכים לזימון לתרום דם
+בעתיד: כן / לא"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"/>
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_MotherCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="ארץ לידת אם:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_fatherCountry"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="ארץ לידת אב:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_yearImmigration"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="שנת עליה/הגעה לישראל:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_CountryBirth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="ארץ לידה:"
+            android:textColorHint="@color/black"
+           android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+
+            <EditText
+                android:id="@+id/questionnairePage_EDT_patientName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+
+                android:text="במידה שמעוניין לרשום לזכות:
+\nעבור חולה, שם החולה:"                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

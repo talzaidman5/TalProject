@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.activitis;
 
 
 import android.app.AlertDialog;
@@ -12,6 +12,8 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import com.example.project.R;
 
 public class newEventDialog extends AppCompatDialogFragment {
     private View view;
@@ -29,7 +31,8 @@ public class newEventDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View view) {
 //                dialog.dismiss();
-                Intent intent = new Intent(view.getContext(),QuestionnairePage.class);
+              //  Intent intent = new Intent(view.getContext(), QuestionnairePage.class);
+                Intent intent = new Intent(view.getContext(), MainForm.class);
                 startActivity(intent);
             }
         });

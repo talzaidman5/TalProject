@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.activitis;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.project.R;
 
 public class Menu extends AppCompatActivity {
     Button menu_BTN_fillQ,menu_BTN_profile,menu_BTN_activityPosition;
@@ -27,7 +29,7 @@ public class Menu extends AppCompatActivity {
         menu_BTN_activityPosition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this,activityPosition.class);
+                Intent intent = new Intent(Menu.this, activityPosition.class);
                 startActivity(intent);
             }
         });
@@ -39,7 +41,6 @@ public class Menu extends AppCompatActivity {
 
                     }
                 });
-              //  openQuesPage();
 
         menu_BTN_profile.setOnClickListener(new View.OnClickListener(){
             @Override

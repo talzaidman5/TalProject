@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:background="@drawable/gradient1"
-    tools:context="com.example.project.Menu">
+    tools:context="com.example.project.activitis.Menu">
 
 
 <ImageView

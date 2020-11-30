@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".activityPosition">
+    tools:context=".activitis.activityPosition">
 
     <TextView
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         android:fontFamily="serif"
         android:textStyle="bold"
         android:id="@+id/activityPosition_TXT_title"
-        android:text="Activity Position"
+        android:text="עמדות פעילות"
         android:gravity="center"/>
 
     <TableLayout
@@ -25,7 +25,6 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/activityPosition_BTN_back"
         android:layout_below="@+id/activityPosition_TXT_title">
-
         <TableRow
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -38,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:textColor="#000"
-                android:text="Data"/>
+                android:text="תאריך"/>
             <TextView
                 android:id="@+id/name"
                 android:fontFamily="serif"
@@ -46,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:textColor="#000"
-                android:text="Address"/>
+                android:text="כתובת"/>
             <TextView
                 android:id="@+id/startHour"
                 android:textColor="#000"
@@ -54,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:text="Start hour"/>
+                android:text="שעת התחלה"/>
             <TextView
                 android:textColor="#000"
                 android:id="@+id/endHour"
@@ -62,43 +61,9 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:text="End hour"/>
+                android:text="שעת סיום"/>
         </TableRow>
 
-        <TableRow
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/table_row2"
-            android:padding="5dp">
-            <TextView
-                android:id="@+id/date1"
-                android:fontFamily="serif"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:textColor="#000"/>
-            <TextView
-                android:id="@+id/address1"
-                android:fontFamily="serif"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:textColor="#000"/>
-            <TextView
-                android:id="@+id/startHour1"
-                android:textColor="#000"
-                android:fontFamily="serif"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_weight="1"/>
-            <TextView
-                android:textColor="#000"
-                android:id="@+id/endHour1"
-                android:fontFamily="serif"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:layout_weight="1"/>
-        </TableRow>
         <View
             android:layout_height="3dip"
             android:layout_width="match_parent"

@@ -12,27 +12,29 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".activityPosition"
-            android:theme="@style/Theme.AppCompat"
-            />
+        <activity android:name=".activitis.MainForm"
+            android:theme="@style/Theme.AppCompat"></activity>
         <activity
-            android:name=".MyProfile"
-            android:theme="@style/Theme.AppCompat"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:name=".activitis.activityPosition"
+            android:theme="@style/Theme.AppCompat" />
         <activity
-            android:name=".QuestionnairePage"
+            android:name=".activitis.MyProfile"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".Menu"
+            android:name=".activitis.QuestionnairePage"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".SignUpPage"
+            android:name=".activitis.Menu"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".MainPage"
+            android:name=".activitis.SignUpPage"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activitis.MainPage"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainPage"
+    tools:context=".activitis.MainPage"
     android:background="@drawable/gradient1"
 
     tools:ignore="MissingDefaultResource">
@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/logo"></ImageView>
+        android:src="@drawable/logo"/>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="500dp"

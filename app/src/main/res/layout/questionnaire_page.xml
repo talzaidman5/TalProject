@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.example.project.QuestionnairePage">
+    tools:context="com.example.project.activitis.QuestionnairePage">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,7 +36,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="8"
-                    android:textColorHint="@color/black"></EditText>
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -45,7 +46,7 @@
                     android:gravity="center"
                     android:text="מספר זיהוי זמני:"
                     android:textColor="@color/black"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
@@ -63,7 +64,8 @@
                     android:hint="מספר תעודת זהות מלא בלבד:"
                     android:textColorHint="@color/black"
                     android:textSize="12dp"
-                    android:textStyle="bold"></EditText>
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_first_name"
@@ -73,8 +75,9 @@
                     android:background="@drawable/border_color"
                     android:gravity="right"
                     android:hint="שם פרטי:"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"/>
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_family_name"
@@ -84,6 +87,7 @@
                     android:background="@drawable/border_color"
                     android:gravity="right"
                     android:hint="שם משפחה:"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="12dp"></EditText>
             </LinearLayout>
@@ -102,8 +106,9 @@
                     android:gravity="right"
                     android:hint="שם קודם
                     פרטי+משפחה:"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"/>
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_age"
@@ -114,7 +119,8 @@
                     android:gravity="right"
                     android:hint="גיל:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black" />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_dateBirth"
@@ -125,7 +131,9 @@
                     android:gravity="right"
                     android:hint="תאריך לידה:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
 
                 <CheckBox
                     android:id="@+id/questionnairePage_EDT_gender"
@@ -135,7 +143,7 @@
                     android:background="@drawable/border_color"
                     android:text="מין: זכר/נקבה"
                     android:textColor="@color/black"
-                    android:textSize="12dp"></CheckBox>
+                    android:textSize="12dp"/>
 
             </LinearLayout>
 
@@ -153,7 +161,9 @@
                     android:gravity="right"
                     android:hint="עיר/ישוב:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_postal"
@@ -164,7 +174,9 @@
                     android:gravity="right"
                     android:hint="מיקוד:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_street"
@@ -173,11 +185,13 @@
                     android:layout_weight="1"
                     android:background="@drawable/border_color"
                     android:gravity="right"
-                    android:hint="רחוב ומס' בית
+                    android:hint="חוב ומס' בית
                     ת.ד
 ד.נ"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -194,7 +208,9 @@
                     android:gravity="right"
                     android:hint=":e-mail"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_mobilePhone"
@@ -205,7 +221,9 @@
                     android:gravity="right"
                     android:hint="טלפון נייד:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_OfficePhone"
@@ -216,7 +234,9 @@
                     android:gravity="right"
                     android:hint="טלפון בעבודה:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_HomePhone"
@@ -227,7 +247,9 @@
                     android:gravity="right"
                     android:hint="טלפון בבית:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -245,7 +267,7 @@
                     android:hint="מסכים לזימון לתרום דם
 בעתיד: כן / לא"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"/>
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_MotherCountry"
@@ -256,7 +278,9 @@
                     android:gravity="right"
                     android:hint="ארץ לידת אם:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_fatherCountry"
@@ -267,7 +291,9 @@
                     android:gravity="right"
                     android:hint="ארץ לידת אב:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_yearImmigration"
@@ -278,7 +304,9 @@
                     android:gravity="right"
                     android:hint="שנת עליה/הגעה לישראל:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_CountryBirth"
@@ -289,7 +317,9 @@
                     android:gravity="right"
                     android:hint="ארץ לידה:"
                     android:textColorHint="@color/black"
-                    android:textSize="12dp"></EditText>
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -311,7 +341,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:ems="2"
-                        android:textColorHint="@color/black"></EditText>
+                        android:textColorHint="@color/black"
+                        android:textColor="@color/black"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -319,8 +351,9 @@
                         android:layout_below="@+id/errors"
                         android:text="במידה שמעוניין לרשום לזכות:
 \nעבור חולה, שם החולה:"
+                        android:textSize="11dp"
                         android:textColor="@color/black"
-                        android:textSize="11dp"></TextView>
+                        />
                 </LinearLayout>
 
                 <LinearLayout
@@ -335,7 +368,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="7dp"
-                        android:background="@color/white"></Switch>
+                        android:background="@color/white"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -344,7 +377,7 @@
                     android:background="@color/white"
                     android:text="אני מסכים/מה שחלקים מהמנה\n והדגימות שתרמתי ישמשו למחקר:"
                     android:textColor="@color/black"
-                    android:textSize="11dp"></TextView>
+                    android:textSize="11dp"/>
                 </LinearLayout>
             </LinearLayout>
             <TextView
@@ -356,7 +389,7 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="14dp"
                 android:textSize="19dp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

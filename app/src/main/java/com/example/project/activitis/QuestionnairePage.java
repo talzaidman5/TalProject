@@ -1,10 +1,12 @@
-package com.example.project;
+package com.example.project.activitis;
 
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.project.R;
 
 public class QuestionnairePage extends AppCompatActivity {
 

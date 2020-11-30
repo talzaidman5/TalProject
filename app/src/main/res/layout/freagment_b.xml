@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       android:layout_above="@+id/fill_BTN_send"
+        android:layout_margin="10dp"
+       >
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_color_red"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginLeft="3dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="חלק ב' - המצבים שבהם אסור להשתמש במנת הדם:"
+            android:textColor="@color/red"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="\nאם אחד המצבים המפורטים מטה חל עליך, אל תתרום/י דם או ציין/י בסעיף 13 שהמנה לא לעירוי.
+מנה זו לא תינתן לחולה - כדי לא לסכן את בריאותו."
+            android:textColor="@color/red"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="1 .קיבלת טיפול בהורמון גדילה ממקור אנושי, או עברת השתלת קרומי מח או קרנית, ממקור אנושי. "
+            android:textColor="@color/red"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="4dp"
+            android:text="2 .במשפחתך הקרובה יש מחלת עצבים בשם: 'יעקב-קרויצפלד', או נאמר לך שבמשפחתך קיים סיכון למחלה זו."
+            android:textColor="@color/red"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="4dp"
+            android:text="3 .שהית בבריטניה בפרק זמן מצטבר של 6 חודשים, בין השנים 1980-1996 ,או קיבלת עירוי דם/ניתוח בבריטניה מאז 1980."
+            android:textColor="@color/red"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="4 .קיבלת תשלום עבור יחסי מין."
+            android:textColor="@color/red"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:gravity="right"
+            android:text="5 .את/ה או בן/בת זוגך, נבדקתם ונמצאתם חיוביים לנוכחות נוגדנים לנגיף האיידס(HIV)."
+            android:textColor="@color/red"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="4dp"
+            android:text="6 .את/ה חולה המופיליה."
+            android:textColor="@color/red"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="4dp"
+            android:text="7 .הזרקת תרופות ללא מרשם רופא (כולל סטרואידים אנבולים)."
+            android:textColor="@color/red"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="4dp"
+            android:text="8 .שימוש בסמים בהזרקה או ב'הסנפה'."
+            android:textColor="@color/red"
+            android:textSize="14dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="4dp"
+            android:text="9 .את/ה נשא/ית של דלקת כבד (הפטיטיס-'צהבת') מסוג B או C"
+            android:textColor="@color/red"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_color"
+            android:gravity="right">
+            <Switch
+                android:id="@+id/questionnairePage_SWI_Sections9_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:background="@color/white"></Switch>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:text="האם אחד מהמצבים המפורטים בסעיפים 9-1 חל עליך?"
+                android:textColor="@color/red"
+                android:textSize="14dp"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="4dp"
+            android:text="10 .שהיה מעל שנה בארץ בה שכיחות האיידס גבוהה וטרם עברו 12 חודשים מאז עזיבת האזור האנדמי."
+            android:textColor="@color/red"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="4dp"
+            android:text="11 .קיום יחסי מין בין גברים ב- 12 החודשים האחרונים."
+            android:textColor="@color/red"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_marginRight="4dp"
+            android:text="12 .קיום יחסי מין ב -12 החודשים האחרונים עם אנשים שהאמור בסעיפים 11-4 חל עליהם."
+            android:textColor="@color/red"
+            android:background="@drawable/border_color"
+            android:textSize="14dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_color"
+            android:gravity="right">
+            <Switch
+                android:id="@+id/questionnairePage_SWI_Sections12_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:background="@color/white"></Switch>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:text="האם אחד מהמצבים המפורטים בסעיפים 12-10 חל עליך?"
+                android:textColor="@color/red"
+                android:textSize="14dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/border_color"
+            android:gravity="right">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></CheckBox>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:layout_marginRight="4dp"
+                android:text="13 .אם קיימות סיבות אישיות או אחרות, שבגללן לא ניתן להשתמ\n במנת הדם שתתרום לעירוי לחולה, נא סמן/י במשבצת לא לעירוי."
+                android:textColor="@color/red"
+                android:textSize="14dp"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginRight="4dp"
+            android:text="אם אחד מהמצבים המפורטים בחלק ב' חל עליך, המנה שתרמת לא תשמש לצורכי עירוי."
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:textSize="14dp"/>
+    </LinearLayout>
+
+</ScrollView>
+    <Button
+        android:id="@+id/fill_BTN_send"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_s"
+        android:text="אשר ושלח"
+        android:textColor="@color/black"/>
+</RelativeLayout>

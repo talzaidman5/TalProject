@@ -1,4 +1,4 @@
-package com.example.project;
+package com.example.project.data;
 
 import java.util.Date;
 
@@ -11,6 +11,7 @@ public class Position {
     private String endHour;
 
     public Position(){}
+
     public Position(String cityName, String streetName, int number, Date date, String startHour, String endHour) {
         this.cityName = cityName;
         this.streetName = streetName;
