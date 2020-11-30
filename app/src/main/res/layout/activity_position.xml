@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".activityPosition">
 
     <TextView
@@ -77,7 +78,7 @@
                 android:layout_weight="1"
                 android:textColor="#000"/>
             <TextView
-                android:id="@+id/name1"
+                android:id="@+id/address1"
                 android:fontFamily="serif"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
