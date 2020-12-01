@@ -9,16 +9,31 @@ public class Position {
     private Date date;
     private String startHour;
     private String endHour;
+    private String mainImage = "";
+
 
     public Position(){}
 
-    public Position(String cityName, String streetName, int number, Date date, String startHour, String endHour) {
+    public Position(String cityName, String streetName, int number, Date date, String startHour, String endHour, String mainImage) {
         this.cityName = cityName;
         this.streetName = streetName;
         this.number = number;
         this.date = date;
         this.startHour = startHour;
         this.endHour = endHour;
+        this.mainImage = mainImage;
+    }
+
+    public String getMainImage() {
+        return mainImage;
+    }
+
+    public void setEndHour(String endHour) {
+        this.endHour = endHour;
+    }
+
+    public void setMainImage(String mainImage) {
+        this.mainImage = mainImage;
     }
 
     public String getCityName() {

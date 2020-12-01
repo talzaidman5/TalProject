@@ -2,6 +2,7 @@ package com.example.project.activitis;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,9 @@ public class MainForm extends AppCompatActivity {
         a = findViewById(R.id.a);
         b = findViewById(R.id.b);
         c = findViewById(R.id.c);
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+        );
         showA();
         c.setOnClickListener(new View.OnClickListener() {
             @Override

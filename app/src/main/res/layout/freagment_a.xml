@@ -25,16 +25,7 @@
         android:text="חלק א' -פרטים אישיים:"
         android:textColor="@color/black"
         android:textStyle="bold"></TextView>
-        
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/errors"
-            android:text="מספר זיהוי זמני:"
-           android:textSize="16dp"
-            android:layout_marginTop="20dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
+
 
         <EditText
             android:id="@+id/questionnairePage_EDT_id"
@@ -43,11 +34,11 @@
             android:layout_weight="1"
             android:background="@drawable/border_color"
             android:gravity="right"
-            android:hint="מספר תעודת זהות מלא בלבד:"
+            android:hint="מספר תעודת זהות (מלא בלבד):"
             android:textColorHint="@color/black"
            android:textSize="16dp"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+          />
 
         <EditText
             android:id="@+id/questionnairePage_EDT_first_name"
@@ -73,7 +64,61 @@
             android:textColorHint="@color/black"
            android:textSize="16dp"></EditText>
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:outlineSpotShadowColor="@color/black"
+            android:outlineAmbientShadowColor="@color/black"
+android:layout_gravity="right"
+            android:id="@+id/questionnairePage_EDT_gender"
 
+            android:orientation="vertical">
+            <RadioButton android:id="@+id/radio_pirates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="זכר"
+                android:textSize="16dp"
+                android:textColor="@color/black"
+
+                />
+
+            <RadioButton android:id="@+id/radio_ninjas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="נקבה"
+                android:textSize="16dp"
+
+                />
+        </RadioGroup>
+
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_dateBirth"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="תאריך לידה:"
+            android:textColorHint="@color/black"
+            android:textSize="16dp"
+            android:textColor="@color/black"
+            />
+
+
+
+        <EditText
+            android:id="@+id/questionnairePage_EDT_age"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/border_color"
+            android:gravity="right"
+            android:hint="גיל:"
+            android:textColorHint="@color/black"
+            android:textSize="16dp"
+            android:textColor="@color/black" />
 
         <EditText
             android:id="@+id/questionnairePage_EDT_lastName"
@@ -88,40 +133,7 @@
             android:textColorHint="@color/black"
            android:textSize="16dp"/>
 
-        <EditText
-            android:id="@+id/questionnairePage_EDT_age"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_color"
-            android:gravity="right"
-            android:hint="גיל:"
-            android:textColorHint="@color/black"
-           android:textSize="16dp"
-            android:textColor="@color/black" />
 
-        <EditText
-            android:id="@+id/questionnairePage_EDT_dateBirth"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_color"
-            android:gravity="right"
-            android:hint="תאריך לידה:"
-            android:textColorHint="@color/black"
-           android:textSize="16dp"
-            android:textColor="@color/black"
-            />
-
-        <CheckBox
-            android:id="@+id/questionnairePage_EDT_gender"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_color"
-            android:text="מין: זכר/נקבה"
-            android:textColor="@color/black"
-           android:textSize="16dp"/>
 
 
 
