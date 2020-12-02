@@ -3,8 +3,7 @@ package com.example.project.data;
 import java.util.Date;
 
 public class Position {
-    private String cityName;
-    private String streetName;
+    private String location;
     private int number;
     private Date date;
     private String startHour;
@@ -14,9 +13,8 @@ public class Position {
 
     public Position(){}
 
-    public Position(String cityName, String streetName, int number, Date date, String startHour, String endHour, String mainImage) {
-        this.cityName = cityName;
-        this.streetName = streetName;
+    public Position(String location, int number, Date date, String startHour, String endHour, String mainImage) {
+        this.location = location;
         this.number = number;
         this.date = date;
         this.startHour = startHour;
@@ -36,21 +34,14 @@ public class Position {
         this.mainImage = mainImage;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getLocation() {
+        return location;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public String getStreetName() {
-        return streetName;
-    }
-
-    public void setStreetName(String streetName) {
-        this.streetName = streetName;
-    }
 
     public int getNumber() {
         return number;

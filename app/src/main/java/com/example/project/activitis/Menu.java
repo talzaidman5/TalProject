@@ -23,7 +23,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 public class Menu extends AppCompatActivity {
-    private static final String KEY_MSP_POS = "allPositions";
+    private static final String KEY_MSP_POS = "allPositions1";
     private MySheredP msp;
     private Gson gson = new Gson();
 
@@ -60,6 +60,7 @@ public class Menu extends AppCompatActivity {
             public void onClick(View v) {
                         newEventDialog exNewEventDialog = new newEventDialog();
                         exNewEventDialog.show(getSupportFragmentManager(),"exe");
+
 
                     }
                 });

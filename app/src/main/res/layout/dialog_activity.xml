@@ -28,9 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="12dp"
+            android:textSize="16dp"
             android:layout_margin="5dp"
             android:layout_below="@id/logo"
+            android:gravity="right"
             android:id="@+id/questionnairePage_TXT_1"
             android:text="@string/first">
         </TextView>
@@ -41,7 +42,7 @@
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"
-            android:textSize="10dp"
+            android:textSize="16dp"
             android:layout_margin="5dp"
             android:layout_below="@+id/questionnairePage_TXT_1"
             android:text="@string/second"
@@ -50,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="11dp"
+            android:textSize="16dp"
             android:textStyle="italic|bold"
             android:gravity="center"
             android:layout_marginTop="8dp"
@@ -63,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="10dp"
+            android:textSize="16dp"
             android:layout_below="@id/questionnairePage_TXT_3"
             android:layout_marginTop="10dp"
             android:gravity="center"
@@ -73,7 +74,7 @@
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="180dp"
+            android:layout_height="190dp"
             android:src="@drawable/errors"
             android:id="@+id/errors"
             android:layout_below="@id/questionnairePage_TXT_4"></ImageView>

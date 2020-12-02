@@ -57,6 +57,7 @@
             android:textColor="@color/black"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
+            android:fontFamily="@font/regular"
             android:layout_below="@id/myProfile_BTN_logo"
             android:layout_centerInParent="true"
             />
@@ -69,6 +70,7 @@
         android:id="@+id/scroll"
         android:layout_below="@id/myProfile_top"
         android:layout_above="@id/myProfile_BTN_back"
+        android:fontFamily="@font/regular"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -81,6 +83,7 @@
                 android:orientation="horizontal"
                 android:gravity="right"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/regular"
                 android:id="@+id/myProfile_Linear2"
                 android:layout_below="@+id/myProfile_Linear1"
                 >
@@ -92,6 +95,7 @@
                     android:textColor="@color/black"
                     android:layout_toLeftOf="@+id/myProfile_TXT_name"
                     android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/regular"
                     android:textSize="20dp"
                     >
                 </EditText>
@@ -102,6 +106,7 @@
                     android:layout_alignParentRight="true"
                     android:textColor="@color/black"
                     android:textSize="20dp"
+                    android:fontFamily="@font/regular"
                     android:text="תעודת זהות:"></TextView>
             </LinearLayout>
             <LinearLayout
@@ -122,6 +127,7 @@
                     android:layout_toRightOf="@+id/myProfile_TXT_email"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/regular"
                     android:textSize="20dp"
                     >
                 </EditText>
@@ -132,6 +138,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="20dp"
                     android:textSize="20dp"
+                    android:fontFamily="@font/regular"
                     android:textColor="@color/black"
                     android:text="כתובת מייל:"></TextView>
 
@@ -153,6 +160,7 @@
                     android:id="@+id/myProfile_TXT_phoneNumberToFill"
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/regular"
                     android:textSize="20dp">
                 </EditText>
 
@@ -162,6 +170,7 @@
                     android:id="@+id/myProfile_TXT_phoneNumber"
                     android:textColor="@color/black"
                     android:textSize="20dp"
+                    android:fontFamily="@font/regular"
                     android:text="מספר טלפון:"></TextView>
 
             </LinearLayout>
@@ -181,6 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/regular"
                     android:textSize="20dp"
                     ></EditText>
 
@@ -190,6 +200,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:text="סיסמא:"
+                    android:fontFamily="@font/regular"
                     android:textColor="@color/black"
                     android:textSize="20dp"/>
 
@@ -209,6 +220,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/myProfile_TXT_countryToFill"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/regular"
                     android:textSize="20dp"
                     />
                 <TextView
@@ -217,6 +229,7 @@
                     android:id="@+id/myProfile_TXT_country"
                     android:textColor="@color/black"
                     android:textSize="20dp"
+                    android:fontFamily="@font/regular"
                     android:text="מדינה:"></TextView>
             </LinearLayout>
             <LinearLayout
@@ -233,6 +246,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/myProfile_TXT_bloodTypeToFill"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/regular"
                     android:textSize="20dp">
                 </EditText>
 
@@ -242,6 +256,7 @@
                     android:textColor="@color/black"
                     android:id="@+id/myProfile_TXT_bloodType"
                     android:textSize="20dp"
+                    android:fontFamily="@font/regular"
                     android:text="סוג דם:"></TextView>
 
             </LinearLayout>
@@ -259,6 +274,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/myProfile_TXT_dateBirthToFill"
                     android:textColor="@color/black"
+                    android:fontFamily="@font/regular"
                     android:textSize="20dp"
                     >
                 </EditText>
@@ -268,6 +284,7 @@
                     android:id="@+id/myProfile_TXT_dateBirth"
                     android:textColor="@color/black"
                     android:textSize="20dp"
+                    android:fontFamily="@font/regular"
                     android:text="תאריך לידה:"></TextView>
             </LinearLayout>
         </LinearLayout>

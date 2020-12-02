@@ -14,14 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.project.R;
-import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final int VIEW_TYPE_NORMAL = 0;
-    private final int VIEW_TYPE_AD = 1;
 
     private Context context;
     private ArrayList<Position> positions;
@@ -57,15 +56,16 @@ public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHold
 
 
             ViewHolder_Normal mHolder = (ViewHolder_Normal) holder;
-            mHolder.article_LBL_title.setText(temp.getCityName());
-            mHolder.article_LBL_subTitle.setText(temp.getStartHour());
+            mHolder.position_LBL_title.setText( temp.getLocation());
+            mHolder.position_LBL_subTitle.setText(temp.getStartHour()+"-"+temp.getEndHour());
+            mHolder.position_TXT_city.setText(getDateStr(temp.getDate()));
 
 
             Glide
                     .with(context)
                     .load(temp.getMainImage())
                     .centerCrop()
-                    .into(mHolder.article_IMG_back);
+                    .into(mHolder.position_IMG_back);
 
     }
 
@@ -73,20 +73,24 @@ public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHold
         return positions.get(position);
     }
 
-
+private String getDateStr(Date date){
+        return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+}
 
     static class ViewHolder_Normal extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public ImageView article_IMG_back;
-        public TextView article_LBL_title;
-        public TextView article_LBL_subTitle;
+        public TextView position_LBL_title;
+        public TextView position_LBL_subTitle;
+        public TextView position_TXT_city;
+        private ImageView position_IMG_back;
 
         public ViewHolder_Normal(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            article_IMG_back = itemView.findViewById(R.id.article_IMG_back);
-            article_LBL_title = itemView.findViewById(R.id.article_LBL_title);
-            article_LBL_subTitle = itemView.findViewById(R.id.article_LBL_subTitle);
+            position_LBL_title = itemView.findViewById(R.id.position_LBL_title);
+            position_LBL_subTitle = itemView.findViewById(R.id.position_LBL_subTitle);
+            position_TXT_city = itemView.findViewById(R.id.position_LBL_city);
+            position_IMG_back = itemView.findViewById(R.id.position_IMG_back);
         }
 
         @Override
@@ -95,24 +99,4 @@ public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
-    static class ViewHolder_Ad extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        public ImageView article_IMG_back;
-        public TextView article_LBL_title;
-        public TextView article_LBL_subTitle;
-        public MaterialButton article_BTN_click;
-
-        public ViewHolder_Ad(View itemView) {
-            super(itemView);
-            itemView.setOnClickListener(this);
-            article_IMG_back = itemView.findViewById(R.id.article_IMG_back);
-            article_LBL_title = itemView.findViewById(R.id.article_LBL_title);
-            article_LBL_subTitle = itemView.findViewById(R.id.article_LBL_subTitle);
-        }
-
-        @Override
-        public void onClick(View view) {
-            Log.d("onclick", "onClick " + getLayoutPosition());
-        }
-    }
 }

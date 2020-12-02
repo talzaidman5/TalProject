@@ -25,6 +25,7 @@ public class newEventDialog extends AppCompatDialogFragment {
         final LayoutInflater inflater = getActivity().getLayoutInflater();
         view = inflater.inflate(R.layout.dialog_activity, null);
         builder.setView(view);
+
         final AlertDialog dialog = builder.create();
         dialog_BTN_confirm = view.findViewById(R.id.dialog_BTN_confirm);
         dialog_BTN_confirm.setOnClickListener(new View.OnClickListener() {

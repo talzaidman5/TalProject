@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
 import com.example.project.data.AllUsers;
-import com.example.project.data.Position;
 import com.example.project.data.User;
 import com.example.project.utils.MySheredP;
 import com.google.firebase.database.DataSnapshot;
@@ -22,8 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-
-import java.util.ArrayList;
 
 public class MainPage extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
@@ -38,7 +35,6 @@ public class MainPage extends AppCompatActivity {
     private MySheredP msp;
     private Gson gson = new Gson();
     private CheckBox main_page_CHECK_remember;
-    private ArrayList<Position> positions;
 
 
 
@@ -52,10 +48,11 @@ public class MainPage extends AppCompatActivity {
 
         setContentView(R.layout.main_page);
         getSupportActionBar().hide();
-     /*   myRef.child("ActivityPosition").child("0").setValue(new Position("Tel Aviv","Riding",2,new Date(),"09:00","17:00","https://b.mda.org.il/images/logo3.png"));
-         myRef.child("ActivityPosition").child("1").setValue(new Position("Tel Aviv","Namir",14,new Date(),"16:00","19:00","https://b.mda.org.il/images/logo3.png"));
-        myRef.child("ActivityPosition").child("2").setValue(new Position("Haifa","Yafo",22,new Date(),"09:00","20:00:00","https://b.mda.org.il/images/logo3.png"));
-        myRef.child("ActivityPosition").child("3").setValue(new Position("Haifa","Norit",151,new Date(),"16:00","20:00:00","https://b.mda.org.il/images/logo3.png"));
+
+  /*      myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://b.mda.org.il/images/logo3.png"));
+         myRef.child("ActivityPosition").child("1").setValue(new Position("עראבה, מרכז העיר\t",14,new Date(),"16:00","19:00","https://b.mda.org.il/images/logo3.png"));
+        myRef.child("ActivityPosition").child("2").setValue(new Position("כרכום, מועדון\t",22,new Date(),"09:00","20:00:00","https://b.mda.org.il/images/logo3.png"));
+        myRef.child("ActivityPosition").child("3").setValue(new Position("דרך משה פלימן 4 חיפה, קניון חיפה מול קסטרו\t",151,new Date(),"16:00","20:00:00","https://b.mda.org.il/images/logo3.png"));
 */
         mainPage_EDIT_id = findViewById(R.id.mainPage_EDIT_id);
         mainPage_BTN_signIn = findViewById(R.id.mainPage_BTN_signIn);

@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.project.R;
 
 public class MainForm extends AppCompatActivity {
- ImageView a, b, c;
+ ImageView a, b;
 
 
     @Override
@@ -21,17 +21,11 @@ public class MainForm extends AppCompatActivity {
         getSupportActionBar().hide();
         a = findViewById(R.id.a);
         b = findViewById(R.id.b);
-        c = findViewById(R.id.c);
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
         );
         showA();
-        c.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showC();
-            }
-        });
+
 
 a.setOnClickListener(new View.OnClickListener() {
     @Override
