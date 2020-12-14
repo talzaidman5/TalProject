@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:background="@drawable/button_s"
+        android:background="@drawable/my_gradient_button"
         android:id="@+id/myProfile_top"
         >
         <ImageButton
@@ -66,11 +66,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="match_parent"
         android:id="@+id/scroll"
         android:layout_below="@id/myProfile_top"
-        android:layout_above="@id/myProfile_BTN_back"
         android:fontFamily="@font/regular"
+        android:background="@color/grey1"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -215,22 +215,8 @@
                 android:layout_below="@+id/myProfile_Linear6"
                 >
 
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/myProfile_TXT_countryToFill"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/regular"
-                    android:textSize="20dp"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/myProfile_TXT_country"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:fontFamily="@font/regular"
-                    android:text="מדינה:"></TextView>
+
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -290,19 +276,7 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/myProfile_BTN_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginRight="10dp"
-        android:textColor="@color/white"
-        android:text="חזור"
-        android:background="@drawable/button_s"
-        />
+
 
 
 </RelativeLayout>

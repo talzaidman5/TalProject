@@ -257,17 +257,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <EditText
-                    android:id="@+id/questionnairePage_EDT_bloodDonationAgain"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/border_color"
-                    android:gravity="right"
-                    android:hint="מסכים לזימון לתרום דם
-בעתיד: כן / לא"
-                    android:textColorHint="@color/black"
-                    android:textSize="12dp"/>
+
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_MotherCountry"
@@ -279,8 +269,8 @@
                     android:hint="ארץ לידת אם:"
                     android:textColorHint="@color/black"
                     android:textSize="12dp"
-                    android:textColor="@color/black"
-                    />
+                    android:textColor="@color/colorPrimary"
+                       />
 
                 <EditText
                     android:id="@+id/questionnairePage_EDT_fatherCountry"

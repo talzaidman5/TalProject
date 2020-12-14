@@ -13,9 +13,9 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
         <activity android:name=".activitis.MainForm"
-            android:theme="@style/Theme.AppCompat"></activity>
+            android:theme="@style/Theme.MaterialComponents.DayNight"></activity>
         <activity
-            android:name=".activitis.activityPosition"
+            android:name="com.example.project.activitis.activityPosition"
             android:theme="@style/Theme.AppCompat" />
         <activity
             android:name=".activitis.MyProfile"
@@ -31,11 +31,11 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.SignUpPage"
-            android:theme="@style/Theme.AppCompat"
+            android:theme="@style/Theme.MaterialComponents"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.MainPage"
-            android:theme="@style/Theme.AppCompat"
+            android:theme="@style/Theme.MaterialComponents.DayNight"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

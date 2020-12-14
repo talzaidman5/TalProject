@@ -1,5 +1,6 @@
 package com.example.project.activitis;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,9 +15,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,12 +24,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.project.data.AllUsers;
-import com.example.project.utils.MySheredP;
 import com.example.project.R;
+import com.example.project.data.AllUsers;
 import com.example.project.data.User;
+import com.example.project.utils.MySheredP;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -39,6 +41,7 @@ import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
@@ -50,10 +53,10 @@ public class SignUpPage extends AppCompatActivity {
     public static final String KEY_MSP_ALL  = "allUsers1";
     public static final int PICK_IMAGE = 1;
     public String imageData;
-    private Button signUp_BTN_signUp;
+    private MaterialButton signUp_BTN_signUp;
     CircleImageView sign_up_IMG_logo;
-    private Spinner signUp_SPI_country,signUp_SPI_bloodTypes;
-    private EditText signUp_EDT_name,signUp_EDT_id,signUp_EDT_email,signUp_EDT_phone,signUp_EDT_password;
+    private Spinner signUp_SPI_bloodTypes;
+    private TextInputLayout signUp_EDT_id,signUp_EDT_email,signUp_EDT_phone,signUp_EDT_password,signUp_EDT_name;
     private View view;
     private TextView signUp_TXT_birthDatePicker;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -63,6 +66,11 @@ public class SignUpPage extends AppCompatActivity {
     private MySheredP msp;
     private Gson gson = new Gson();
     String imageUrl;
+
+    TextInputLayout till;
+    AutoCompleteTextView act;
+    ArrayList<String> arrayLisSessson;
+    ArrayAdapter<String>sessons;
 
     // InputStream inputStream = null;
   //  private ImageView imgView;
@@ -81,6 +89,7 @@ public class SignUpPage extends AppCompatActivity {
     private Boolean isImage= false;
 
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,12 +103,6 @@ public class SignUpPage extends AppCompatActivity {
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
-
-        ArrayAdapter<CharSequence> adapterCountries = ArrayAdapter.createFromResource(this,
-                R.array.countries, android.R.layout.simple_spinner_item);
-        adapterCountries.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        signUp_SPI_country.setAdapter(adapterCountries);
 
 
 
@@ -145,16 +148,16 @@ public class SignUpPage extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkData()) {
                     if(isImage)
-                    newUser = new User(signUp_EDT_name.getText().toString(), signUp_EDT_id.getText().toString(), signUp_EDT_email.getText().toString(),
-                            signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date,filePath.toString(),false);
+                    newUser = new User(signUp_EDT_name.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
+                            signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(),  signUp_SPI_bloodTypes.getSelectedItem().toString(), date,filePath.toString(),false);
                  else
-                        newUser = new User(signUp_EDT_name.getText().toString(), signUp_EDT_id.getText().toString(), signUp_EDT_email.getText().toString(),
-                                signUp_EDT_phone.getText().toString(), signUp_EDT_password.getText().toString(), signUp_SPI_country.getSelectedItem().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date,"https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e",false);
+                        newUser = new User(signUp_EDT_name.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
+                                signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(),  signUp_SPI_bloodTypes.getSelectedItem().toString(), date,"https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e",false);
 
                     getFromMSP();
                     putOnMSP();
                     allUsers.addToList(newUser);
-                    myRef.child("Users").child(signUp_EDT_id.getText().toString()).setValue(newUser);
+                    myRef.child("Users").child(signUp_EDT_id.getEditText().getText().toString()).setValue(newUser);
                     putOnMSP();
                     startActivity(new Intent(SignUpPage.this, Menu.class));
                     uploadImage();
@@ -165,30 +168,27 @@ public class SignUpPage extends AppCompatActivity {
     }
 
     private boolean checkData(){
-        if(signUp_EDT_name.getText().toString().equals("")) {
+        if(signUp_EDT_name.getEditText().getText().toString().equals("")) {
             signUp_EDT_name.setError("");
             data=false;
         }
-        if(signUp_EDT_id.getText().toString().equals("")) {
+        if(signUp_EDT_id.getEditText().getText().toString().equals("")) {
             signUp_EDT_id.setError("");
             data=false;
         }
-        if(signUp_EDT_email.getText().toString().equals("")) {
+        if(signUp_EDT_email.getEditText().getText().toString().equals("")) {
             signUp_EDT_email.setError("");
             data=false;
         }
-        if(signUp_EDT_phone.getText().toString().equals("")) {
+        if(signUp_EDT_phone.getEditText().getText().toString().equals("")) {
             signUp_EDT_phone.setError("");
             data=false;
         }
-        if(signUp_EDT_password.getText().toString().equals("")) {
+        if(signUp_EDT_password.getEditText().getText().toString().equals("")) {
             signUp_EDT_password.setError("");
             data=false;
         }
-        if(signUp_SPI_country.getSelectedItem().toString().equals("")) {
-            ((TextView)signUp_SPI_country.getSelectedView()).setError("Error message");
-            data=false;
-        }
+
         if(signUp_SPI_bloodTypes.getSelectedItem().toString().equals("")) {
             ((TextView)signUp_SPI_bloodTypes.getSelectedView()).setError("Error message");
             data=false;
@@ -217,11 +217,9 @@ public class SignUpPage extends AppCompatActivity {
         signUp_EDT_phone = findViewById(R.id.signUp_EDT_phone);
         signUp_EDT_password = findViewById(R.id.signUp_EDT_password);
         signUp_BTN_signUp = findViewById(R.id.signUp_BTN_signUp);
-        signUp_SPI_country =  findViewById(R.id.signUp_SPI_country);
         signUp_SPI_bloodTypes =  findViewById(R.id.signUp_SPI_bloodTypes);
         signUp_TXT_birthDatePicker = findViewById(R.id.signUp_TXT_birthDatePicker);
         sign_up_IMG_logo = findViewById(R.id.sign_up_IMG_logo);
-
 
     }
 

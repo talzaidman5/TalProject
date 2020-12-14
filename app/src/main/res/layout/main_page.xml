@@ -29,7 +29,9 @@
         android:text="התחברות"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="20dp"
+        android:fontFamily="@font/regular"
+
+        android:textSize="22dp"
         android:textColor="@color/black"
         />
     <EditText
@@ -39,6 +41,7 @@
         android:layout_marginTop="10dp"
         android:textColorHint="@color/grey"
         android:textColor="@color/black"
+        android:fontFamily="@font/regular"
         android:id="@+id/mainPage_EDIT_id"/>
     <EditText
         android:layout_width="match_parent"
@@ -46,6 +49,8 @@
         android:layout_marginTop="10dp"
         android:inputType="numberPassword"
         android:hint="סיסמא"
+        android:fontFamily="@font/regular"
+
         android:gravity="right"
         android:textColorHint="@color/grey"
         android:textColor="@color/black"
@@ -57,21 +62,26 @@
         android:layout_marginTop="10dp"
         android:textColor="@color/grey"
         android:layoutDirection="rtl"
+        android:textSize="15dp"
+        android:fontFamily="@font/regular"
         android:buttonTint="@color/grey"
         android:id="@+id/main_page_CHECK_remember"
         android:text=" זכור אותי"/>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/mainPage_BTN_signIn"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/mainPage_PNG_logo"
-        android:layout_marginTop="35dp"
-        android:background="@drawable/button_s"
+        android:layout_height="wrap_content"
+        android:text="התחבר"
+        android:fontFamily="@font/regular"
         android:layout_centerHorizontal="true"
         android:textSize="25dp"
-        android:textColor="@color/black"
-        android:text="התחבר" />
+        android:textStyle="bold"
+        android:layout_below="@+id/mainPage_PNG_logo"
+        android:layout_marginBottom="15dp"
+        android:textColor="@color/red"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_alignParentBottom="true"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,7 +89,6 @@
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         android:gravity="right"
-
         >
         <Button
             android:id="@+id/main_page_BTN_forget"
@@ -89,9 +98,9 @@
             android:layout_centerHorizontal="true"
             android:background="@android:color/transparent"
             android:text="שכחתי סיסמא"
-            android:layout_marginRight="10dp"
             android:textColor="#33043A"
-            android:textSize="15dp"
+            android:fontFamily="@font/regular"
+            android:textSize="16dp"
             android:textStyle="bold"/>
 
     </LinearLayout>
@@ -106,12 +115,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/mainPage_BTN_signIn"
-            android:layout_centerHorizontal="true"
             android:background="@android:color/transparent"
-            android:text="צור חשבון"
-            android:layout_marginRight="40dp"
+            android:text=" צור חשבון"
             android:textColor="#33043A"
-            android:textSize="15dp"
+            android:fontFamily="@font/miriam_libre_regular"
+
+            android:textSize="16dp"
             android:textStyle="bold"/>
 <TextView
     android:layout_width="wrap_content"

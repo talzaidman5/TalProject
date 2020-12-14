@@ -15,6 +15,7 @@ import com.example.project.R;
 import com.example.project.data.AllUsers;
 import com.example.project.data.User;
 import com.example.project.utils.MySheredP;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +27,8 @@ public class MainPage extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
     public static final String KEY_MSP_ALL  = "allUsers1";
 
-    private Button main_page_BTN_signUp, mainPage_BTN_signIn;
+    private Button main_page_BTN_signUp;
+    MaterialButton mainPage_BTN_signIn;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("message");
     private AllUsers allUsers = new AllUsers();
@@ -49,10 +51,12 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.main_page);
         getSupportActionBar().hide();
 
-  /*      myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://b.mda.org.il/images/logo3.png"));
-         myRef.child("ActivityPosition").child("1").setValue(new Position("עראבה, מרכז העיר\t",14,new Date(),"16:00","19:00","https://b.mda.org.il/images/logo3.png"));
-        myRef.child("ActivityPosition").child("2").setValue(new Position("כרכום, מועדון\t",22,new Date(),"09:00","20:00:00","https://b.mda.org.il/images/logo3.png"));
-        myRef.child("ActivityPosition").child("3").setValue(new Position("דרך משה פלימן 4 חיפה, קניון חיפה מול קסטרו\t",151,new Date(),"16:00","20:00:00","https://b.mda.org.il/images/logo3.png"));
+
+
+    /*  myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://www.mdais.org/images/whatsup.jpg"));
+         myRef.child("ActivityPosition").child("1").setValue(new Position("עראבה, מרכז העיר\t",14,new Date(),"16:00","19:00","https://www.mdais.org/images/whatsup.jpg"));
+        myRef.child("ActivityPosition").child("2").setValue(new Position("כרכום, מועדון\t",22,new Date(),"09:00","20:00:00","https://www.mdais.org/images/whatsup.jpg"));
+        myRef.child("ActivityPosition").child("3").setValue(new Position("דרך משה פלימן 4 חיפה, קניון חיפה מול קסטרו\t",151,new Date(),"16:00","20:00:00","https://www.mdais.org/images/whatsup.jpg"));
 */
         mainPage_EDIT_id = findViewById(R.id.mainPage_EDIT_id);
         mainPage_BTN_signIn = findViewById(R.id.mainPage_BTN_signIn);

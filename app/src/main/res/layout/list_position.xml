@@ -27,6 +27,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:id="@+id/position_LBL_city"
+            android:fontFamily="@font/regular"
             android:ellipsize="end"
             android:text="null"/>
 
@@ -48,6 +49,8 @@
                 android:textStyle="bold"
                 android:ellipsize="end"
                 android:minLines="2"
+                android:fontFamily="@font/miriam_libre_regular"
+
                 android:maxLines="2"
                 android:text="TITLE"/>
 
@@ -62,6 +65,8 @@
                 android:textSize="15sp"
                 android:ellipsize="end"
                 android:maxLines="1"
+                android:fontFamily="@font/regular"
+
                 android:text="TITLE"/>
 
         </LinearLayout>

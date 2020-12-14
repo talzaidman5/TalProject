@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private Context mContext;
 
     private final int VIEW_TYPE_NORMAL = 0;
 
@@ -61,7 +62,10 @@ public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHold
             mHolder.position_TXT_city.setText(getDateStr(temp.getDate()));
 
 
-            Glide
+
+
+
+        Glide
                     .with(context)
                     .load(temp.getMainImage())
                     .centerCrop()

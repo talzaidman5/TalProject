@@ -11,19 +11,17 @@ public class User {
     private String email;
     private String phoneNumber;
     private String password;
-    private String country;
     private String bloodType;
     private Date birthDate;
     private String imageUser;
     private Boolean remember;
 
-    public User(String fullName, String ID, String email, String phoneNumber, String password, String country, String bloodType, Date birthDate, String image, Boolean isRemember) {
+    public User(String fullName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember) {
         this.fullName = fullName;
         this.ID = ID;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.password = password;
-        this.country = country;
         this.bloodType = bloodType;
         this.birthDate = birthDate;
         this.imageUser = image;
@@ -41,7 +39,6 @@ public class User {
         this.email = other.email;
         this.phoneNumber = other.phoneNumber;
         this.password = other.password;
-        this.country = other.country;
         this.bloodType = other.bloodType;
         this.birthDate = other.birthDate;
         this.imageUser = other.imageUser;
@@ -117,13 +114,7 @@ public class User {
         this.password = password;
     }
 
-    public String getCountry() {
-        return country;
-    }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
     public String getBloodType() {
         return bloodType;
@@ -141,11 +132,4 @@ public class User {
         this.birthDate = birthDate;
     }
 
-//    public String getImageUser() {
-//        return imageUser;
-//    }
-//
-//    public void setImageUser(Uri imageUser) {
-//        this.imageUser = imageUser.toString();
-//    }
 }
