@@ -120,18 +120,16 @@ public class LogIn extends AppCompatActivity {
                         myRef.child("Users").child(newUser.getID()).setValue(newUser);
                     }putOnMSP();
                     if (newUser != null) {
-                        if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().getText().toString()))
+                        if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().getText().toString())){
                             if(newUser.getUserType().equals(User.USER_TYPE.MANAGER))
                                 startActivity(new Intent(LogIn.this, MenuManager.class));
                             else
                                 startActivity(new Intent(LogIn.this, Menu.class));
                     }
+                    }
                     else
                         mainPage_EDIT_id.getEditText().setText("invalid");
-
                 }
-
-
     }
 
 
