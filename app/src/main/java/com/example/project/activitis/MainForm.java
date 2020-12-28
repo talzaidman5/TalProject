@@ -58,10 +58,5 @@ a.setOnClickListener(new View.OnClickListener() {
         transaction.replace(R.id.main_FRAME,fragment_b);
         transaction.commit();
     }
-    private void showC() {
-        fragment_c fragment_c = new fragment_c();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_FRAME,fragment_c);
-        transaction.commit();
-    }
+
 }

@@ -7,7 +7,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,6 +15,7 @@ import com.example.project.data.AllUsers;
 import com.example.project.data.User;
 import com.example.project.utils.MySheredP;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-public class MainPage extends AppCompatActivity {
+public class LogIn extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
     public static final String KEY_MSP_ALL  = "allUsers1";
 
@@ -33,7 +33,7 @@ public class MainPage extends AppCompatActivity {
     final DatabaseReference myRef = database.getReference("message");
     private AllUsers allUsers = new AllUsers();
     private User newUser;
-    private EditText mainPage_EDIT_id, mainPage_EDIT_password;
+    private TextInputLayout mainPage_EDIT_id, mainPage_EDIT_password;
     private MySheredP msp;
     private Gson gson = new Gson();
     private CheckBox main_page_CHECK_remember;
@@ -48,7 +48,7 @@ public class MainPage extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.main_page);
+        setContentView(R.layout.activity_log_in);
         getSupportActionBar().hide();
 
 
@@ -89,12 +89,12 @@ public class MainPage extends AppCompatActivity {
         String data  = msp.getString(KEY_MSP, "NA");
         newUser = new User(data);
         if(newUser.getRemember())
-            startActivity(new Intent(MainPage.this, Menu.class));
+            startActivity(new Intent(LogIn.this, Menu.class));
         return newUser;
     }
     public void openSignUpPage() {
 
-        startActivity(new Intent(MainPage.this, SignUpPage.class));
+        startActivity(new Intent(LogIn.this, SignUpPage.class));
     }
 
     public void readFromFireBase() {
@@ -106,22 +106,22 @@ public class MainPage extends AppCompatActivity {
                     allUsers.addToList(tempUser);
                 }
                 if (allUsers.getAllUser().size()!= 0) {
-                    newUser = allUsers.getUserByID(mainPage_EDIT_id.getText().toString());
+                    newUser = allUsers.getUserByID(mainPage_EDIT_id.getEditText().toString());
                     if(main_page_CHECK_remember.isChecked()) {
                         newUser.setRemember(true);
                         myRef.child("Users").child(newUser.getID()).setValue(newUser);
                     }putOnMSP();
 
                     if (newUser != null)
-                    if (newUser.getPassword().equals(mainPage_EDIT_password.getText().toString()))
-                        startActivity(new Intent(MainPage.this, Menu.class));
+                    if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().toString()))
+                        startActivity(new Intent(LogIn.this, Menu.class));
                     else
-                        mainPage_EDIT_id.setText("invalid");
+                        mainPage_EDIT_id.getEditText().setText("invalid");
                     else
-                        mainPage_EDIT_id.setText("invalid");
+                        mainPage_EDIT_id.getEditText().setText("invalid");
                 }
                 else
-                    mainPage_EDIT_id.setText("invalid");
+                    mainPage_EDIT_id.getEditText().setText("invalid");
             }
 
             @Override

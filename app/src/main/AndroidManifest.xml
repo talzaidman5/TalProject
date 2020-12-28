@@ -16,10 +16,10 @@
             android:theme="@style/Theme.MaterialComponents.DayNight"></activity>
         <activity
             android:name="com.example.project.activitis.activityPosition"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.MyProfile"
-            android:theme="@style/Theme.AppCompat"
+            android:theme="@style/Theme.MaterialComponents.DayNight"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.QuestionnairePage"
@@ -34,7 +34,7 @@
             android:theme="@style/Theme.MaterialComponents"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.MainPage"
+            android:name=".activitis.LogIn"
             android:theme="@style/Theme.MaterialComponents.DayNight"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>

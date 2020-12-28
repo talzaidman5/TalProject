@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +12,7 @@ import com.example.project.R;
 import com.example.project.data.AllUsers;
 import com.example.project.data.User;
 import com.example.project.utils.MySheredP;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -22,9 +22,10 @@ public class MyProfile extends AppCompatActivity {
     public static final String KEY_MSP  = "user";
     public static final String KEY_MSP_ALL  = "allUsers1";
 
-    private EditText myProfile_TXT_emailToFill,myProfile_TXT_phoneNumberToFill,myProfile_TXT_passwordToFill
+    private TextInputLayout myProfile_TXT_emailToFill,myProfile_TXT_phoneNumberToFill,myProfile_TXT_passwordToFill
             ,myProfile_TXT_dateBirthToFill,myProfile_TXT_bloodTypeToFill;
-    private TextView myProfile_TXT_IDToFill,myProfile_TXT_nameToFill;
+    private TextInputLayout myProfile_TXT_IDToFill;
+            private EditText myProfile_TXT_nameToFill;
   //  private Button myProfile_BTN_back;
     private CircleImageView myProfile_BTN_logo;
     private ImageButton myProfile_BTN_edit;
@@ -93,13 +94,13 @@ public class MyProfile extends AppCompatActivity {
         myProfile_TXT_phoneNumberToFill.setEnabled(false);
 
         if(currentUser!=null) {
-            myProfile_TXT_phoneNumberToFill.setText(currentUser.getPhoneNumber());
-            myProfile_TXT_passwordToFill.setText(currentUser.getPassword());
+            myProfile_TXT_phoneNumberToFill.getEditText().setText(currentUser.getPhoneNumber());
+            myProfile_TXT_passwordToFill.getEditText().setText(currentUser.getPassword());
             myProfile_TXT_nameToFill.setText(currentUser.getFullName());
-            myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().getDay()+"/"+currentUser.getBirthDate().getMonth()+"/"+currentUser.getBirthDate().getYear());
-            myProfile_TXT_IDToFill.setText(currentUser.getID());
-            myProfile_TXT_emailToFill.setText(currentUser.getEmail());
-            myProfile_TXT_bloodTypeToFill.setText(currentUser.getBloodType());
+            myProfile_TXT_dateBirthToFill.getEditText().setText(currentUser.getBirthDate().getDay()+"/"+currentUser.getBirthDate().getMonth()+"/"+currentUser.getBirthDate().getYear());
+            myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
+            myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
+            myProfile_TXT_bloodTypeToFill.getEditText().setText(currentUser.getBloodType());
 
 
             String urlImage =currentUser.getImageUser();

@@ -38,11 +38,8 @@ public class activityPosition extends AppCompatActivity {
         main_LST_news = findViewById(R.id.main_LST_news);
 
         positions = getFromMSP();
-        Adapter_Position adapter_position = new Adapter_Position(this, positions);
-        main_LST_news.setLayoutManager(new LinearLayoutManager(this));
-        main_LST_news.setItemAnimator(new DefaultItemAnimator());
-        main_LST_news.setAdapter(adapter_position);
 
+        showAll();
 
     }
 
@@ -56,5 +53,11 @@ public class activityPosition extends AppCompatActivity {
         return positions;
     }
 
+    public void showAll(){
+        Adapter_Position adapter_position = new Adapter_Position(this, positions);
+        main_LST_news.setLayoutManager(new LinearLayoutManager(this));
+        main_LST_news.setItemAnimator(new DefaultItemAnimator());
+        main_LST_news.setAdapter(adapter_position);
+    }
 
 }

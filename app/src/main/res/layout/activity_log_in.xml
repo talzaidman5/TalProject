@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitis.MainPage"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activitis.LogIn"
     android:background="@drawable/gradient1"
 
     tools:ignore="MissingDefaultResource">
     <ImageView
         android:id="@+id/mainPage_PNG_logo"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="120dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/logo"/>
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="500dp"
+    android:layout_height="550dp"
     android:layout_margin="30dp"
     android:layout_below="@+id/mainPage_PNG_logo"
     android:layout_centerHorizontal="true"
@@ -34,37 +34,70 @@
         android:textSize="22dp"
         android:textColor="@color/black"
         />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="תעודת זהות"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@color/grey"
-        android:textColor="@color/black"
-        android:fontFamily="@font/regular"
-        android:id="@+id/mainPage_EDIT_id"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:inputType="numberPassword"
-        android:hint="סיסמא"
-        android:fontFamily="@font/regular"
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/black"
         android:gravity="right"
-        android:textColorHint="@color/grey"
-        android:textColor="@color/black"
-        android:id="@+id/mainPage_EDIT_password"/>
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:outlineAmbientShadowColor="@color/black"
+        android:hint="תעודת זהות"
+        app:hintTextColor="@color/black"
+        android:id="@+id/mainPage_EDIT_id"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="18dp"
+            android:gravity="right"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:fontFamily="@font/regular"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout >
+
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/black"
+        android:gravity="right"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:outlineAmbientShadowColor="@color/black"
+        android:hint="סיסמא"
+        app:hintTextColor="@color/black"
+
+        android:id="@+id/mainPage_EDIT_password"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="18dp"
+            android:gravity="right"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:fontFamily="@font/regular"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout >
+
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:textColor="@color/grey"
+        android:textColor="@color/black"
         android:layoutDirection="rtl"
         android:textSize="15dp"
         android:fontFamily="@font/regular"
-        android:buttonTint="@color/grey"
+        android:buttonTint="@color/black"
         android:id="@+id/main_page_CHECK_remember"
         android:text=" זכור אותי"/>
 
@@ -78,9 +111,11 @@
         android:textSize="25dp"
         android:textStyle="bold"
         android:layout_below="@+id/mainPage_PNG_logo"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="15dp"
         android:textColor="@color/red"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:backgroundTint="@color/grey"
         android:layout_alignParentBottom="true"/>
 
     <LinearLayout
@@ -110,19 +145,21 @@
         android:layout_height="wrap_content"
         android:gravity="right"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/main_page_BTN_signUp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/mainPage_BTN_signIn"
-            android:background="@android:color/transparent"
-            android:text=" צור חשבון"
-            android:textColor="#33043A"
-            android:fontFamily="@font/miriam_libre_regular"
 
-            android:textSize="16dp"
-            android:textStyle="bold"/>
-<TextView
+            <Button
+                android:id="@+id/main_page_BTN_signUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mainPage_BTN_signIn"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/miriam_libre_regular"
+                android:text=" צור חשבון"
+                android:textColor="@color/red"
+
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="עדיין ללא חשבון?"
