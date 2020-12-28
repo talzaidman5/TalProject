@@ -111,7 +111,6 @@ public class LogIn extends AppCompatActivity {
                         newUser.setRemember(true);
                         myRef.child("Users").child(newUser.getID()).setValue(newUser);
                     }putOnMSP();
-
                     if (newUser != null)
                     if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().toString()))
                         startActivity(new Intent(LogIn.this, Menu.class));

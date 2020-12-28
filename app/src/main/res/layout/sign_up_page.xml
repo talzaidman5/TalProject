@@ -97,6 +97,7 @@
                     android:textColor="@color/red"
                     android:textColorHint="@color/red"
                     android:textSize="18dp"
+                    android:inputType="number"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"   />
 
@@ -152,6 +153,7 @@
                     android:textColor="@color/red"
                     android:textColorHint="@color/red"
                     android:textSize="18dp"
+                    android:inputType="number"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"   />
 

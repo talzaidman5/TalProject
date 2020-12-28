@@ -5,6 +5,10 @@ import com.google.gson.Gson;
 import java.util.Date;
 
 public class User {
+    public enum USER_TYPE
+    {
+        CLIENT,MANAGER;
+    }
 
     private String fullName;
     private String ID;
@@ -15,6 +19,8 @@ public class User {
     private Date birthDate;
     private String imageUser;
     private Boolean remember;
+    private  USER_TYPE userType;
+
 
     public User(String fullName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember) {
         this.fullName = fullName;
@@ -26,6 +32,7 @@ public class User {
         this.birthDate = birthDate;
         this.imageUser = image;
         this.remember = isRemember;
+        this.userType = USER_TYPE.CLIENT;
     }
     public User(String data)
     {
@@ -115,6 +122,13 @@ public class User {
     }
 
 
+    public USER_TYPE getUserType() {
+        return userType;
+    }
+
+    public void setUserType(USER_TYPE userType) {
+        this.userType = userType;
+    }
 
     public String getBloodType() {
         return bloodType;

@@ -53,6 +53,7 @@
             android:layout_marginRight="5dp"
             android:layout_marginLeft="5dp"
             android:textSize="18dp"
+            android:inputType="number"
             android:gravity="right"
             android:background="@android:drawable/dialog_holo_light_frame"
             android:fontFamily="@font/regular"
@@ -82,6 +83,7 @@
             android:layout_marginLeft="5dp"
             android:textSize="18dp"
             android:gravity="right"
+            android:inputType="textPassword"
             android:background="@android:drawable/dialog_holo_light_frame"
             android:fontFamily="@font/regular"
             />
