@@ -23,15 +23,9 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 public class MenuManager extends AppCompatActivity {
-    private static final String KEY_MSP_POS = "allPositions1";
-    private MySheredP msp;
-    private Gson gson = new Gson();
 
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final DatabaseReference myRef = database.getReference("message");
 
-    Button menu_BTN_fillQ,menu_BTN_profile,menu_BTN_activityPosition;
-    private ArrayList<Position> positions = new ArrayList<>();
+    private Button menuManager_BTN_publishingReports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,69 +36,13 @@ public class MenuManager extends AppCompatActivity {
 
         setContentView(R.layout.activity_menu_manager);
         getSupportActionBar().hide();
+        menuManager_BTN_publishingReports = findViewById(R.id.menuManager_BTN_publishingReports);
+        menuManager_BTN_publishingReports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuManager.this, PublishingReportsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-//        msp = new MySheredP(this);
-//
-//        readDataPositions();
-//        menu_BTN_fillQ = findViewById(R.id.menu_BTN_fillQ);
-//        menu_BTN_profile = findViewById(R.id.menu_BTN_profile);
-//        menu_BTN_activityPosition = findViewById(R.id.menu_BTN_activityPosition);
-//        menu_BTN_activityPosition.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MenuManager.this, activityPosition.class);
-//                startActivity(intent);
-//            }
-//        });
-//        menu_BTN_fillQ.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                        newEventDialog exNewEventDialog = new newEventDialog();
-//                        exNewEventDialog.show(getSupportFragmentManager(),"exe");
-//
-//
-//                    }
-//                });
-//
-//        menu_BTN_profile.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                openmenu();
-//            }
-//        });
-    }
-
-
-//    void openQuesPage(){
-//        startActivity(new Intent(MenuManager.this, QuestionnairePage.class));
-//    }
-//    void openmenu(){ startActivity(new Intent(MenuManager.this, MyProfile.class));
-//    }
-//
-//    public void readDataPositions() {
-//        myRef.child("ActivityPosition").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    Position position = ds.getValue(Position.class);
-//                    positions.add(position);
-//                }
-//                putOnMSP();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//
-//        });
-//
-//    }
-//
-//
-//
-//    private void putOnMSP(){
-//        String jsonPositions = gson.toJson(positions);
-//        msp.putString(KEY_MSP_POS,jsonPositions);
-//    }
-//}
+}

@@ -50,7 +50,7 @@ public class LogIn extends AppCompatActivity {
 
         setContentView(R.layout.activity_log_in);
         getSupportActionBar().hide();
-
+        readFB();
 
 
     /*  myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://www.mdais.org/images/whatsup.jpg"));
@@ -96,8 +96,7 @@ public class LogIn extends AppCompatActivity {
 
         startActivity(new Intent(LogIn.this, SignUpPage.class));
     }
-
-    public void readFromFireBase() {
+    public void readFB(){
         myRef.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -105,30 +104,33 @@ public class LogIn extends AppCompatActivity {
                     User tempUser = ds.getValue(User.class);
                     allUsers.addToList(tempUser);
                 }
-                if (allUsers.getAllUser().size()!= 0) {
-                    newUser = allUsers.getUserByID(mainPage_EDIT_id.getEditText().toString());
-                    if(main_page_CHECK_remember.isChecked()) {
-                        newUser.setRemember(true);
-                        myRef.child("Users").child(newUser.getID()).setValue(newUser);
-                    }putOnMSP();
-                    if (newUser != null)
-                    if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().toString()))
-                        startActivity(new Intent(LogIn.this, Menu.class));
-                    else
-                        mainPage_EDIT_id.getEditText().setText("invalid");
-                    else
-                        mainPage_EDIT_id.getEditText().setText("invalid");
-                }
-                else
-                    mainPage_EDIT_id.getEditText().setText("invalid");
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
             }
-
         });
+        }
+    public void readFromFireBase() {
+                if (allUsers.getAllUser().size()!= 0) {
+                    newUser = allUsers.getUserByID(mainPage_EDIT_id.getEditText().getText().toString());
+                    if(main_page_CHECK_remember.isChecked()) {
+                        newUser.setRemember(true);
+                        myRef.child("Users").child(newUser.getID()).setValue(newUser);
+                    }putOnMSP();
+                    if (newUser != null) {
+                        if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().getText().toString()))
+                            if(newUser.getUserType().equals(User.USER_TYPE.MANAGER))
+                                startActivity(new Intent(LogIn.this, MenuManager.class));
+                            else
+                                startActivity(new Intent(LogIn.this, Menu.class));
+                    }
+                    else
+                        mainPage_EDIT_id.getEditText().setText("invalid");
+
+                }
+
 
     }
 

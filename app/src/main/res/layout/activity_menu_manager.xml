@@ -23,7 +23,7 @@
         android:layout_margin="30dp"
         >
     <Button
-        android:id="@+id/menu_BTN_fillQ"
+        android:id="@+id/menuManager_BTN_publishingReports"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="הפקת דוחות"
@@ -45,7 +45,7 @@
         android:fontFamily="@font/regular"
         android:background="@android:color/transparent"
         android:textColor="@android:color/black"
-        android:layout_below="@+id/menu_BTN_fillQ"
+        android:layout_below="@+id/menuManager_BTN_publishingReports"
         android:textStyle="bold"
         android:layout_marginTop="30dp"/>
 

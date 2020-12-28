@@ -12,10 +12,11 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".activitis.MainForm"
-            android:theme="@style/Theme.MaterialComponents.DayNight"></activity>
         <activity
-            android:name="com.example.project.activitis.activityPosition"
+            android:name=".activitis.MainForm"
+            android:theme="@style/Theme.MaterialComponents.DayNight" />
+        <activity
+            android:name=".activitis.activityPosition"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.MyProfile"
@@ -27,6 +28,14 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.Menu"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activitis.MenuManager"
+            android:theme="@style/Theme.AppCompat"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activitis.PublishingReportsActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity

@@ -12,6 +12,9 @@
         <item>AB-</item>
         <item>AB+</item>
     </string-array>
+    <string-array name="year" formatted="false" translatable="false">
+    <item>2000</item>
+    </string-array>
 
     <string-array name="countries" formatted="false" translatable="false">
         <item>Afghanistan</item>
