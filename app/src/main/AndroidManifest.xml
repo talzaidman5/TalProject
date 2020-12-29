@@ -12,11 +12,14 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
+        <activity android:name=".activitis.ViewFullQuestionnairesActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight" />
+
         <activity
             android:name=".activitis.MainForm"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
-            android:name=".activitis.activityPosition"
+            android:name=".activitis.ActivityPosition"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.MyProfile"

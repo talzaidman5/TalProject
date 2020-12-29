@@ -2,6 +2,7 @@ package com.example.project.data;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
@@ -20,7 +21,7 @@ public class User {
     private String imageUser;
     private Boolean remember;
     private  USER_TYPE userType;
-
+    private ArrayList<BloodDonation> allBloodDonations;
 
     public User(String fullName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember) {
         this.fullName = fullName;
@@ -33,6 +34,7 @@ public class User {
         this.imageUser = image;
         this.remember = isRemember;
         this.userType = USER_TYPE.CLIENT;
+        this.allBloodDonations = new ArrayList<>();
     }
     public User(String data)
     {

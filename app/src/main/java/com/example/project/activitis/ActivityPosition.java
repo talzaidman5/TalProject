@@ -18,7 +18,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
-public class activityPosition extends AppCompatActivity {
+public class ActivityPosition extends AppCompatActivity {
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("message");

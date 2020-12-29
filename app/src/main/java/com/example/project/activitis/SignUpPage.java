@@ -100,11 +100,8 @@ public class SignUpPage extends AppCompatActivity {
         findView(view);
         getSupportActionBar().hide();
 
-
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
-
 
         ArrayAdapter<CharSequence> adapterBloodTypes = ArrayAdapter.createFromResource(this,
                 R.array.bloods, android.R.layout.simple_spinner_item);

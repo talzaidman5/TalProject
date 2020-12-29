@@ -71,7 +71,7 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                readFromFireBase();
+                checkUser();
             }
         });
         main_page_BTN_signUp.setOnClickListener(new View.OnClickListener() {
@@ -112,7 +112,7 @@ public class LogIn extends AppCompatActivity {
             }
         });
         }
-    public void readFromFireBase() {
+    public void checkUser() {
                 if (allUsers.getAllUser().size()!= 0) {
                     newUser = allUsers.getUserByID(mainPage_EDIT_id.getEditText().getText().toString());
                     if(main_page_CHECK_remember.isChecked()) {
@@ -131,8 +131,6 @@ public class LogIn extends AppCompatActivity {
                         mainPage_EDIT_id.getEditText().setText("invalid");
                 }
     }
-
-
 
     private void putOnMSP(){
         String jsonAll = gson.toJson(allUsers);

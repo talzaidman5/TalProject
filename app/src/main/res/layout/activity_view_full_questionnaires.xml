@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/corners"
+    tools:context="com.example.project.activitis.Menu">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:id="@+id/view_full_questionnaires_TXT_title"
+            android:text="צפייה בשאלון מלא"></TextView>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:layout_below="@+id/view_full_questionnaires_TXT_title"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/view_full_questionnaires_EDT_id"
+            android:hint="הזמן תעודת זהות"></EditText>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="הוצא שאלון"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:textSize="15dp"
+        android:background="@color/purple_200"
+        android:layout_below="@+id/view_full_questionnaires_EDT_id">
+    </com.google.android.material.button.MaterialButton>
+</RelativeLayout>
