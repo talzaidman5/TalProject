@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.project.R;
 import com.example.project.data.Adapter_Position;
 import com.example.project.data.Position;
+import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,7 +26,6 @@ public class ActivityPosition extends AppCompatActivity {
     private RecyclerView main_LST_news;
     ArrayList<Position> positions = new ArrayList<>();
     private  MySheredP msp;
-    private  final String KEY_MSP_POS = "allPositions1";
     private  Gson gson = new Gson();
 
     @Override
@@ -44,7 +44,7 @@ public class ActivityPosition extends AppCompatActivity {
     }
 
     public  ArrayList<Position> getFromMSP(){
-        String data  = msp.getString(KEY_MSP_POS, "NA");
+        String data  = msp.getString(Constants.KEY_MSP_POS, "NA");
         if (!data.equals("NA"))
         {
             TypeToken< ArrayList<Position>> token = new TypeToken<ArrayList<Position>>() {};

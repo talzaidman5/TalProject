@@ -15,7 +15,6 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.project.R;
 import com.example.project.data.AllUsers;
 import com.example.project.data.User;
+import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,7 +41,6 @@ import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
@@ -49,8 +48,6 @@ import java.util.UUID;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SignUpPage extends AppCompatActivity {
-    public static final String KEY_MSP  = "user";
-    public static final String KEY_MSP_ALL  = "allUsers1";
     public static final int PICK_IMAGE = 1;
     public String imageData;
     private MaterialButton signUp_BTN_signUp;
@@ -67,10 +64,7 @@ public class SignUpPage extends AppCompatActivity {
     private Gson gson = new Gson();
     String imageUrl;
 
-    TextInputLayout till;
-    AutoCompleteTextView act;
-    ArrayList<String> arrayLisSessson;
-    ArrayAdapter<String>sessons;
+
 
     // InputStream inputStream = null;
   //  private ImageView imgView;
@@ -87,6 +81,7 @@ public class SignUpPage extends AppCompatActivity {
     private AllUsers allUsers =  new AllUsers();
     private User newUser;
     private Boolean isImage= false;
+    private String uuid;
 
 
     @SuppressLint("ResourceType")
@@ -107,6 +102,9 @@ public class SignUpPage extends AppCompatActivity {
                 R.array.bloods, android.R.layout.simple_spinner_item);
         adapterBloodTypes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         signUp_SPI_bloodTypes.setAdapter(adapterBloodTypes);
+
+        uuid = android.provider.Settings.Secure.getString(
+                this.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
         sign_up_IMG_logo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,10 +144,10 @@ public class SignUpPage extends AppCompatActivity {
                 if(checkData()) {
                     if(isImage)
                     newUser = new User(signUp_EDT_name.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
-                            signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(),  signUp_SPI_bloodTypes.getSelectedItem().toString(), date,filePath.toString(),false);
+                            signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(),  signUp_SPI_bloodTypes.getSelectedItem().toString(), date,filePath.toString(),false,uuid);
                  else
                         newUser = new User(signUp_EDT_name.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
-                                signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(),  signUp_SPI_bloodTypes.getSelectedItem().toString(), date,"https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e",false);
+                                signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(),  signUp_SPI_bloodTypes.getSelectedItem().toString(), date,"https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e",false,uuid);
 
                     getFromMSP();
                     putOnMSP();
@@ -198,13 +196,13 @@ public class SignUpPage extends AppCompatActivity {
     }
 
     private AllUsers getFromMSP(){
-        String data  = msp.getString(KEY_MSP_ALL, "NA");
+        String data  = msp.getString(Constants.KEY_MSP_ALL, "NA");
         allUsers = new AllUsers(data);
         return allUsers;
     }
     private void putOnMSP(){
         String json = gson.toJson(newUser);
-        msp.putString(KEY_MSP,json);
+        msp.putString(Constants.KEY_MSP,json);
     }
 
     private void findView(View view) {

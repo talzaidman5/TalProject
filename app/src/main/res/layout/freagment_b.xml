@@ -2,13 +2,12 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@drawable/my_gradient_drawable">
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-       android:layout_above="@+id/fill_BTN_send"
         android:layout_margin="10dp"
        >
 
@@ -225,7 +224,8 @@
             android:textStyle="bold"
             android:textColor="@color/purple_500"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_alignParentBottom="true"/>
+            android:layout_alignParentBottom="true"
+            />
 
         <Space
             android:layout_width="match_parent"

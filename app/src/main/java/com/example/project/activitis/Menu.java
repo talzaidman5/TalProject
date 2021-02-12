@@ -6,12 +6,15 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
 import com.example.project.data.Position;
+import com.example.project.data.User;
+import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,15 +26,16 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 public class Menu extends AppCompatActivity {
-    private static final String KEY_MSP_POS = "allPositions1";
+
     private MySheredP msp;
     private Gson gson = new Gson();
-
+    private TextView main_TXT_name;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("message");
 
-    Button menu_BTN_fillQ,menu_BTN_profile,menu_BTN_activityPosition;
+    Button menu_BTN_fillQ, menu_BTN_profile, menu_BTN_activityPosition, main_BTN_history;
     private ArrayList<Position> positions = new ArrayList<>();
+    private User newUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +47,10 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         getSupportActionBar().hide();
         msp = new MySheredP(this);
-
+        findViews();
+        getFromMSP();
         readDataPositions();
-        menu_BTN_fillQ = findViewById(R.id.menu_BTN_fillQ);
-        menu_BTN_profile = findViewById(R.id.menu_BTN_profile);
-        menu_BTN_activityPosition = findViewById(R.id.menu_BTN_activityPosition);
+        main_TXT_name.setText("היי " + newUser.getFullName());
         menu_BTN_activityPosition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,14 +61,20 @@ public class Menu extends AppCompatActivity {
         menu_BTN_fillQ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        newEventDialog exNewEventDialog = new newEventDialog();
-                        exNewEventDialog.show(getSupportFragmentManager(),"exe");
+                newEventDialog exNewEventDialog = new newEventDialog();
+                exNewEventDialog.show(getSupportFragmentManager(), "exe");
 
 
-                    }
-                });
+            }
+        });
 
-        menu_BTN_profile.setOnClickListener(new View.OnClickListener(){
+        main_BTN_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHistoryPage();
+            }
+        });
+        menu_BTN_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openmenu();
@@ -73,11 +82,21 @@ public class Menu extends AppCompatActivity {
         });
     }
 
-
-    void openQuesPage(){
-        startActivity(new Intent(Menu.this, QuestionnairePage.class));
+    private void findViews() {
+        menu_BTN_fillQ = findViewById(R.id.menu_BTN_fillQ);
+        menu_BTN_profile = findViewById(R.id.menu_BTN_profile);
+        menu_BTN_activityPosition = findViewById(R.id.menu_BTN_activityPosition);
+        main_TXT_name = findViewById(R.id.main_TXT_name);
+        main_BTN_history = findViewById(R.id.main_BTN_history);
     }
-    void openmenu(){ startActivity(new Intent(Menu.this, MyProfile.class));
+
+
+    void openHistoryPage() {
+        startActivity(new Intent(Menu.this, History.class));
+    }
+
+    void openmenu() {
+        startActivity(new Intent(Menu.this, MyProfile.class));
     }
 
     public void readDataPositions() {
@@ -100,10 +119,14 @@ public class Menu extends AppCompatActivity {
 
     }
 
+    private void getFromMSP() {
+        String data = msp.getString(Constants.KEY_MSP, "NA");
+        newUser = new User(data);
 
+    }
 
-    private void putOnMSP(){
+    private void putOnMSP() {
         String jsonPositions = gson.toJson(positions);
-        msp.putString(KEY_MSP_POS,jsonPositions);
+        msp.putString(Constants.KEY_MSP_POS, jsonPositions);
     }
 }

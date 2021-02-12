@@ -6,35 +6,32 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.project.R;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class Adapter_History extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
 
     private final int VIEW_TYPE_NORMAL = 0;
-
     private Context context;
-    private ArrayList<Position> positions;
+    private ArrayList<BloodDonation> bloodDonations;
 
-    public Adapter_Position(Context context, ArrayList<Position> positions) {
+    public Adapter_History(Context context, ArrayList<BloodDonation> bloodDonations) {
         this.context = context;
-        this.positions = positions;
+        this.bloodDonations = bloodDonations;
     }
 
     // get the size of the list
     @Override
     public int getItemCount() {
-        return positions == null ? 0 : positions.size();
+        return bloodDonations == null ? 0 : bloodDonations.size();
     }
 
 
@@ -42,36 +39,31 @@ public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_NORMAL) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_position, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_history, parent, false);
             return new ViewHolder_Normal(view);
         }
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_position, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_history, parent, false);
         ViewHolder_Normal myViewHolderNormal = new ViewHolder_Normal(view);
         return myViewHolderNormal;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int pos) {
-        Position temp = getItem(pos);
+        BloodDonation temp = getItem(pos);
 
 
             ViewHolder_Normal mHolder = (ViewHolder_Normal) holder;
-            mHolder.position_LBL_title.setText( temp.getLocation());
-            mHolder.position_LBL_subTitle.setText(temp.getStartHour()+"-"+temp.getEndHour());
-            mHolder.position_TXT_city.setText(getDateStr(temp.getDate()));
+            mHolder.history_TXT_Date.setText( temp.getDate().getDay()+"/"+  temp.getDate().getMonth()+"/"
+                    +  temp.getDate().getYear());
+            mHolder.history_TXT_Place.setText(temp.getCity());
 
 
-        Glide
-                    .with(context)
-                    .load(temp.getMainImage())
-                    .centerCrop()
-                    .into(mHolder.position_IMG_back);
 
     }
 
-    private Position getItem(int position) {
-        return positions.get(position);
+    private BloodDonation getItem(int position) {
+        return bloodDonations.get(position);
     }
 
 private String getDateStr(Date date){
@@ -80,18 +72,16 @@ private String getDateStr(Date date){
 
     static class ViewHolder_Normal extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView position_LBL_title;
-        public TextView position_LBL_subTitle;
-        public TextView position_TXT_city;
-        private ImageView position_IMG_back;
+        public TextView history_TXT_Place;
+        public TextView history_TXT_Date;
+
 
         public ViewHolder_Normal(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            position_LBL_title = itemView.findViewById(R.id.position_LBL_title);
-            position_LBL_subTitle = itemView.findViewById(R.id.position_LBL_subTitle);
-            position_TXT_city = itemView.findViewById(R.id.position_LBL_city);
-            position_IMG_back = itemView.findViewById(R.id.position_IMG_back);
+            history_TXT_Place = itemView.findViewById(R.id.history_TXT_Place);
+            history_TXT_Date = itemView.findViewById(R.id.history_TXT_Date);
+
         }
 
         @Override

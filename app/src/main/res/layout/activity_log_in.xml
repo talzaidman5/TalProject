@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activitis.LogIn"
-    android:background="@drawable/gradient1"
+    android:background="@drawable/b"
 
     tools:ignore="MissingDefaultResource">
     <ImageView
@@ -45,7 +45,9 @@
         android:hint="תעודת זהות"
         app:hintTextColor="@color/black"
         android:id="@+id/mainPage_EDIT_id"
-        >
+        app:startIconDrawable="@drawable/ic_id"
+        app:counterEnabled="true"
+        app:counterMaxLength="9">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -72,6 +74,7 @@
         android:outlineAmbientShadowColor="@color/black"
         android:hint="סיסמא"
         app:hintTextColor="@color/black"
+        app:endIconMode="password_toggle"
 
         android:id="@+id/mainPage_EDIT_password"
         >
@@ -116,7 +119,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="15dp"
-        android:textColor="@color/red"
+        android:textColor="@color/blue"
         android:backgroundTint="@color/grey"
         android:layout_alignParentBottom="true"/>
 

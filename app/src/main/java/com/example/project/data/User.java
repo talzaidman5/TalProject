@@ -22,8 +22,9 @@ public class User {
     private Boolean remember;
     private  USER_TYPE userType;
     private ArrayList<BloodDonation> allBloodDonations;
+    private String uuID;
 
-    public User(String fullName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember) {
+    public User(String fullName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember,String uuid) {
         this.fullName = fullName;
         this.ID = ID;
         this.email = email;
@@ -35,6 +36,7 @@ public class User {
         this.remember = isRemember;
         this.userType = USER_TYPE.CLIENT;
         this.allBloodDonations = new ArrayList<>();
+        this.uuID = uuid;
     }
     public User(String data)
     {
@@ -52,6 +54,8 @@ public class User {
         this.birthDate = other.birthDate;
         this.imageUser = other.imageUser;
         this.remember = other.remember;
+        this.uuID = other.uuID;
+        this.allBloodDonations = other.allBloodDonations;
     }
 
     public void setImageUser(String imageUser) {
@@ -79,12 +83,33 @@ public class User {
         return temp;
     }
 
+    public void addBloodDonation(BloodDonation bloodDonation){
+        if (allBloodDonations == null)
+            allBloodDonations = new ArrayList<>();
+        allBloodDonations.add(bloodDonation);
+    }
+    public String getuuID() {
+        return uuID;
+    }
+
+    public void setuuID(String uuID) {
+        this.uuID = uuID;
+    }
+
     public User() {
         remember = false;
     }
 
     public String getFullName() {
         return fullName;
+    }
+
+    public ArrayList<BloodDonation> getAllBloodDonations() {
+        return allBloodDonations;
+    }
+
+    public void setAllBloodDonations(ArrayList<BloodDonation> allBloodDonations) {
+        this.allBloodDonations = allBloodDonations;
     }
 
     public void setFullName(String fullName) {

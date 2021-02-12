@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.project.R;
 import com.example.project.data.AllUsers;
 import com.example.project.data.User;
+import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -24,8 +25,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 public class LogIn extends AppCompatActivity {
-    public static final String KEY_MSP  = "user";
-    public static final String KEY_MSP_ALL  = "allUsers1";
 
     private Button main_page_BTN_signUp;
     MaterialButton mainPage_BTN_signIn;
@@ -37,7 +36,6 @@ public class LogIn extends AppCompatActivity {
     private MySheredP msp;
     private Gson gson = new Gson();
     private CheckBox main_page_CHECK_remember;
-
 
 
     @Override
@@ -53,7 +51,7 @@ public class LogIn extends AppCompatActivity {
         readFB();
 
 
-    /*  myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://www.mdais.org/images/whatsup.jpg"));
+ /*     myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://www.mdais.org/images/whatsup.jpg"));
          myRef.child("ActivityPosition").child("1").setValue(new Position("עראבה, מרכז העיר\t",14,new Date(),"16:00","19:00","https://www.mdais.org/images/whatsup.jpg"));
         myRef.child("ActivityPosition").child("2").setValue(new Position("כרכום, מועדון\t",22,new Date(),"09:00","20:00:00","https://www.mdais.org/images/whatsup.jpg"));
         myRef.child("ActivityPosition").child("3").setValue(new Position("דרך משה פלימן 4 חיפה, קניון חיפה מול קסטרו\t",151,new Date(),"16:00","20:00:00","https://www.mdais.org/images/whatsup.jpg"));
@@ -63,7 +61,7 @@ public class LogIn extends AppCompatActivity {
         mainPage_EDIT_password = findViewById(R.id.mainPage_EDIT_password);
         main_page_BTN_signUp = findViewById(R.id.main_page_BTN_signUp);
         main_page_CHECK_remember = findViewById(R.id.main_page_CHECK_remember);
-
+        mainPage_BTN_signIn.setEnabled(false);
         msp = new MySheredP(this);
 
         getFromMSP();
@@ -82,21 +80,22 @@ public class LogIn extends AppCompatActivity {
         });
 
 
-
     }
 
-    private User getFromMSP(){
-        String data  = msp.getString(KEY_MSP, "NA");
+    private User getFromMSP() {
+        String data = msp.getString(Constants.KEY_MSP, "NA");
         newUser = new User(data);
-        if(newUser.getRemember())
+        if (newUser.getRemember())
             startActivity(new Intent(LogIn.this, Menu.class));
         return newUser;
     }
+
     public void openSignUpPage() {
 
         startActivity(new Intent(LogIn.this, SignUpPage.class));
     }
-    public void readFB(){
+
+    public void readFB() {
         myRef.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -104,6 +103,8 @@ public class LogIn extends AppCompatActivity {
                     User tempUser = ds.getValue(User.class);
                     allUsers.addToList(tempUser);
                 }
+                mainPage_BTN_signIn.setEnabled(true);
+
             }
 
             @Override
@@ -111,32 +112,51 @@ public class LogIn extends AppCompatActivity {
                 // Failed to read value
             }
         });
-        }
-    public void checkUser() {
-                if (allUsers.getAllUser().size()!= 0) {
-                    newUser = allUsers.getUserByID(mainPage_EDIT_id.getEditText().getText().toString());
-                    if(main_page_CHECK_remember.isChecked()) {
-                        newUser.setRemember(true);
-                        myRef.child("Users").child(newUser.getID()).setValue(newUser);
-                    }putOnMSP();
-                    if (newUser != null) {
-                        if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().getText().toString())){
-                            if(newUser.getUserType().equals(User.USER_TYPE.MANAGER))
-                                startActivity(new Intent(LogIn.this, MenuManager.class));
-                            else
-                                startActivity(new Intent(LogIn.this, Menu.class));
-                    }
-                    }
-                    else
-                        mainPage_EDIT_id.getEditText().setText("invalid");
-                }
     }
 
-    private void putOnMSP(){
+    public void checkUser() {
+        if (allUsers.getAllUser().size() != 0){
+            if (isUser()) {
+                updateRemember();
+                putOnMSP();
+                    if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().getText().toString())) {
+                        if (newUser.getUserType().equals(User.USER_TYPE.MANAGER))
+                            startActivity(new Intent(LogIn.this, MenuManager.class));
+                        else
+                            startActivity(new Intent(LogIn.this, Menu.class));
+                    }
+
+            } }else
+                mainPage_EDIT_id.getEditText().setText("invalid");
+        if(mainPage_EDIT_password.getEditText().getText().length() == 0 || mainPage_EDIT_id.getEditText().getText().length() == 0 )
+            mainPage_EDIT_id.getEditText().setText("הכנס תעודה מזההה וסיסמא");
+
+    }
+
+    private void updateRemember() {
+        if (main_page_CHECK_remember.isChecked()) {
+            newUser.setRemember(true);
+            myRef.child("Users").child(newUser.getID()).setValue(newUser);
+        }
+    }
+
+    private boolean isUser() {
+        String uuidCheck = android.provider.Settings.Secure.getString(
+                this.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+
+        newUser = allUsers.getUserByID(mainPage_EDIT_id.getEditText().getText().toString());
+        if (newUser.getuuID().equals(uuidCheck) && newUser != null)
+            return true;
+        else
+            return false;
+
+    }
+
+    private void putOnMSP() {
         String jsonAll = gson.toJson(allUsers);
         String json = gson.toJson(newUser);
-        msp.putString(KEY_MSP_ALL,jsonAll);
-        msp.putString(KEY_MSP,json);
+        msp.putString(Constants.KEY_MSP_ALL, jsonAll);
+        msp.putString(Constants.KEY_MSP, json);
 
     }
 }

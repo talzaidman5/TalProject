@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/my_gradient_button"
+    android:background="@drawable/b"
     tools:context="com.example.project.activitis.LogIn"
-
     tools:ignore="MissingDefaultResource">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:id="@+id/images"
+
 >
+
 
     <ImageButton
         android:id="@+id/myProfile_BTN_edit"
@@ -22,14 +23,6 @@
         android:layout_margin="5dp"
         android:background="@drawable/pencil" />
 
-    <ImageButton
-        android:id="@+id/myProfile_BTN_alerts"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_centerInParent="true"
-        android:layout_margin="5dp"
-
-        android:background="@drawable/bell" />
 
     <ImageButton
         android:layout_width="30dp"
@@ -37,15 +30,44 @@
         android:layout_margin="5dp"
         android:background="@drawable/set" />
 
-</RelativeLayout>
 
+
+</RelativeLayout>
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/myProfile_BTN_logo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/profile"
+        android:shape="ring"
+        android:layout_below="@+id/images"
+        android:layout_gravity="center"
+        tools:ignore="MissingClass" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/myProfile_BTN_logo"
+        android:background="@drawable/ic_add"
+        android:id="@+id/myProfile_BTN_add"/>
+
+    <EditText
+        android:id="@+id/myProfile_TXT_nameToFill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regular"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/myProfile_BTN_logo"
+        android:textSize="20dp" />
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/corners"
         android:layout_margin="20dp"
-        android:layout_below="@+id/images"
+        android:layout_below="@+id/myProfile_TXT_nameToFill"
         android:fontFamily="@font/regular">
 
         <LinearLayout
@@ -53,32 +75,6 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:orientation="vertical">
-
-
-
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/myProfile_BTN_logo"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/profile"
-                android:shape="ring"
-                android:layout_gravity="center"
-                tools:ignore="MissingClass" />
-
-            <EditText
-                android:id="@+id/myProfile_TXT_nameToFill"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/myProfile_TXT_name"
-                android:fontFamily="@font/regular"
-                android:textColor="@color/black"
-android:gravity="center"
-                android:textSize="20dp" />
-
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

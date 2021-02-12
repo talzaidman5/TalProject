@@ -1,25 +1,23 @@
 package com.example.project.data;
 
-import android.location.Address;
-
 import java.util.Date;
 
 public class BloodDonation {
-    private Address address;
+    private String city;
     private Date date;
 
     public BloodDonation(){}
 
-    public BloodDonation(Address address, Date date){
-        this.address = address;
+    public BloodDonation(String city, Date date){
+        this.city = city;
         this.date = date;
     }
-    public Address getCity() {
-        return address;
+    public String getCity() {
+        return city;
     }
 
-    public void setCity(Address city) {
-        this.address = city;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public Date getDate() {
