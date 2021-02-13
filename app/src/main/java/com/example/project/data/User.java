@@ -61,6 +61,7 @@ public class User {
         this.remember = other.remember;
         this.uuID = other.uuID;
         this.allBloodDonations = other.allBloodDonations;
+        this.userType = other.userType;
     }
 
     public void setImageUser(String imageUser) {

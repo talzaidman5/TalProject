@@ -122,7 +122,7 @@ public class ActivityLogIn extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(ActivityLogIn.this, "The email entered is incorrect", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityLogIn.this, "כתובת המייל שהוזנה שגויה", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -159,16 +159,18 @@ public class ActivityLogIn extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 putOnMSP();
                                 Intent intent;
-                                if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
-                                    intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
-                                else
-                                    intent = new Intent(ActivityLogIn.this, ActivityMenuManager.class);
+                                if (newUser != null) {
+                                    if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
+                                        intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
+                                    else
+                                        intent = new Intent(ActivityLogIn.this, ActivityMenuManager.class);
 
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                                finish();
-                            } else {
-                                Toast.makeText(ActivityLogIn.this, "אחד הפרטים לא נכונים", Toast.LENGTH_SHORT).show();
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(ActivityLogIn.this, "אחד הפרטים לא נכונים", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                     });

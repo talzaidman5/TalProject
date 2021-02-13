@@ -88,7 +88,7 @@
                 android:text="אשר והמשך"
                 android:textSize="15dp"
                 android:layout_below="@+id/dialog_SCV_scrollView"
-                android:background="@drawable/button_s"
+                android:background="@color/grey1"
                 />
         </LinearLayout>
     </ScrollView>

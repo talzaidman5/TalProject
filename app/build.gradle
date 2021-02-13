@@ -47,7 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'org.jsoup:jsoup:1.11.1'
     implementation 'org.jsoup:jsoup:1.13.1'
-
     //noinspection GradleCompatible
     implementation 'com.android.support:design:24.0.0'
     //noinspection GradleCompatible

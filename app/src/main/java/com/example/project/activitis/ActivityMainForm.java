@@ -13,7 +13,7 @@ import com.example.project.Questionnaire.Fragment.fragment_b;
 import com.example.project.R;
 
 public class ActivityMainForm extends AppCompatActivity {
- ImageView a, b;
+    ImageView a, b;
 
 
     @Override
@@ -23,23 +23,22 @@ public class ActivityMainForm extends AppCompatActivity {
         getSupportActionBar().hide();
         a = findViewById(R.id.a);
         b = findViewById(R.id.b);
-        getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
-        );
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         showA();
 
 
-a.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        showA();
-    }
-});
+        a.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showA();
+            }
+        });
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showB();
+                if(fragment_a.isData)
+                    showB();
             }
         });
 

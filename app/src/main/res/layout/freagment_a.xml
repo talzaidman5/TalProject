@@ -7,570 +7,599 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="right"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:layout_above="@+id/main_LIN">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/errors"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:fontFamily="@font/regular"
-        android:layout_marginTop="15dp"
-        android:text="חלק א' -פרטים אישיים:"
-        android:textColor="@color/black"
-        android:textStyle="bold"></TextView>
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:hintTextColor="@color/black"
+            android:layout_height="match_parent"
             android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="מספר תעודת זהות (מלא בלבד):"
-            android:id="@+id/questionnairePage_EDT_id">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="שם פרטי:"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_first_name"
-            android:layout_weight="1"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="שם משפחה:"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_family_name"
-            android:layout_weight="1"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
-
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:outlineSpotShadowColor="@color/black"
-            android:outlineAmbientShadowColor="@color/black"
-android:layout_gravity="right"
-                        android:layout_margin="5dp"
-android:fontFamily="@font/regular"
-
-            android:id="@+id/questionnairePage_EDT_gender"
-
+            android:layout_margin="10dp"
             android:orientation="vertical">
-            <RadioButton android:id="@+id/radio_pirates"
-                android:layout_width="wrap_content"
+
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="זכר"
+                android:layout_below="@+id/errors"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:fontFamily="@font/regular"
+                android:layout_marginTop="15dp"
+                android:text="חלק א' -פרטים אישיים:"
+                android:textColor="@color/black"
+                android:textStyle="bold"></TextView>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hintTextColor="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="מספר תעודת זהות (מלא בלבד):"
+                android:id="@+id/questionnairePage_EDT_id">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:inputType="number"
+                    android:gravity="right"
+
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="שם פרטי:"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_first_name"
+                android:layout_weight="1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="שם משפחה:"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_family_name"
+                android:layout_weight="1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:outlineSpotShadowColor="@color/black"
+                android:outlineAmbientShadowColor="@color/black"
+                android:layout_gravity="right"
                 android:layout_margin="5dp"
                 android:fontFamily="@font/regular"
+                android:id="@+id/questionnairePage_EDT_gender"
+                android:orientation="vertical">
+                <RadioButton android:id="@+id/radio_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="זכר"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/regular"
+                    android:textSize="16dp"
+                    android:layout_gravity="right"
+                    android:textColor="@color/black"
+                    />
+
+                <RadioButton android:id="@+id/radio_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="נקבה"
+                    android:layout_gravity="right"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/regular"
+                    android:textSize="16dp"      />
+            </RadioGroup>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="תאריך לידה:"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_dateBirth"
+                android:layout_weight="1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="גיל:"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_age"
+                android:layout_weight="1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="שם משפחה קודם:"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_lastName"
+                android:layout_weight="1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="עיר/ישוב:"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_city"
+                android:layout_weight="1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="מיקוד:"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_postal"
+                android:layout_weight="1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="רחוב ומס' בית"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_street"
+                android:layout_weight="1"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    />
+            </com.google.android.material.textfield.TextInputLayout >
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint=":מייל"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_email"
+                android:layout_weight="1" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"  />
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="טלפון נייד:"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_mobilePhone"
+                android:layout_weight="1" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"  />
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                app:hintTextColor="@color/black"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="טלפון בעבודה:"
+                android:id="@+id/questionnairePage_EDT_OfficePhone"
+                android:layout_weight="1" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"  />
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/black"
+                android:gravity="right"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="טלפון בבית:"
+                app:hintTextColor="@color/black"
+                android:id="@+id/questionnairePage_EDT_HomePhone"
+                android:layout_weight="1" >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"  />
+            </com.google.android.material.textfield.TextInputLayout >
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="מסכים לזימון לתרום דם"
+                android:id="@+id/questionnairePage_EDT_bloodDonationAgain"
+                android:textColor="@color/black"
                 android:textSize="16dp"
-                android:layout_gravity="right"
+                android:fontFamily="@font/regular"
+                android:buttonTint="@color/black"
+                android:layout_weight="1"/>
 
-                android:textColor="@color/black"
-                />
 
-            <RadioButton android:id="@+id/radio_ninjas"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="נקבה"
-                android:layout_gravity="right"
-
-                android:layout_margin="5dp"
-                android:fontFamily="@font/regular"
-                android:textSize="16dp"      />
-        </RadioGroup>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="תאריך לידה:"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_dateBirth"
-            android:layout_weight="1"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
                 android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="ארץ לידת אם"
+                android:id="@+id/questionnairePage_EDT_MotherCountry"
+                android:layout_weight="1" >
 
-        </com.google.android.material.textfield.TextInputLayout >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"  />
+            </com.google.android.material.textfield.TextInputLayout >
 
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="גיל:"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_age"
-            android:layout_weight="1"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
+                android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
                 android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="ארץ לידת אב"
+                android:id="@+id/questionnairePage_EDT_fatherCountry"
+                android:layout_weight="1" >
 
-        </com.google.android.material.textfield.TextInputLayout >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"  />
+            </com.google.android.material.textfield.TextInputLayout >
 
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="שם משפחה קודם:"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_lastName"
-            android:layout_weight="1"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
+                android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
                 android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="שנת עליה/הגעה לישראל:"
+                android:id="@+id/questionnairePage_EDT_yearImmigration"
+                android:layout_weight="1" >
 
-        </com.google.android.material.textfield.TextInputLayout >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"  />
+            </com.google.android.material.textfield.TextInputLayout >
 
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="עיר/ישוב:"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_city"
-            android:layout_weight="1"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
+                android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
                 android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+                android:hint="ארץ לידה:"
+                android:id="@+id/questionnairePage_EDT_CountryBirth"
+                android:layout_weight="1" >
 
-        </com.google.android.material.textfield.TextInputLayout >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"  />
+            </com.google.android.material.textfield.TextInputLayout >
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="מיקוד:"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_postal"
-            android:layout_weight="1"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
+                android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
                 android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
 
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="רחוב ומס' בית"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_street"
-            android:layout_weight="1"
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
-        </com.google.android.material.textfield.TextInputLayout >
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint=":מייל"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_email"
-            android:layout_weight="1" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"  />
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="טלפון נייד:"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_mobilePhone"
-            android:layout_weight="1" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"  />
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            app:hintTextColor="@color/black"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="טלפון בעבודה:"
-            android:id="@+id/questionnairePage_EDT_OfficePhone"
-            android:layout_weight="1" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"  />
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="טלפון בבית:"
-            app:hintTextColor="@color/black"
-            android:id="@+id/questionnairePage_EDT_HomePhone"
-            android:layout_weight="1" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"  />
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="מסכים לזימון לתרום דם"
-            android:id="@+id/questionnairePage_EDT_bloodDonationAgain"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:fontFamily="@font/regular"
-            android:buttonTint="@color/black"
-            android:layout_weight="1"/>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="ארץ לידת אם"
-            android:id="@+id/questionnairePage_EDT_MotherCountry"
-            android:layout_weight="1" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"  />
-        </com.google.android.material.textfield.TextInputLayout >
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="ארץ לידת אב"
-            android:id="@+id/questionnairePage_EDT_fatherCountry"
-            android:layout_weight="1" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"  />
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="שנת עליה/הגעה לישראל:"
-            android:id="@+id/questionnairePage_EDT_yearImmigration"
-            android:layout_weight="1" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"  />
-        </com.google.android.material.textfield.TextInputLayout >
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-            android:hint="ארץ לידה:"
-            android:id="@+id/questionnairePage_EDT_CountryBirth"
-            android:layout_weight="1" >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"  />
-        </com.google.android.material.textfield.TextInputLayout >
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/black"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/black"
-
-            android:text="לרשום לזכות:
+                android:text="לרשום לזכות:
  עבור חולה, שם החולה:"
-            android:id="@+id/questionnairePage_EDT_patientName"
-            android:layout_weight="1" >
+                android:id="@+id/questionnairePage_EDT_patientName"
+                android:layout_weight="1" >
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"  />
-        </com.google.android.material.textfield.TextInputLayout >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:gravity="right"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"  />
+            </com.google.android.material.textfield.TextInputLayout >
 
         </LinearLayout>
-
     </ScrollView>
+    <LinearLayout
+        android:id="@+id/main_LIN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/back"
+            android:layout_weight="1"
+            android:id="@+id/a"/>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/next"
+            android:id="@+id/b"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
 
 </RelativeLayout>
