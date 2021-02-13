@@ -1,14 +1,14 @@
 package com.example.project.data;
 
+import com.example.project.utils.Constants;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class User {
-    public enum USER_TYPE
-    {
-        CLIENT,MANAGER;
+    public enum USER_TYPE {
+        CLIENT, MANAGER;
     }
 
     private String fullName;
@@ -20,11 +20,11 @@ public class User {
     private Date birthDate;
     private String imageUser;
     private Boolean remember;
-    private  USER_TYPE userType;
+    private USER_TYPE userType;
     private ArrayList<BloodDonation> allBloodDonations;
     private String uuID;
 
-    public User(String fullName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember,String uuid) {
+    public User(String fullName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid) {
         this.fullName = fullName;
         this.ID = ID;
         this.email = email;
@@ -34,13 +34,18 @@ public class User {
         this.birthDate = birthDate;
         this.imageUser = image;
         this.remember = isRemember;
-        this.userType = USER_TYPE.CLIENT;
+
+        if (ID.equals(Constants.MANAGER_ID))
+            this.userType = USER_TYPE.MANAGER;
+        else
+            this.userType = USER_TYPE.CLIENT;
+
         this.allBloodDonations = new ArrayList<>();
         this.uuID = uuid;
     }
-    public User(String data)
-    {
-       this(createUserFromString(data));
+
+    public User(String data) {
+        this(createUserFromString(data));
     }
 
 
@@ -75,7 +80,7 @@ public class User {
     }
 
     private static User createUserFromString(String data) {
-       User temp;
+        User temp;
         if (data == "NA" || data.equals("null"))
             temp = new User();
         else
@@ -83,11 +88,12 @@ public class User {
         return temp;
     }
 
-    public void addBloodDonation(BloodDonation bloodDonation){
+    public void addBloodDonation(BloodDonation bloodDonation) {
         if (allBloodDonations == null)
             allBloodDonations = new ArrayList<>();
         allBloodDonations.add(bloodDonation);
     }
+
     public String getuuID() {
         return uuID;
     }

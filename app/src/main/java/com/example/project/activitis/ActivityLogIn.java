@@ -37,16 +37,17 @@ import java.util.Date;
 
 public class ActivityLogIn extends AppCompatActivity {
 
-    private Button main_page_BTN_signUp,viewForgotPassword;
+    private Button main_page_BTN_signUp, viewForgotPassword;
     private MaterialButton mainPage_BTN_signIn;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
     private AllUsers allUsers = new AllUsers();
     private User newUser;
-    private TextInputLayout mainPage_EDIT_password,mainPage_EDIT_email;
+    private TextInputLayout mainPage_EDIT_password, mainPage_EDIT_email;
     private MySheredP msp;
     private Gson gson = new Gson();
     private CheckBox main_page_CHECK_remember;
+
     private FirebaseAuth auth;
 
 
@@ -59,7 +60,7 @@ public class ActivityLogIn extends AppCompatActivity {
 
         setContentView(R.layout.activity_log_in);
         getSupportActionBar().hide();
-        readFB();
+      //  readFB();
         auth = FirebaseAuth.getInstance();
 
 
@@ -69,7 +70,6 @@ public class ActivityLogIn extends AppCompatActivity {
         myRef.child("ActivityPosition").child("3").setValue(new Position("דרך משה פלימן 4 חיפה, קניון חיפה מול קסטרו\t",151,new Date(),"16:00","20:00:00","https://www.mdais.org/images/whatsup.jpg"));
         */
         findViews();
-        mainPage_BTN_signIn.setEnabled(false);
         msp = new MySheredP(this);
 
         getFromMSP();
@@ -132,7 +132,11 @@ public class ActivityLogIn extends AppCompatActivity {
         String data = msp.getString(Constants.KEY_MSP, "NA");
         newUser = new User(data);
         if (newUser.getRemember())
-            startActivity(new Intent(ActivityLogIn.this, ActivityProfileMenu.class));
+            if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
+                startActivity(new Intent(ActivityLogIn.this, ActivityProfileMenu.class));
+            else
+                startActivity(new Intent(ActivityLogIn.this, ActivityMenuManager.class));
+
         return newUser;
     }
 
@@ -140,38 +144,26 @@ public class ActivityLogIn extends AppCompatActivity {
         startActivity(new Intent(ActivityLogIn.this, ActivitySignUpPage.class));
     }
 
-    public void readFB() {
-        myRef.child("Users").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    User tempUser = ds.getValue(User.class);
-                    allUsers.addToList(tempUser);
-                }
-                mainPage_BTN_signIn.setEnabled(true);
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-            }
-        });
-    }
 
     public void checkUser() {
         String email_txt = mainPage_EDIT_email.getEditText().getText().toString();
         String password_txt = mainPage_EDIT_password.getEditText().getText().toString();
         if (TextUtils.isEmpty(email_txt) || TextUtils.isEmpty(password_txt))
             Toast.makeText(ActivityLogIn.this, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show();
-        else{
+        else {
             auth.signInWithEmailAndPassword(email_txt, password_txt)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 putOnMSP();
-                                Intent intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
+                                Intent intent;
+                                if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
+                                    intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
+                                else
+                                    intent = new Intent(ActivityLogIn.this, ActivityMenuManager.class);
+
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 finish();
@@ -182,10 +174,6 @@ public class ActivityLogIn extends AppCompatActivity {
                     });
         }
     }
-
-
-
-
 
 
     private void putOnMSP() {

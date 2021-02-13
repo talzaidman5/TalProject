@@ -60,15 +60,15 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private MaterialButton signUp_BTN_signUp;
     private CircleImageView sign_up_IMG_logo;
     private Spinner signUp_SPI_bloodTypes;
-    private TextInputLayout signUp_EDT_id,signUp_EDT_email,signUp_EDT_phone,signUp_EDT_password,signUp_EDT_name;
+    private TextInputLayout signUp_EDT_id, signUp_EDT_email, signUp_EDT_phone, signUp_EDT_password, signUp_EDT_name;
     private TextView signUp_TXT_birthDatePicker;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     public static SharedPreferences sharedpreferences;
-    public boolean data=true;
+    public boolean data = true;
     public static Date date;
     private MySheredP msp;
     private Gson gson = new Gson();
-    private String imageUrl,uuid;
+    private String imageUrl, uuid;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 22;
     private FirebaseStorage storage;
@@ -76,9 +76,9 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private FirebaseAuth auth;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
-    private AllUsers allUsers =  new AllUsers();
+    private AllUsers allUsers = new AllUsers();
     private User newUser;
-    private Boolean isImage= false;
+    private Boolean isImage = false;
 
 
     @SuppressLint("ResourceType")
@@ -104,6 +104,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
         uuid = android.provider.Settings.Secure.getString(
                 this.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
+        getFromMSP();
+
         sign_up_IMG_logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +121,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(ActivitySignUpPage.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,mDateSetListener,year,month,day);
+                DatePickerDialog dialog = new DatePickerDialog(ActivitySignUpPage.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
 
@@ -130,7 +132,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                date=new Date(year,month,dayOfMonth);
+                date = new Date(year, month, dayOfMonth);
                 SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
 
                 String finalDate = dateFormat2.format(date);
@@ -147,51 +149,52 @@ public class ActivitySignUpPage extends AppCompatActivity {
                         signUp_EDT_password.getEditText().getText().toString());
             }
 
-    });
+        });
 
-}
+    }
 
-    private boolean checkData(){
-        if(signUp_EDT_name.getEditText().getText().toString().equals("")) {
+    private boolean checkData() {
+        if (signUp_EDT_name.getEditText().getText().toString().equals("")) {
             signUp_EDT_name.setError("");
-            data=false;
+            data = false;
         }
-        if(signUp_EDT_id.getEditText().getText().toString().equals("")) {
+        if (signUp_EDT_id.getEditText().getText().toString().equals("")) {
             signUp_EDT_id.setError("");
-            data=false;
+            data = false;
         }
-        if(signUp_EDT_email.getEditText().getText().toString().equals("")) {
+        if (signUp_EDT_email.getEditText().getText().toString().equals("")) {
             signUp_EDT_email.setError("");
-            data=false;
+            data = false;
         }
-        if(signUp_EDT_phone.getEditText().getText().toString().equals("")) {
+        if (signUp_EDT_phone.getEditText().getText().toString().equals("")) {
             signUp_EDT_phone.setError("");
-            data=false;
+            data = false;
         }
-        if(signUp_EDT_password.getEditText().getText().toString().equals("")) {
+        if (signUp_EDT_password.getEditText().getText().toString().equals("")) {
             signUp_EDT_password.setError("");
-            data=false;
+            data = false;
         }
 
-        if(signUp_SPI_bloodTypes.getSelectedItem().toString().equals("")) {
-            ((TextView)signUp_SPI_bloodTypes.getSelectedView()).setError("Error message");
-            data=false;
+        if (signUp_SPI_bloodTypes.getSelectedItem().toString().equals("")) {
+            ((TextView) signUp_SPI_bloodTypes.getSelectedView()).setError("Error message");
+            data = false;
         }
-        if(signUp_TXT_birthDatePicker.getText().toString().equals("")) {
+        if (signUp_TXT_birthDatePicker.getText().toString().equals("")) {
             signUp_TXT_birthDatePicker.setError("Error message");
-            data=false;
+            data = false;
         }
         return data;
     }
 
-    private AllUsers getFromMSP(){
-        String data  = msp.getString(Constants.KEY_MSP_ALL, "NA");
+    private AllUsers getFromMSP() {
+        String data = msp.getString(Constants.KEY_MSP_ALL, "NA");
         allUsers = new AllUsers(data);
         return allUsers;
     }
-    private void putOnMSP(){
+
+    private void putOnMSP() {
         String json = gson.toJson(newUser);
-        msp.putString(Constants.KEY_MSP,json);
+        msp.putString(Constants.KEY_MSP, json);
     }
 
     private void findView() {
@@ -201,15 +204,14 @@ public class ActivitySignUpPage extends AppCompatActivity {
         signUp_EDT_phone = findViewById(R.id.signUp_EDT_phone);
         signUp_EDT_password = findViewById(R.id.signUp_EDT_password);
         signUp_BTN_signUp = findViewById(R.id.signUp_BTN_signUp);
-        signUp_SPI_bloodTypes =  findViewById(R.id.signUp_SPI_bloodTypes);
+        signUp_SPI_bloodTypes = findViewById(R.id.signUp_SPI_bloodTypes);
         signUp_TXT_birthDatePicker = findViewById(R.id.signUp_TXT_birthDatePicker);
         sign_up_IMG_logo = findViewById(R.id.sign_up_IMG_logo);
 
     }
 
     // Select Image method
-    private void SelectImage()
-    {
+    private void SelectImage() {
 
         // Defining Implicit Intent to mobile gallery
         Intent intent = new Intent();
@@ -223,8 +225,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST
@@ -241,16 +242,13 @@ public class ActivitySignUpPage extends AppCompatActivity {
                         .getBitmap(getContentResolver(), filePath);
                 sign_up_IMG_logo.setImageBitmap(bitmap);
 
-            }
-
-            catch (IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void uploadImage()
-    {
+    private void uploadImage() {
         if (filePath != null) {
 
             // Code for showing progressDialog while uploading
@@ -259,7 +257,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
             progressDialog.show();
 
             // Defining the child of storageReference
-            imageUrl = "images/"+ UUID.randomUUID().toString();
+            imageUrl = "images/" + UUID.randomUUID().toString();
             StorageReference ref = storageReference.child(imageUrl);
             newUser.setImageUser(imageUrl);
             // adding listeners on upload
@@ -267,8 +265,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
             ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(
-                        UploadTask.TaskSnapshot taskSnapshot)
-                {
+                        UploadTask.TaskSnapshot taskSnapshot) {
                     // Image uploaded successfully
                     // Dismiss dialog
                     progressDialog.dismiss();
@@ -283,52 +280,55 @@ public class ActivitySignUpPage extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(ActivitySignUpPage.this,"Failed " + e.getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ActivitySignUpPage.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                    double progress
-                                            = (100.0
-                                            * taskSnapshot.getBytesTransferred()
-                                            / taskSnapshot.getTotalByteCount());
-                                    progressDialog.setMessage(
-                                            "Uploaded "
-                                                    + (int)progress + "%");
-                                }
-                            });
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress
+                                    = (100.0
+                                    * taskSnapshot.getBytesTransferred()
+                                    / taskSnapshot.getTotalByteCount());
+                            progressDialog.setMessage(
+                                    "Uploaded "
+                                            + (int) progress + "%");
+                        }
+                    });
         }
     }
 
     private void register(String usernameTemp, String emailTemp, String passwordTemp) {
-        if(!usernameTemp.equals("") && !emailTemp.equals("") && !passwordTemp.equals("")) {
+        if (!usernameTemp.equals("") && !emailTemp.equals("") && !passwordTemp.equals("")) {
             auth.createUserWithEmailAndPassword(emailTemp, passwordTemp).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         assert firebaseUser != null;
-                        if(isImage)
+                        if (isImage)
                             newUser = new User(signUp_EDT_name.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
                                     signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, filePath.toString(), false, uuid);
                         else
                             newUser = new User(signUp_EDT_name.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
-                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(),  signUp_SPI_bloodTypes.getSelectedItem().toString(), date,"https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e",false,uuid);
+                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, "https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e", false, uuid);
 
                         myRef.child("Users").child(signUp_EDT_id.getEditText().getText().toString()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    getFromMSP();
-                                    putOnMSP();
+                                   // getFromMSP();
+                                //    putOnMSP();
                                     allUsers.addToList(newUser);
                                     putOnMSP();
-                                    startActivity(new Intent(ActivitySignUpPage.this, ActivityProfileMenu.class));
                                     uploadImage();
+                                    if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
+                                        startActivity(new Intent(ActivitySignUpPage.this, ActivityProfileMenu.class));
+                                    else
+                                        startActivity(new Intent(ActivitySignUpPage.this, ActivityMenuManager.class));
 
-                                }
-                                else
+
+                                } else
                                     Toast.makeText(ActivitySignUpPage.this, "error", Toast.LENGTH_SHORT);
 
 
@@ -344,8 +344,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
                     Toast.makeText(ActivitySignUpPage.this, e.getMessage(), Toast.LENGTH_SHORT);
                 }
             });
-        }
-        else{
+        } else {
             checkData();
         }
 
