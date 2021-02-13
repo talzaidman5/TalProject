@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class ActivityPosition extends AppCompatActivity {
 
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final DatabaseReference myRef = database.getReference("message");
+    final DatabaseReference myRef = database.getReference("FB");
     private RecyclerView main_LST_news;
     ArrayList<Position> positions = new ArrayList<>();
     private  MySheredP msp;

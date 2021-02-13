@@ -40,7 +40,7 @@ import java.util.Date;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class MyProfile extends AppCompatActivity {
+public class ActivityMyProfile extends AppCompatActivity {
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill, myProfile_TXT_dateBirthToFill, myProfile_TXT_bloodTypeToFill;
@@ -169,7 +169,7 @@ public class MyProfile extends AppCompatActivity {
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(MyProfile.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
+                DatePickerDialog dialog = new DatePickerDialog(ActivityMyProfile.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
 
@@ -241,7 +241,7 @@ public class MyProfile extends AppCompatActivity {
 
             String urlImage = currentUser.getImageUser();
             myProfile_BTN_logo.setImageResource(android.R.color.transparent);
-            Glide.with(MyProfile.this)
+            Glide.with(ActivityMyProfile.this)
                     .load(urlImage)
                     .circleCrop()
                     .into(myProfile_BTN_logo);

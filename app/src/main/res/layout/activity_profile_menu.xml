@@ -6,26 +6,26 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:background="@drawable/my_gradient_drawable"
-    tools:context="com.example.project.activitis.Menu">
-<ImageView
-    android:layout_width="30dp"
-    android:layout_height="30dp"
-    android:layout_margin="10dp"
-    android:src="@drawable/ic_all"
-    />
+    tools:context="com.example.project.activitis.ActivityProfileMenu">
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_all"
+        />
 
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:src="@drawable/logo"
-    android:layout_marginTop="10dp"
-    android:id="@+id/logo"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="10dp"
+        android:id="@+id/logo"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="היי טל זיידמן"
-       android:fontFamily="@font/miriam_libre_bold"
+        android:fontFamily="@font/miriam_libre_bold"
         android:layout_below="@+id/logo"
         android:textSize="22dp"
         android:textColor="@color/white"
@@ -39,41 +39,36 @@
         android:layout_below="@+id/logo"
         android:background="@color/white"
         android:layout_marginTop="60dp"
-        android:layout_centerInParent="true"
-        >
+        android:layout_centerInParent="true">
 
         <LinearLayout
             android:id="@+id/menu_ALL_1"
-android:layout_marginTop="50dp"
+            android:layout_marginTop="50dp"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:background="@drawable/shadow"
             android:orientation="vertical"
-android:layout_marginLeft="40dp"
-
-
-            >
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/document"
                 android:layout_gravity="center"
+                android:layout_weight="1" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/menu_BTN_fillQ"
                 android:layout_weight="1"
-                />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/menu_BTN_fillQ"
-        android:layout_weight="1"
 
-        android:text="מילוי שאלון"
-        android:textSize="20dp"
-        android:background="#FFFFFF"
-        android:textColor="@color/blue"
-        android:textStyle="bold"
-        android:fontFamily="@font/regular"
-        />
+                android:text="מילוי שאלון"
+                android:textSize="20dp"
+                android:background="#FFFFFF"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:fontFamily="@font/regular" />
         </LinearLayout>
 
         <LinearLayout
@@ -85,29 +80,29 @@ android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginTop="50dp"
             android:layout_alignParentRight="true"
-android:id="@+id/menu_ALL_2"
+            android:id="@+id/menu_ALL_2"
             >
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/user"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            />
-    <Button
-        android:id="@+id/menu_BTN_profile"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="הפרופיל שלי "
-        android:layout_centerHorizontal="true"
-        android:textSize="20dp"
-        android:fontFamily="@font/regular"
-        android:background="#FFFFFF"
-        android:textColor="@color/blue"
-        android:textStyle="bold"
-        android:layout_weight="1"
-        />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/user"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                />
+            <Button
+                android:id="@+id/menu_BTN_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="הפרופיל שלי "
+                android:layout_centerHorizontal="true"
+                android:textSize="20dp"
+                android:fontFamily="@font/regular"
+                android:background="#FFFFFF"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -123,32 +118,32 @@ android:id="@+id/menu_ALL_2"
             android:layout_below="@+id/menu_ALL_2"
             >
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/location"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            />
-    <Button
-        android:id="@+id/menu_BTN_activityPosition"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="עמדות תרומת דם"
-        android:layout_centerHorizontal="true"
-        android:textSize="20dp"
-        android:fontFamily="@font/regular"
-        android:background="#FFFFFF"
-        android:textColor="@color/blue"
-        android:layout_weight="1"
-        android:textStyle="bold"
-        />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/location"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                />
+            <Button
+                android:id="@+id/menu_BTN_activityPosition"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="עמדות תרומת דם"
+                android:layout_centerHorizontal="true"
+                android:textSize="20dp"
+                android:fontFamily="@font/regular"
+                android:background="#FFFFFF"
+                android:textColor="@color/blue"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                />
         </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/menu_ALL_4"
-
+            android:layout_alignParentLeft="true"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:background="@drawable/shadow"
@@ -170,7 +165,7 @@ android:id="@+id/menu_ALL_2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-        android:id="@+id/main_BTN_history"
+                android:id="@+id/main_BTN_history"
                 android:text="היסטוריה תרומות"
                 android:textSize="20dp"
                 android:background="#FFFFFF"

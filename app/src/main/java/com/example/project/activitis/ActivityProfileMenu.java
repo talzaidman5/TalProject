@@ -25,13 +25,13 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class Menu extends AppCompatActivity {
+public class ActivityProfileMenu extends AppCompatActivity {
 
     private MySheredP msp;
     private Gson gson = new Gson();
     private TextView main_TXT_name;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final DatabaseReference myRef = database.getReference("message");
+    final DatabaseReference myRef = database.getReference("FB");
 
     Button menu_BTN_fillQ, menu_BTN_profile, menu_BTN_activityPosition, main_BTN_history;
     private ArrayList<Position> positions = new ArrayList<>();
@@ -44,7 +44,7 @@ public class Menu extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_profile_menu);
         getSupportActionBar().hide();
         msp = new MySheredP(this);
         findViews();
@@ -54,7 +54,7 @@ public class Menu extends AppCompatActivity {
         menu_BTN_activityPosition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Menu.this, ActivityPosition.class);
+                Intent intent = new Intent(ActivityProfileMenu.this, ActivityPosition.class);
                 startActivity(intent);
             }
         });
@@ -92,11 +92,11 @@ public class Menu extends AppCompatActivity {
 
 
     void openHistoryPage() {
-        startActivity(new Intent(Menu.this, History.class));
+        startActivity(new Intent(ActivityProfileMenu.this, ActivityHistoryBloodDonations.class));
     }
 
     void openmenu() {
-        startActivity(new Intent(Menu.this, MyProfile.class));
+        startActivity(new Intent(ActivityProfileMenu.this, ActivityMyProfile.class));
     }
 
     public void readDataPositions() {
@@ -128,5 +128,18 @@ public class Menu extends AppCompatActivity {
     private void putOnMSP() {
         String jsonPositions = gson.toJson(positions);
         msp.putString(Constants.KEY_MSP_POS, jsonPositions);
+    }
+
+    public static class ActivityQuestionnairePage extends AppCompatActivity {
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            getSupportActionBar().hide();
+            setContentView(R.layout.questionnaire_page);
+        }
     }
 }

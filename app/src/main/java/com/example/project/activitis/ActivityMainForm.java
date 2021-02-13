@@ -8,9 +8,11 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.project.Questionnaire.Fragment.fragment_a;
+import com.example.project.Questionnaire.Fragment.fragment_b;
 import com.example.project.R;
 
-public class MainForm extends AppCompatActivity {
+public class ActivityMainForm extends AppCompatActivity {
  ImageView a, b;
 
 

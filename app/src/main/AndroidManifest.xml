@@ -12,45 +12,45 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activitis.History"
+        <activity android:name=".activitis.ActivityHistoryBloodDonations"
             android:theme="@style/Theme.MaterialComponents.DayNight">
 
         </activity>
         <activity
-            android:name=".activitis.ViewFullQuestionnairesActivity"
+            android:name=".Questionnaire.ViewFullQuestionnairesActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
-            android:name=".activitis.MainForm"
+            android:name=".activitis.ActivityMainForm"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.ActivityPosition"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
-            android:name=".activitis.MyProfile"
+            android:name=".activitis.ActivityMyProfile"
             android:theme="@style/Theme.MaterialComponents.DayNight"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.QuestionnairePage"
+            android:name=".activitis.ActivityProfileMenu$ActivityQuestionnairePage"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.Menu"
+            android:name=".activitis.ActivityProfileMenu"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.MenuManager"
+            android:name=".activitis.ActivityMenuManager"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.PublishingReportsActivity"
+            android:name=".activitis.ActivityPublishingReportsActivity"
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.SignUpPage"
+            android:name=".activitis.ActivitySignUpPage"
             android:theme="@style/Theme.MaterialComponents"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.LogIn"
+            android:name=".activitis.ActivityLogIn"
             android:theme="@style/Theme.MaterialComponents.DayNight"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>

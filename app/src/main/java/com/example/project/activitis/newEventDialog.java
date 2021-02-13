@@ -33,7 +33,7 @@ public class newEventDialog extends AppCompatDialogFragment {
             public void onClick(View view) {
 //                dialog.dismiss();
               //  Intent intent = new Intent(view.getContext(), QuestionnairePage.class);
-                Intent intent = new Intent(view.getContext(), MainForm.class);
+                Intent intent = new Intent(view.getContext(), ActivityMainForm.class);
                 startActivity(intent);
             }
         });

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/b"
-    tools:context=".activitis.SignUpPage">
+    tools:context=".activitis.ActivitySignUpPage">
 
     <ImageView
         android:layout_width="match_parent"
@@ -27,7 +27,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/sign_up_IMG_logo"
         android:layout_above="@+id/signUp_BTN_signUp"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        tools:ignore="NotSibling">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -191,10 +192,6 @@
 
             </com.google.android.material.textfield.TextInputLayout >
 
-
-
-
-
             <Spinner
                 android:id="@+id/signUp_SPI_country"
                 android:layout_width="150dp"
@@ -249,7 +246,6 @@
                 android:textColor="@color/black"
                 android:textSize="16dp"
                 android:layout_margin="10dp"
-
                 android:id="@+id/signUp_TXT_birthDatePicker"/>
 
             <com.google.android.material.button.MaterialButton
@@ -265,13 +261,8 @@
                 app:cornerRadius="10dp"
                 android:layout_gravity="center"
                 app:strokeColor="@color/black"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                />
-
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
         </LinearLayout>
-
     </ScrollView>
-
-
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.project.activitis;
+package com.example.project.Questionnaire.Fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

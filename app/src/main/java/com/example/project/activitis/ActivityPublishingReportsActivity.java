@@ -8,7 +8,7 @@ import android.widget.Spinner;
 
 import com.example.project.R;
 
-public class PublishingReportsActivity extends AppCompatActivity {
+public class ActivityPublishingReportsActivity extends AppCompatActivity {
     private Spinner activity_publishing_reports_SPI_year,activity_publishing_reports_SPI_month,activity_publishing_reports_SPI_day,
             activity_publishing_reports_SPI_BloodDonationPosition,activity_publishing_reports_SPI_age;
     @Override

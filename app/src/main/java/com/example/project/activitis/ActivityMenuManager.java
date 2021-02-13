@@ -7,22 +7,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.project.Questionnaire.ViewFullQuestionnairesActivity;
 import com.example.project.R;
-import com.example.project.data.Position;
-import com.example.project.utils.MySheredP;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
-import java.util.ArrayList;
-
-public class MenuManager extends AppCompatActivity {
+public class ActivityMenuManager extends AppCompatActivity {
 
 
     private Button menuManager_BTN_publishingReports,menuManager_BTN_view_full_questionnaires;
@@ -41,7 +31,7 @@ public class MenuManager extends AppCompatActivity {
         menuManager_BTN_view_full_questionnaires.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuManager.this, ViewFullQuestionnairesActivity.class);
+                Intent intent = new Intent(ActivityMenuManager.this, ViewFullQuestionnairesActivity.class);
                 startActivity(intent);
 
             }
@@ -49,7 +39,7 @@ public class MenuManager extends AppCompatActivity {
         menuManager_BTN_publishingReports.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuManager.this, PublishingReportsActivity.class);
+                Intent intent = new Intent(ActivityMenuManager.this, ActivityPublishingReportsActivity.class);
                 startActivity(intent);
             }
         });

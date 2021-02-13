@@ -24,12 +24,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-public class LogIn extends AppCompatActivity {
+public class ActivityLogIn extends AppCompatActivity {
 
     private Button main_page_BTN_signUp;
     MaterialButton mainPage_BTN_signIn;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final DatabaseReference myRef = database.getReference("message");
+    final DatabaseReference myRef = database.getReference("FB");
     private AllUsers allUsers = new AllUsers();
     private User newUser;
     private TextInputLayout mainPage_EDIT_id, mainPage_EDIT_password;
@@ -86,13 +86,13 @@ public class LogIn extends AppCompatActivity {
         String data = msp.getString(Constants.KEY_MSP, "NA");
         newUser = new User(data);
         if (newUser.getRemember())
-            startActivity(new Intent(LogIn.this, Menu.class));
+            startActivity(new Intent(ActivityLogIn.this, ActivityProfileMenu.class));
         return newUser;
     }
 
     public void openSignUpPage() {
 
-        startActivity(new Intent(LogIn.this, SignUpPage.class));
+        startActivity(new Intent(ActivityLogIn.this, ActivitySignUpPage.class));
     }
 
     public void readFB() {
@@ -121,9 +121,9 @@ public class LogIn extends AppCompatActivity {
                 putOnMSP();
                     if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().getText().toString())) {
                         if (newUser.getUserType().equals(User.USER_TYPE.MANAGER))
-                            startActivity(new Intent(LogIn.this, MenuManager.class));
+                            startActivity(new Intent(ActivityLogIn.this, ActivityMenuManager.class));
                         else
-                            startActivity(new Intent(LogIn.this, Menu.class));
+                            startActivity(new Intent(ActivityLogIn.this, ActivityProfileMenu.class));
                     }
 
             } }else
@@ -145,9 +145,10 @@ public class LogIn extends AppCompatActivity {
                 this.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
         newUser = allUsers.getUserByID(mainPage_EDIT_id.getEditText().getText().toString());
-        if (newUser.getuuID().equals(uuidCheck) && newUser != null)
-            return true;
-        else
+        if(newUser!= null) {
+            if (newUser.getuuID().equals(uuidCheck) && newUser != null)
+                return true;
+        }
             return false;
 
     }

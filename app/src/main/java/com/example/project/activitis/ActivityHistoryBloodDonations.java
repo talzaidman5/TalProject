@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-public class History extends AppCompatActivity {
+public class ActivityHistoryBloodDonations extends AppCompatActivity {
     private RecyclerView history_LST_past;
     private ArrayList<BloodDonation> bloodDonations;
     private User user;
