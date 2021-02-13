@@ -8,8 +8,10 @@ import androidx.annotation.RequiresApi;
 import com.example.project.utils.Constants;
 import com.google.gson.Gson;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class User {
@@ -17,7 +19,8 @@ public class User {
         CLIENT, MANAGER;
     }
 
-    private String fullName;
+    private String firstName;
+    private String lastName;
     private String ID;
     private String email;
     private String phoneNumber;
@@ -32,8 +35,9 @@ public class User {
     private int age;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public User(String fullName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid) {
-        this.fullName = fullName;
+    public User(String firstName,String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.ID = ID;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -50,7 +54,7 @@ public class User {
 
         this.allBloodDonations = new ArrayList<>();
         this.uuID = uuid;
-        this.age = LocalDateTime.now().getYear() - birthDate.getYear();
+        this.age = Calendar.getInstance().get(Calendar.YEAR)- birthDate.getYear();
     }
 
     public User(String data) {
@@ -59,7 +63,8 @@ public class User {
 
 
     public User(User other) {
-        this.fullName = other.fullName;
+        this.firstName = other.firstName;
+        this.lastName = other.lastName;
         this.ID = other.ID;
         this.email = other.email;
         this.phoneNumber = other.phoneNumber;
@@ -89,13 +94,6 @@ public class User {
         this.remember = remember;
     }
 
-    public String getUuID() {
-        return uuID;
-    }
-
-    public void setUuID(String uuID) {
-        this.uuID = uuID;
-    }
 
     public int getAge() {
         return age;
@@ -132,8 +130,8 @@ public class User {
         remember = false;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
     public ArrayList<BloodDonation> getAllBloodDonations() {
@@ -144,8 +142,8 @@ public class User {
         this.allBloodDonations = allBloodDonations;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String fullName) {
+        this.firstName = fullName;
     }
 
     public String getID() {
@@ -180,6 +178,13 @@ public class User {
         this.password = password;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public USER_TYPE getUserType() {
         return userType;

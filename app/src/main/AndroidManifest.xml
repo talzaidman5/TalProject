@@ -17,7 +17,12 @@
             android:theme="@style/Theme.MaterialComponents.DayNight"></activity>
         <activity
             android:name=".activitis.ActivityLogIn"
-            android:theme="@style/Theme.MaterialComponents.DayNight" />
+            android:theme="@style/Theme.MaterialComponents.DayNight">      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+        </activity>
         <activity
             android:name=".activitis.ActivityHistoryBloodDonations"
             android:theme="@style/Theme.MaterialComponents.DayNight" />

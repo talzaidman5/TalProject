@@ -232,7 +232,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         if (currentUser != null) {
             myProfile_TXT_phoneNumberToFill.getEditText().setText(currentUser.getPhoneNumber());
             myProfile_TXT_passwordToFill.getEditText().setText(currentUser.getPassword());
-            myProfile_TXT_nameToFill.setText(currentUser.getFullName());
+            myProfile_TXT_nameToFill.setText(currentUser.getFirstName());
             myProfile_TXT_dateBirthToFill.getEditText().setText(currentUser.getBirthDate().getDay() + "/" + currentUser.getBirthDate().getMonth() + "/" + currentUser.getBirthDate().getYear());
             myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
             myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());

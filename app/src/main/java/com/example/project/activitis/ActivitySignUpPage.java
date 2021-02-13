@@ -1,7 +1,6 @@
 package com.example.project.activitis;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -10,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
@@ -50,8 +51,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Locale;
 import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -60,7 +59,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private MaterialButton signUp_BTN_signUp;
     private CircleImageView sign_up_IMG_logo;
     private Spinner signUp_SPI_bloodTypes;
-    private TextInputLayout signUp_EDT_id, signUp_EDT_email, signUp_EDT_phone, signUp_EDT_password, signUp_EDT_name;
+    private TextInputLayout signUp_EDT_id, signUp_EDT_email, signUp_EDT_phone, signUp_EDT_password, signUp_EDT_lastName,signUp_EDT_firstName;
     private TextView signUp_TXT_birthDatePicker;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     public static SharedPreferences sharedpreferences;
@@ -154,8 +153,11 @@ public class ActivitySignUpPage extends AppCompatActivity {
     }
 
     private boolean checkData() {
-        if (signUp_EDT_name.getEditText().getText().toString().equals("")) {
-            signUp_EDT_name.setError("");
+        if (signUp_EDT_firstName.getEditText().getText().toString().equals("")) {
+            signUp_EDT_firstName.setError("");
+            data = false;
+        }if (signUp_EDT_lastName.getEditText().getText().toString().equals("")) {
+            signUp_EDT_lastName.setError("");
             data = false;
         }
         if (signUp_EDT_id.getEditText().getText().toString().equals("")) {
@@ -198,7 +200,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
     }
 
     private void findView() {
-        signUp_EDT_name = findViewById(R.id.signUp_EDT_name);
+        signUp_EDT_firstName = findViewById(R.id.signUp_EDT_firstName);
+        signUp_EDT_lastName = findViewById(R.id.signUp_EDT_lastName);
         signUp_EDT_id = findViewById(R.id.signUp_EDT_id);
         signUp_EDT_email = findViewById(R.id.signUp_EDT_email);
         signUp_EDT_phone = findViewById(R.id.signUp_EDT_phone);
@@ -301,24 +304,24 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private void register(String usernameTemp, String emailTemp, String passwordTemp) {
         if (!usernameTemp.equals("") && !emailTemp.equals("") && !passwordTemp.equals("")) {
             auth.createUserWithEmailAndPassword(emailTemp, passwordTemp).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         assert firebaseUser != null;
                         if (isImage)
-                            newUser = new User(signUp_EDT_name.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
+                            newUser = new User(signUp_EDT_firstName.getEditText().getText().toString(),signUp_EDT_lastName.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
                                     signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, filePath.toString(), false, uuid);
                         else
-                            newUser = new User(signUp_EDT_name.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
+                            newUser = new User(signUp_EDT_firstName.getEditText().getText().toString(),signUp_EDT_lastName.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
                                     signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, "https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e", false, uuid);
 
                         myRef.child("Users").child(signUp_EDT_id.getEditText().getText().toString()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                   // getFromMSP();
-                                //    putOnMSP();
+                                  getFromMSP();
                                     allUsers.addToList(newUser);
                                     putOnMSP();
                                     uploadImage();

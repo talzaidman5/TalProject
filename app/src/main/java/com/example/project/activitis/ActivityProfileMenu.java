@@ -46,7 +46,7 @@ public class ActivityProfileMenu extends AppCompatActivity {
         findViews();
         getFromMSP();
        // readDataPositions();
-        main_TXT_name.setText("היי " + newUser.getFullName());
+        main_TXT_name.setText("היי " + newUser.getFirstName());
         menu_BTN_activityPosition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
