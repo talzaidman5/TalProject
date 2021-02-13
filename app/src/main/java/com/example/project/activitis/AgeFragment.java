@@ -27,7 +27,7 @@ import java.util.List;
 public class AgeFragment extends Fragment {
     private View view;
     private MySheredP msp;
-    private AllUsers allUsers;
+    private AllUsers allUsers =  new AllUsers();
     ArrayList<BloodDonation> months;// = {"one", "two", "Three"};
     int[] ear = {500, 800, 10};
     AnyChartView anyChartView;
@@ -51,7 +51,7 @@ public class AgeFragment extends Fragment {
             view = inflater.inflate(R.layout.age_fragment, container, false);
         msp = new MySheredP(getContext());
         anyChartView = view.findViewById(R.id.any_chart_view);
-        allUsers=  getFromMSP();
+        allUsers = getFromMSP();
         setup();
 
         return view;
