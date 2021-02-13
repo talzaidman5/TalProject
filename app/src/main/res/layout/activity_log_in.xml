@@ -30,10 +30,8 @@
             android:gravity="center"
             android:textStyle="bold"
             android:fontFamily="@font/regular"
-
             android:textSize="22dp"
-            android:textColor="@color/black"
-            />
+            android:textColor="@color/black" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -42,9 +40,9 @@
             android:gravity="right"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:outlineAmbientShadowColor="@color/black"
-            android:hint="תעודת זהות"
+            android:hint="כתובת מייל"
             app:hintTextColor="@color/black"
-            android:id="@+id/mainPage_EDIT_id"
+            android:id="@+id/mainPage_EDIT_email"
             app:startIconDrawable="@drawable/ic_id"
             app:counterEnabled="true"
             app:counterMaxLength="9">
@@ -55,13 +53,14 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:textSize="18dp"
-                android:inputType="number"
+                android:inputType="textEmailAddress"
                 android:gravity="right"
                 android:background="@android:drawable/dialog_holo_light_frame"
                 android:fontFamily="@font/regular"
                 />
 
         </com.google.android.material.textfield.TextInputLayout >
+
 
 
 
@@ -132,7 +131,7 @@
             >
 
             <Button
-                android:id="@+id/main_page_BTN_forget"
+                android:id="@+id/viewForgotPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/mainPage_BTN_signIn"
@@ -141,6 +140,7 @@
                 android:text="שכחתי סיסמא"
                 android:textColor="#33043A"
                 android:textSize="16dp"
+                android:onClick="viewForgotPassword"
                 android:textStyle="bold" />
 
         </LinearLayout>

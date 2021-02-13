@@ -2,12 +2,15 @@ package com.example.project.activitis;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
@@ -16,8 +19,13 @@ import com.example.project.data.Position;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,16 +37,17 @@ import java.util.Date;
 
 public class ActivityLogIn extends AppCompatActivity {
 
-    private Button main_page_BTN_signUp;
-    MaterialButton mainPage_BTN_signIn,main_page_BTN_forget;
+    private Button main_page_BTN_signUp,viewForgotPassword;
+    private MaterialButton mainPage_BTN_signIn;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
     private AllUsers allUsers = new AllUsers();
     private User newUser;
-    private TextInputLayout mainPage_EDIT_id, mainPage_EDIT_password;
+    private TextInputLayout mainPage_EDIT_password,mainPage_EDIT_email;
     private MySheredP msp;
     private Gson gson = new Gson();
     private CheckBox main_page_CHECK_remember;
+    private FirebaseAuth auth;
 
 
     @Override
@@ -46,24 +55,20 @@ public class ActivityLogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_log_in);
         getSupportActionBar().hide();
         readFB();
+        auth = FirebaseAuth.getInstance();
 
 
-      myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://www.mdais.org/images/whatsup.jpg"));
-         myRef.child("ActivityPosition").child("1").setValue(new Position("עראבה, מרכז העיר\t",14,new Date(),"16:00","19:00","https://www.mdais.org/images/whatsup.jpg"));
+      /* myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://www.mdais.org/images/whatsup.jpg"));
+        myRef.child("ActivityPosition").child("1").setValue(new Position("עראבה, מרכז העיר\t",14,new Date(),"16:00","19:00","https://www.mdais.org/images/whatsup.jpg"));
         myRef.child("ActivityPosition").child("2").setValue(new Position("כרכום, מועדון\t",22,new Date(),"09:00","20:00:00","https://www.mdais.org/images/whatsup.jpg"));
         myRef.child("ActivityPosition").child("3").setValue(new Position("דרך משה פלימן 4 חיפה, קניון חיפה מול קסטרו\t",151,new Date(),"16:00","20:00:00","https://www.mdais.org/images/whatsup.jpg"));
-
-        mainPage_EDIT_id = findViewById(R.id.mainPage_EDIT_id);
-        mainPage_BTN_signIn = findViewById(R.id.mainPage_BTN_signIn);
-        mainPage_EDIT_password = findViewById(R.id.mainPage_EDIT_password);
-        main_page_BTN_signUp = findViewById(R.id.main_page_BTN_signUp);
-        main_page_CHECK_remember = findViewById(R.id.main_page_CHECK_remember);
+        */
+        findViews();
         mainPage_BTN_signIn.setEnabled(false);
         msp = new MySheredP(this);
 
@@ -71,7 +76,6 @@ public class ActivityLogIn extends AppCompatActivity {
         mainPage_BTN_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 checkUser();
             }
         });
@@ -81,8 +85,47 @@ public class ActivityLogIn extends AppCompatActivity {
                 openSignUpPage();
             }
         });
+        viewForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onForgotPasswordClicked();
 
+            }
+        });
 
+    }
+
+    private void findViews() {
+        mainPage_EDIT_email = findViewById(R.id.mainPage_EDIT_email);
+        mainPage_BTN_signIn = findViewById(R.id.mainPage_BTN_signIn);
+        mainPage_EDIT_password = findViewById(R.id.mainPage_EDIT_password);
+        main_page_BTN_signUp = findViewById(R.id.main_page_BTN_signUp);
+        main_page_CHECK_remember = findViewById(R.id.main_page_CHECK_remember);
+        this.viewForgotPassword = findViewById(R.id.viewForgotPassword);
+
+    }
+
+    public void onForgotPasswordClicked() {
+        String mail = mainPage_EDIT_email.getEditText().getText().toString().trim();
+        if (mail.isEmpty()) {
+            mainPage_EDIT_email.setError("Invalid email");
+            mainPage_EDIT_email.requestFocus();
+        } else {
+            FirebaseAuth.getInstance().sendPasswordResetEmail(mail)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(ActivityLogIn.this, "הסיסמא נשלחה לכתובת המייל שלך", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(ActivityLogIn.this, "The email entered is incorrect", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     private User getFromMSP() {
@@ -94,7 +137,6 @@ public class ActivityLogIn extends AppCompatActivity {
     }
 
     public void openSignUpPage() {
-
         startActivity(new Intent(ActivityLogIn.this, ActivitySignUpPage.class));
     }
 
@@ -118,43 +160,33 @@ public class ActivityLogIn extends AppCompatActivity {
     }
 
     public void checkUser() {
-        if (allUsers.getAllUser().size() != 0){
-            if (isUser()) {
-                updateRemember();
-                putOnMSP();
-                    if (newUser.getPassword().equals(mainPage_EDIT_password.getEditText().getText().toString())) {
-                        if (newUser.getUserType().equals(User.USER_TYPE.MANAGER))
-                            startActivity(new Intent(ActivityLogIn.this, ActivityMenuManager.class));
-                        else
-                            startActivity(new Intent(ActivityLogIn.this, ActivityProfileMenu.class));
-                    }
-
-            } }else
-                mainPage_EDIT_id.getEditText().setText("invalid");
-        if(mainPage_EDIT_password.getEditText().getText().length() == 0 || mainPage_EDIT_id.getEditText().getText().length() == 0 )
-            mainPage_EDIT_id.getEditText().setText("הכנס תעודה מזההה וסיסמא");
-
-    }
-
-    private void updateRemember() {
-        if (main_page_CHECK_remember.isChecked()) {
-            newUser.setRemember(true);
-            myRef.child("Users").child(newUser.getID()).setValue(newUser);
+        String email_txt = mainPage_EDIT_email.getEditText().getText().toString();
+        String password_txt = mainPage_EDIT_password.getEditText().getText().toString();
+        if (TextUtils.isEmpty(email_txt) || TextUtils.isEmpty(password_txt))
+            Toast.makeText(ActivityLogIn.this, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show();
+        else{
+            auth.signInWithEmailAndPassword(email_txt, password_txt)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                putOnMSP();
+                                Intent intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(ActivityLogIn.this, "אחד הפרטים לא נכונים", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
         }
     }
 
-    private boolean isUser() {
-        String uuidCheck = android.provider.Settings.Secure.getString(
-                this.getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
-        newUser = allUsers.getUserByID(mainPage_EDIT_id.getEditText().getText().toString());
-        if(newUser!= null) {
-            if (newUser.getuuID().equals(uuidCheck) && newUser != null)
-                return true;
-        }
-            return false;
 
-    }
+
+
 
     private void putOnMSP() {
         String jsonAll = gson.toJson(allUsers);
