@@ -125,7 +125,7 @@
                     android:textSize="18dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
-
+                    android:inputType="textEmailAddress"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/blue"
                     android:background="@android:drawable/dialog_holo_light_frame"
