@@ -55,4 +55,12 @@ public class AllUsers {
         }
         return null;
     }
+
+    public User getUserByUUID(String uuid){
+        for (User tempUser: allUser) {
+            if(tempUser.getuuID().equals(uuid))
+                return  tempUser;
+        }
+        return null;
+    }
 }
