@@ -21,26 +21,9 @@ public class ActivityMainForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_form);
         getSupportActionBar().hide();
-        a = findViewById(R.id.a);
-        b = findViewById(R.id.b);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         showA();
 
-
-        a.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showA();
-            }
-        });
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fragment_a.isData)
-                    showB();
-            }
-        });
 
     }
 

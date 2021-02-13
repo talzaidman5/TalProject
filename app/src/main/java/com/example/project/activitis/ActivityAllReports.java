@@ -22,10 +22,10 @@ public class ActivityAllReports extends AppCompatActivity {
 
 
     private void showMyList() {
-        AgeFragment ageFragment = new AgeFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.allReports, ageFragment);
-        transaction.commit();
+//        AgeFragment ageFragment = new AgeFragment();
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.allReports, ageFragment);
+//        transaction.commit();
     }
 
 

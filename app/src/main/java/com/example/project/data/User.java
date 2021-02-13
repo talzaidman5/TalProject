@@ -1,8 +1,14 @@
 package com.example.project.data;
 
+import android.os.Build;
+import android.text.format.Time;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.project.utils.Constants;
 import com.google.gson.Gson;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -23,7 +29,9 @@ public class User {
     private USER_TYPE userType;
     private ArrayList<BloodDonation> allBloodDonations;
     private String uuID;
+    private int age;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public User(String fullName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid) {
         this.fullName = fullName;
         this.ID = ID;
@@ -42,6 +50,7 @@ public class User {
 
         this.allBloodDonations = new ArrayList<>();
         this.uuID = uuid;
+        this.age = LocalDateTime.now().getYear() - birthDate.getYear();
     }
 
     public User(String data) {
@@ -78,6 +87,22 @@ public class User {
 
     public void setRemember(Boolean remember) {
         this.remember = remember;
+    }
+
+    public String getUuID() {
+        return uuID;
+    }
+
+    public void setUuID(String uuID) {
+        this.uuID = uuID;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     private static User createUserFromString(String data) {

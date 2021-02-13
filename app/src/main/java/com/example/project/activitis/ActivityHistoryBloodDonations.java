@@ -41,7 +41,6 @@ public class ActivityHistoryBloodDonations extends AppCompatActivity {
     private void getFromMSP() {
         String data = msp.getString(Constants.KEY_MSP, "NA");
         user = new User(data);
-
     }
 
     public void showAll(){
