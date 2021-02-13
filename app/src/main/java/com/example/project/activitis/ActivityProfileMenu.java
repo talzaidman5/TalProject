@@ -8,7 +8,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
@@ -16,11 +15,8 @@ import com.example.project.data.Position;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -49,7 +45,7 @@ public class ActivityProfileMenu extends AppCompatActivity {
         msp = new MySheredP(this);
         findViews();
         getFromMSP();
-        readDataPositions();
+       // readDataPositions();
         main_TXT_name.setText("היי " + newUser.getFullName());
         menu_BTN_activityPosition.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +73,7 @@ public class ActivityProfileMenu extends AppCompatActivity {
         menu_BTN_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openmenu();
+                openMenu();
             }
         });
     }
@@ -95,31 +91,34 @@ public class ActivityProfileMenu extends AppCompatActivity {
         startActivity(new Intent(ActivityProfileMenu.this, ActivityHistoryBloodDonations.class));
     }
 
-    void openmenu() {
+    void openMenu() {
         startActivity(new Intent(ActivityProfileMenu.this, ActivityMyProfile.class));
     }
 
-    public void readDataPositions() {
-        myRef.child("ActivityPosition").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Position position = ds.getValue(Position.class);
-                    positions.add(position);
-                }
-                putOnMSP();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-
-        });
-
-    }
+//    public void readDataPositions() {
+//        myRef.child("ActivityPosition").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+//                    Position position = ds.getValue(Position.class);
+//                    positions.add(position);
+//                }
+//                putOnMSP();
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//
+//        });
+//
+//    }
 
     private void getFromMSP() {
+        String dataPos = msp.getString(Constants.KEY_MSP_POS, "NA");
+        positions = new Gson().fromJson(dataPos,ArrayList.class);
+
         String data = msp.getString(Constants.KEY_MSP, "NA");
         newUser = new User(data);
 
