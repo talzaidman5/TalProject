@@ -60,7 +60,6 @@ public class ActivityLogIn extends AppCompatActivity {
 
         setContentView(R.layout.activity_log_in);
         getSupportActionBar().hide();
-      //  readFB();
         auth = FirebaseAuth.getInstance();
 
 

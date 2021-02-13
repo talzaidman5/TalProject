@@ -48,9 +48,24 @@ public class AllUsers {
         }
     }
 
+    public ArrayList getAllReportsData(){
+        ArrayList<BloodDonation> all = new ArrayList<>();
+        for (int i = 0; i < allUser.size(); i++) {
+            all.addAll(allUser.get(i).getAllBloodDonations());
+        }
+        return all;
+    }
     public User getUserByID(String id){
         for (User tempUser: allUser) {
             if(tempUser.getID().equals(id))
+                return  tempUser;
+        }
+        return null;
+    }
+
+    public User getUserByUUID(String uuid){
+        for (User tempUser: allUser) {
+            if(tempUser.getuuID().equals(uuid))
                 return  tempUser;
         }
         return null;

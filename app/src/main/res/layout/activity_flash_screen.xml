@@ -9,6 +9,5 @@
     <ProgressBar
         android:layout_width="150dp"
         android:layout_height="150dp"
-        style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_centerInParent="true"/>
 </RelativeLayout>

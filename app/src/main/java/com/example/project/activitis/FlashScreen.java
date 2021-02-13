@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -29,7 +30,7 @@ public class FlashScreen extends AppCompatActivity {
     private AllUsers allUsers = new AllUsers();
     private MySheredP msp;
     private Gson gson = new Gson();
-
+    private String uuid;
     private ArrayList<Position> positions = new ArrayList<>();
 
 
@@ -40,6 +41,9 @@ public class FlashScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         msp = new MySheredP(this);
+        uuid = Settings.Secure.getString(
+                this.getContentResolver(), Settings.Secure.ANDROID_ID);
+
 
         readDataPositions();
 
@@ -55,7 +59,15 @@ public class FlashScreen extends AppCompatActivity {
                     allUsers.addToList(tempUser);
                 }
                 putOnMSP();
-                startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
+                User tempUser = allUsers.getUserByUUID(uuid);
+                if (tempUser != null && tempUser.getRemember() && tempUser.getUserType().equals(User.USER_TYPE.CLIENT))
+                    startActivity(new Intent(FlashScreen.this, ActivityProfileMenu.class));
+
+                if (tempUser != null && tempUser.getRemember() && tempUser.getUserType().equals(User.USER_TYPE.MANAGER))
+
+                    startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
+                else
+                    startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
 
             }
 
