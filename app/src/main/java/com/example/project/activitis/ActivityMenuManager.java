@@ -15,7 +15,7 @@ import com.example.project.R;
 public class ActivityMenuManager extends AppCompatActivity {
 
 
-    private Button menuManager_BTN_publishingReports,menuManager_BTN_view_full_questionnaires;
+    private Button menu_BTN_by_age;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,22 +26,17 @@ public class ActivityMenuManager extends AppCompatActivity {
 
         setContentView(R.layout.activity_menu_manager);
         getSupportActionBar().hide();
-        menuManager_BTN_publishingReports = findViewById(R.id.menuManager_BTN_publishingReports);
-        menuManager_BTN_view_full_questionnaires = findViewById(R.id.menuManager_BTN_view_full_questionnaires);
-        menuManager_BTN_view_full_questionnaires.setOnClickListener(new View.OnClickListener() {
+//        menuManager_BTN_publishingReports = findViewById(R.id.menuManager_BTN_publishingReports);
+        menu_BTN_by_age = findViewById(R.id.menu_BTN_by_age);
+
+        menu_BTN_by_age.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ActivityMenuManager.this, ViewFullQuestionnairesActivity.class);
+                Intent intent = new Intent(ActivityMenuManager.this, ActivityAllReports.class);
                 startActivity(intent);
 
             }
         });
-        menuManager_BTN_publishingReports.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ActivityMenuManager.this, ActivityPublishingReportsActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 }
