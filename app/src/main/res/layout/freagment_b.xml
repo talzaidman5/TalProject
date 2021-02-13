@@ -4,14 +4,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/my_gradient_drawable">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-       >
-
-
+        android:layout_margin="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,17 +37,16 @@
             android:textSize="16dp"/>
 
 
-
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1 .קיבלת טיפול בהורמון גדילה ממקור אנושי, או עברת השתלת קרומי מח או קרנית, ממקור אנושי. "
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:background="@color/grey1"
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_weight="1"/>
-
 
 
         <CheckBox
@@ -63,7 +58,6 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
-            android:background="@color/grey1"
             android:layout_weight="1"/>
 
 
@@ -77,6 +71,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:background="@color/grey1"
             android:layout_weight="1"/>
 
 
@@ -86,7 +81,6 @@
             android:text="4 .קיבלת תשלום עבור יחסי מין."
             android:textColor="@color/black"
             android:textSize="18dp"
-            android:background="@color/grey1"
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
@@ -99,6 +93,7 @@
             android:text="5 .את/ה או בן/בת זוגך, נבדקתם ונמצאתם חיוביים לנוכחות נוגדנים לנגיף האיידס(HIV)."
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:background="@color/grey1"
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
@@ -112,7 +107,6 @@
             android:textColor="@color/black"
             android:textSize="18dp"
             android:fontFamily="@font/regular"
-            android:background="@color/grey1"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
             android:layout_weight="1"/>
@@ -123,6 +117,7 @@
             android:text="7 .הזרקת תרופות ללא מרשם רופא (כולל סטרואידים אנבולים)."
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:background="@color/grey1"
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
@@ -135,12 +130,9 @@
             android:textColor="@color/black"
             android:textSize="18dp"
             android:fontFamily="@font/regular"
-            android:background="@color/grey1"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
             android:layout_weight="1"/>
-
-
 
         <CheckBox
             android:layout_width="match_parent"
@@ -148,12 +140,11 @@
             android:text="9 .את/ה נשא/ית של דלקת כבד (הפטיטיס-'צהבת') מסוג B או C"
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:background="@color/grey1"
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
             android:layout_weight="1"/>
-
-
 
 
         <CheckBox
@@ -163,8 +154,6 @@
             android:textColor="@color/black"
             android:textSize="18dp"
             android:fontFamily="@font/regular"
-            android:background="@color/grey1"
-
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
             android:layout_weight="1"/>
@@ -175,6 +164,7 @@
             android:text="11 .קיום יחסי מין בין גברים ב- 12 החודשים האחרונים."
             android:textColor="@color/black"
             android:textSize="18dp"
+            android:background="@color/grey1"
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
@@ -188,7 +178,6 @@
             android:textSize="18dp"
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
-            android:background="@color/grey1"
             android:layout_marginTop="10dp"
             android:layout_weight="1"/>
 

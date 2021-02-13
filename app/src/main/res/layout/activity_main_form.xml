@@ -24,24 +24,22 @@
         android:layout_margin="10dp"
         android:orientation="horizontal">
 
-<ImageView
-    android:layout_width="20dp"
-    android:layout_height="20dp"
-    android:src="@drawable/back"
-    android:layout_weight="1"
-    android:id="@+id/a"/>
-
-<Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-/>
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/back"
+            android:layout_weight="1"
+            android:id="@+id/a"/>
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
 
         <ImageView
