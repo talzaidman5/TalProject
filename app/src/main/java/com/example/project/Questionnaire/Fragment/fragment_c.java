@@ -34,7 +34,6 @@ public class fragment_c extends Fragment {
     }
 
     private void findViews(View view) {
-        fragment_c_TXT = view.findViewById(R.id.fragment_c_TXT);
     }
 
 

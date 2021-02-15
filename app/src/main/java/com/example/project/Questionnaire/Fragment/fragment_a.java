@@ -46,13 +46,13 @@ public class fragment_a extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkData()){
+             //   if(checkData()){
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     Fragment fragment = new fragment_b();
                     ft.replace(R.id.main_LIN, fragment);
                     ft.addToBackStack(null);
                     ft.commit();
-                }
+             //   }
             }
         });
         return view;
