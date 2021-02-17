@@ -1,53 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/my_gradient_drawable"
     tools:context=".Questionnaire.Fragment.fragment_d">
+    <RelativeLayout
+    android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/main_LIN">
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_margin="10dp"
+
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:text="@string/fragment_d_title"
-            android:layout_margin="10dp"
             android:textSize="12dp"/>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="30dp"
+            android:gravity="right"
             android:orientation="horizontal">
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
                 android:textColor="@color/black"
-                android:ems="10"></EditText>
+                android:ems="3"></EditText>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:textSize="12dp"
+                android:textColor="@color/black"
                 android:layout_margin="10dp"
                 android:text="חתימת התורם/ת:"></TextView>
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
                 android:textColor="@color/black"
-                android:ems="10"></EditText>
+                android:ems="3"></EditText>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:layout_margin="10dp"
+                android:text="תאריך:"></TextView>
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:textColor="@color/black"
+            android:text="הסכמה מדעת לשימוש בדגימות דם, או במרכיבי דם, שאינם מתאימים ו/או אינם נדרשים לטיפול בחולים, לצרכי מחקר:"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textColor="@color/black"
+            android:text="ידוע לי, כי לאחר ביצוע הבדיקות, דגימות הדם שנלקחו ממני מיועדות להשמדה, אך ייתכן ששארית מהן, בכמות של מ'ל בודדים, או איזה ממרכיבי המנה שתרמתי, עשויים לשמש למחקר רפואי. במקרה כזה:"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="right"
+                android:textSize="12dp"
+                android:textColor="@color/black"
+                android:text="א. אני מסכים/ה ששארית מדגימת הדם שלי, או איזה ממרכיבי המנה
+שתרמתי, ישמשו לכל מחקר רפואי, שיאושר כדין או לתהליכי פיתוח"></TextView>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textSize="12dp"
+                android:ems="30"></EditText>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:textSize="12dp"
-                android:layout_margin="10dp"
-                android:text="תאריך:"></TextView>
+                android:textColor="@color/black"
+                android:text="ב. אינני מסכים/ה ששארית מדגימת הדם שלי, או איזה ממרכיבי המנה
+שתרמתי, ישמשו למחקר רפואי או לתהליכי פיתוח"></TextView>
 
-        </LinearLayout>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textSize="12dp"
+                android:ems="30"></EditText>
 
     </LinearLayout>
-</FrameLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/main_LIN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/back"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:id="@+id/a"/>
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/next"
+            android:id="@+id/next"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            />
+    </RelativeLayout>
+</RelativeLayout>
+
+</LinearLayout>

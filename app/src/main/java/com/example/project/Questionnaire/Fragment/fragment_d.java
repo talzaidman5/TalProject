@@ -3,64 +3,41 @@ package com.example.project.Questionnaire.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.project.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link fragment_d#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class fragment_d extends Fragment {
+    private Button next;
+    private View view;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public fragment_d() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_d.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static fragment_d newInstance(String param1, String param2) {
-        fragment_d fragment = new fragment_d();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_d, container, false);
+        if(view == null)
+            view = inflater.inflate(R.layout.fragment_d,container,false);
+
+        next = view.findViewById(R.id.next);
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //   if(checkData()){
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment fragment = new Fragment_e();
+                ft.replace(R.id.main_LIN, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
+                //   }
+            }
+        });
+        return view;
     }
 }

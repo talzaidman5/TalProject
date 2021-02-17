@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/my_gradient_drawable"
+    tools:context=".Questionnaire.Fragment.fragment_d">
+    <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/main_LIN">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|top"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:fontFamily="@font/regular"
+            android:layout_marginTop="15dp"
+            android:text="מידע כללי לתורמי/ות הדם"
+            android:textColor="@color/red"
+            android:textStyle="bold"></TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/errors"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:fontFamily="@font/regular"
+            android:layout_marginTop="10dp"
+            android:text="תורם/ת יקר/ה -תודה שבאת"
+            android:textColor="@color/red"
+            android:textStyle="bold"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/black"
+            android:text="להלן תשובות למספר שאלות שכיחות:"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="כמה ולמה?"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:text="- התרמות הדם מבוצעות במטרה לספק את מרכיבי הדם הדרושים לטיפול בחולים ובפצועים, בשגרה ובמצבי חירום"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:layout_gravity="right"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:text="- לא ניתן עדיין לייצר דם ומרכיביו במעבדה ולכן לדם אין תחליף, כך שרק תרומת דם מאדם אחד לאחר, יכולה להציל אדם אחר."></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="למה חשובה התרומה בהתנדבות?"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:layout_marginTop="3dp"
+            android:text="הגברת בטיחות ואיכות מנות הדם, חשוב מאד שתרומת הדם תינתן בהתנדבות, וללא כל תמורה כספית. תורמים מתנדבים מוסרים מידע
+אמין על הרגלי חייהם ועל בעיות רפואיות העלולות להזיק לבריאותם, או לחולים שיקבלו את המנה בעירוי. חשוב לדעת שחל חיסיון מלא על
+המידע שתמסור/י, כמו גם על תוצאות הבדיקות שיבוצעו במנה. בבקשה אל תתרום/י כדי להיבדק לאיידס !"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:text="מי?"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:text="- אדם בריא, מגיל 17 ,במשקל 50 ק'ג ומעלה יכול לתרום מנת דם, ללא כל חשש לבריאותו. \n
+- בגיל 17-18 נדרש אישור הורים. מעל גיל 60 בתרומה ראשונה ומעל גיל 65 ,בתרומה חוזרת
+- נדרש אישור מהרופא המטפל אחת לשנה.\n
+- ניתן לתרום דם מלא כל שלושה חדשים וטסיות כל חודש"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:text="שאלון תורם דם: את השאלון יש למלא בבנק הדם, במעמד ההתרמה בלבד. עם זאת ניתן לעיין בשאלון באתר האינטרנט של מרכז רפואי רבין
+במטרה לאפשר לך, התורם הפוטנציאלי, לבחון מראש את כשירותך לתרומת דם"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="מהו תהליך ההתרמה?"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/black"
+            android:text="- לאחר מילוי שאלון התורם, תיערך עמך על ידי המתרים/ה, שיחת תשאול בפרטיות ובדיקת כשירות בהסתמך על תרומותיך בעבר.\n
+- לכל תורם/ת בודקים: לחץ דם, דופק וספירת דם.\n
+- לאחר הרישום תופנה/י לתרום דם, בערכה סטרילית חד-פעמית.\n
+- לאחר התרומה, יש לשתות ולנוח באתר ההתרמה 10 דקות לפחות"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="מה עושים בדם?"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/red"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="בדיקות למנות:"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:layout_gravity="right"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:text="- כל מנה נבדקת לקביעת סוג הדם ולאיתור גורמים למחלות, העלולות לפגוע במקבל הדם )כגון: דלקת כבד נגיפית, איידס ועגבת(.\n - תורמים, שבדמם מתגלה עדות ברורה לחשיפה לאחד הגורמים, מקבלים על כך הודעה, עשויים להיקרא לבדיקות נוספות, ומופנים לקבלת טיפול רפואי, והמנה שנתרמה מושמדת. על מידע זה חל חיסיון רפואי מלא, על פי דין. \n- הודעה נשלחת גם לתורמים, שהתגלו כבעלי תת-סוג דם נדיר. חלק מבדיקות אלו מתבצעות באמצעות בדיקה גנטית מד.נ.א (DNA (שיופק מהדגימות הנלוות לתרומה. בבדיקה הגנטית, בודקים אך ורק תת קבוצות של סוגי הדם והטסיות, במטרה להתאים מנות ומרכיבי דם עבור מטופלים ו/או לקבוע תת קבוצה בתורם. בדיקות אלו אינן משמשות לזיהוי מחלות או נשאות של מחלה.\n - לעיתים רחוקות עלולים מקבלי הדם, לפתח תגובה קשה לעירוי, שמתבטאת בפגיעה ריאתית, מסכנת חיים. בין הגורמים לתגובה זאת יכולים להיות נוגדנים נגד תאי הדם הלבנים בגוף, השכיחים יותר בנשים שהיו בהריון. לכן נוספו לשאלון בחלק ג' שאלות 21 ,22 .מנות אלו יבדקו לנוכחות HLA-Anti."></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/red"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="הכנת מרכיבי דם - שימוש נכון במנת דם מלא:"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="נפח מנת הדם הוא כ- 2/1 ליטר. כל מנה מופרדת למספר מרכיבים, ולכל מרכיב יש: 'זמן חיי מדף' וטמפרטורת אחסון שונים. כל חולה יקבל את המרכיב הדרוש לו להצלת חייו, כמקובל ברפואה המודרנית"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="קבלת תוצאות סוגי דם: ניתן לקבל את תוצאת סוג הדם בהצגת תעודה מזהה. לקבלת תוצאת סוג דם בפקס או בדואר, יש לחתום על טופס
+הסכמה בבנק הדם. לא יימסרו תוצאות בטלפון."></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="ימים ושעות פעילות קבלת תורמים )בתיאום טלפוני(: א'-ה': 00:08-00:18 ו': 00:08-00:12."></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:text="מיקום ויצירת קשר: בית חולים בילינסון, בניין גור שאשא, קומת כניסה. למפת הגעה ולהסדרי חניה ללא תשלום -
+ראה באתר האינטרנט של מרכז רפואי רבין il.org.rmc.www/מערך המעבדות/בנק הדם - מחלקת שירותי הדם ואפרזיס.
+למידע נוסף, ניתן להתקשר בימים א'-ה' בשעות 00:08-00:16 לבנק הדם, מעבדת תורמים 6052-937-03."></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="תרומת דם היא מעשה נאצל של עזרה לזולת. בעזרת עירוי מרכיבי הדם ניתן להציל באופן מידי חייהם של חולים רבים.
+נשמח אם תתמיד/י ותתרום/מי דם מספר פעמים בשנה, למען יקיריך ולמען כל הנזקקים לדם ולמרכיביו."></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textColor="@color/red"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="תודה מכל הלב - מרכיבי הדם שתרמת יצילו חיים!"></TextView>
+
+    </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
+        android:id="@+id/main_LIN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="10dp"
+        android:layout_margin="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/back"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:id="@+id/a"/>
+
+        <Button
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/next"
+            android:id="@+id/next"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            />
+    </RelativeLayout>
+    </RelativeLayout>
+
+
+</FrameLayout>

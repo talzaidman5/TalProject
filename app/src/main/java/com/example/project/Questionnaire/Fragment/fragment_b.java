@@ -25,9 +25,10 @@ public class fragment_b extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(view == null)
             view = inflater.inflate(R.layout.freagment_b,container,false);
-        next = view.findViewById(R.id.next);
 
         findViews(view);
+        next = view.findViewById(R.id.next);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
