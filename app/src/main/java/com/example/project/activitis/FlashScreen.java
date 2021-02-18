@@ -60,16 +60,7 @@ public class FlashScreen extends AppCompatActivity {
                     allUsers.addToList(tempUser);
                 }
                 putOnMSP();
-                            userExists();
-
-//                if (tempUser != null && tempUser.getRemember() && tempUser.getUserType().equals(User.USER_TYPE.CLIENT))
-//                    startActivity(new Intent(FlashScreen.this, ActivityProfileMenu.class));
-//
-//                if (tempUser != null && tempUser.getRemember() && tempUser.getUserType().equals(User.USER_TYPE.MANAGER))
-//
-//                    startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
-//                else
-//                    startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
+                userExists();
 
             }
 
