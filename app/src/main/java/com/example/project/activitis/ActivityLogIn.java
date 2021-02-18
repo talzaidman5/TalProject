@@ -76,6 +76,7 @@ public class ActivityLogIn extends AppCompatActivity {
         msp = new MySheredP(this);
 
         getFromMSP();
+
         if(allUsers.getUserByUUID(firebaseUser.getUid()).getRemember())
             userExists();
 

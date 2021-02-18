@@ -16,7 +16,7 @@
         <activity android:name=".activitis.ActivityAllReports"
             android:theme="@style/Theme.MaterialComponents.DayNight"></activity>
         <activity
-            android:name=".activitis.ActivityLogIn"
+            android:name=".activitis.FlashScreen"
             android:theme="@style/Theme.MaterialComponents.DayNight">      <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
@@ -57,6 +57,12 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.ActivitySignUpPage"
+            android:theme="@style/Theme.MaterialComponents"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+
+        <activity
+            android:name=".activitis.ActivityLogIn"
             android:theme="@style/Theme.MaterialComponents"
             android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
