@@ -13,15 +13,18 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
-        <activity android:name=".activitis.ActivityAllReports"
-            android:theme="@style/Theme.MaterialComponents.DayNight"></activity>
+        <activity android:name=".ActivityReadFromExcel"></activity>
+        <activity
+            android:name=".activitis.ActivityAllReports"
+            android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.FlashScreen"
-            android:theme="@style/Theme.MaterialComponents.DayNight">      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.MaterialComponents.DayNight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activitis.ActivityHistoryBloodDonations"
@@ -59,8 +62,6 @@
             android:name=".activitis.ActivitySignUpPage"
             android:theme="@style/Theme.MaterialComponents"
             android:windowSoftInputMode="stateAlwaysHidden" />
-
-
         <activity
             android:name=".activitis.ActivityLogIn"
             android:theme="@style/Theme.MaterialComponents"
