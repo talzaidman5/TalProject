@@ -92,8 +92,11 @@ public class FlashScreen extends AppCompatActivity {
     }
     private void userExists() {
         if (firebaseUser != null) {
-            Intent intent = new Intent(FlashScreen.this, ActivityProfileMenu.class);
-            startActivity(intent);
+             User tempUser = allUsers.getUserByUUID(firebaseUser.getUid());
+            if (tempUser != null && tempUser.getRemember() && tempUser.getUserType().equals(User.USER_TYPE.MANAGER))
+                startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
+            else
+                startActivity(new Intent(FlashScreen.this, ActivityProfileMenu.class));
         }
         else
             startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
