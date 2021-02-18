@@ -96,7 +96,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void open() {
         // custom dialog
         final Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.popup);
+        dialog.setContentView(R.layout.popup_add_blood_donation);
         dialog.setTitle("Title...");
 
         // set the custom dialog components - text, image and button

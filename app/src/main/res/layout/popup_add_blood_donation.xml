@@ -11,42 +11,45 @@
         android:textSize="20dp"
         android:layout_margin="20dp"
         android:textColor="#000000"
+        android:textStyle="bold"
         android:fontFamily="@font/regular"
         android:layout_centerHorizontal="true"
-        android:text="Are you sure you want to apply?"/>
+        android:text="הוספת תרומת דם"/>
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        android:textColor="#000000"
+        android:fontFamily="@font/regular"
+        android:layout_below="@id/popup_TXT_label"
+        android:layout_centerHorizontal="true"
+        android:text="איפה ביצעת את תורמת הדם?"/>
 
      <com.toptoche.searchablespinnerlibrary.SearchableSpinner
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:id="@+id/spinner"
-       android:layout_below="@id/popup_TXT_label"
+       android:layout_below="@id/city"
        android:layout_margin="30dp"
+         android:layout_centerHorizontal="true"
     tools:ignore="MissingClass" />
 
     <Button
         android:id="@+id/popup_BTN_yes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Yes"
+        android:text="הוספה"
         android:fontFamily="@font/regular"
         android:layout_margin="5dp"
         android:textSize="20dp"
+        android:gravity="center"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"
-       android:layout_above="@id/popup_BTN_no"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/spinner"
         />
 
-    <Button
-        android:id="@+id/popup_BTN_no"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="no"
-        android:layout_alignParentBottom="true"
-        android:fontFamily="@font/regular"
-        android:layout_margin="5dp"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"
-        />
+
 
 </RelativeLayout>
