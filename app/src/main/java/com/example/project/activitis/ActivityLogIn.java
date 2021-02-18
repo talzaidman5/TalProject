@@ -49,7 +49,6 @@ public class ActivityLogIn extends AppCompatActivity {
     private MySheredP msp;
     private Gson gson = new Gson();
     private CheckBox main_page_CHECK_remember;
-    private FirebaseUser firebaseUser;
 
     private FirebaseAuth auth;
 
@@ -64,7 +63,6 @@ public class ActivityLogIn extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
         getSupportActionBar().hide();
         auth = FirebaseAuth.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
       /* myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://www.mdais.org/images/whatsup.jpg"));
@@ -76,9 +74,6 @@ public class ActivityLogIn extends AppCompatActivity {
         msp = new MySheredP(this);
 
         getFromMSP();
-
-        if(allUsers.getUserByUUID(firebaseUser.getUid()).getRemember())
-            userExists();
 
         mainPage_BTN_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,12 +108,7 @@ public class ActivityLogIn extends AppCompatActivity {
         this.viewForgotPassword = findViewById(R.id.viewForgotPassword);
 
     }
-    private void userExists() {
-        if (firebaseUser != null) {
-            Intent intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
-            startActivity(intent);
-        }
-    }
+
     public void onForgotPasswordClicked() {
         String mail = mainPage_EDIT_email.getEditText().getText().toString().trim();
         if (mail.isEmpty()) {

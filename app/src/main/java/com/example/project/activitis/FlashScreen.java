@@ -15,6 +15,8 @@ import com.example.project.data.Position;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,6 +34,7 @@ public class FlashScreen extends AppCompatActivity {
     private Gson gson = new Gson();
     private String uuid;
     private ArrayList<Position> positions = new ArrayList<>();
+    private FirebaseUser firebaseUser;
 
 
     @Override
@@ -39,10 +42,10 @@ public class FlashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_screen);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         msp = new MySheredP(this);
-        uuid = Settings.Secure.getString(
-                this.getContentResolver(), Settings.Secure.ANDROID_ID);
+        uuid = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         readDataPositions();
 
     }
@@ -57,15 +60,16 @@ public class FlashScreen extends AppCompatActivity {
                     allUsers.addToList(tempUser);
                 }
                 putOnMSP();
-                User tempUser = allUsers.getUserByUUID(uuid);
-                if (tempUser != null && tempUser.getRemember() && tempUser.getUserType().equals(User.USER_TYPE.CLIENT))
-                    startActivity(new Intent(FlashScreen.this, ActivityProfileMenu.class));
+                            userExists();
 
-                if (tempUser != null && tempUser.getRemember() && tempUser.getUserType().equals(User.USER_TYPE.MANAGER))
-
-                    startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
-                else
-                    startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
+//                if (tempUser != null && tempUser.getRemember() && tempUser.getUserType().equals(User.USER_TYPE.CLIENT))
+//                    startActivity(new Intent(FlashScreen.this, ActivityProfileMenu.class));
+//
+//                if (tempUser != null && tempUser.getRemember() && tempUser.getUserType().equals(User.USER_TYPE.MANAGER))
+//
+//                    startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
+//                else
+//                    startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
 
             }
 
@@ -95,7 +99,15 @@ public class FlashScreen extends AppCompatActivity {
         });
 
     }
+    private void userExists() {
+        if (firebaseUser != null) {
+            Intent intent = new Intent(FlashScreen.this, ActivityProfileMenu.class);
+            startActivity(intent);
+        }
+        else
+            startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
 
+    }
     private void putOnMSP() {
         String jsonAllUsers = gson.toJson(allUsers);
         msp.putString(Constants.KEY_MSP_ALL, jsonAllUsers);
