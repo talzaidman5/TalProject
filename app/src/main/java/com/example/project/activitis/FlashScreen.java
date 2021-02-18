@@ -1,13 +1,19 @@
 package com.example.project.activitis;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 
 import com.example.project.R;
 import com.example.project.data.AllUsers;
@@ -41,8 +47,9 @@ public class FlashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_screen);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getSupportActionBar().hide();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
 
         msp = new MySheredP(this);
         uuid = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
