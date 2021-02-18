@@ -29,7 +29,7 @@ public class ActivityProfileMenu extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
 
-    Button menu_BTN_fillQ, menu_BTN_profile, menu_BTN_activityPosition, main_BTN_history;
+    private Button menu_BTN_fillQ, menu_BTN_profile, menu_BTN_activityPosition, main_BTN_history,check;
     private ArrayList<Position> positions = new ArrayList<>();
     private User newUser;
 
@@ -76,6 +76,13 @@ public class ActivityProfileMenu extends AppCompatActivity {
                 openMenu();
             }
         });
+        check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityProfileMenu.this, ActivityReadFromExcel.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void findViews() {
@@ -84,6 +91,7 @@ public class ActivityProfileMenu extends AppCompatActivity {
         menu_BTN_activityPosition = findViewById(R.id.menu_BTN_activityPosition);
         main_TXT_name = findViewById(R.id.main_TXT_name);
         main_BTN_history = findViewById(R.id.main_BTN_history);
+        check = findViewById(R.id.check);
     }
 
 

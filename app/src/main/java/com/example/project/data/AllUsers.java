@@ -69,5 +69,11 @@ public class AllUsers {
                 return  tempUser;
         }
         return null;
+    } public User getUserByEmail(String email){
+        for (User tempUser: allUser) {
+            if(tempUser.getEmail().equals(email))
+                return  tempUser;
+        }
+        return null;
     }
 }

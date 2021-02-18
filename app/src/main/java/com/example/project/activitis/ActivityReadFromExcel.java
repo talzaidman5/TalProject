@@ -3,84 +3,103 @@ package com.example.project.activitis;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Adapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project.R;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.FileAsyncHttpResponseHandler;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
+import java.util.List;
+
+import cz.msebera.android.httpclient.entity.mime.Header;
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.WorkbookSettings;
+import jxl.read.biff.BiffException;
+
 
 public class ActivityReadFromExcel  extends AppCompatActivity {
-    String TAG ="main";
-    private TextView textView;
+    Workbook workbook;
+    AsyncHttpClient asyncHttpClient;
+    private TextView textview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_read_from_excel);
-        textView = findViewById(R.id.textview);
-        readExcelFileFromAssets();
+
+        textview = findViewById(R.id.textview);
+        String URL = "https://bikashthapa01.github.io/excel-reader-android-app/story.xls";
     }
+        //String apiURL = "https://bikashthapa01.github.io/excel-reader-android-app/";
 
-    public void readExcelFileFromAssets() {
+//        // checking if the excel file has new content
+//
+//        try {
+//            URL mURL = new URL(apiURL);
+//            HttpsURLConnection httpsURLConnection = (HttpsURLConnection) mURL.openConnection();
+//            InputStream inputStream = new BufferedInputStream(httpsURLConnection.getInputStream());
+//            // getting network os exception error
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        try {
+    /*    asyncHttpClient = new AsyncHttpClient();
+        asyncHttpClient.get(URL, new FileAsyncHttpResponseHandler(this) {
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, Throwable throwable, File file) {
+                Toast.makeText(ActivityReadFromExcel.this, "Error in Downloading Excel File", Toast.LENGTH_SHORT).show();
 
-            InputStream myInput;
-            // initialize asset manager
-            AssetManager assetManager = getAssets();
-            //  open excel sheet
-            myInput = assetManager.open("myexcelsheet.xls");
-            // Create a POI File System object
-            POIFSFileSystem myFileSystem = new POIFSFileSystem(myInput);
-
-            // Create a workbook using the File System
-            HSSFWorkbook myWorkBook = new HSSFWorkbook(myFileSystem);
-
-            // Get the first sheet from workbook
-            HSSFSheet mySheet = myWorkBook.getSheetAt(0);
-
-            // We now need something to iterate through the cells.
-            Iterator<Row> rowIter = mySheet.rowIterator();
-            int rowno =0;
-            textView.append("\n");
-            while (rowIter.hasNext()) {
-                Log.e(TAG, " row no "+ rowno );
-                HSSFRow myRow = (HSSFRow) rowIter.next();
-                if(rowno !=0) {
-                    Iterator<Cell> cellIter = myRow.cellIterator();
-                    int colno =0;
-                    String sno="", date="", det="";
-                    while (cellIter.hasNext()) {
-                        HSSFCell myCell = (HSSFCell) cellIter.next();
-                        if (colno==0){
-                            sno = myCell.toString();
-                        }else if (colno==1){
-                            date = myCell.toString();
-                        }else if (colno==2){
-                            det = myCell.toString();
-                        }
-                        colno++;
-                        Log.e(TAG, " Index :" + myCell.getColumnIndex() + " -- " + myCell.toString());
-                    }
-                    textView.append( sno + " -- "+ date+ "  -- "+ det+"\n");
-
-                }
-                rowno++;
             }
 
-        } catch (Exception e) {
-            Log.e(TAG, "error "+ e.toString());
-        }
-    }
+            @Override
+/*            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, File file) {
+                WorkbookSettings ws = new WorkbookSettings();
+                ws.setGCDisabled(true);
+                if(file != null){
+                    //text.setText("Success, DO something with the file.");
 
+                    try {
+                        workbook = Workbook.getWorkbook(file);
+                        Sheet sheet = workbook.getSheet(0);
+                        //Cell[] row = sheet.getRow(1);
+                        //text.setText(row[0].getContents());
+                        for(int i = 0;i< sheet.getRows();i++){
+                            Cell[] row = sheet.getRow(i);
+                            textview.setText(row[0].toString());
+                        }
+
+//                        showData();
+
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (BiffException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+
+
+    });*/
+      //  }
+    //}
+    private void showData() {
+    //    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+      //  adapter = new Adapter(this,storyTitle,storyContent,thumbImages);
+        //recyclerView.setAdapter(adapter);
+    }
 }
