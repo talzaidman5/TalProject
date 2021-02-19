@@ -3,6 +3,7 @@ package com.example.project.activitis;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
@@ -47,7 +49,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private TextInputLayout myProfile_TXT_IDToFill;
     private EditText myProfile_TXT_nameToFill;
     private CircleImageView myProfile_BTN_logo;
-    private ImageButton myProfile_BTN_edit, myProfile_BTN_add;
+    private ImageButton myProfile_BTN_edit, myProfile_BTN_add,logout;
     private MySheredP msp;
     private Gson gson = new Gson();
     private User currentUser = new User();
@@ -81,7 +83,15 @@ public class ActivityMyProfile extends AppCompatActivity {
                 myProfile_TXT_phoneNumberToFill.setEnabled(true);
             }
         });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(ActivityMyProfile.this,ActivityLogIn.class));
+                finish();
 
+            }
+        });
         myProfile_BTN_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -217,6 +227,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_TXT_bloodTypeToFill = findViewById(R.id.myProfile_TXT_bloodTypeToFill);
         myProfile_BTN_edit = findViewById(R.id.myProfile_BTN_edit);
         myProfile_BTN_add = findViewById(R.id.myProfile_BTN_add);
+        logout = findViewById(R.id.logout);
 
     }
 
@@ -229,7 +240,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_TXT_nameToFill.setEnabled(false);
         myProfile_TXT_phoneNumberToFill.setEnabled(false);
 
-        if (currentUser != null) {
+        if (currentUser.getID() != null) {
             myProfile_TXT_phoneNumberToFill.getEditText().setText(currentUser.getPhoneNumber());
             myProfile_TXT_passwordToFill.getEditText().setText(currentUser.getPassword());
             myProfile_TXT_nameToFill.setText(currentUser.getFirstName());

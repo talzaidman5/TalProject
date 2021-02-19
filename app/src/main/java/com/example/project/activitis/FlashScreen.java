@@ -101,15 +101,20 @@ public class FlashScreen extends AppCompatActivity {
         if (firebaseUser != null) {
             User tempUser = allUsers.getUserByEmail(firebaseUser.getEmail());
             if (tempUser != null) {
-                if (tempUser.equals(User.USER_TYPE.MANAGER))
+                if (tempUser.equals(User.USER_TYPE.MANAGER)){
                     startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
-                else
+                    finish();
+                }
+                else{
                     startActivity(new Intent(FlashScreen.this, ActivityProfileMenu.class));
+                    finish();
+                }
             }
         }
-        else
+        else {
             startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
-
+            finish();
+        }
     }
     private void putOnMSP() {
         String jsonAllUsers = gson.toJson(allUsers);
