@@ -188,6 +188,15 @@
 
             </com.google.android.material.textfield.TextInputLayout >
 
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:id="@+id/signUp_EDT_city"
+                    android:fontFamily="@font/regular"   />
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

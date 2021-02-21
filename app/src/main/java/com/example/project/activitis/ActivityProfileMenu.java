@@ -76,13 +76,7 @@ public class ActivityProfileMenu extends AppCompatActivity {
                 openMenu();
             }
         });
-        check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ActivityProfileMenu.this, ActivityReadFromExcel.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     private void findViews() {
@@ -91,7 +85,6 @@ public class ActivityProfileMenu extends AppCompatActivity {
         menu_BTN_activityPosition = findViewById(R.id.menu_BTN_activityPosition);
         main_TXT_name = findViewById(R.id.main_TXT_name);
         main_BTN_history = findViewById(R.id.main_BTN_history);
-        check = findViewById(R.id.check);
     }
 
 

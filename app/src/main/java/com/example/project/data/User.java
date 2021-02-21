@@ -28,14 +28,16 @@ public class User {
     private String bloodType;
     private Date birthDate;
     private String imageUser;
+    private String city;
     private Boolean remember;
     private USER_TYPE userType;
     private ArrayList<BloodDonation> allBloodDonations;
     private String uuID;
     private int age;
 
+
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public User(String firstName,String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid) {
+    public User(String firstName,String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ID = ID;
@@ -46,7 +48,7 @@ public class User {
         this.birthDate = birthDate;
         this.imageUser = image;
         this.remember = isRemember;
-
+        this.city = city;
         if (ID.equals(Constants.MANAGER_ID))
             this.userType = USER_TYPE.MANAGER;
         else

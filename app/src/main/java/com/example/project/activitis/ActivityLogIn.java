@@ -94,9 +94,6 @@ public class ActivityLogIn extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 
     private void findViews() {

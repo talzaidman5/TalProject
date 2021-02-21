@@ -47,8 +47,12 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
@@ -62,7 +66,6 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private TextInputLayout signUp_EDT_id, signUp_EDT_email, signUp_EDT_phone, signUp_EDT_password, signUp_EDT_lastName,signUp_EDT_firstName;
     private TextView signUp_TXT_birthDatePicker;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-    public static SharedPreferences sharedpreferences;
     public boolean data = true;
     public static Date date;
     private MySheredP msp;
@@ -78,7 +81,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private AllUsers allUsers = new AllUsers();
     private User newUser;
     private Boolean isImage = false;
-
+    private ArrayList<String> spinnerArray;
+    private Spinner spn_my_spinner;
 
     @SuppressLint("ResourceType")
     @Override
@@ -150,8 +154,38 @@ public class ActivitySignUpPage extends AppCompatActivity {
 
         });
 
-    }
+        spinnerArray = new ArrayList<String>();
+      /*  spinnerArray.add("one");
+        spinnerArray.add("two");
+        spinnerArray.add("three");
+        spinnerArray.add("four");
+        spinnerArray.add("five");*/
 
+        try {
+            readFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
+        spn_my_spinner.setAdapter(spinnerArrayAdapter);
+
+    }
+    private void readFile() throws IOException {
+        BufferedReader reader;
+
+        try {
+            final InputStream file = getAssets().open("cities.txt");
+            reader = new BufferedReader(new InputStreamReader(file));
+            String line = reader.readLine();
+            while (line != null) {
+                line = reader.readLine();
+                spinnerArray.add(line);
+            }
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
     private boolean checkData() {
         if (signUp_EDT_firstName.getEditText().getText().toString().equals("")) {
             signUp_EDT_firstName.setError("");
@@ -210,6 +244,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
         signUp_SPI_bloodTypes = findViewById(R.id.signUp_SPI_bloodTypes);
         signUp_TXT_birthDatePicker = findViewById(R.id.signUp_TXT_birthDatePicker);
         sign_up_IMG_logo = findViewById(R.id.sign_up_IMG_logo);
+        spn_my_spinner = findViewById(R.id.signUp_EDT_city);
 
     }
 
@@ -312,10 +347,10 @@ public class ActivitySignUpPage extends AppCompatActivity {
                         assert firebaseUser != null;
                         if (isImage)
                             newUser = new User(signUp_EDT_firstName.getEditText().getText().toString(),signUp_EDT_lastName.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
-                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, filePath.toString(), false, uuid);
+                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, filePath.toString(), false, uuid, spn_my_spinner.getSelectedItem().toString());
                         else
                             newUser = new User(signUp_EDT_firstName.getEditText().getText().toString(),signUp_EDT_lastName.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
-                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, "https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e", false, uuid);
+                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, "https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e", false, uuid, spn_my_spinner.getSelectedItem().toString());
 
                         myRef.child("Users").child(signUp_EDT_id.getEditText().getText().toString()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

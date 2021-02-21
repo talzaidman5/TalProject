@@ -257,10 +257,11 @@
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
             android:layout_weight="1"/>
-            <EditText
+            <Spinner
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </EditText>
+                android:layout_height="wrap_content"
+                android:id="@+id/fragmentc_TXT_Health_problem">
+            </Spinner>
 
             <CheckBox
                 android:layout_width="match_parent"
