@@ -30,6 +30,7 @@ public class User {
     private String imageUser;
     private String city;
     private Boolean remember;
+    private Boolean canDonateBlood;
     private USER_TYPE userType;
     private ArrayList<BloodDonation> allBloodDonations;
     private String uuID;
@@ -57,12 +58,36 @@ public class User {
         this.allBloodDonations = new ArrayList<>();
         this.uuID = uuid;
         this.age = Calendar.getInstance().get(Calendar.YEAR)- birthDate.getYear();
+        this.canDonateBlood = false;
     }
 
     public User(String data) {
         this(createUserFromString(data));
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Boolean getCanDonateBlood() {
+        return canDonateBlood;
+    }
+
+    public void setCanDonateBlood(Boolean canDonateBlood) {
+        this.canDonateBlood = canDonateBlood;
+    }
+
+    public String getUuID() {
+        return uuID;
+    }
+
+    public void setUuID(String uuID) {
+        this.uuID = uuID;
+    }
 
     public User(User other) {
         this.firstName = other.firstName;
@@ -120,13 +145,7 @@ public class User {
         allBloodDonations.add(bloodDonation);
     }
 
-    public String getuuID() {
-        return uuID;
-    }
 
-    public void setuuID(String uuID) {
-        this.uuID = uuID;
-    }
 
     public User() {
         remember = false;

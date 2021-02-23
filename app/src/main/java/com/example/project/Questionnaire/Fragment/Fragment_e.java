@@ -37,7 +37,6 @@ public class Fragment_e extends Fragment {
     String fileName = "determination_algorithm.txt";
     private ArrayList<String> algo = new ArrayList<>();
     private View view;
-    private Spinner fragmentc_TXT_Health_problem;
     private MySheredP msp;
     private AllUsers allUsers;
     private User user;
@@ -48,31 +47,39 @@ public class Fragment_e extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view =  inflater.inflate(R.layout.fragment_e, container, false);
-        fragmentc_TXT_Health_problem= view.findViewById(R.id.fragmentc_TXT_Health_problem);
-        getFromMSP();
          spn_my_spinner = view.findViewById(R.id.spinner);
 
         msp = new MySheredP(getContext());
+        getFromMSP();
+
         readFile();
 
         if(checkAlgo()) {
             user = allUsers.getUserByUUID(android.provider.Settings.Secure.getString(this.getActivity().getContentResolver(), android.provider.Settings.Secure.ANDROID_ID));
-            myRef.child("Users").child(user.getID()).setValue(user);
-            Toast.makeText(getContext(), "אתה יכול לתרום דם!", Toast.LENGTH_SHORT);
-
+            if(user!=null) {
+                user.setCanDonateBlood(true);
+                myRef.child("Users").child(user.getID()).setValue(user);
+                Toast.makeText(getContext(), "אתה יכול לתרום דם!", Toast.LENGTH_SHORT);
+            }
             }
         return view;
     }
 
     private boolean checkAlgo() {
+        String s= fragment_c.spn_my_spinner.getSelectedItem().toString();
+        String[] temp;
+        if(!s.equals("בחר"))
         for (String str: algo)
-            if(str.contains(fragmentc_TXT_Health_problem.getSelectedItem().toString()))
-                return false;
+            if(str.contains(s)) {
+                temp=str.split(" ");
+                if (!temp[0].equals("מותר להתרים"))
+                    return false;
+            }
             return true;
     }
     private AllUsers getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_MSP_ALL, "NA");
-        allUsers = new AllUsers(dataAll);
+        allUsers =  AllUsers.AllUsers2(dataAll);
         return allUsers;
     }
 
@@ -88,8 +95,11 @@ public class Fragment_e extends Fragment {
                 line = reader.readLine();
                 if(line != null) {
                     temp = line.split("-");
-                    String s = temp[0] + " " + temp[2];
-                    algo.add(s);
+                    if(temp.length>1) {
+                        String s = temp[0] + " " + temp[2];
+                        algo.add(s);
+
+                    }
                 }
             }
         } catch (IOException ioe) {

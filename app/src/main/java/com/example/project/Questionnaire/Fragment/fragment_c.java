@@ -28,7 +28,7 @@ public class fragment_c extends Fragment {
     private View view;
     private Button next;
     private ArrayList<String> spinnerArray;
-    private Spinner spn_my_spinner;
+    public static Spinner spn_my_spinner;
     private ArrayList<String> algo = new ArrayList<>();
     String fileName = "determination_algorithm.txt";
 
@@ -83,7 +83,11 @@ public class fragment_c extends Fragment {
                 line = reader.readLine();
                 if(line != null) {
                     temp = line.split("-");
+                    if(temp.length>1)
                     algo.add(temp[2]);
+                    else
+                        algo.add(temp[0]);
+
                 }
             }
         } catch (IOException ioe) {

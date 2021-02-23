@@ -21,6 +21,9 @@ public class AllUsers {
     public AllUsers(String data) {
         createUsersFromString(data);
     }
+    public static AllUsers AllUsers2(String data) {
+        return createUsersFromString(data);
+    }
 
     public AllUsers() {
         this.allUser = new ArrayList<>();
@@ -65,7 +68,7 @@ public class AllUsers {
 
     public User getUserByUUID(String uuid){
         for (User tempUser: allUser) {
-            if(tempUser.getuuID().equals(uuid))
+            if(tempUser.getUuID().equals(uuid))
                 return  tempUser;
         }
         return null;
