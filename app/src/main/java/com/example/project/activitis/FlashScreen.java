@@ -10,10 +10,12 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.example.project.R;
 import com.example.project.data.AllUsers;
@@ -21,6 +23,8 @@ import com.example.project.data.Position;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +32,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -48,6 +54,8 @@ public class FlashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flash_screen);
         getSupportActionBar().hide();
+
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
@@ -58,6 +66,16 @@ public class FlashScreen extends AppCompatActivity {
     }
 
 
+
+    public void onTokenRefresh() {
+        // Get updated InstanceID token.
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+
+        // If you want to send messages to this application instance or
+        // manage this apps subscriptions on the server side, send the
+        // Instance ID token to your app server.
+        //sendRegistrationToServer(refreshedToken);
+    }
     public void readFB() {
         myRef.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -101,7 +119,7 @@ public class FlashScreen extends AppCompatActivity {
         if (firebaseUser != null) {
             User tempUser = allUsers.getUserByEmail(firebaseUser.getEmail());
             if (tempUser != null) {
-                if (tempUser.equals(User.USER_TYPE.MANAGER)){
+                if (tempUser.getUserType().equals(User.USER_TYPE.MANAGER)){
                     startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
                     finish();
                 }
