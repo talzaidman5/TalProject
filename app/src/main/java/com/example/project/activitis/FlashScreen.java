@@ -119,20 +119,28 @@ public class FlashScreen extends AppCompatActivity {
         if (firebaseUser != null) {
             User tempUser = allUsers.getUserByEmail(firebaseUser.getEmail());
             if (tempUser != null) {
-                if (tempUser.getUserType().equals(User.USER_TYPE.MANAGER)){
-                    startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
-                    finish();
-                }
-                else{
-                    startActivity(new Intent(FlashScreen.this, ActivityProfileMenu.class));
-                    finish();
+                if (tempUser.getUuID() != null) {
+                    String json = gson.toJson(tempUser);
+                    msp.putString(Constants.KEY_MSP, json);
+
+                    if (tempUser.getUserType().equals(User.USER_TYPE.MANAGER)) {
+                        startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
+                        finish();
+                    } else {
+                        startActivity(new Intent(FlashScreen.this, ActivityProfileMenu.class));
+                        finish();
+                    }
                 }
             }
+            else
+            {
+                startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
+                finish();
+            }
         }
-        else {
-            startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
-            finish();
-        }
+
+
+
     }
     private void putOnMSP() {
         String jsonAllUsers = gson.toJson(allUsers);

@@ -160,7 +160,7 @@ public class ActivityLogIn extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 putOnMSP();
                                 Intent intent;
-                                if (newUser != null) {
+                                if (newUser.getUserType() != null) {
                                     if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
                                         intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
                                     else

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.example.project.R;
@@ -11,6 +12,7 @@ import com.example.project.R;
 public class ActivityPublishingReportsActivity extends AppCompatActivity {
     private Spinner activity_publishing_reports_SPI_year,activity_publishing_reports_SPI_month,activity_publishing_reports_SPI_day,
             activity_publishing_reports_SPI_BloodDonationPosition,activity_publishing_reports_SPI_age;
+    private Button activity_publishing_reports_BTN_report;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

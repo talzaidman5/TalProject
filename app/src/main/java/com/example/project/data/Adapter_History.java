@@ -54,8 +54,7 @@ public class Adapter_History extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
             ViewHolder_Normal mHolder = (ViewHolder_Normal) holder;
-            mHolder.history_TXT_Date.setText( temp.getDate().getDay()+"/"+  temp.getDate().getMonth()+"/"
-                    +  temp.getDate().getYear());
+            mHolder.history_TXT_Date.setText( temp.getDate()+"");
             mHolder.history_TXT_Place.setText(temp.getCity());
 
 

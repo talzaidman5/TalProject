@@ -6,7 +6,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -28,6 +31,8 @@ import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
@@ -35,6 +40,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -56,6 +62,9 @@ public class ActivityMyProfile extends AppCompatActivity {
     private AllUsers allUsers;
     private Date date;
     private ArrayList<String> spinnerArray;
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference myRef = database.getReference("FB");
+    private SearchableSpinner spn_my_spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,9 +119,9 @@ public class ActivityMyProfile extends AppCompatActivity {
         dialog.setTitle("Title...");
 
         // set the custom dialog components - text, image and button
-        SearchableSpinner spn_my_spinner = dialog.findViewById(R.id.spinner);
+         spn_my_spinner = dialog.findViewById(R.id.spinner);
 
-        Button dialogButton = (Button) dialog.findViewById(R.id.popup_BTN_yes);
+        Button dialogButton = dialog.findViewById(R.id.popup_BTN_add);
 
 
         spinnerArray = new ArrayList<String>();
@@ -135,12 +144,21 @@ public class ActivityMyProfile extends AppCompatActivity {
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                saveToFirebase();
                 dialog.dismiss();
             }
         });
 
         dialog.show();
 }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void saveToFirebase() {
+        Date currentDate = new Date();
+
+       myRef.child("Blood donations").child(currentUser.getID()).setValue(new BloodDonation(spn_my_spinner.getSelectedItem().toString(),currentDate));
+
+    }
 
     private void openPopUp() {
         final AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -203,9 +221,11 @@ public class ActivityMyProfile extends AppCompatActivity {
         alert.show();
 
         add.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
-                BloodDonation bloodDonation = new BloodDonation(cities.getSelectedItem().toString(), date);
+                Date currentDate = new Date();
+                BloodDonation bloodDonation = new BloodDonation(cities.getSelectedItem().toString(), currentDate);
                 currentUser.addBloodDonation(bloodDonation);
                 putOnMSP();
 

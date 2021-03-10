@@ -15,6 +15,12 @@
         android:src="@drawable/logo"
         android:layout_marginTop="10dp"
         android:id="@+id/logo"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/red"
+        android:id="@+id/menu_BTN_logout"
+        android:text="התנתק"></Button>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

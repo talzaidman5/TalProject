@@ -11,11 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.Questionnaire.ViewFullQuestionnairesActivity;
 import com.example.project.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ActivityMenuManager extends AppCompatActivity {
 
 
-    private Button menu_BTN_ExportDonations;
+    private Button menu_BTN_ExportDonations,logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class ActivityMenuManager extends AppCompatActivity {
         getSupportActionBar().hide();
 //        menuManager_BTN_publishingReports = findViewById(R.id.menuManager_BTN_publishingReports);
         menu_BTN_ExportDonations = findViewById(R.id.menu_BTN_ExportDonations);
+        logout = findViewById(R.id.menu_BTN_logout);
 
         menu_BTN_ExportDonations.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,6 +38,14 @@ public class ActivityMenuManager extends AppCompatActivity {
 
             }
         });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(ActivityMenuManager.this,ActivityLogIn.class));
+                finish();
 
+            }
+        });
     }
 }

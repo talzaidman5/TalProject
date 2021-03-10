@@ -108,5 +108,12 @@
                 android:layout_marginTop="20dp"></Spinner>
 
         </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="הפק דוחות"
+            android:textColor="@color/black"
+            android:background="@color/white"
+            android:id="@+id/activity_publishing_reports_BTN_report"></Button>
     </LinearLayout>
 </RelativeLayout>
