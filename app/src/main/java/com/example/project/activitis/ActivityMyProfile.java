@@ -152,11 +152,13 @@ public class ActivityMyProfile extends AppCompatActivity {
         dialog.show();
 }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     private void saveToFirebase() {
         Date currentDate = new Date();
-
-       myRef.child("Blood donations").child(currentUser.getID()).setValue(new BloodDonation(spn_my_spinner.getSelectedItem().toString(),currentDate));
+        BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(),currentDate);
+        currentUser.getAllBloodDonations().add(bloodDonation);
+        currentUser.setAllBloodDonations(currentUser.getAllBloodDonations());
+        myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
+        myRef.child("Blood donations").child(currentUser.getID()+"-"+currentUser.getAllBloodDonations().size()).setValue(bloodDonation);
 
     }
 

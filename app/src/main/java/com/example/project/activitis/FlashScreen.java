@@ -138,6 +138,10 @@ public class FlashScreen extends AppCompatActivity {
                 finish();
             }
         }
+        else {
+            startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
+            finish();
+        }
 
 
 
