@@ -177,9 +177,10 @@ public class ActivityMyProfile extends AppCompatActivity {
 }
 
     private void saveToFirebase() {
-        BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(),date,currentUser);
+
+        BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(),date,currentUser.getID());
         currentUser.addBloodDonation(bloodDonation);
-        myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
+       myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
         myRef.child("Blood donations").child(currentUser.getID()+"-"+currentUser.getAllBloodDonations().size()).setValue(bloodDonation);
 
     }

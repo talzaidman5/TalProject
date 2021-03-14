@@ -5,14 +5,14 @@ import java.util.Date;
 public class BloodDonation {
     private String city;
     private Date date;
-    private User user;
+    private String userID;
 
     public BloodDonation(){}
 
-    public BloodDonation(String city, Date date, User user){
+    public BloodDonation(String city, Date date, String userID){
         this.city = city;
         this.date = date;
-        this.user = user;
+        this.userID = userID;
     }
     public String getCity() {
         return city;
@@ -30,11 +30,11 @@ public class BloodDonation {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setUser(User userId) {
-        this.user = userId;
+    public void setUserID(String userId) {
+        this.userID = userId;
     }
 }
