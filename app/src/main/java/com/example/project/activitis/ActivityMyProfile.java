@@ -40,6 +40,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -65,7 +66,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
     private SearchableSpinner spn_my_spinner;
-
+    private TextView add_blood_donation_TXT_date;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,13 +118,35 @@ public class ActivityMyProfile extends AppCompatActivity {
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_add_blood_donation);
         dialog.setTitle("Title...");
-
         // set the custom dialog components - text, image and button
          spn_my_spinner = dialog.findViewById(R.id.spinner);
 
         Button dialogButton = dialog.findViewById(R.id.popup_BTN_add);
+         add_blood_donation_TXT_date = dialog.findViewById(R.id.add_blood_donation_TXT_date);
+        add_blood_donation_TXT_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(ActivityMyProfile.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
+                date = new Date(year, month, dayOfMonth);
+                SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
 
+                String finalDate = dateFormat2.format(date);
+                add_blood_donation_TXT_date.setText(finalDate);
+
+            }
+        };
         spinnerArray = new ArrayList<String>();
       /*  spinnerArray.add("one");
         spinnerArray.add("two");
@@ -149,91 +172,16 @@ public class ActivityMyProfile extends AppCompatActivity {
             }
         });
 
+
         dialog.show();
 }
 
     private void saveToFirebase() {
-        Date currentDate = new Date();
-        BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(),currentDate);
-        currentUser.getAllBloodDonations().add(bloodDonation);
-        currentUser.setAllBloodDonations(currentUser.getAllBloodDonations());
+        BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(),date,currentUser);
+        currentUser.addBloodDonation(bloodDonation);
         myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
         myRef.child("Blood donations").child(currentUser.getID()+"-"+currentUser.getAllBloodDonations().size()).setValue(bloodDonation);
 
-    }
-
-    private void openPopUp() {
-        final AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("Add Blood Donations");
-
-        LinearLayout layout = new LinearLayout(this);
-        layout.setOrientation(LinearLayout.VERTICAL);
-
-
-        final Spinner cities = new Spinner(this);
-        spinnerArray = new ArrayList<String>();
-      /*  spinnerArray.add("one");
-        spinnerArray.add("two");
-        spinnerArray.add("three");
-        spinnerArray.add("four");
-        spinnerArray.add("five");*/
-
-        try {
-            readFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, spinnerArray);
-        cities.setAdapter(spinnerArrayAdapter);
-        layout.addView(cities);
-
-
-        final TextView dateTxt = new TextView(this);
-        dateTxt.setText("Click to pick date");
-
-        dateTxt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(ActivityMyProfile.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-
-            }
-        });
-
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                date = new Date(year, month, dayOfMonth);
-                dateTxt.setText(dayOfMonth + "/" + month + "/" + year);
-
-            }
-        };
-
-        layout.addView(dateTxt);
-        final Button add = new Button(this);
-        add.setText("Add");
-        layout.addView(add);
-        alert.setView(layout); // Again this is a set method, not add
-        alert.show();
-
-        add.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View view) {
-                Date currentDate = new Date();
-                BloodDonation bloodDonation = new BloodDonation(cities.getSelectedItem().toString(), currentDate);
-                currentUser.addBloodDonation(bloodDonation);
-                putOnMSP();
-
-
-            }
-        });
     }
 
 
@@ -250,6 +198,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_BTN_edit = findViewById(R.id.myProfile_BTN_edit);
         myProfile_BTN_add = findViewById(R.id.myProfile_BTN_add);
         logout = findViewById(R.id.logout);
+        add_blood_donation_TXT_date = findViewById(R.id.add_blood_donation_TXT_date);
 
     }
 

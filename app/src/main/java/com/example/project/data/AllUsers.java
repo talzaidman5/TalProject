@@ -19,7 +19,7 @@ public class AllUsers {
 
 
     public AllUsers(String data) {
-        createUsersFromString(data);
+        allUser =  createUsersFromString(data).allUser;
     }
     public static AllUsers AllUsers2(String data) {
         return createUsersFromString(data);

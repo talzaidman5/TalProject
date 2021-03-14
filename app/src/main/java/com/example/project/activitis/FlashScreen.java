@@ -123,7 +123,7 @@ public class FlashScreen extends AppCompatActivity {
                     String json = gson.toJson(tempUser);
                     msp.putString(Constants.KEY_MSP, json);
 
-                    if (tempUser.getUserType().equals(User.USER_TYPE.MANAGER)) {
+                    if(tempUser.getUserType().equals(User.USER_TYPE.MANAGER)) {
                         startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
                         finish();
                     } else {

@@ -15,6 +15,17 @@
         android:fontFamily="@font/regular"
         android:layout_centerHorizontal="true"
         android:text="הוספת תרומת דם"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="בחר תאריך"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/popup_TXT_label"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/add_blood_donation_TXT_date"/>
     <TextView
         android:id="@+id/city"
         android:layout_width="wrap_content"
@@ -23,16 +34,15 @@
         android:layout_margin="20dp"
         android:textColor="#000000"
         android:fontFamily="@font/regular"
-        android:layout_below="@id/popup_TXT_label"
+        android:layout_below="@id/add_blood_donation_TXT_date"
         android:layout_centerHorizontal="true"
         android:text="איפה ביצעת את תורמת הדם?"/>
-
      <com.toptoche.searchablespinnerlibrary.SearchableSpinner
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:id="@+id/spinner"
        android:layout_below="@id/city"
-       android:layout_margin="30dp"
+       android:layout_margin="20dp"
          android:layout_centerHorizontal="true"
     tools:ignore="MissingClass" />
 

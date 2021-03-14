@@ -8,7 +8,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
 import com.example.project.data.AllUsers;
-import com.example.project.data.Position;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
@@ -27,15 +25,9 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
-
-import java.util.Date;
 
 public class ActivityLogIn extends AppCompatActivity {
 
@@ -72,9 +64,8 @@ public class ActivityLogIn extends AppCompatActivity {
         */
         findViews();
         msp = new MySheredP(this);
-
         getFromMSP();
-
+        getAllFromMSP();
         mainPage_BTN_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,6 +131,12 @@ public class ActivityLogIn extends AppCompatActivity {
 
         return newUser;
     }
+    private AllUsers getAllFromMSP() {
+
+        String data = msp.getString(Constants.KEY_MSP_ALL, "NA");
+        allUsers = new AllUsers(data);
+        return allUsers;
+    }
 
     public void openSignUpPage() {
         startActivity(new Intent(ActivityLogIn.this, ActivitySignUpPage.class));
@@ -150,6 +147,7 @@ public class ActivityLogIn extends AppCompatActivity {
     public void checkUser() {
         String email_txt = mainPage_EDIT_email.getEditText().getText().toString();
         String password_txt = mainPage_EDIT_password.getEditText().getText().toString();
+        newUser=  allUsers.getUserByEmail(email_txt);
         if (TextUtils.isEmpty(email_txt) || TextUtils.isEmpty(password_txt))
             Toast.makeText(ActivityLogIn.this, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show();
         else {
@@ -160,7 +158,7 @@ public class ActivityLogIn extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 putOnMSP();
                                 Intent intent;
-                                if (newUser.getUserType() != null) {
+                                if (newUser.getID() != null) {
                                     if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
                                         intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
                                     else
@@ -170,10 +168,8 @@ public class ActivityLogIn extends AppCompatActivity {
                                     startActivity(intent);
                                     finish();
                                 }
-                                } else {
+                                } else
                                     Toast.makeText(ActivityLogIn.this, "אחד הפרטים לא נכונים", Toast.LENGTH_SHORT).show();
-
-                            }
                         }
                     });
         }
@@ -185,6 +181,7 @@ public class ActivityLogIn extends AppCompatActivity {
         String json = gson.toJson(newUser);
         msp.putString(Constants.KEY_MSP_ALL, jsonAll);
         msp.putString(Constants.KEY_MSP, json);
+
 
     }
 }

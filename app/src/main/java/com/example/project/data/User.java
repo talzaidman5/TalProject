@@ -18,6 +18,9 @@ public class User {
     public enum USER_TYPE {
         CLIENT, MANAGER;
     }
+    public enum GENDER {
+        FEMALE, MALE;
+    }
 
     private String firstName;
     private String lastName;
@@ -32,13 +35,14 @@ public class User {
     private Boolean remember;
     private Boolean canDonateBlood;
     private USER_TYPE userType;
+    private GENDER gender;
     private ArrayList<BloodDonation> allBloodDonations;
     private String uuID;
     private int age;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public User(String firstName,String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city) {
+    public User(String firstName,String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ID = ID;
@@ -59,6 +63,15 @@ public class User {
         this.uuID = uuid;
         this.age = Calendar.getInstance().get(Calendar.YEAR)- birthDate.getYear();
         this.canDonateBlood = false;
+        this.gender = gender;
+    }
+
+    public GENDER getGender() {
+        return gender;
+    }
+
+    public void setGender(GENDER gender) {
+        this.gender = gender;
     }
 
     public User(String data) {
@@ -156,6 +169,8 @@ public class User {
     }
 
     public ArrayList<BloodDonation> getAllBloodDonations() {
+       if(allBloodDonations==null)
+           allBloodDonations = new ArrayList<>();
         return allBloodDonations;
     }
 

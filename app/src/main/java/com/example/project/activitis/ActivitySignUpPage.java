@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,6 +15,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -83,7 +83,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private Boolean isImage = false;
     private ArrayList<String> spinnerArray;
     private Spinner spn_my_spinner;
-
+    private CheckBox signup_CHB_female,signup_CHB_male;
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -245,6 +245,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
         signUp_TXT_birthDatePicker = findViewById(R.id.signUp_TXT_birthDatePicker);
         sign_up_IMG_logo = findViewById(R.id.sign_up_IMG_logo);
         spn_my_spinner = findViewById(R.id.signUp_EDT_city);
+        signup_CHB_female = findViewById(R.id.signup_CHB_female);
+        signup_CHB_male = findViewById(R.id.signup_CHB_male);
 
     }
 
@@ -347,10 +349,10 @@ public class ActivitySignUpPage extends AppCompatActivity {
                         assert firebaseUser != null;
                         if (isImage)
                             newUser = new User(signUp_EDT_firstName.getEditText().getText().toString(),signUp_EDT_lastName.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
-                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, filePath.toString(), false, uuid, spn_my_spinner.getSelectedItem().toString());
+                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, filePath.toString(), false, uuid, spn_my_spinner.getSelectedItem().toString(),selectedGender());
                         else
                             newUser = new User(signUp_EDT_firstName.getEditText().getText().toString(),signUp_EDT_lastName.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
-                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, "https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e", false, uuid, spn_my_spinner.getSelectedItem().toString());
+                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, "https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e", false, uuid, spn_my_spinner.getSelectedItem().toString(),selectedGender());
 
                         myRef.child("Users").child(signUp_EDT_id.getEditText().getText().toString()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
@@ -386,6 +388,13 @@ public class ActivitySignUpPage extends AppCompatActivity {
             checkData();
         }
 
+    }
+
+    private User.GENDER selectedGender() {
+        if(signup_CHB_female.isSelected())
+            return User.GENDER.FEMALE;
+        else
+            return User.GENDER.MALE;
     }
 
 }
