@@ -161,7 +161,9 @@ public class User {
 
 
     public User() {
-        remember = false;
+       this.remember = false;
+        this.userType = USER_TYPE.CLIENT;
+
     }
 
     public String getFirstName() {
@@ -226,8 +228,11 @@ public class User {
         return userType;
     }
 
-    public void setUserType(USER_TYPE userType) {
-        this.userType = userType;
+    public void setUserType(String userId) {
+        if (userId.equals(Constants.MANAGER_ID))
+            this.userType = USER_TYPE.MANAGER;
+        else
+            this.userType = USER_TYPE.CLIENT;
     }
 
     public String getBloodType() {

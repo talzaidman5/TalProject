@@ -1,6 +1,7 @@
 package com.example.project.activitis;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -17,9 +18,14 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.github.drjacky.imagepicker.ImagePicker;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -35,6 +41,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,9 +68,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ActivitySignUpPage extends AppCompatActivity {
     private MaterialButton signUp_BTN_signUp;
-    private CircleImageView sign_up_IMG_logo;
+    private ImageView sign_up_IMG_logo;
     private Spinner signUp_SPI_bloodTypes;
-    private TextInputLayout signUp_EDT_id, signUp_EDT_email, signUp_EDT_phone, signUp_EDT_password, signUp_EDT_lastName,signUp_EDT_firstName;
+    private TextInputLayout signUp_EDT_id, signUp_EDT_email, signUp_EDT_phone, signUp_EDT_password, signUp_EDT_lastName, signUp_EDT_firstName;
     private TextView signUp_TXT_birthDatePicker;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     public boolean data = true;
@@ -71,7 +78,6 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private MySheredP msp;
     private Gson gson = new Gson();
     private String imageUrl, uuid;
-    private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 22;
     private FirebaseStorage storage;
     private StorageReference storageReference;
@@ -79,11 +85,18 @@ public class ActivitySignUpPage extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
     private AllUsers allUsers = new AllUsers();
-    private User newUser;
+    private User newUser = new User();
     private Boolean isImage = false;
     private ArrayList<String> spinnerArray;
     private Spinner spn_my_spinner;
-    private CheckBox signup_CHB_female,signup_CHB_male;
+    private CheckBox signup_CHB_female, signup_CHB_male;
+
+
+    private String filePath = "";
+    private Uri fileUri;
+    private String tempName;
+
+
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +104,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         msp = new MySheredP(this);
-        setContentView(R.layout.sign_up_page);
+        setContentView(R.layout.activity_sign_up_page);
         findView();
         getSupportActionBar().hide();
 
@@ -113,7 +126,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 isImage = true;
-                SelectImage();
+//                SelectImage();
+                getImage();
             }
         });
 
@@ -155,11 +169,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
         });
 
         spinnerArray = new ArrayList<String>();
-      /*  spinnerArray.add("one");
-        spinnerArray.add("two");
-        spinnerArray.add("three");
-        spinnerArray.add("four");
-        spinnerArray.add("five");*/
+
 
         try {
             readFile();
@@ -171,6 +181,19 @@ public class ActivitySignUpPage extends AppCompatActivity {
         spn_my_spinner.setAdapter(spinnerArrayAdapter);
 
     }
+
+
+    private void getImage() {
+        ImagePicker.Companion
+                .with(this)
+                .crop()
+                .cropOval()
+                .cropSquare()
+                .compress(1024)
+                .maxResultSize(1080, 1080)
+                .start();
+    }
+
     private void readFile() throws IOException {
         BufferedReader reader;
 
@@ -186,11 +209,13 @@ public class ActivitySignUpPage extends AppCompatActivity {
             ioe.printStackTrace();
         }
     }
+
     private boolean checkData() {
         if (signUp_EDT_firstName.getEditText().getText().toString().equals("")) {
             signUp_EDT_firstName.setError("");
             data = false;
-        }if (signUp_EDT_lastName.getEditText().getText().toString().equals("")) {
+        }
+        if (signUp_EDT_lastName.getEditText().getText().toString().equals("")) {
             signUp_EDT_lastName.setError("");
             data = false;
         }
@@ -267,76 +292,113 @@ public class ActivitySignUpPage extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            //Image Uri will not be null for RESULT_OK
+            fileUri = data.getData();
+            sign_up_IMG_logo.setImageURI(fileUri);
 
-        if (requestCode == PICK_IMAGE_REQUEST
-                && resultCode == RESULT_OK
-                && data != null
-                && data.getData() != null) {
 
-            // Get the Uri of data
-            filePath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore
-                        .Images
-                        .Media
-                        .getBitmap(getContentResolver(), filePath);
-                sign_up_IMG_logo.setImageBitmap(bitmap);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            //You can also get File Path from intent
+            filePath = new ImagePicker().Companion.getFilePath(data);
+            uploadImage();
+        } else if (resultCode == ImagePicker.RESULT_ERROR) {
+            Toast.makeText(this, new ImagePicker().Companion.getError(data), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
         }
     }
 
+    public void loadImageByDrawableName() {
+        Glide
+                .with(this)
+                .load(R.drawable.background)
+                .into(sign_up_IMG_logo);
+    }
+
+    // UploadImage method
     private void uploadImage() {
         if (filePath != null) {
-
-            // Code for showing progressDialog while uploading
-            ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading...");
-            progressDialog.show();
-
-            // Defining the child of storageReference
-            imageUrl = "images/" + UUID.randomUUID().toString();
-            StorageReference ref = storageReference.child(imageUrl);
-            newUser.setImageUser(imageUrl);
+            StorageReference ref = storageReference.child(fileUri.toString());
+            newUser.setImageUser(fileUri.toString());
+            tempName = fileUri.toString();
             // adding listeners on upload
             // or failure of image
-            ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            ref.putFile(fileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(
                         UploadTask.TaskSnapshot taskSnapshot) {
-                    // Image uploaded successfully
-                    // Dismiss dialog
-                    progressDialog.dismiss();
-                    Toast.makeText(ActivitySignUpPage.this,
-                            "Image Uploaded!!",
-                            Toast.LENGTH_SHORT)
-                            .show();
+
                 }
             })
 
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
-                            Toast.makeText(ActivitySignUpPage.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            // Error, Image not uploaded
                         }
                     })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress
-                                    = (100.0
-                                    * taskSnapshot.getBytesTransferred()
-                                    / taskSnapshot.getTotalByteCount());
-                            progressDialog.setMessage(
-                                    "Uploaded "
-                                            + (int) progress + "%");
-                        }
-                    });
+                    .addOnProgressListener(
+                            new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                                // Progress Listener for loading
+                                // percentage on the dialog box
+                                @Override
+                                public void onProgress(
+                                        UploadTask.TaskSnapshot taskSnapshot) {
+                                }
+                            });
         }
     }
+
+//    private void uploadImageOld() {
+//        if (filePath != null) {
+//
+//            // Code for showing progressDialog while uploading
+//            ProgressDialog progressDialog = new ProgressDialog(this);
+//            progressDialog.setTitle("Uploading...");
+//            progressDialog.show();
+//
+//            // Defining the child of storageReference
+//            imageUrl = "images/" + UUID.randomUUID().toString();
+//            StorageReference ref = storageReference.child(imageUrl);
+//            newUser.setImageUser(imageUrl);
+//            // adding listeners on upload
+//            // or failure of image
+//            ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                @Override
+//                public void onSuccess(
+//                        UploadTask.TaskSnapshot taskSnapshot) {
+//                    // Image uploaded successfully
+//                    // Dismiss dialog
+//                    progressDialog.dismiss();
+//                    Toast.makeText(ActivitySignUpPage.this,
+//                            "Image Uploaded!!",
+//                            Toast.LENGTH_SHORT)
+//                            .show();
+//                }
+//            })
+//
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            progressDialog.dismiss();
+//                            Toast.makeText(ActivitySignUpPage.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    })
+//                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+//                            double progress
+//                                    = (100.0
+//                                    * taskSnapshot.getBytesTransferred()
+//                                    / taskSnapshot.getTotalByteCount());
+//                            progressDialog.setMessage(
+//                                    "Uploaded "
+//                                            + (int) progress + "%");
+//                        }
+//                    });
+//        }
+//    }
 
     private void register(String usernameTemp, String emailTemp, String passwordTemp) {
         if (!usernameTemp.equals("") && !emailTemp.equals("") && !passwordTemp.equals("")) {
@@ -347,18 +409,12 @@ public class ActivitySignUpPage extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         assert firebaseUser != null;
-                        if (isImage)
-                            newUser = new User(signUp_EDT_firstName.getEditText().getText().toString(),signUp_EDT_lastName.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
-                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, filePath.toString(), false, uuid, spn_my_spinner.getSelectedItem().toString(),selectedGender());
-                        else
-                            newUser = new User(signUp_EDT_firstName.getEditText().getText().toString(),signUp_EDT_lastName.getEditText().getText().toString(), signUp_EDT_id.getEditText().getText().toString(), signUp_EDT_email.getEditText().getText().toString(),
-                                    signUp_EDT_phone.getEditText().getText().toString(), signUp_EDT_password.getEditText().getText().toString(), signUp_SPI_bloodTypes.getSelectedItem().toString(), date, "https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e", false, uuid, spn_my_spinner.getSelectedItem().toString(),selectedGender());
-
+                        buildUser();
                         myRef.child("Users").child(signUp_EDT_id.getEditText().getText().toString()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                  getFromMSP();
+                                    getFromMSP();
                                     allUsers.addToList(newUser);
                                     putOnMSP();
                                     uploadImage();
@@ -367,11 +423,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
                                     else
                                         startActivity(new Intent(ActivitySignUpPage.this, ActivityMenuManager.class));
 
-
                                 } else
                                     Toast.makeText(ActivitySignUpPage.this, "error", Toast.LENGTH_SHORT);
-
-
                             }
 
                         });
@@ -390,8 +443,29 @@ public class ActivitySignUpPage extends AppCompatActivity {
 
     }
 
+    private void buildUser() {
+        newUser.setFirstName(signUp_EDT_firstName.getEditText().getText().toString());
+        newUser.setLastName(signUp_EDT_lastName.getEditText().getText().toString());
+        newUser.setUserType(signUp_EDT_lastName.getEditText().getText().toString());
+        newUser.setID(signUp_EDT_id.getEditText().getText().toString());
+        newUser.setEmail(signUp_EDT_email.getEditText().getText().toString());
+        newUser.setPhoneNumber(signUp_EDT_phone.getEditText().getText().toString());
+        newUser.setPassword(signUp_EDT_password.getEditText().getText().toString());
+        newUser.setBloodType(signUp_SPI_bloodTypes.getSelectedItem().toString());
+        newUser.setBloodType(signUp_SPI_bloodTypes.getSelectedItem().toString());
+        newUser.setBirthDate(date);
+        newUser.setUuID(uuid);
+        newUser.setGender(selectedGender());
+        newUser.setBloodType(spn_my_spinner.getSelectedItem().toString());
+        if (filePath.equals(""))
+            newUser.setImageUser("https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e");
+        else
+            newUser.setImageUser(filePath);
+
+    }
+
     private User.GENDER selectedGender() {
-        if(signup_CHB_female.isSelected())
+        if (signup_CHB_female.isSelected())
             return User.GENDER.FEMALE;
         else
             return User.GENDER.MALE;

@@ -54,11 +54,8 @@ public class Adapter_History extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 
             ViewHolder_Normal mHolder = (ViewHolder_Normal) holder;
-            mHolder.history_TXT_Date.setText( temp.getDate()+"");
+            mHolder.history_TXT_Date.setText( getDateStr(temp.getDate()));
             mHolder.history_TXT_Place.setText(temp.getCity());
-
-
-
     }
 
     private BloodDonation getItem(int position) {

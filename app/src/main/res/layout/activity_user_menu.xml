@@ -7,12 +7,6 @@
     android:orientation="horizontal"
     android:background="@drawable/my_gradient_drawable"
     tools:context="com.example.project.activitis.ActivityProfileMenu">
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="10dp"
-        android:src="@drawable/ic_all"
-        />
 
     <ImageView
         android:layout_width="match_parent"

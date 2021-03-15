@@ -14,13 +14,17 @@
         android:layout_alignParentTop="true"
         android:id="@+id/img"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/sign_up_IMG_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_margin="10dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/profile" />
+        app:shapeAppearanceOverlay="@style/circleImageView"
+        android:src="@drawable/ic_launcher_background" />
+
+
+
     <ScrollView
         android:background="@drawable/corners"
         android:layout_width="match_parent"

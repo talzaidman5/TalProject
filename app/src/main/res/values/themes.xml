@@ -8,4 +8,10 @@
     <style name="AppTheme.AppBarOverlay" parent="Theme.MaterialComponents.Light.DarkActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="Theme.MaterialComponents.Light.DarkActionBar" />
+
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

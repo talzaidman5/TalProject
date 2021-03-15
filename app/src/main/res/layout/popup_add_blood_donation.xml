@@ -37,14 +37,18 @@
         android:layout_below="@id/add_blood_donation_TXT_date"
         android:layout_centerHorizontal="true"
         android:text="איפה ביצעת את תורמת הדם?"/>
-     <com.toptoche.searchablespinnerlibrary.SearchableSpinner
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:id="@+id/spinner"
-       android:layout_below="@id/city"
-       android:layout_margin="20dp"
-         android:layout_centerHorizontal="true"
-    tools:ignore="MissingClass" />
+
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@id/city"
+        android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
+       />
+
+
 
     <Button
         android:id="@+id/popup_BTN_add"

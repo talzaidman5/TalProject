@@ -17,12 +17,15 @@
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
         <activity android:name=".activitis.ActivityReadFromExcel"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight"></activity>
         <activity
             android:name=".activitis.ActivityAllReports"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.FlashScreen"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,43 +35,54 @@
         </activity>
         <activity
             android:name=".activitis.ActivityHistoryBloodDonations"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".Questionnaire.ViewFullQuestionnairesActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.ActivityMainForm"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.ActivityPosition"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.ActivityMyProfile"
             android:theme="@style/Theme.MaterialComponents.DayNight"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.ActivityProfileMenu$ActivityQuestionnairePage"
             android:theme="@style/Theme.AppCompat"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.ActivityProfileMenu"
             android:theme="@style/Theme.AppCompat"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.ActivityMenuManager"
             android:theme="@style/Theme.AppCompat"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.ActivityPublishingReportsActivity"
             android:theme="@style/Theme.AppCompat"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.ActivitySignUpPage"
             android:theme="@style/Theme.MaterialComponents"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.ActivityLogIn"
             android:theme="@style/Theme.MaterialComponents"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 

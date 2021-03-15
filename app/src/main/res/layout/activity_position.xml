@@ -18,7 +18,26 @@
         android:text="עמדות פעילות"
         android:gravity="center"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activityPosition_TXT_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/regular"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:id="@+id/activityPosition_TXT_empty"/>
 
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="50dp"
+        android:id="@+id/activityPosition_IMG_empty"
+        android:visibility="invisible"
+        android:src="@drawable/box"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -6,6 +6,7 @@ public class BloodDonation {
     private String city;
     private Date date;
     private String userID;
+    private String booldDonationId;
 
     public BloodDonation(){}
 
@@ -13,9 +14,18 @@ public class BloodDonation {
         this.city = city;
         this.date = date;
         this.userID = userID;
+
     }
     public String getCity() {
         return city;
+    }
+
+    public String getBooldDonationId() {
+        return booldDonationId;
+    }
+
+    public void setBooldDonationId(String booldDonationId) {
+        this.booldDonationId = booldDonationId;
     }
 
     public void setCity(String city) {
