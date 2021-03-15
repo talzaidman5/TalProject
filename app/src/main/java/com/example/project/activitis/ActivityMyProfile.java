@@ -1,10 +1,12 @@
 package com.example.project.activitis;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -14,9 +16,12 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -26,11 +31,18 @@ import com.example.project.data.BloodDonation;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
+import com.github.drjacky.imagepicker.ImagePicker;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -51,7 +63,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill, myProfile_TXT_dateBirthToFill, myProfile_TXT_bloodTypeToFill;
     private TextInputLayout myProfile_TXT_IDToFill;
     private EditText myProfile_TXT_nameToFill;
-    private CircleImageView myProfile_BTN_logo;
+    private ImageView myProfile_BTN_logo;
     private ImageButton myProfile_BTN_add, myProfile_BTN_logout;
     private MaterialButton myProfile_BTN_edit;
     private MySheredP msp;
@@ -64,7 +76,14 @@ public class ActivityMyProfile extends AppCompatActivity {
     final DatabaseReference myRef = database.getReference("FB");
     private Spinner spn_my_spinner;
     private TextView add_blood_donation_TXT_date;
-    private boolean editFlag = true;
+    private boolean editFlag = false;
+    private StorageReference storageReference;
+    private FirebaseStorage storage;
+
+    private String filePath = "";
+    private Uri fileUri;
+    private String tempName ="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +91,8 @@ public class ActivityMyProfile extends AppCompatActivity {
         setContentView(R.layout.activity_my_profile);
         msp = new MySheredP(this);
         getSupportActionBar().hide();
-
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
         findView();
         getFromMSP();
         initData();
@@ -83,8 +103,8 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_BTN_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (editFlag == true) {
-                    editFlag = false;
+                if (editFlag == false) {
+                    editFlag = true;
 
                     changeTextsEnabled(true);
                     myProfile_BTN_edit.setBackgroundResource(R.drawable.save);
@@ -92,17 +112,25 @@ public class ActivityMyProfile extends AppCompatActivity {
                     myProfile_TXT_phoneNumberToFill.setEnabled(true);
                 } else {
 
-                    if (checkData())
-                   {
-                       changeTextsEnabled(false);
-                       myProfile_BTN_edit.setBackgroundResource(R.drawable.pencil);
-                       editFlag = true;
-                       updateUserInfo();
-                       putOnMSP_user();
-                   }
+                    if (checkData()) {
+                        changeTextsEnabled(false);
+                        myProfile_BTN_edit.setBackgroundResource(R.drawable.pencil);
+                        editFlag = false;
+                        updateUserInfo();
+                        putOnMSP_user();
+                    }
                 }
             }
         });
+
+        myProfile_BTN_logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editFlag == true)
+                    getImage();
+            }
+        });
+
         myProfile_BTN_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,6 +151,17 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     }
 
+    private void getImage() {
+        ImagePicker.Companion
+                .with(this)
+                .crop()
+                .cropOval()
+                .cropSquare()
+                .compress(1024)
+                .maxResultSize(1080, 1080)
+                .start();
+    }
+
     private void changeTextsEnabled(boolean status) {
         myProfile_TXT_IDToFill.setEnabled(status);
         myProfile_TXT_passwordToFill.setEnabled(status);
@@ -138,7 +177,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 //        currentUser.setBirthDate(myProfile_TXT_dateBirthToFill.getEditText().getText().toString());
         currentUser.setEmail(myProfile_TXT_emailToFill.getEditText().getText().toString());
         currentUser.setPhoneNumber(myProfile_TXT_phoneNumberToFill.getEditText().getText().toString());
-
+        currentUser.setImageUser(fileUri.toString());
     }
 
     private boolean checkData() {
@@ -265,13 +304,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     }
 
     public void initData() {
-        myProfile_TXT_IDToFill.setEnabled(false);
-        myProfile_TXT_passwordToFill.setEnabled(false);
-        myProfile_TXT_bloodTypeToFill.setEnabled(false);
-        myProfile_TXT_dateBirthToFill.setEnabled(false);
-        myProfile_TXT_emailToFill.setEnabled(false);
-        myProfile_TXT_nameToFill.setEnabled(false);
-        myProfile_TXT_phoneNumberToFill.setEnabled(false);
+        changeTextsEnabled(false);
 
         if (currentUser.getID() != null) {
             myProfile_TXT_phoneNumberToFill.getEditText().setText(currentUser.getPhoneNumber());
@@ -281,6 +314,7 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
             myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
             myProfile_TXT_bloodTypeToFill.getEditText().setText(currentUser.getBloodType());
+
 
 
             String urlImage = currentUser.getImageUser();
@@ -299,6 +333,58 @@ public class ActivityMyProfile extends AppCompatActivity {
         msp.putString(Constants.KEY_MSP, json);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            //Image Uri will not be null for RESULT_OK
+            fileUri = data.getData();
+            myProfile_BTN_logo.setImageURI(fileUri);
+
+
+            //You can also get File Path from intent
+            filePath = new ImagePicker().Companion.getFilePath(data);
+            uploadImage();
+        } else if (resultCode == ImagePicker.RESULT_ERROR) {
+            Toast.makeText(this, new ImagePicker().Companion.getError(data), Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void uploadImage() {
+        if (filePath != null) {
+            StorageReference ref = storageReference.child(fileUri.toString());
+            currentUser.setImageUser(fileUri.toString());
+
+            // adding listeners on upload
+            // or failure of image
+            ref.putFile(fileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(
+                        UploadTask.TaskSnapshot taskSnapshot) {
+
+                }
+            })
+
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Error, Image not uploaded
+                        }
+                    })
+                    .addOnProgressListener(
+                            new OnProgressListener<UploadTask.TaskSnapshot>() {
+
+                                // Progress Listener for loading
+                                // percentage on the dialog box
+                                @Override
+                                public void onProgress(
+                                        UploadTask.TaskSnapshot taskSnapshot) {
+                                }
+                            });
+        }
+    }
 
     private AllUsers getFromMSP() {
         String data = msp.getString(Constants.KEY_MSP, "NA");

@@ -30,7 +30,8 @@
 
 
 </RelativeLayout>
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.google.android.material.imageview.ShapeableImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/myProfile_BTN_logo"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -38,6 +39,7 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/profile"
         android:shape="ring"
+        app:shapeAppearanceOverlay="@style/circleImageView"
         android:layout_below="@+id/images"
         android:layout_gravity="center"
         tools:ignore="MissingClass" />
