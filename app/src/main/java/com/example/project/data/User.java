@@ -28,7 +28,7 @@ public class User {
     private String email;
     private String phoneNumber;
     private String password;
-    private String bloodType;
+    private int bloodType;
     private Date birthDate;
     private String imageUser;
     private String city;
@@ -42,7 +42,7 @@ public class User {
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public User(String firstName,String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
+    public User(String firstName,String lastName, String ID, String email, String phoneNumber, String password, int bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ID = ID;
@@ -235,11 +235,11 @@ public class User {
             this.userType = USER_TYPE.CLIENT;
     }
 
-    public String getBloodType() {
+    public int getBloodType() {
         return bloodType;
     }
 
-    public void setBloodType(String bloodType) {
+    public void setBloodType(int bloodType) {
         this.bloodType = bloodType;
     }
 

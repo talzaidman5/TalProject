@@ -28,6 +28,7 @@ import com.bumptech.glide.Glide;
 import com.example.project.R;
 import com.example.project.data.AllUsers;
 import com.example.project.data.BloodDonation;
+import com.example.project.data.CheckValidation;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
@@ -63,6 +64,8 @@ public class ActivityMyProfile extends AppCompatActivity {
     private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill, myProfile_TXT_dateBirthToFill, myProfile_TXT_bloodTypeToFill;
     private TextInputLayout myProfile_TXT_IDToFill;
     private EditText myProfile_TXT_nameToFill;
+    private Spinner myProfile_SPI_bloodTypes;
+
     private ImageView myProfile_BTN_logo;
     private ImageButton myProfile_BTN_add, myProfile_BTN_logout;
     private MaterialButton myProfile_BTN_edit;
@@ -82,7 +85,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     private String filePath = "";
     private Uri fileUri;
-    private String tempName ="";
+    private String tempName = "";
 
 
     @Override
@@ -99,6 +102,13 @@ public class ActivityMyProfile extends AppCompatActivity {
 
 
         myProfile_TXT_nameToFill.setEnabled(false);
+
+        ArrayAdapter<CharSequence> adapterBloodTypes = ArrayAdapter.createFromResource(this,
+                R.array.bloods, android.R.layout.simple_spinner_item);
+        adapterBloodTypes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        myProfile_SPI_bloodTypes.setAdapter(adapterBloodTypes);
+
+
 
         myProfile_BTN_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,43 +183,39 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void updateUserInfo() {
         currentUser.setID(myProfile_TXT_IDToFill.getEditText().getText().toString());
         currentUser.setPassword(myProfile_TXT_passwordToFill.getEditText().getText().toString());
-        currentUser.setBloodType(myProfile_TXT_bloodTypeToFill.getEditText().getText().toString());
+        currentUser.setBloodType((int)myProfile_SPI_bloodTypes.getSelectedItemId());
 //        currentUser.setBirthDate(myProfile_TXT_dateBirthToFill.getEditText().getText().toString());
         currentUser.setEmail(myProfile_TXT_emailToFill.getEditText().getText().toString());
         currentUser.setPhoneNumber(myProfile_TXT_phoneNumberToFill.getEditText().getText().toString());
-        currentUser.setImageUser(fileUri.toString());
+        if (fileUri != null)
+            currentUser.setImageUser(fileUri.toString());
     }
 
     private boolean checkData() {
         boolean data = true;
-//        if (myProfile_TXT_nameToFill.getText().length() == 0) {
-//            myProfile_TXT_nameToFill.setError("ENTER NAME");
-//            data = false;
-//        }
-
-        if (myProfile_TXT_IDToFill.getEditText().getText().length() == 0) {
-            myProfile_TXT_IDToFill.setError("ENTER ID");
+        if ( CheckValidation.checkID(myProfile_TXT_IDToFill.getEditText().getText().toString())) {
+            myProfile_TXT_IDToFill.setError("INVALID ID");
             data = false;
         }
-        if (myProfile_TXT_emailToFill.getEditText().getText().length() == 0) {
-            myProfile_TXT_emailToFill.setError("ENTER EMAIL");
+        if (CheckValidation.checkMail(myProfile_TXT_emailToFill.getEditText().getText().toString())) {
+            myProfile_TXT_emailToFill.setError("INVALID EMAIL");
             data = false;
         }
-        if (myProfile_TXT_phoneNumberToFill.getEditText().getText().length() == 0) {
-            myProfile_TXT_phoneNumberToFill.setError("ENTER PHONE");
+        if (CheckValidation.checkPhoneNumberISRAEL(myProfile_TXT_phoneNumberToFill.getEditText().getText().toString())) {
+            myProfile_TXT_phoneNumberToFill.setError("INVALID PHONE");
             data = false;
         }
         if (myProfile_TXT_passwordToFill.getEditText().getText().length() == 0) {
-            myProfile_TXT_passwordToFill.setError("ENTER PASSWORD");
+            myProfile_TXT_passwordToFill.setError("INVALID PASSWORD");
             data = false;
         }
 
         if (myProfile_TXT_bloodTypeToFill.getEditText().getText().length() == 0) {
-            myProfile_TXT_bloodTypeToFill.setError("ENTER BLOOD TYPE");
+            myProfile_TXT_bloodTypeToFill.setError("INVALID BLOOD TYPE");
             data = false;
         }
         if (myProfile_TXT_dateBirthToFill.getEditText().getText().length() == 0) {
-            myProfile_TXT_dateBirthToFill.setError("ENTER DATE");
+            myProfile_TXT_dateBirthToFill.setError("INVALID DATE");
             data = false;
         }
         return data;
@@ -300,6 +306,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_BTN_add = findViewById(R.id.myProfile_BTN_add);
         myProfile_BTN_logout = findViewById(R.id.myProfile_BTN_logout);
         add_blood_donation_TXT_date = findViewById(R.id.add_blood_donation_TXT_date);
+        myProfile_SPI_bloodTypes = findViewById(R.id.myProfile_SPI_bloodTypes);
 
     }
 
@@ -313,10 +320,11 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_dateBirthToFill.getEditText().setText(currentUser.getBirthDate().getDay() + "/" + currentUser.getBirthDate().getMonth() + "/" + currentUser.getBirthDate().getYear());
             myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
             myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
-            myProfile_TXT_bloodTypeToFill.getEditText().setText(currentUser.getBloodType());
+//            myProfile_TXT_bloodTypeToFill.getEditText().setText(currentUser.getBloodType());
 
 
 
+            myProfile_SPI_bloodTypes.setSelection(currentUser.getBloodType());
             String urlImage = currentUser.getImageUser();
             myProfile_BTN_logo.setImageResource(android.R.color.transparent);
             Glide.with(ActivityMyProfile.this)
