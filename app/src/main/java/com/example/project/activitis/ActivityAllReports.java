@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
@@ -27,6 +28,7 @@ import com.example.project.data.BloodDonation;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
+import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -197,25 +199,35 @@ public class ActivityAllReports extends AppCompatActivity {
         });
     }
 
-    public void setupPie(String [] list, Integer [] present){
-        Pie pie = AnyChart.pie();
-        List<DataEntry>dataEntries = new ArrayList<>();
-        for (int i=0;i<list.length;i++){
-            dataEntries.add(new ValueDataEntry(list[i],present[i]));
+    public void setupPie(String [] list, Integer [] present) {
+        if (list.length != 0) {
+            Pie pie = AnyChart.pie();
+            List<DataEntry> dataEntries = new ArrayList<>();
+            for (int i = 0; i < list.length; i++) {
+                dataEntries.add(new ValueDataEntry(list[i], present[i]));
+            }
+            pie.data(dataEntries);
+            anyChartView.setChart(pie);
         }
-        pie.data(dataEntries);
-        anyChartView.setChart(pie);
+        else
+        {
+            Toast.makeText(this, "אין מידע", Toast.LENGTH_SHORT).show();
+        }
     }
- public void setupResourceChart(List<User>allUsersTemp){
-     Pie pie = AnyChart.pie();
-     List<DataEntry>dataEntries = new ArrayList<>();
-     for (int i=0;i<allUsersTemp.size();i++){
-         dataEntries.add(new ValueDataEntry(allUsersTemp.get(i).getID(),1));
-     }
-     pie.data(dataEntries);
-     anyChartView.setChart(pie);
-    }
+ public void setupResourceChart(List<User>allUsersTemp) {
+     if (allUsersTemp.size() != 0) {
 
+         Pie pie = AnyChart.pie();
+         List<DataEntry> dataEntries = new ArrayList<>();
+         for (int i = 0; i < allUsersTemp.size(); i++) {
+             dataEntries.add(new ValueDataEntry(allUsersTemp.get(i).getID(), 1));
+         }
+         pie.data(dataEntries);
+         anyChartView.setChart(pie);
+     } else {
+         Toast.makeText(this, "אין מידע", Toast.LENGTH_SHORT).show();
+     }
+ }
 
     private AllUsers getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_MSP_ALL, "NA");
