@@ -61,11 +61,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ActivityMyProfile extends AppCompatActivity {
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-    private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill, myProfile_TXT_dateBirthToFill, myProfile_TXT_bloodTypeToFill;
+    private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill;
     private TextInputLayout myProfile_TXT_IDToFill;
-    private EditText myProfile_TXT_nameToFill;
+    private TextView myProfile_TXT_nameToFill;
     private Spinner myProfile_SPI_bloodTypes;
-
+    private TextView myProfile_TXT_dateBirthToFill;
     private ImageView myProfile_BTN_logo;
     private ImageButton myProfile_BTN_add, myProfile_BTN_logout;
     private MaterialButton myProfile_BTN_edit;
@@ -106,7 +106,7 @@ public class ActivityMyProfile extends AppCompatActivity {
                 R.array.bloods, android.R.layout.simple_spinner_item);
         adapterBloodTypes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         myProfile_SPI_bloodTypes.setAdapter(adapterBloodTypes);
-
+        myProfile_SPI_bloodTypes.setSelection(currentUser.getBloodType());
 
 
         myProfile_BTN_edit.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +118,7 @@ public class ActivityMyProfile extends AppCompatActivity {
                     changeTextsEnabled(true);
                     myProfile_BTN_edit.setBackgroundResource(R.drawable.save);
 //                    myProfile_TXT_nameToFill.setEnabled(true);
-                    myProfile_TXT_phoneNumberToFill.setEnabled(true);
+
                 } else {
 
                     if (checkData()) {
@@ -158,6 +158,33 @@ public class ActivityMyProfile extends AppCompatActivity {
         });
 
 
+        myProfile_TXT_dateBirthToFill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(ActivityMyProfile.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+            }
+        });
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                date = new Date(year, month, dayOfMonth);
+                SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
+                String finalDate = dayOfMonth + "/"+ month + "/" + year;
+                myProfile_TXT_dateBirthToFill.setText(finalDate);
+
+            }
+        };
+
+
     }
 
     private void getImage() {
@@ -174,16 +201,18 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void changeTextsEnabled(boolean status) {
         myProfile_TXT_IDToFill.setEnabled(status);
         myProfile_TXT_passwordToFill.setEnabled(status);
-        myProfile_TXT_bloodTypeToFill.setEnabled(status);
         myProfile_TXT_dateBirthToFill.setEnabled(status);
         myProfile_TXT_emailToFill.setEnabled(status);
+        myProfile_TXT_phoneNumberToFill.setEnabled(status);
+        myProfile_SPI_bloodTypes.setEnabled(status);
     }
 
     private void updateUserInfo() {
         currentUser.setID(myProfile_TXT_IDToFill.getEditText().getText().toString());
         currentUser.setPassword(myProfile_TXT_passwordToFill.getEditText().getText().toString());
-        currentUser.setBloodType((int)myProfile_SPI_bloodTypes.getSelectedItemId());
-//        currentUser.setBirthDate(myProfile_TXT_dateBirthToFill.getEditText().getText().toString());
+        currentUser.setBloodType(myProfile_SPI_bloodTypes.getSelectedItemPosition());
+       if (date != null)
+        currentUser.setBirthDate(date);
         currentUser.setEmail(myProfile_TXT_emailToFill.getEditText().getText().toString());
         currentUser.setPhoneNumber(myProfile_TXT_phoneNumberToFill.getEditText().getText().toString());
         if (fileUri != null)
@@ -196,11 +225,11 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_IDToFill.setError("INVALID ID");
             data = false;
         }
-        if (CheckValidation.checkMail(myProfile_TXT_emailToFill.getEditText().getText().toString())) {
+        if (!CheckValidation.checkMail(myProfile_TXT_emailToFill.getEditText().getText().toString())) {
             myProfile_TXT_emailToFill.setError("INVALID EMAIL");
             data = false;
         }
-        if (CheckValidation.checkPhoneNumberISRAEL(myProfile_TXT_phoneNumberToFill.getEditText().getText().toString())) {
+        if (!CheckValidation.checkPhoneNumberISRAEL(myProfile_TXT_phoneNumberToFill.getEditText().getText().toString())) {
             myProfile_TXT_phoneNumberToFill.setError("INVALID PHONE");
             data = false;
         }
@@ -209,11 +238,7 @@ public class ActivityMyProfile extends AppCompatActivity {
             data = false;
         }
 
-        if (myProfile_TXT_bloodTypeToFill.getEditText().getText().length() == 0) {
-            myProfile_TXT_bloodTypeToFill.setError("INVALID BLOOD TYPE");
-            data = false;
-        }
-        if (myProfile_TXT_dateBirthToFill.getEditText().getText().length() == 0) {
+        if (myProfile_TXT_dateBirthToFill.getText().length() == 0) {
             myProfile_TXT_dateBirthToFill.setError("INVALID DATE");
             data = false;
         }
@@ -300,7 +325,6 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_TXT_dateBirthToFill = findViewById(R.id.myProfile_TXT_dateBirthToFill);
         // myProfile_BTN_back =findViewById(R.id.myProfile_BTN_back);
         myProfile_TXT_IDToFill = findViewById(R.id.myProfile_TXT_IDToFill);
-        myProfile_TXT_bloodTypeToFill = findViewById(R.id.myProfile_TXT_bloodTypeToFill);
         myProfile_BTN_edit = findViewById(R.id.myProfile_BTN_edit);
         myProfile_BTN_add = findViewById(R.id.myProfile_BTN_add);
         myProfile_BTN_logout = findViewById(R.id.myProfile_BTN_logout);
@@ -316,14 +340,12 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_phoneNumberToFill.getEditText().setText(currentUser.getPhoneNumber());
             myProfile_TXT_passwordToFill.getEditText().setText(currentUser.getPassword());
             myProfile_TXT_nameToFill.setText(currentUser.getFirstName());
-            myProfile_TXT_dateBirthToFill.getEditText().setText(currentUser.getBirthDate().getDay() + "/" + currentUser.getBirthDate().getMonth() + "/" + currentUser.getBirthDate().getYear());
+            myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().getDay() + "/" + currentUser.getBirthDate().getMonth() + "/" + currentUser.getBirthDate().getYear());
             myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
             myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
-//            myProfile_TXT_bloodTypeToFill.getEditText().setText(currentUser.getBloodType());
 
+//            myProfile_SPI_bloodTypes.setSelection(currentUser.getBloodType());
 
-
-            myProfile_SPI_bloodTypes.setSelection(currentUser.getBloodType());
             String urlImage = currentUser.getImageUser();
             myProfile_BTN_logo.setImageResource(android.R.color.transparent);
             Glide.with(ActivityMyProfile.this)

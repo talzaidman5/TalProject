@@ -51,7 +51,7 @@
         android:background="@drawable/ic_add"
         android:id="@+id/myProfile_BTN_add"/>
 
-    <EditText
+    <TextView
         android:id="@+id/myProfile_TXT_nameToFill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -193,34 +193,6 @@
 
             </com.google.android.material.textfield.TextInputLayout >
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
-                 
-                android:hint="סוג דם:"
-                android:layout_gravity="right"
-                android:id="@+id/myProfile_TXT_bloodTypeToFill"
-                app:errorEnabled="true">
-
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="18dp"
-                    android:gravity="right"
-                    android:background="@android:drawable/dialog_holo_light_frame"
-                    android:fontFamily="@font/regular"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout >
 
             <Spinner
                 android:id="@+id/myProfile_SPI_bloodTypes"
@@ -228,12 +200,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp"
+                android:gravity="right"
+                style="@style/AppTheme"
                 android:textColor="@color/black"
                 android:background="@color/grey"
                 />
 
-
-            <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
@@ -243,22 +216,15 @@
                 android:hint="תאריך לידה:"
                 android:layout_gravity="right"
                 android:id="@+id/myProfile_TXT_dateBirthToFill"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
+                app:errorEnabled="true"
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
                     android:textSize="18dp"
-                    android:gravity="right"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
                     />
 
-            </com.google.android.material.textfield.TextInputLayout >
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
