@@ -126,7 +126,6 @@ public class ActivitySignUpPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 isImage = true;
-//                SelectImage();
                 getImage();
             }
         });
@@ -151,8 +150,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
 
                 date = new Date(year, month, dayOfMonth);
                 SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
-
-                String finalDate = dateFormat2.format(date);
+                String finalDate = dayOfMonth + "/"+ month + "/" + year;
                 signUp_TXT_birthDatePicker.setText(finalDate);
 
             }
