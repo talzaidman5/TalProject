@@ -57,8 +57,6 @@ public class FlashScreen extends AppCompatActivity {
 
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-
         msp = new MySheredP(this);
         uuid = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         readDataPositions();
