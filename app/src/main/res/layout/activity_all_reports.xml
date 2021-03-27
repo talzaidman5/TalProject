@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activitis.ActivityAllReports">
+    android:orientation="horizontal"
+    android:background="@drawable/b"
+    tools:context="com.example.project.activitis.ActivityProfileMenu">
 
-    <FrameLayout
-        android:id="@+id/allReports"
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="140dp"
+        android:src="@drawable/logo"
+        android:layout_marginTop="15dp"
+        android:id="@+id/logo"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/logo"
+        android:background="@drawable/corners"
+        android:layout_margin="20dp">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp"
+        android:textSize="20dp"
         android:textColor="@color/black"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/title"
         android:text="ייצוא תרומות דם"></TextView>
     <Spinner
         android:layout_width="250dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/activity_all_reports_BTN_allOptionToExport"
         android:layout_below="@+id/title"></Spinner>
     <TextView
@@ -43,16 +54,33 @@
         android:layout_height="wrap_content"
         android:id="@+id/activity_all_reports_BTN_export"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:background="#FFFFFF"
         android:text="ייצא"
         android:layout_below="@id/activity_all_reports_BTN_allOptionToExport"></Button>
-
-    <com.anychart.AnyChartView
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
         android:layout_below="@+id/activity_all_reports_BTN_export"
+        android:id="@+id/activity_all_reports_TXT_data"
+        android:layout_centerVertical="true"
+        android:gravity="center"></TextView>
+    <com.anychart.AnyChartView
+        android:layout_below="@+id/activity_all_reports_TXT_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="90dp"
         android:id="@+id/activity_all_reports_CHART_chart"
         android:layout_centerHorizontal="true"></com.anychart.AnyChartView>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/activity_all_reports_PRB_progressBar"
+        android:layout_below="@id/activity_all_reports_BTN_export"></ProgressBar>
+</RelativeLayout>
 </RelativeLayout>
