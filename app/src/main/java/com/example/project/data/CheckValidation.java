@@ -47,6 +47,9 @@ public class CheckValidation {
 
     }
 
+    public static Boolean  checkPassword(String text) {
+        return text.matches("^[0][5][0-9]{7}$");
+    }
 
      public static Boolean  checkPhoneNumberISRAEL(String text) {
         return text.matches("^[0][5][0-9]{7}$");

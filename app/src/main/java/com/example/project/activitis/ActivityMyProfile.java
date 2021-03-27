@@ -85,7 +85,6 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     private String filePath = "";
     private Uri fileUri;
-    private String tempName = "";
 
 
     @Override
@@ -205,7 +204,7 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_phoneNumberToFill.setError("INVALID PHONE");
             data = false;
         }
-        if (myProfile_TXT_passwordToFill.getEditText().getText().length() == 0) {
+        if (myProfile_TXT_passwordToFill.getEditText().getText().length() < 6) {
             myProfile_TXT_passwordToFill.setError("INVALID PASSWORD");
             data = false;
         }

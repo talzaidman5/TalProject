@@ -451,18 +451,17 @@ public class ActivitySignUpPage extends AppCompatActivity {
         newUser.setEmail(signUp_EDT_email.getEditText().getText().toString());
         newUser.setPhoneNumber(signUp_EDT_phone.getEditText().getText().toString());
         newUser.setPassword(signUp_EDT_password.getEditText().getText().toString());
-        newUser.setBloodType((int)signUp_SPI_bloodTypes.getSelectedItem());
-        newUser.setBloodType((int)signUp_SPI_bloodTypes.getSelectedItem());
+        newUser.setBloodType(signUp_SPI_bloodTypes.getSelectedItemPosition());
         newUser.setBirthDate(date);
         newUser.setUuID(uuid);
         newUser.setGender(selectedGender());
-        newUser.setBloodType((int)spn_my_spinner.getSelectedItem());
         if (filePath.equals(""))
             newUser.setImageUser("https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e");
         else
             newUser.setImageUser(filePath);
 
     }
+
 
     private User.GENDER selectedGender() {
         if (signup_CHB_female.isSelected())
