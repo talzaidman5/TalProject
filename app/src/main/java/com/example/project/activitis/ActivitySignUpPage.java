@@ -316,35 +316,37 @@ public class ActivitySignUpPage extends AppCompatActivity {
     // UploadImage method
     private void uploadImage() {
         if (filePath != null) {
-            StorageReference ref = storageReference.child(fileUri.toString());
-            newUser.setImageUser(fileUri.toString());
-            tempName = fileUri.toString();
-            // adding listeners on upload
-            // or failure of image
-            ref.putFile(fileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(
-                        UploadTask.TaskSnapshot taskSnapshot) {
+            if (fileUri != null) {
+                StorageReference ref = storageReference.child(fileUri.toString());
+                newUser.setImageUser(fileUri.toString());
+                tempName = fileUri.toString();
+                // adding listeners on upload
+                // or failure of image
+                ref.putFile(fileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(
+                            UploadTask.TaskSnapshot taskSnapshot) {
 
-                }
-            })
+                    }
+                })
 
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // Error, Image not uploaded
-                        }
-                    })
-                    .addOnProgressListener(
-                            new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Error, Image not uploaded
+                            }
+                        })
+                        .addOnProgressListener(
+                                new OnProgressListener<UploadTask.TaskSnapshot>() {
 
-                                // Progress Listener for loading
-                                // percentage on the dialog box
-                                @Override
-                                public void onProgress(
-                                        UploadTask.TaskSnapshot taskSnapshot) {
-                                }
-                            });
+                                    // Progress Listener for loading
+                                    // percentage on the dialog box
+                                    @Override
+                                    public void onProgress(
+                                            UploadTask.TaskSnapshot taskSnapshot) {
+                                    }
+                                });
+            }
         }
     }
 
@@ -444,7 +446,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private void buildUser() {
         newUser.setFirstName(signUp_EDT_firstName.getEditText().getText().toString());
         newUser.setLastName(signUp_EDT_lastName.getEditText().getText().toString());
-        newUser.setUserType(signUp_EDT_lastName.getEditText().getText().toString());
+        if (signUp_EDT_id.getEditText().getText().toString().equals((Constants.MANAGER_ID)))
+            newUser.setUserType(signUp_EDT_id.getEditText().getText().toString());
         newUser.setID(signUp_EDT_id.getEditText().getText().toString());
         newUser.setEmail(signUp_EDT_email.getEditText().getText().toString());
         newUser.setPhoneNumber(signUp_EDT_phone.getEditText().getText().toString());
@@ -453,13 +456,13 @@ public class ActivitySignUpPage extends AppCompatActivity {
         newUser.setBirthDate(date);
         newUser.setUuID(uuid);
         newUser.setGender(selectedGender());
+        newUser.setBloodType(spn_my_spinner.getSelectedItemPosition());
         if (filePath.equals(""))
             newUser.setImageUser("https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e");
         else
             newUser.setImageUser(filePath);
 
     }
-
 
     private User.GENDER selectedGender() {
         if (signup_CHB_female.isSelected())
