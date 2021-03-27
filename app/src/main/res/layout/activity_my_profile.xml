@@ -51,7 +51,7 @@
         android:background="@drawable/ic_add"
         android:id="@+id/myProfile_BTN_add"/>
 
-    <EditText
+    <TextView
         android:id="@+id/myProfile_TXT_nameToFill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

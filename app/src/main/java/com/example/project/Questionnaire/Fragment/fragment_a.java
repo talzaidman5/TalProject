@@ -1,6 +1,5 @@
 package com.example.project.Questionnaire.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.project.R;
-import com.example.project.activitis.ActivityReadFromExcel;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
@@ -31,9 +29,7 @@ public class fragment_a extends Fragment {
             questionnairePage_EDT_dateBirth,questionnairePage_EDT_age,questionnairePage_EDT_previous_family_name,questionnairePage_EDT_city,questionnairePage_EDT_postal,
             questionnairePage_EDT_street,questionnairePage_EDT_email,questionnairePage_EDT_mobilePhone,questionnairePage_EDT_OfficePhone,questionnairePage_EDT_HomePhone,
             questionnairePage_EDT_MotherCountry,questionnairePage_EDT_fatherCountry,questionnairePage_EDT_yearImmigration,
-            questionnairePage_EDT_CountryBirth,questionnairePage_EDT_patientName;
-    private CheckBox questionnairePage_EDT_bloodDonationAgain;
-    private RadioButton radio_male,radio_female;
+            questionnairePage_EDT_patientName;
     public static boolean isData=true;
     private Button next;
     @Override
@@ -92,11 +88,9 @@ public class fragment_a extends Fragment {
         questionnairePage_EDT_mobilePhone= view.findViewById(R.id.questionnairePage_EDT_mobilePhone);
         questionnairePage_EDT_OfficePhone= view.findViewById(R.id.questionnairePage_EDT_OfficePhone);
         questionnairePage_EDT_HomePhone= view.findViewById(R.id.questionnairePage_EDT_HomePhone);
-        questionnairePage_EDT_bloodDonationAgain= view.findViewById(R.id.questionnairePage_EDT_bloodDonationAgain);
         questionnairePage_EDT_MotherCountry= view.findViewById(R.id.questionnairePage_EDT_MotherCountry);
         questionnairePage_EDT_fatherCountry= view.findViewById(R.id.questionnairePage_EDT_fatherCountry);
         questionnairePage_EDT_yearImmigration= view.findViewById(R.id.questionnairePage_EDT_yearImmigration);
-        questionnairePage_EDT_CountryBirth= view.findViewById(R.id.questionnairePage_EDT_CountryBirth);
         questionnairePage_EDT_patientName= view.findViewById(R.id.questionnairePage_EDT_patientName);
     }
 

@@ -16,9 +16,6 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
-        <activity android:name=".activitis.ActivityReadFromExcel"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.DayNight"></activity>
         <activity
             android:name=".activitis.ActivityAllReports"
             android:screenOrientation="portrait"
@@ -35,10 +32,6 @@
         </activity>
         <activity
             android:name=".activitis.ActivityHistoryBloodDonations"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.DayNight" />
-        <activity
-            android:name=".Questionnaire.ViewFullQuestionnairesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity

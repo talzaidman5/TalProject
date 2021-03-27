@@ -9,7 +9,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.project.Questionnaire.ViewFullQuestionnairesActivity;
 import com.example.project.R;
 import com.google.firebase.auth.FirebaseAuth;
 

@@ -63,7 +63,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill;
     private TextInputLayout myProfile_TXT_IDToFill;
-    private EditText myProfile_TXT_nameToFill;
+    private TextView myProfile_TXT_nameToFill;
     private Spinner myProfile_SPI_bloodTypes;
     private TextView myProfile_TXT_dateBirthToFill;
     private ImageView myProfile_BTN_logo;
