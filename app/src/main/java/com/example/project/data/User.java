@@ -18,6 +18,7 @@ public class User {
     public enum USER_TYPE {
         CLIENT, MANAGER;
     }
+
     public enum GENDER {
         FEMALE, MALE;
     }
@@ -39,10 +40,11 @@ public class User {
     private ArrayList<BloodDonation> allBloodDonations;
     private String uuID;
     private int age;
+    private Date lastBloodDonation;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public User(String firstName,String lastName, String ID, String email, String phoneNumber, String password, int bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
+    public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, int bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ID = ID;
@@ -61,7 +63,7 @@ public class User {
 
         this.allBloodDonations = new ArrayList<>();
         this.uuID = uuid;
-        this.age = Calendar.getInstance().get(Calendar.YEAR)- birthDate.getYear();
+        this.age = Calendar.getInstance().get(Calendar.YEAR) - birthDate.getYear();
         this.canDonateBlood = false;
         this.gender = gender;
     }
@@ -116,6 +118,26 @@ public class User {
         this.uuID = other.uuID;
         this.allBloodDonations = other.allBloodDonations;
         this.userType = other.userType;
+        this.lastBloodDonation = other.lastBloodDonation;
+
+    }
+
+    public Date getLastBloodDonation() {
+        return lastBloodDonation;
+    }
+
+    public void setLastBloodDonation(Date lastBloodDonation) {
+        if (this.lastBloodDonation == null) {
+            this.lastBloodDonation = lastBloodDonation;
+            return;
+        }
+        if (this.lastBloodDonation.getYear() > lastBloodDonation.getYear())
+            return;
+        if (this.lastBloodDonation.getMonth() > lastBloodDonation.getMonth())
+            return;
+        if (this.lastBloodDonation.getDay() > lastBloodDonation.getDay())
+            return;
+        this.lastBloodDonation = lastBloodDonation;
     }
 
     public void setImageUser(String imageUser) {
@@ -159,9 +181,8 @@ public class User {
     }
 
 
-
     public User() {
-       this.remember = false;
+        this.remember = false;
         this.userType = USER_TYPE.CLIENT;
 
     }
@@ -171,8 +192,8 @@ public class User {
     }
 
     public ArrayList<BloodDonation> getAllBloodDonations() {
-       if(allBloodDonations==null)
-           allBloodDonations = new ArrayList<>();
+        if (allBloodDonations == null)
+            allBloodDonations = new ArrayList<>();
         return allBloodDonations;
     }
 

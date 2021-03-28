@@ -65,9 +65,9 @@ public class ActivityMyProfile extends AppCompatActivity {
     private TextInputLayout myProfile_TXT_IDToFill;
     private TextView myProfile_TXT_nameToFill;
     private Spinner myProfile_SPI_bloodTypes;
-    private TextView myProfile_TXT_dateBirthToFill;
+    private TextView myProfile_TXT_dateBirthToFill,myProfile_TXT_lastDonation;
     private ImageView myProfile_BTN_logo;
-    private ImageButton myProfile_BTN_add, myProfile_BTN_logout;
+    private ImageButton myProfile_BTN_addBloodDonation, myProfile_BTN_logout;
     private MaterialButton myProfile_BTN_edit;
     private MySheredP msp;
     private Gson gson = new Gson();
@@ -149,7 +149,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
             }
         });
-        myProfile_BTN_add.setOnClickListener(new View.OnClickListener() {
+        myProfile_BTN_addBloodDonation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //   openPopUp();
@@ -178,7 +178,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
                 date = new Date(year, month, dayOfMonth);
                 SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
-                String finalDate = dayOfMonth + "/"+ month + "/" + year;
+                String finalDate = dayOfMonth + "/" + month + "/" + year;
                 myProfile_TXT_dateBirthToFill.setText(finalDate);
 
             }
@@ -211,8 +211,8 @@ public class ActivityMyProfile extends AppCompatActivity {
         currentUser.setID(myProfile_TXT_IDToFill.getEditText().getText().toString());
         currentUser.setPassword(myProfile_TXT_passwordToFill.getEditText().getText().toString());
         currentUser.setBloodType(myProfile_SPI_bloodTypes.getSelectedItemPosition());
-       if (date != null)
-        currentUser.setBirthDate(date);
+        if (date != null)
+            currentUser.setBirthDate(date);
         currentUser.setEmail(myProfile_TXT_emailToFill.getEditText().getText().toString());
         currentUser.setPhoneNumber(myProfile_TXT_phoneNumberToFill.getEditText().getText().toString());
         if (fileUri != null)
@@ -221,7 +221,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     private boolean checkData() {
         boolean data = true;
-        if ( CheckValidation.checkID(myProfile_TXT_IDToFill.getEditText().getText().toString())) {
+        if (CheckValidation.checkID(myProfile_TXT_IDToFill.getEditText().getText().toString())) {
             myProfile_TXT_IDToFill.setError("INVALID ID");
             data = false;
         }
@@ -274,7 +274,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
                 date = new Date(year, month, dayOfMonth);
                 SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
-
+                currentUser.setLastBloodDonation(date);
                 String finalDate = dateFormat2.format(date);
                 add_blood_donation_TXT_date.setText(finalDate);
 
@@ -326,10 +326,11 @@ public class ActivityMyProfile extends AppCompatActivity {
         // myProfile_BTN_back =findViewById(R.id.myProfile_BTN_back);
         myProfile_TXT_IDToFill = findViewById(R.id.myProfile_TXT_IDToFill);
         myProfile_BTN_edit = findViewById(R.id.myProfile_BTN_edit);
-        myProfile_BTN_add = findViewById(R.id.myProfile_BTN_add);
+        myProfile_BTN_addBloodDonation = findViewById(R.id.myProfile_BTN_addBloodDonation);
         myProfile_BTN_logout = findViewById(R.id.myProfile_BTN_logout);
         add_blood_donation_TXT_date = findViewById(R.id.add_blood_donation_TXT_date);
         myProfile_SPI_bloodTypes = findViewById(R.id.myProfile_SPI_bloodTypes);
+        myProfile_TXT_lastDonation = findViewById(R.id.myProfile_TXT_lastDonation);
 
     }
 
@@ -343,7 +344,7 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().getDay() + "/" + currentUser.getBirthDate().getMonth() + "/" + currentUser.getBirthDate().getYear());
             myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
             myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
-
+            myProfile_TXT_lastDonation.setText(getDateStr(currentUser.getLastBloodDonation()));
 //            myProfile_SPI_bloodTypes.setSelection(currentUser.getBloodType());
 
             String urlImage = currentUser.getImageUser();
@@ -360,6 +361,10 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void putOnMSP_user() {
         String json = gson.toJson(currentUser);
         msp.putString(Constants.KEY_MSP, json);
+    }
+
+    private String getDateStr (Date date){
+        return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
     }
 
     @Override
