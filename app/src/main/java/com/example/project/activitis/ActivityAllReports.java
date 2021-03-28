@@ -95,7 +95,11 @@ public class ActivityAllReports extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                date = new Date(year, month, dayOfMonth);
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                Date date = calendar.getTime();
 
                 String finalDate = getDateStr(date);
                 activity_all_reports_TXT_date.setText(finalDate);

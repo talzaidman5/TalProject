@@ -176,7 +176,12 @@ public class ActivityMyProfile extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                date = new Date(year, month, dayOfMonth);
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                Date date = calendar.getTime();
+
                 String finalDate = dayOfMonth + "/" + month + "/" + year;
                 myProfile_TXT_dateBirthToFill.setText(finalDate);
 
@@ -271,9 +276,15 @@ public class ActivityMyProfile extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                date = new Date(year, month, dayOfMonth);
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                Date date = calendar.getTime();
                 currentUser.setLastBloodDonation(date);
                 add_blood_donation_TXT_date.setText( getDateStr(date));
+
+
 
             }
         };
