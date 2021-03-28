@@ -36,7 +36,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -97,9 +96,8 @@ public class ActivityAllReports extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                 date = new Date(year, month, dayOfMonth);
-                SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
 
-                String finalDate = dateFormat2.format(date);
+                String finalDate = getDateStr(date);
                 activity_all_reports_TXT_date.setText(finalDate);
 
             }
@@ -163,6 +161,12 @@ public class ActivityAllReports extends AppCompatActivity {
 
         return strings;
     }
+
+    private String getDateStr (Date date){
+        return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+    }
+
+
     private Integer[] returnListInteger(Map<User.GENDER, Integer>map){
         Integer[]integers = new Integer[map.size()];
             for(int i=0;i<map.size();i++)

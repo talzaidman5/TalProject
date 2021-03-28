@@ -19,7 +19,7 @@ import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class fragment_a extends Fragment {
     private View view;
@@ -63,15 +63,18 @@ public class fragment_a extends Fragment {
             questionnairePage_EDT_id.getEditText().setText(user.getID());
             questionnairePage_EDT_first_name.getEditText().setText(user.getFirstName());
             questionnairePage_EDT_family_name.getEditText().setText(user.getLastName());
-            SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
 
-            String finalDate = dateFormat2.format(user.getBirthDate());
-
+            String finalDate = getDateStr(user.getBirthDate());
             questionnairePage_EDT_dateBirth.getEditText().setText(finalDate);
            questionnairePage_EDT_age.getEditText().setText(user.getAge()+"אנא השלם");
             questionnairePage_EDT_email.getEditText().setText(user.getEmail());
         }
     }
+
+    private String getDateStr (Date date){
+        return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+    }
+
 
     private void findViews(View view) {
         next = view.findViewById(R.id.next);

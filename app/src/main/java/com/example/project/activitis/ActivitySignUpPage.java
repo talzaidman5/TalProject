@@ -149,7 +149,6 @@ public class ActivitySignUpPage extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                 date = new Date(year, month, dayOfMonth);
-                SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
                 String finalDate = dayOfMonth + "/"+ month + "/" + year;
                 signUp_TXT_birthDatePicker.setText(finalDate);
 

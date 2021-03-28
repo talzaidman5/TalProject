@@ -62,10 +62,10 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill;
-    private TextInputLayout myProfile_TXT_IDToFill;
+    private TextInputLayout myProfile_TXT_IDToFill,myProfile_TXT_lastDonation;
     private TextView myProfile_TXT_nameToFill;
     private Spinner myProfile_SPI_bloodTypes;
-    private TextView myProfile_TXT_dateBirthToFill,myProfile_TXT_lastDonation;
+    private TextView myProfile_TXT_dateBirthToFill;
     private ImageView myProfile_BTN_logo;
     private ImageButton myProfile_BTN_addBloodDonation, myProfile_BTN_logout;
     private MaterialButton myProfile_BTN_edit;
@@ -177,7 +177,6 @@ public class ActivityMyProfile extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                 date = new Date(year, month, dayOfMonth);
-                SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
                 String finalDate = dayOfMonth + "/" + month + "/" + year;
                 myProfile_TXT_dateBirthToFill.setText(finalDate);
 
@@ -273,10 +272,8 @@ public class ActivityMyProfile extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                 date = new Date(year, month, dayOfMonth);
-                SimpleDateFormat dateFormat2 = new SimpleDateFormat("dd-MM-yyyy");
                 currentUser.setLastBloodDonation(date);
-                String finalDate = dateFormat2.format(date);
-                add_blood_donation_TXT_date.setText(finalDate);
+                add_blood_donation_TXT_date.setText( getDateStr(date));
 
             }
         };
@@ -323,7 +320,6 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_TXT_passwordToFill = findViewById(R.id.myProfile_TXT_passwordToFill);
         myProfile_TXT_nameToFill = findViewById(R.id.myProfile_TXT_nameToFill);
         myProfile_TXT_dateBirthToFill = findViewById(R.id.myProfile_TXT_dateBirthToFill);
-        // myProfile_BTN_back =findViewById(R.id.myProfile_BTN_back);
         myProfile_TXT_IDToFill = findViewById(R.id.myProfile_TXT_IDToFill);
         myProfile_BTN_edit = findViewById(R.id.myProfile_BTN_edit);
         myProfile_BTN_addBloodDonation = findViewById(R.id.myProfile_BTN_addBloodDonation);
@@ -344,8 +340,7 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().getDay() + "/" + currentUser.getBirthDate().getMonth() + "/" + currentUser.getBirthDate().getYear());
             myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
             myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
-            myProfile_TXT_lastDonation.setText(getDateStr(currentUser.getLastBloodDonation()));
-//            myProfile_SPI_bloodTypes.setSelection(currentUser.getBloodType());
+            myProfile_TXT_lastDonation.getEditText().setText(getDateStr(currentUser.getLastBloodDonation()));
 
             String urlImage = currentUser.getImageUser();
             myProfile_BTN_logo.setImageResource(android.R.color.transparent);
