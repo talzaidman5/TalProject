@@ -111,6 +111,7 @@
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
+                android:id="@+id/dental_care"
                 android:layout_weight="1"/>
 
             <CheckBox
@@ -232,6 +233,7 @@
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
+                android:id="@+id/epilepsy"
                 android:layout_weight="1"/>
             <CheckBox
                 android:layout_width="match_parent"
@@ -294,6 +296,7 @@
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
+                android:id="@+id/pregnancy"
                 android:layout_weight="1"/>
             <CheckBox
                 android:layout_width="match_parent"

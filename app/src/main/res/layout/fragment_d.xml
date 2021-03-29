@@ -108,7 +108,7 @@
                 android:textSize="12dp"
                 android:ems="30"></EditText>
 
-    </LinearLayout>
+       </LinearLayout>
     </ScrollView>
     <RelativeLayout
         android:id="@+id/main_LIN"
