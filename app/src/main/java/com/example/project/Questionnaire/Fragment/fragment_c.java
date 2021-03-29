@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -31,6 +33,8 @@ public class fragment_c extends Fragment {
     public static Spinner spn_my_spinner;
     private ArrayList<String> algo = new ArrayList<>();
     String fileName = "determination_algorithm.txt";
+    private CheckBox pregnancy,dental_care,epilepsy;
+    public static boolean isPregnancy=false,isDental_care=false,isEpilepsy=false;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class fragment_c extends Fragment {
             view = inflater.inflate(R.layout.freagment_c,container,false);
 
         spn_my_spinner = view.findViewById(R.id.fragmentc_TXT_Health_problem);
+        dental_care = view.findViewById(R.id.dental_care);
+        pregnancy = view.findViewById(R.id.pregnancy);
 
         spinnerArray = new ArrayList<String>();
       /*  spinnerArray.add("one");
@@ -52,6 +58,27 @@ public class fragment_c extends Fragment {
         spn_my_spinner.setAdapter(spinnerArrayAdapter);
 
         next = view.findViewById(R.id.next);
+        pregnancy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isPregnancy=true;
+
+            }
+        });
+        dental_care.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isDental_care=true;
+
+            }
+        });
+        epilepsy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isEpilepsy=true;
+
+            }
+        });
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
