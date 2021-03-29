@@ -127,17 +127,14 @@ public class User {
     }
 
     public void setLastBloodDonation(Date lastBloodDonation) {
+
         if (this.lastBloodDonation == null) {
             this.lastBloodDonation = lastBloodDonation;
             return;
         }
-        if (this.lastBloodDonation.getYear() > lastBloodDonation.getYear())
-            return;
-        if (this.lastBloodDonation.getMonth() > lastBloodDonation.getMonth())
-            return;
-        if (this.lastBloodDonation.getDay() > lastBloodDonation.getDay())
-            return;
-        this.lastBloodDonation = lastBloodDonation;
+
+        if( this.lastBloodDonation.before(lastBloodDonation))
+            this.lastBloodDonation = lastBloodDonation;
     }
 
     public void setImageUser(String imageUser) {

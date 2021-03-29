@@ -74,6 +74,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private User currentUser = new User();
     private AllUsers allUsers;
     private Date date;
+    private Date dateLast;
     private ArrayList<String> spinnerArray;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
@@ -215,6 +216,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         currentUser.setID(myProfile_TXT_IDToFill.getEditText().getText().toString());
         currentUser.setPassword(myProfile_TXT_passwordToFill.getEditText().getText().toString());
         currentUser.setBloodType(myProfile_SPI_bloodTypes.getSelectedItemPosition());
+        currentUser.setLastBloodDonation(dateLast);
         if (date != null)
             currentUser.setBirthDate(date);
         currentUser.setEmail(myProfile_TXT_emailToFill.getEditText().getText().toString());
@@ -280,9 +282,9 @@ public class ActivityMyProfile extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                Date date = calendar.getTime();
-                currentUser.setLastBloodDonation(date);
-                add_blood_donation_TXT_date.setText( getDateStr(date));
+                 dateLast = calendar.getTime();
+                currentUser.setLastBloodDonation(dateLast);
+                add_blood_donation_TXT_date.setText( getDateStr(dateLast));
 
 
 
