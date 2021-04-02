@@ -35,6 +35,7 @@
 מנה זו לא תינתן לחולה - כדי לא לסכן את בריאותו."
             android:textColor="@color/red"
             android:fontFamily="@font/regular"
+            android:id="@+id/test"
             android:textSize="16dp"/>
 
 
@@ -47,6 +48,7 @@
             android:background="@color/grey1"
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
+            android:id="@+id/one"
             android:layout_weight="1"/>
 
 
@@ -59,6 +61,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/two"
             android:layout_weight="1"/>
 
 
@@ -73,6 +76,7 @@
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
             android:background="@color/grey1"
+            android:id="@+id/three"
             android:layout_weight="1"/>
 
 
@@ -85,6 +89,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/four"
             android:layout_weight="1"/>
 
 
@@ -98,6 +103,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/five"
             android:layout_weight="1"/>
 
 
@@ -110,6 +116,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/six"
             android:layout_weight="1"/>
 
         <CheckBox
@@ -122,6 +129,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/seven"
             android:layout_weight="1"/>
 
         <CheckBox
@@ -133,6 +141,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/eight"
             android:layout_weight="1"/>
 
         <CheckBox
@@ -145,6 +154,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/nine"
             android:layout_weight="1"/>
 
 
@@ -157,6 +167,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/ten"
             android:layout_weight="1"/>
 
         <CheckBox
@@ -169,6 +180,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/eleven"
             android:layout_weight="1"/>
 
         <CheckBox
@@ -180,6 +192,7 @@
             android:fontFamily="@font/regular"
             android:buttonTint="@color/colorPrimary"
             android:layout_marginTop="10dp"
+            android:id="@+id/twelve"
             android:layout_weight="1"/>
 
 
@@ -192,6 +205,7 @@
             android:buttonTint="@color/colorPrimary"
             android:background="@color/grey1"
             android:layout_marginTop="10dp"
+            android:id="@+id/Thirteen"
             android:layout_weight="1"/>
 
         <TextView
