@@ -44,8 +44,7 @@
             app:hintTextColor="@color/black"
             android:id="@+id/mainPage_EDIT_email"
             app:startIconDrawable="@drawable/ic_id"
-            app:counterEnabled="true"
-            app:counterMaxLength="9">
+           >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

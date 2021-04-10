@@ -129,6 +129,8 @@
                     android:textColorHint="@color/blue"
                     android:textSize="18dp"
                     android:inputType="number"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="9"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"   />
 
@@ -187,6 +189,8 @@
                     android:textColorHint="@color/blue"
                     android:textSize="18dp"
                     android:inputType="number"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="10"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"   />
 
@@ -221,6 +225,8 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textSize="18dp"
+                android:outlineSpotShadowColor="@color/black"
+                android:outlineAmbientShadowColor="@color/black"
                     android:id="@+id/signUp_EDT_city"
                     android:fontFamily="@font/regular"   />
 
@@ -280,12 +286,13 @@
 
             <Spinner
                 android:id="@+id/signUp_SPI_bloodTypes"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:layout_marginTop="5dp"
+                android:popupBackground="@color/grey2"
                 android:layout_marginLeft="20dp"
                 android:textColor="@color/black"
-                android:background="@color/grey"
+                android:background="@drawable/spinner"
                 />
             <TextView
                 android:id="@+id/signUp_TXT_birthDate"

@@ -28,20 +28,20 @@ public class fragment_b extends Fragment {
             view = inflater.inflate(R.layout.freagment_b, container, false);
 
         findViews(view);
-        next = view.findViewById(R.id.next);
-
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                   if(checkData()){
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                Fragment fragment = new fragment_c();
-                ft.replace(R.id.main_LIN, fragment);
-                ft.addToBackStack(null);
-                ft.commit();
-                //   }
-            }
-        });
+//        next = view.findViewById(R.id.next);
+//
+//        next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                   if(checkData()){
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                Fragment fragment = new fragment_c();
+//                ft.replace(R.id.main_LIN, fragment);
+//                ft.addToBackStack(null);
+//                ft.commit();
+//                //   }
+//            }
+//        });
         return view;
     }
 

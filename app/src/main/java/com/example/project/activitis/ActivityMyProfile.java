@@ -286,8 +286,6 @@ public class ActivityMyProfile extends AppCompatActivity {
                 currentUser.setLastBloodDonation(dateLast);
                 add_blood_donation_TXT_date.setText( getDateStr(dateLast));
 
-
-
             }
         };
         spinnerArray = new ArrayList<String>();
@@ -345,7 +343,6 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     public void initData() {
         changeTextsEnabled(false);
-
         if (currentUser.getID() != null) {
             myProfile_TXT_phoneNumberToFill.getEditText().setText(currentUser.getPhoneNumber());
             myProfile_TXT_passwordToFill.getEditText().setText(currentUser.getPassword());

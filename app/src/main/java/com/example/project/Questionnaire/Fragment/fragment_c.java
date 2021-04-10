@@ -57,7 +57,7 @@ public class fragment_c extends Fragment {
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, algo);
         spn_my_spinner.setAdapter(spinnerArrayAdapter);
 
-        next = view.findViewById(R.id.next);
+//        next = view.findViewById(R.id.next);
         pregnancy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -80,18 +80,18 @@ public class fragment_c extends Fragment {
             }
         });
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //   if(checkData()){
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                Fragment fragment = new fragment_d();
-                ft.replace(R.id.main_LIN, fragment);
-                ft.addToBackStack(null);
-                ft.commit();
-                //   }
-            }
-        });
+//        next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //   if(checkData()){
+//                FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                Fragment fragment = new fragment_d();
+//                ft.replace(R.id.main_LIN, fragment);
+//                ft.addToBackStack(null);
+//                ft.commit();
+//                //   }
+//            }
+//        });
         findViews(view);
         return view;
     }

@@ -5,7 +5,6 @@ import android.text.Editable;
 public class CheckValidation {
 
 
-
     public static Boolean checkID(String text) {
         return text.matches("[0-9]{9}");
     }

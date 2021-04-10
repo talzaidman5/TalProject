@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,12 +26,14 @@ public class fragment_a extends Fragment {
     private View view;
     private MySheredP msp;
     private User user;
+    private RadioButton radio_female,radio_male;
     private TextInputLayout questionnairePage_EDT_id,questionnairePage_EDT_first_name,questionnairePage_EDT_family_name,
             questionnairePage_EDT_dateBirth,questionnairePage_EDT_age,questionnairePage_EDT_previous_family_name,questionnairePage_EDT_city,questionnairePage_EDT_postal,
             questionnairePage_EDT_street,questionnairePage_EDT_email,questionnairePage_EDT_mobilePhone,questionnairePage_EDT_OfficePhone,questionnairePage_EDT_HomePhone,
             questionnairePage_EDT_MotherCountry,questionnairePage_EDT_fatherCountry,questionnairePage_EDT_yearImmigration,
             questionnairePage_EDT_patientName;
     public static boolean isData=true;
+
     private Button next;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,18 +44,18 @@ public class fragment_a extends Fragment {
         findViews(view);
         fillDataFromUserProfile();
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-             //   if(checkData()){
-                    FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    Fragment fragment = new fragment_b();
-                    ft.replace(R.id.main_LIN, fragment);
-                    ft.addToBackStack(null);
-                    ft.commit();
-             //   }
-            }
-        });
+//        next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//             //   if(checkData()){
+//                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                    Fragment fragment = new fragment_b();
+//                    ft.replace(R.id.main_LIN, fragment);
+//                    ft.addToBackStack(null);
+//                    ft.commit();
+//             //   }
+//            }
+//        });
         return view;
     }
 
@@ -63,21 +66,26 @@ public class fragment_a extends Fragment {
             questionnairePage_EDT_id.getEditText().setText(user.getID());
             questionnairePage_EDT_first_name.getEditText().setText(user.getFirstName());
             questionnairePage_EDT_family_name.getEditText().setText(user.getLastName());
+            if (user.getGender().equals("MALE"))
+                radio_male.setChecked(true);
+            else
+                radio_female.setChecked(true);
 
             String finalDate = getDateStr(user.getBirthDate());
             questionnairePage_EDT_dateBirth.getEditText().setText(finalDate);
-           questionnairePage_EDT_age.getEditText().setText(user.getAge()+"אנא השלם");
+           questionnairePage_EDT_age.getEditText().setText(user.getAge()+"");
             questionnairePage_EDT_email.getEditText().setText(user.getEmail());
         }
     }
 
     private String getDateStr (Date date){
-        return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+        String  res = date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+        return res;
     }
 
 
     private void findViews(View view) {
-        next = view.findViewById(R.id.next);
+//        next = view.findViewById(R.id.next);
         questionnairePage_EDT_id = view.findViewById(R.id.questionnairePage_EDT_id);
         questionnairePage_EDT_first_name= view.findViewById(R.id.questionnairePage_EDT_first_name);
         questionnairePage_EDT_family_name= view.findViewById(R.id.questionnairePage_EDT_family_name);
@@ -95,6 +103,8 @@ public class fragment_a extends Fragment {
         questionnairePage_EDT_fatherCountry= view.findViewById(R.id.questionnairePage_EDT_fatherCountry);
         questionnairePage_EDT_yearImmigration= view.findViewById(R.id.questionnairePage_EDT_yearImmigration);
         questionnairePage_EDT_patientName= view.findViewById(R.id.questionnairePage_EDT_patientName);
+        radio_female= view.findViewById(R.id.radio_female);
+        radio_male= view.findViewById(R.id.radio_male);
     }
 
 
