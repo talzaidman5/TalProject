@@ -41,8 +41,9 @@ public class ActivityLogIn extends AppCompatActivity {
     private MySheredP msp;
     private Gson gson = new Gson();
     private CheckBox main_page_CHECK_remember;
+    public static final String CHANNEL_ID = "simplified_coding";
 
-    private FirebaseAuth auth;
+    public static FirebaseAuth auth;
 
 
     @Override

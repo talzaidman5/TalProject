@@ -41,6 +41,7 @@ public class User {
     private String uuID;
     private int age;
     private Date lastBloodDonation;
+    private String token;
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -70,6 +71,14 @@ public class User {
 
     public GENDER getGender() {
         return gender;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public void setGender(GENDER gender) {
