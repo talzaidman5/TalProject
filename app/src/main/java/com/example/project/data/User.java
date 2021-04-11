@@ -44,7 +44,6 @@ public class User {
     private String token;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, int bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -124,6 +123,7 @@ public class User {
         this.birthDate = other.birthDate;
         this.imageUser = other.imageUser;
         this.remember = other.remember;
+        this.gender = other.gender;
         this.uuID = other.uuID;
         this.allBloodDonations = other.allBloodDonations;
         this.userType = other.userType;
