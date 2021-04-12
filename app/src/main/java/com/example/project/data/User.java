@@ -41,7 +41,7 @@ public class User {
     private String uuID;
     private int age;
     private Date lastBloodDonation;
-    private Form form;
+    private String token;
 
 
     public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, int bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
@@ -68,16 +68,16 @@ public class User {
         this.gender = gender;
     }
 
-    public Form getForm() {
-        return form;
-    }
-
-    public void setForm(Form form) {
-        this.form = form;
-    }
-
     public GENDER getGender() {
         return gender;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public void setGender(GENDER gender) {
@@ -190,6 +190,7 @@ public class User {
     public User() {
         this.remember = false;
         this.userType = USER_TYPE.CLIENT;
+
     }
 
     public String getFirstName() {
