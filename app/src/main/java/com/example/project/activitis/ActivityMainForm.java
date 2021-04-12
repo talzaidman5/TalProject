@@ -17,7 +17,6 @@ import com.example.project.Questionnaire.Fragment.fragment_d;
 import com.example.project.R;
 
 public class ActivityMainForm extends AppCompatActivity {
-    private ImageView a, b;
     private Button main_form_BTN_prev, main_form_BTN_next;
     private int currentFragment = 0;
 
@@ -53,18 +52,23 @@ public class ActivityMainForm extends AppCompatActivity {
         switch (currentFragment) {
             case (0): {
                 showA();
+                break;
             }
             case(1):{
                 showB();
+                break;
             }
             case(2):{
                 showC();
+                break;
             }
             case(3):{
                 showD();
+                break;
             }
             case(4):{
                 showE();
+                break;
             }
         }
     }

@@ -41,6 +41,7 @@ public class User {
     private String uuID;
     private int age;
     private Date lastBloodDonation;
+    private Form form;
 
 
     public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, int bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
@@ -65,6 +66,14 @@ public class User {
         this.age = Calendar.getInstance().get(Calendar.YEAR) - birthDate.getYear();
         this.canDonateBlood = false;
         this.gender = gender;
+    }
+
+    public Form getForm() {
+        return form;
+    }
+
+    public void setForm(Form form) {
+        this.form = form;
     }
 
     public GENDER getGender() {
@@ -181,7 +190,6 @@ public class User {
     public User() {
         this.remember = false;
         this.userType = USER_TYPE.CLIENT;
-
     }
 
     public String getFirstName() {

@@ -44,6 +44,7 @@ public class fragment_c extends Fragment {
         spn_my_spinner = view.findViewById(R.id.fragmentc_TXT_Health_problem);
         dental_care = view.findViewById(R.id.dental_care);
         pregnancy = view.findViewById(R.id.pregnancy);
+        epilepsy = view.findViewById(R.id.epilepsy);
 
         spinnerArray = new ArrayList<String>();
       /*  spinnerArray.add("one");
