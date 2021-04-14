@@ -34,8 +34,8 @@
                 android:layout_height="wrap_content"
                 android:text="1 .אני בריא/ה וחש/ה בטוב היום"
                 android:textColor="@color/black"
+                android:id="@+id/one"
                 android:textSize="18dp"
-
                 android:background="@color/grey1"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
@@ -44,36 +44,28 @@
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2 .קיבלתי עירוי דם/מרכיבי דם ב- 6 החודשים האחרונים, הסיבה:"
+                android:text="2 .קיבלתי עירוי דם/מרכיבי דם ב- 6 החודשים האחרונים:"
                 android:textColor="@color/black"
                 android:textSize="18dp"
+                android:id="@+id/two"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/fragmentC_reason1"></EditText>
 
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="3 .נטלתי תרופות בחודש האחרון (כולל משככי כאבים, אספירין, ברזל וויטמינים)
-לא כן פרט/י:"
+                android:text="3 .נטלתי תרופות בחודש האחרון (כולל משככי כאבים, אספירין, ברזל וויטמינים)"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:background="@color/grey1"
+                android:id="@+id/three"
                 android:layout_weight="1"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:id="@+id/fragmentC_reason2"></EditText>
+
 
             <CheckBox
                 android:layout_width="match_parent"
@@ -86,19 +78,21 @@
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
+                android:id="@+id/four"
                 android:layout_weight="1"/>
 
 
             <CheckBox
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="5 .קיבלתי חיסונים בחודש האחרון. פרט/י:"
+                android:text="5 .קיבלתי חיסונים בחודש האחרון:"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:background="@color/grey1"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
+                android:id="@+id/five"
                 android:layout_weight="1"/>
 
 
@@ -111,7 +105,7 @@
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
-                android:id="@+id/dental_care"
+                android:id="@+id/six"
                 android:layout_weight="1"/>
 
             <CheckBox
@@ -120,6 +114,7 @@
                 android:text="7 .קיבלתי טיפול נגד זיבה ו/או נגד עגבת, ב- 12 החודשים האחרונים"
                 android:textColor="@color/black"
                 android:textSize="18dp"
+                android:id="@+id/seven"
                 android:background="@color/grey1"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
@@ -132,6 +127,7 @@
                 android:text="8 .גרתי במחיצת חולה בדלקת כבד חריפה (צהבת), ב- 6 החודשים האחרונים"
                 android:textColor="@color/black"
                 android:textSize="18dp"
+                android:id="@+id/eight"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
@@ -140,18 +136,16 @@
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="9 .חליתי בדלקת כבד )צהבת(. פרט/י איזה :"
+                android:text="9 .חליתי בדלקת כבד (צהבת) "
                 android:textColor="@color/black"
                 android:textSize="18dp"
+                android:id="@+id/nine"
                 android:background="@color/grey1"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
 
-          <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></EditText>
 
             <CheckBox
                 android:layout_width="match_parent"
@@ -159,6 +153,7 @@
                 android:text="10 .חליתי בשחפת/ברוצלוזיס בשנתיים האחרונות"
                 android:textColor="@color/black"
                 android:textSize="18dp"
+                android:id="@+id/ten"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
@@ -171,6 +166,7 @@
 לא כן או נדקרתי במחט/מזרק משומש, ב- 6 החודשים האחרונים"
                 android:textColor="@color/black"
                 android:textSize="18dp"
+                android:id="@+id/eleven"
                 android:background="@color/grey1"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
@@ -183,6 +179,7 @@
                 android:text="12 .אני סובל/ת מהגדלת בלוטות, מהזעת לילה, מאיבוד משקל, מחום"
                 android:textColor="@color/black"
                 android:textSize="18dp"
+                android:id="@+id/twelve"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
@@ -192,24 +189,21 @@
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="13 .ביקרתי בחול ב- 12 החודשים האחרונים? פרט/י באלו ארצות:"
+                android:text="13 .ביקרתי בחול ב- 12 החודשים האחרונים?"
                 android:textSize="18dp"
+                android:id="@+id/thirteen"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:background="@color/grey1"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
-                android:textSize="14dp"/>
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="14 .גרתי מעל 6 חודשים בארץ נגועת מלריה, או חליתי במלריה ב- 3 השנים האחרונות"
                 android:textSize="18dp"
+                android:id="@+id/fourteen"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
@@ -224,6 +218,7 @@
                 android:buttonTint="@color/colorPrimary"
                 android:background="@color/grey1"
                 android:layout_marginTop="10dp"
+                android:id="@+id/fifteen"
                 android:layout_weight="1"/>
             <CheckBox
                 android:layout_width="match_parent"
@@ -233,32 +228,21 @@
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
-                android:id="@+id/epilepsy"
+                android:id="@+id/sixteen"
                 android:layout_weight="1"/>
+
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="17 .עברתי ניתוח כלשהו פרט/י:"
+                android:text="17 .יש/הייתה לי בעיה בריאותית אחרת )חריפה או כרונית:"
                 android:textSize="18dp"
+                android:background="@color/grey1"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
-                android:background="@color/grey1"
                 android:layout_marginTop="10dp"
+                android:id="@+id/seventeen"
                 android:layout_weight="1"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </EditText>
 
-            <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="18 .יש/הייתה לי בעיה בריאותית אחרת )חריפה או כרונית(? פרט/י:"
-            android:textSize="18dp"
-            android:fontFamily="@font/regular"
-            android:buttonTint="@color/colorPrimary"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"/>
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -268,77 +252,37 @@
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="19 .ננשכתי על ידי בעל חיים זר ב- 2 החודשים האחרונים"
+                android:text="18 .ננשכתי על ידי בעל חיים זר ב- 2 החודשים האחרונים"
                 android:textSize="18dp"
                 android:fontFamily="@font/regular"
+                android:id="@+id/eighteen"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="20 .ביקרתי בחוץ לארץ ב- 28 הימים האחרונים? פרט/י באלו ארצות:"
+                android:text="19 .ביקרתי בחוץ לארץ ב- 28 הימים האחרונים? "
                 android:textSize="18dp"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:background="@color/grey1"
+                android:id="@+id/nineteen"
                 android:layout_marginTop="10dp"
                 android:layout_weight="1"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </EditText>
+
             <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" 21 .לנשים: האם את בהריון או היית בהריון?"
+                android:text=" 20 .לנשים: האם את בהריון או היית בהריון?"
                 android:textSize="18dp"
                 android:fontFamily="@font/regular"
                 android:buttonTint="@color/colorPrimary"
                 android:layout_marginTop="10dp"
-                android:id="@+id/pregnancy"
+                android:id="@+id/twenty"
                 android:layout_weight="1"/>
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="22 .לנשים: האם היית בהריון מאז התרומה הקודמת?"
-                android:textSize="18dp"
-                android:fontFamily="@font/regular"
-                android:buttonTint="@color/colorPrimary"
-                android:background="@color/grey1"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"/>
-
-
         </LinearLayout>
 
     </ScrollView>
-<!--    <RelativeLayout-->
-<!--        android:id="@+id/main_LIN"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_margin="5dp"-->
-<!--        android:orientation="horizontal">-->
-
-<!--        <Button-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:background="@drawable/back"-->
-<!--            android:layout_alignParentLeft="true"-->
-<!--            android:layout_weight="1"-->
-<!--            android:id="@+id/a"/>-->
-
-<!--        <Button-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:background="@drawable/next"-->
-<!--            android:id="@+id/next"-->
-<!--            android:layout_alignParentRight="true"-->
-<!--            android:layout_weight="1"-->
-<!--            />-->
-<!--    </RelativeLayout>-->
-
 
 </RelativeLayout>

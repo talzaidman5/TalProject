@@ -48,7 +48,7 @@ public class fragment_b extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        form.setAllDiseases(checkData());
+        checkData();
         putOnMSP();
     }
 
@@ -112,22 +112,19 @@ public class fragment_b extends Fragment {
     }
 
 
-    private Map checkData() {
-        Map<String, Boolean> map = new HashMap<String, Boolean>();
-        map.put("one", one.isChecked());
-        map.put("two", two.isChecked());
-        map.put("three", three.isChecked());
-        map.put("four", four.isChecked());
-        map.put("five", five.isChecked());
-        map.put("six", six.isChecked());
-        map.put("seven", seven.isChecked());
-        map.put("eight", eight.isChecked());
-        map.put("nine", nine.isChecked());
-        map.put("ten", ten.isChecked());
-        map.put("eleven", eleven.isChecked());
-        map.put("twelve", twelve.isChecked());
-        form.setAllDiseases(map);
-        return map;
+    private void checkData() {
+        form.getAllDiseases().put("one", one.isChecked());
+        form.getAllDiseases().put("two", two.isChecked());
+        form.getAllDiseases().put("three", three.isChecked());
+        form.getAllDiseases().put("four", four.isChecked());
+        form.getAllDiseases().put("five", five.isChecked());
+        form.getAllDiseases().put("six", six.isChecked());
+        form.getAllDiseases().put("seven", seven.isChecked());
+        form.getAllDiseases().put("eight", eight.isChecked());
+        form.getAllDiseases().put("nine", nine.isChecked());
+        form.getAllDiseases().put("ten", ten.isChecked());
+        form.getAllDiseases().put("eleven", eleven.isChecked());
+        form.getAllDiseases().put("twelve", twelve.isChecked());
     }
 
 

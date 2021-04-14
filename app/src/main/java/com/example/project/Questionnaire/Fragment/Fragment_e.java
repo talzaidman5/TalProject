@@ -1,6 +1,8 @@
 package com.example.project.Questionnaire.Fragment;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -20,6 +22,7 @@ import android.widget.Toast;
 import com.anychart.enums.Interval;
 import com.example.project.R;
 import com.example.project.data.AllUsers;
+import com.example.project.data.Form;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
@@ -52,6 +55,7 @@ public class Fragment_e extends Fragment {
     private MySheredP msp;
     private AllUsers allUsers;
     private User user;
+    private Form form;
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference myRef = database.getReference("FB");
     private SearchableSpinner spn_my_spinner;
@@ -71,11 +75,30 @@ public class Fragment_e extends Fragment {
                 user.setCanDonateBlood(true);
                 myRef.child("Users").child(user.getID()).setValue(user);
                 Toast.makeText(getContext(), "אתה יכול לתרום דם!", Toast.LENGTH_SHORT);
+                canDonateAlert();
             }
             }
         return view;
     }
 
+    private void canDonateAlert(){
+        new AlertDialog.Builder(getContext())
+                .setTitle("")
+                .setMessage("אתה יכול לתרום!")
+
+                // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Continue with delete operation
+                    }
+                })
+
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
     @RequiresApi(api = Build.VERSION_CODES.O)
     private boolean checkAlgo() {
         String s = fragment_c.spn_my_spinner.getSelectedItem().toString();
@@ -87,10 +110,10 @@ public class Fragment_e extends Fragment {
                     if (!temp[0].equals("מותר להתרים"))
                         return false;
                 }
-        if(fragment_c.isPregnancy)
-            return false;
-        if(fragment_c.isDental_care)
-            return  false;
+//        if(fragment_c.isPregnancy)
+//            return false;
+//        if(fragment_c.isDental_care)
+//            return  false;
 
             Date date = user.getLastBloodDonation();
                  Date tep= new Date();
@@ -107,7 +130,9 @@ public class Fragment_e extends Fragment {
     }
     private AllUsers getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_MSP_ALL, "NA");
-        allUsers =  AllUsers.AllUsers2(dataAll);
+        allUsers =  new AllUsers(dataAll);
+        String dataForm = msp.getString(Constants.KEY_FORM_DATA, "NA");
+        form =  new Form(dataForm);
         return allUsers;
     }
 

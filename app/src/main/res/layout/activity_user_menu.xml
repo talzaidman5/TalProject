@@ -45,11 +45,12 @@
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="40dp">
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/document"
+            <ImageButton
+                android:layout_width="70dp"
+                android:layout_height="120dp"
+                android:background="@drawable/document"
                 android:layout_gravity="center"
+                android:id="@+id/menu_IMG_fillQ"
                 android:layout_weight="1" />
             <Button
                 android:layout_width="match_parent"
@@ -77,12 +78,14 @@
             android:id="@+id/menu_ALL_2"
             >
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/user"
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:background="@drawable/user"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:id="@+id/menu_IMG_profile"
+
                 />
             <Button
                 android:id="@+id/menu_BTN_profile"
@@ -112,11 +115,12 @@
             android:layout_below="@+id/menu_ALL_2"
             >
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/location"
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:background="@drawable/location"
                 android:layout_gravity="center"
+                android:id="@+id/menu_IMG_activityPosition"
                 android:layout_weight="1"
                 />
             <Button
@@ -148,12 +152,14 @@
 
             >
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/blood"
+            <ImageButton
+                android:layout_width="80dp"
+                android:layout_height="120dp"
+                android:background="@drawable/blood"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:id="@+id/main_IMG_history"
+
                 />
             <Button
                 android:layout_width="match_parent"

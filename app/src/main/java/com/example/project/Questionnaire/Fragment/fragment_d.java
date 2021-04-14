@@ -24,20 +24,7 @@ public class fragment_d extends Fragment {
         if(view == null)
             view = inflater.inflate(R.layout.fragment_d,container,false);
 
-//        next = view.findViewById(R.id.next);
 
-//        next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                //   if(checkData()){
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                Fragment fragment = new Fragment_e();
-//                ft.replace(R.id.main_LIN, fragment);
-//                ft.addToBackStack(null);
-//                ft.commit();
-//                //   }
-//            }
-//        });
         return view;
     }
 }

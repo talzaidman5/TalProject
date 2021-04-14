@@ -17,6 +17,7 @@ public class Form {
     private String fatherCountry;
     private String yearImmigration;
     private Map<String, Boolean> allDiseases;
+    private Map<String, Boolean> fragmentC;
 
     public Form(User user, String previous_family_name, String city, String postal, String street, String officePhone, String homePhone, String motherCountry, String fatherCountry, String yearImmigration) {
         this.user = user;
@@ -30,11 +31,13 @@ public class Form {
         this.fatherCountry = fatherCountry;
         this.yearImmigration = yearImmigration;
         allDiseases = new HashMap<String, Boolean>();
+        fragmentC = new HashMap<String, Boolean>();
     }
 
     public Form() {
 
     }
+
 
     public Form(String data) {
         this(createFormFromString(data));
@@ -52,6 +55,7 @@ public class Form {
         this.fatherCountry = other.getFatherCountry();
         this.yearImmigration = other.getYearImmigration();
         this.allDiseases = other.allDiseases;
+        this.fragmentC = other.fragmentC;
     }
 
     private static Form createFormFromString(String data) {
@@ -73,6 +77,14 @@ public class Form {
 
     public void setAllDiseases(Map<String, Boolean> allDiseases) {
         this.allDiseases = allDiseases;
+    }
+
+    public Map<String, Boolean> getFragmentC() {
+        return fragmentC;
+    }
+
+    public void setFragmentC(Map<String, Boolean> fragmentC) {
+        this.fragmentC = fragmentC;
     }
 
     public void setUser(User user) {

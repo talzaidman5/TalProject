@@ -72,12 +72,12 @@
             android:id="@+id/questionnairePage_TXT_4"
             android:text="@string/fourth"></TextView>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="190dp"
-            android:src="@drawable/errors"
-            android:id="@+id/errors"
-            android:layout_below="@id/questionnairePage_TXT_4"></ImageView>
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="190dp"-->
+<!--            android:src="@drawable/errors"-->
+<!--            android:id="@+id/errors"-->
+<!--            android:layout_below="@id/questionnairePage_TXT_4"></ImageView>-->
 
             <Button
                 android:id="@+id/dialog_BTN_confirm"

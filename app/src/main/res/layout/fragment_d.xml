@@ -31,23 +31,27 @@
             android:gravity="right"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
-            <EditText
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:ems="3"></EditText>
+                android:id="@+id/sign"/>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:textSize="12dp"
                 android:textColor="@color/black"
+                android:id="@+id/textSign"
                 android:layout_margin="10dp"
-                android:text="חתימת התורם/ת:"></TextView>
+                android:text="חתימת התורם/ת:"/>
+
+
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:id="@+id/date"
                 android:ems="3"></EditText>
             <TextView
                 android:layout_width="wrap_content"
@@ -57,6 +61,7 @@
                 android:textSize="12dp"
                 android:layout_margin="10dp"
                 android:text="תאריך:"></TextView>
+
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
@@ -85,12 +90,10 @@
                 android:text="א. אני מסכים/ה ששארית מדגימת הדם שלי, או איזה ממרכיבי המנה
 שתרמתי, ישמשו לכל מחקר רפואי, שיאושר כדין או לתהליכי פיתוח"></TextView>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:textSize="12dp"
-                android:ems="30"></EditText>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/research"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,12 +104,10 @@
                 android:text="ב. אינני מסכים/ה ששארית מדגימת הדם שלי, או איזה ממרכיבי המנה
 שתרמתי, ישמשו למחקר רפואי או לתהליכי פיתוח"></TextView>
 
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:textSize="12dp"
-                android:ems="30"></EditText>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/research2"/>
 
        </LinearLayout>
     </ScrollView>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +30,8 @@ public class ActivityProfileMenu extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
 
-    private Button menu_BTN_fillQ, menu_BTN_profile, menu_BTN_activityPosition, main_BTN_history,check;
+    private Button menu_BTN_fillQ, menu_BTN_profile, menu_BTN_activityPosition, main_BTN_history;
+    private ImageButton menu_IMG_fillQ, menu_IMG_profile, menu_IMG_activityPosition, main_IMG_history;
     private ArrayList<Position> positions = new ArrayList<>();
     private User newUser;
 
@@ -45,9 +47,17 @@ public class ActivityProfileMenu extends AppCompatActivity {
         msp = new MySheredP(this);
         findViews();
         getFromMSP();
-       // readDataPositions();
+        // readDataPositions();
         main_TXT_name.setText("היי " + newUser.getFirstName());
         menu_BTN_activityPosition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ActivityProfileMenu.this, ActivityPosition.class);
+                startActivity(intent);
+            }
+        });
+
+        menu_IMG_activityPosition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ActivityProfileMenu.this, ActivityPosition.class);
@@ -64,12 +74,30 @@ public class ActivityProfileMenu extends AppCompatActivity {
             }
         });
 
+        menu_IMG_fillQ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                newEventDialog exNewEventDialog = new newEventDialog();
+                exNewEventDialog.show(getSupportFragmentManager(), "exe");
+
+
+            }
+        });
+
         main_BTN_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openHistoryPage();
             }
         });
+
+        main_IMG_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openHistoryPage();
+            }
+        });
+
         menu_BTN_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +105,12 @@ public class ActivityProfileMenu extends AppCompatActivity {
             }
         });
 
+        menu_IMG_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMenu();
+            }
+        });
     }
 
     private void findViews() {
@@ -85,6 +119,10 @@ public class ActivityProfileMenu extends AppCompatActivity {
         menu_BTN_activityPosition = findViewById(R.id.menu_BTN_activityPosition);
         main_TXT_name = findViewById(R.id.main_TXT_name);
         main_BTN_history = findViewById(R.id.main_BTN_history);
+        menu_IMG_fillQ = findViewById(R.id.menu_IMG_fillQ);
+        menu_IMG_profile = findViewById(R.id.menu_IMG_profile);
+        menu_IMG_activityPosition = findViewById(R.id.menu_IMG_activityPosition);
+        main_IMG_history = findViewById(R.id.main_IMG_history);
     }
 
 
@@ -118,7 +156,7 @@ public class ActivityProfileMenu extends AppCompatActivity {
 
     private void getFromMSP() {
         String dataPos = msp.getString(Constants.KEY_MSP_POS, "NA");
-        positions = new Gson().fromJson(dataPos,ArrayList.class);
+        positions = new Gson().fromJson(dataPos, ArrayList.class);
 
         String data = msp.getString(Constants.KEY_MSP, "NA");
         newUser = new User(data);
