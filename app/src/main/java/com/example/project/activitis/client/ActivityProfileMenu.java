@@ -1,4 +1,4 @@
-package com.example.project.activitis;
+package com.example.project.activitis.client;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
+import com.example.project.activitis.ActivityHistoryBloodDonations;
+import com.example.project.activitis.newEventDialog;
 import com.example.project.data.Position;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;

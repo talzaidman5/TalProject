@@ -1,4 +1,4 @@
-package com.example.project.activitis;
+package com.example.project.activitis.client;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -8,13 +8,10 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -26,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.example.project.R;
+import com.example.project.activitis.ActivityLogIn;
 import com.example.project.data.AllUsers;
 import com.example.project.data.BloodDonation;
 import com.example.project.data.CheckValidation;
@@ -50,12 +48,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class ActivityMyProfile extends AppCompatActivity {

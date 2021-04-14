@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
+import com.example.project.activitis.client.ActivityProfileMenu;
+import com.example.project.activitis.manager.ActivityMenuManager;
 import com.example.project.data.AllUsers;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;

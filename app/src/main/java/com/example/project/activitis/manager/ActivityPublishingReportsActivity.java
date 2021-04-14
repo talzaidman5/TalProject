@@ -1,4 +1,4 @@
-package com.example.project.activitis;
+package com.example.project.activitis.manager;
 
 import androidx.appcompat.app.AppCompatActivity;
 

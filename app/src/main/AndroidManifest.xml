@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl">
         <activity
-            android:name=".activitis.ActivityAllReports"
+            android:name=".activitis.manager.ActivityAllReports"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
@@ -35,35 +35,35 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
-            android:name=".activitis.ActivityMainForm"
+            android:name=".activitis.client.ActivityMainForm"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
-            android:name=".activitis.ActivityPosition"
+            android:name=".activitis.client.ActivityPosition"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
-            android:name=".activitis.ActivityMyProfile"
+            android:name=".activitis.client.ActivityMyProfile"
             android:theme="@style/Theme.MaterialComponents.DayNight"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.ActivityProfileMenu$ActivityQuestionnairePage"
+            android:name=".activitis.client.ActivityProfileMenu$ActivityQuestionnairePage"
             android:theme="@style/Theme.AppCompat"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.ActivityProfileMenu"
+            android:name=".activitis.client.ActivityProfileMenu"
             android:theme="@style/Theme.AppCompat"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.ActivityMenuManager"
+            android:name=".activitis.manager.ActivityMenuManager"
             android:theme="@style/Theme.AppCompat"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.ActivityPublishingReportsActivity"
+            android:name=".activitis.manager.ActivityPublishingReportsActivity"
             android:theme="@style/Theme.AppCompat"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />

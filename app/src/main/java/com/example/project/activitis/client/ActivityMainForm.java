@@ -1,4 +1,4 @@
-package com.example.project.activitis;
+package com.example.project.activitis.client;
 
 import android.os.Bundle;
 import android.view.View;

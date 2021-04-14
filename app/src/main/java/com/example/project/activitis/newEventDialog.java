@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.project.R;
+import com.example.project.activitis.client.ActivityMainForm;
 
 public class newEventDialog extends AppCompatDialogFragment {
     private View view;
