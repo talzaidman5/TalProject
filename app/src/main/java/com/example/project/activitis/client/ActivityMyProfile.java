@@ -364,7 +364,10 @@ public class ActivityMyProfile extends AppCompatActivity {
     }
 
     private String getDateStr (Date date){
+        if (date != null)
         return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+        else
+            return "N/A";
     }
 
     @Override
