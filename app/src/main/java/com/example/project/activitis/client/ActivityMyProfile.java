@@ -222,7 +222,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     private boolean checkData() {
         boolean data = true;
-        if (CheckValidation.checkID(myProfile_TXT_IDToFill.getEditText().getText().toString())) {
+        if (!CheckValidation.checkID(myProfile_TXT_IDToFill.getEditText().getText().toString())) {
             myProfile_TXT_IDToFill.setError("INVALID ID");
             data = false;
         }

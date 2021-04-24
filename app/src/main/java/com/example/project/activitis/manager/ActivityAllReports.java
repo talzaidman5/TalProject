@@ -2,6 +2,7 @@ package com.example.project.activitis.manager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.app.DatePickerDialog;
 import android.graphics.Color;
@@ -47,17 +48,18 @@ public class ActivityAllReports extends AppCompatActivity {
     private AnyChartView anyChartView;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
-    private ArrayList<BloodDonation>bloodDonationList = new ArrayList<>();
-    private TextView activity_all_reports_TXT_date,activity_all_reports_TXT_data;
+    private ArrayList<BloodDonation> bloodDonationList = new ArrayList<>();
+    private TextView activity_all_reports_TXT_date, activity_all_reports_TXT_data;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
-    public  Date date;
+    public Date date;
     private MySheredP msp;
     private AllUsers allUsers;
     private Map<String, Integer> bloodDonations = new HashMap<String, Integer>();
-    private List<User>bloodDonationsUsers = new ArrayList<>();
+    private List<User> bloodDonationsUsers = new ArrayList<>();
     private Map<User.GENDER, Integer> bloodDonationsGander = new HashMap<User.GENDER, Integer>();
     private Map<String, Integer> bloodDonationsBlood = new HashMap<String, Integer>();
     private ProgressBar activity_all_reports_PRB_progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,7 +109,7 @@ public class ActivityAllReports extends AppCompatActivity {
         main_BTN_allOptionToExport.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if(parentView.getItemAtPosition(position).equals("תאריך"))
+                if (parentView.getItemAtPosition(position).equals("תאריך"))
                     activity_all_reports_TXT_date.setVisibility(View.VISIBLE);
                 else
                     activity_all_reports_TXT_date.setVisibility(View.INVISIBLE);
@@ -124,65 +126,71 @@ public class ActivityAllReports extends AppCompatActivity {
             public void onClick(View v) {
                 activity_all_reports_PRB_progressBar.setVisibility(View.VISIBLE);
 
-                switch ( main_BTN_allOptionToExport.getSelectedItem().toString()){
-                    case "איזור":
-                    {
-                         returnLists(bloodDonationList, "איזור");
-                        setupPie(bloodDonations.keySet().toArray(new String[bloodDonations.keySet().size()]),bloodDonations.values().toArray(new Integer[bloodDonations.values().size()]));
+                switch (main_BTN_allOptionToExport.getSelectedItem().toString()) {
+                    case "איזור": {
+                        returnLists(bloodDonationList, "איזור");
+                        setupPie(bloodDonations.keySet().toArray(new String[bloodDonations.keySet().size()]), bloodDonations.values().toArray(new Integer[bloodDonations.values().size()]));
 
-                    }break;
+                    }
+                    break;
                     case "תאריך":
-                        if(!activity_all_reports_TXT_date.getText().equals("בחר תאריך")) {
+                        if (!activity_all_reports_TXT_date.getText().equals("בחר תאריך")) {
                             returnLists(bloodDonationList, "תאריך");
                             setupResourceChart(bloodDonationsUsers);
-                        }break;
+                        }
+                        break;
                     case "מגדר": {
                         returnLists(bloodDonationList, "מגדר");
                         setupPie(returnListString(bloodDonationsGander), returnListInteger(bloodDonationsGander));
-                    }break;
+                    }
+                    break;
                     case "סוג דם": {
                         returnLists(bloodDonationList, "סוג דם");
                         setupPie(returnListStringBlood(bloodDonationsBlood), returnListIntegerBlood(bloodDonationsBlood));
-                    }break;
+                    }
+                    break;
                 }
             }
         });
     }
 
-    private String[] returnListString(Map<User.GENDER, Integer>map){
-        String[]strings = new String[map.size()];
-            for(int i=0;i<map.size();i++)
-            strings[i]=map.keySet().toArray()[i].toString();
-
-        return strings;
-    }
-    private String[] returnListStringBlood(Map<String, Integer>map){
-        String[]strings = new String[map.size()];
-            for(int i=0;i<map.size();i++)
-            strings[i]=map.keySet().toArray()[i].toString();
+    private String[] returnListString(Map<User.GENDER, Integer> map) {
+        String[] strings = new String[map.size()];
+        for (int i = 0; i < map.size(); i++)
+            strings[i] = map.keySet().toArray()[i].toString();
 
         return strings;
     }
 
-    private String getDateStr (Date date){
-        return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+    private String[] returnListStringBlood(Map<String, Integer> map) {
+        String[] strings = new String[map.size()];
+        for (int i = 0; i < map.size(); i++)
+            strings[i] = map.keySet().toArray()[i].toString();
+
+        return strings;
+    }
+
+    private String getDateStr(Date date) {
+        return date.getDay() + "/" + date.getMonth() + "/" + date.getYear();
     }
 
 
-    private Integer[] returnListInteger(Map<User.GENDER, Integer>map){
-        Integer[]integers = new Integer[map.size()];
-            for(int i=0;i<map.size();i++)
-                integers[i]=(Integer) map.values().toArray()[i];
+    private Integer[] returnListInteger(Map<User.GENDER, Integer> map) {
+        Integer[] integers = new Integer[map.size()];
+        for (int i = 0; i < map.size(); i++)
+            integers[i] = (Integer) map.values().toArray()[i];
 
         return integers;
     }
-    private Integer[] returnListIntegerBlood(Map<String, Integer>map){
-        Integer[]integers = new Integer[map.size()];
-            for(int i=0;i<map.size();i++)
-                integers[i]=(Integer) map.values().toArray()[i];
+
+    private Integer[] returnListIntegerBlood(Map<String, Integer> map) {
+        Integer[] integers = new Integer[map.size()];
+        for (int i = 0; i < map.size(); i++)
+            integers[i] = (Integer) map.values().toArray()[i];
 
         return integers;
     }
+
     private void returnLists(ArrayList<BloodDonation> allBloodDonation, String type) {
         switch (type) {
             case "איזור":
@@ -192,30 +200,34 @@ public class ActivityAllReports extends AppCompatActivity {
                         bloodDonations.put(bloodDonation.getCity(), bloodDonations.get(bloodDonation.getCity()) + 1);
                     else
                         bloodDonations.put(bloodDonation.getCity(), 1);
-                }break;
-                case "מגדר":
-                    activity_all_reports_TXT_data.setVisibility(View.INVISIBLE);
-                    for (BloodDonation bloodDonation : allBloodDonation) {
+                }
+                break;
+            case "מגדר":
+                activity_all_reports_TXT_data.setVisibility(View.INVISIBLE);
+                for (BloodDonation bloodDonation : allBloodDonation) {
                     if (bloodDonationsGander.containsKey(allUsers.getUserByID(bloodDonation.getUserID()).getGender()))
-                        bloodDonationsGander.put(allUsers.getUserByID(bloodDonation.getUserID()).getGender(),bloodDonationsGander.get(allUsers.getUserByID(bloodDonation.getUserID()).getGender())+ 1);
+                        bloodDonationsGander.put(allUsers.getUserByID(bloodDonation.getUserID()).getGender(), bloodDonationsGander.get(allUsers.getUserByID(bloodDonation.getUserID()).getGender()) + 1);
                     else
                         bloodDonationsGander.put(allUsers.getUserByID(bloodDonation.getUserID()).getGender(), 1);
 
-                } break;
+                }
+                break;
             case "תאריך":
                 for (BloodDonation bloodDonation : allBloodDonation) {
-                    if (bloodDonation.getDate().getDay()==date.getDay() &&bloodDonation.getDate().getMonth()==date.getMonth() &&
-                            bloodDonation.getDate().getYear()==date.getYear())
+                    if (bloodDonation.getDate().getDay() == date.getDay() && bloodDonation.getDate().getMonth() == date.getMonth() &&
+                            bloodDonation.getDate().getYear() == date.getYear())
                         bloodDonationsUsers.add(allUsers.getUserByID(bloodDonation.getUserID()));
-                }break;
-                case "סוג דם":
+                }
+                break;
+            case "סוג דם":
                 for (BloodDonation bloodDonation : allBloodDonation) {
                     String[] stringArray = getResources().getStringArray(R.array.bloods);
                     if (bloodDonations.containsKey(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()))
                         bloodDonationsBlood.put(stringArray[allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()], bloodDonationsBlood.get(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()) + 1);
                     else
                         bloodDonationsBlood.put(stringArray[allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()], 1);
-                }break;
+                }
+                break;
 
         }
     }
@@ -238,7 +250,7 @@ public class ActivityAllReports extends AppCompatActivity {
         });
     }
 
-    public void setupPie(String [] list, Integer [] present) {
+    public void setupPie(String[] list, Integer[] present) {
         if (list.length != 0) {
             Pie pie = AnyChart.pie();
             List<DataEntry> dataEntries = new ArrayList<>();
@@ -248,25 +260,22 @@ public class ActivityAllReports extends AppCompatActivity {
             pie.data(dataEntries);
             activity_all_reports_PRB_progressBar.setVisibility(View.INVISIBLE);
             anyChartView.setChart(pie);
-        }
-        else
-        {
+        } else {
             Toast.makeText(this, "אין מידע", Toast.LENGTH_SHORT).show();
         }
     }
- public void setupResourceChart(List<User>allUsersTemp) {
-     activity_all_reports_PRB_progressBar.setVisibility(View.INVISIBLE);
-     if (allUsersTemp.size() != 0)
-         activity_all_reports_TXT_data.setText("תרמו ביום הנבחר " + (allUsersTemp.size()) + " התרמות דם");
-      else
-         Toast.makeText(this, "אין מידע", Toast.LENGTH_SHORT).show();
- }
+
+    public void setupResourceChart(List<User> allUsersTemp) {
+        activity_all_reports_PRB_progressBar.setVisibility(View.INVISIBLE);
+        if (allUsersTemp.size() != 0)
+            activity_all_reports_TXT_data.setText("תרמו ביום הנבחר " + (allUsersTemp.size()) + " התרמות דם");
+        else
+            Toast.makeText(this, "אין מידע", Toast.LENGTH_SHORT).show();
+    }
 
     private AllUsers getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_MSP_ALL, "NA");
         allUsers = new AllUsers(dataAll);
         return allUsers;
     }
-
-
 }

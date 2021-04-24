@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class fragment_b extends Fragment {
+public class Fragment_b extends Fragment {
     private View view;
     private TextView fragment_b_TXT, test;
     private Button next;

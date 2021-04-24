@@ -15,9 +15,12 @@ public class Form {
     private String homePhone;
     private String MotherCountry;
     private String fatherCountry;
+    private String date;
+    private boolean sign,research,research2;
     private String yearImmigration;
     private Map<String, Boolean> allDiseases;
     private Map<String, Boolean> fragmentC;
+    private boolean canUser;
 
     public Form(User user, String previous_family_name, String city, String postal, String street, String officePhone, String homePhone, String motherCountry, String fatherCountry, String yearImmigration) {
         this.user = user;
@@ -56,6 +59,10 @@ public class Form {
         this.yearImmigration = other.getYearImmigration();
         this.allDiseases = other.allDiseases;
         this.fragmentC = other.fragmentC;
+        this.sign = other.sign;
+        this.research = other.research;
+        this.research2 = other.research2;
+        this.date = other.date;
     }
 
     private static Form createFormFromString(String data) {
@@ -69,6 +76,38 @@ public class Form {
 
     public User getUser() {
         return user;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public boolean isSign() {
+        return sign;
+    }
+
+    public void setSign(boolean sign) {
+        this.sign = sign;
+    }
+
+    public boolean isResearch() {
+        return research;
+    }
+
+    public void setResearch(boolean research) {
+        this.research = research;
+    }
+
+    public boolean isResearch2() {
+        return research2;
+    }
+
+    public void setResearch2(boolean research2) {
+        this.research2 = research2;
     }
 
     public Map<String, Boolean> getAllDiseases() {
@@ -99,6 +138,21 @@ public class Form {
         this.previous_family_name = previous_family_name;
     }
 
+    public boolean checkForm(){
+        for (Map.Entry<String, Boolean> entry : allDiseases.entrySet()) {
+           if(entry.getValue())
+               canUser = false;
+               return false;
+        }
+
+        for (Map.Entry<String, Boolean> entry : fragmentC.entrySet()) {
+            if(entry.getValue())
+                canUser = false;
+                return false;
+        }
+        canUser = true;
+        return true;
+    }
     public String getCity() {
         return city;
     }

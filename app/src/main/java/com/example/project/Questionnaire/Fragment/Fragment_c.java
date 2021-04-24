@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class fragment_c extends Fragment {
+public class Fragment_c extends Fragment {
     private View view;
     private Button next;
     private ArrayList<String> spinnerArray;

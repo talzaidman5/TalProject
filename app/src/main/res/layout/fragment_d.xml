@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/my_gradient_drawable"
-    tools:context=".Questionnaire.Fragment.fragment_d">
+    tools:context=".Questionnaire.Fragment.Fragment_d">
     <RelativeLayout
     android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -34,7 +34,7 @@
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/sign"/>
+                android:id="@+id/fragmentD_sign"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:id="@+id/date"
+                android:id="@+id/fragmentD_date"
                 android:ems="3"></EditText>
             <TextView
                 android:layout_width="wrap_content"
@@ -93,7 +93,7 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/research"/>
+            android:id="@+id/fragmentD_research"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -107,7 +107,7 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/research2"/>
+            android:id="@+id/fragmentD_research2"/>
 
        </LinearLayout>
     </ScrollView>

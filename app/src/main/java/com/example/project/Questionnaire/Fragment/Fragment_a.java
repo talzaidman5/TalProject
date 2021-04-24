@@ -25,7 +25,7 @@ import com.google.gson.Gson;
 
 import java.util.Date;
 
-public class fragment_a extends Fragment {
+public class Fragment_a extends Fragment {
     private View view;
     private MySheredP msp;
     private User user;

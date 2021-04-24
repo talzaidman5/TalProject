@@ -1,7 +1,6 @@
 package com.example.project.Questionnaire.Fragment;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,42 +8,28 @@ import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
-import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.anychart.enums.Interval;
 import com.example.project.R;
 import com.example.project.data.AllUsers;
 import com.example.project.data.Form;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 
 public class Fragment_e extends Fragment {
@@ -59,32 +44,39 @@ public class Fragment_e extends Fragment {
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference myRef = database.getReference("FB");
     private SearchableSpinner spn_my_spinner;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view =  inflater.inflate(R.layout.fragment_e, container, false);
-         spn_my_spinner = view.findViewById(R.id.spinner);
+        view = inflater.inflate(R.layout.fragment_e, container, false);
+        spn_my_spinner = view.findViewById(R.id.spinner);
         msp = new MySheredP(getContext());
         getFromMSP();
 
         readFile();
         user = allUsers.getUserByEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-
-        if(checkAlgo()) {
-            if(user!=null) {
-                user.setCanDonateBlood(true);
-                myRef.child("Users").child(user.getID()).setValue(user);
-                Toast.makeText(getContext(), "אתה יכול לתרום דם!", Toast.LENGTH_SHORT);
-                canDonateAlert();
-            }
-            }
+        checkAlgo();
+//        if (checkAlgo()) {
+//            if (user != null) {
+//                user.setCanDonateBlood(true);
+//                myRef.child("Users").child(user.getID()).setValue(user);
+//                Toast.makeText(getContext(), "אתה יכול לתרום דם!", Toast.LENGTH_SHORT);
+//                canDonateAlert();
+//            }
+//        }
         return view;
     }
 
-    private void canDonateAlert(){
+    private void canDonateAlert(boolean isCan) {
+        String res= "";
+        if(isCan)
+            res = "אתה יכול לתרום!";
+        else
+            res = "אינך יכול לתרום!";
+
         new AlertDialog.Builder(getContext())
                 .setTitle("")
-                .setMessage("אתה יכול לתרום!")
+                .setMessage(res)
 
                 // Specifying a listener allows you to take an action before dismissing the dialog.
                 // The dialog is automatically dismissed when a dialog button is clicked.
@@ -99,9 +91,21 @@ public class Fragment_e extends Fragment {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
+
+
+    private void checkAlgo() {
+
+        if (form.checkForm())
+            canDonateAlert(true);
+        else
+            canDonateAlert(false);
+
+    }
+
+
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private boolean checkAlgo() {
-        String s = fragment_c.spn_my_spinner.getSelectedItem().toString();
+    private boolean checkAlgoTal() {
+        String s = Fragment_c.spn_my_spinner.getSelectedItem().toString();
         String[] temp;
         if (!s.equals("בחר"))
             for (String str : algo)
@@ -115,40 +119,42 @@ public class Fragment_e extends Fragment {
 //        if(fragment_c.isDental_care)
 //            return  false;
 
-            Date date = user.getLastBloodDonation();
-                 Date tep= new Date();
-                 tep.setMinutes(date.getDay());
+        Date date = user.getLastBloodDonation();
+        Date tep = new Date();
+        tep.setMinutes(date.getDay());
         tep.setYear(date.getYear());
         tep.setMonth(date.getMonth());
         Date now = new Date();
-        if (daysBetween(tep,now) < 100)
+        if (daysBetween(tep, now) < 100)
             return false;
         return true;
     }
-    public int daysBetween(Date d1, Date d2){
-        return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
+
+    public int daysBetween(Date d1, Date d2) {
+        return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
     }
+
     private AllUsers getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_MSP_ALL, "NA");
-        allUsers =  new AllUsers(dataAll);
+        allUsers = new AllUsers(dataAll);
         String dataForm = msp.getString(Constants.KEY_FORM_DATA, "NA");
-        form =  new Form(dataForm);
+        form = new Form(dataForm);
         return allUsers;
     }
 
-    private void readFile()  {
+    private void readFile() {
 
         BufferedReader reader;
-        String []temp;
+        String[] temp;
         try {
             final InputStream file = getActivity().getAssets().open(fileName);
             reader = new BufferedReader(new InputStreamReader(file));
             String line = reader.readLine();
             while (line != null) {
                 line = reader.readLine();
-                if(line != null) {
+                if (line != null) {
                     temp = line.split("-");
-                    if(temp.length>1) {
+                    if (temp.length > 1) {
                         String s = temp[0] + " " + temp[2];
                         algo.add(s);
 

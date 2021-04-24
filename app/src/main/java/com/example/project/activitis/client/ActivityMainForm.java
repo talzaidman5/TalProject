@@ -4,16 +4,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.project.Questionnaire.Fragment.Fragment_e;
-import com.example.project.Questionnaire.Fragment.fragment_a;
-import com.example.project.Questionnaire.Fragment.fragment_b;
-import com.example.project.Questionnaire.Fragment.fragment_c;
-import com.example.project.Questionnaire.Fragment.fragment_d;
+import com.example.project.Questionnaire.Fragment.Fragment_a;
+import com.example.project.Questionnaire.Fragment.Fragment_b;
+import com.example.project.Questionnaire.Fragment.Fragment_c;
+import com.example.project.Questionnaire.Fragment.Fragment_d;
 import com.example.project.R;
 
 public class ActivityMainForm extends AppCompatActivity {
@@ -76,28 +75,28 @@ public class ActivityMainForm extends AppCompatActivity {
 
         private void showA () {
 
-            fragment_a fragment_a = new fragment_a();
+            Fragment_a fragment_a = new Fragment_a();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.main_FRAME, fragment_a);
             transaction.commit();
         }
 
         private void showB () {
-            fragment_b fragment_b = new fragment_b();
+            Fragment_b fragment_b = new Fragment_b();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.main_FRAME, fragment_b);
             transaction.commit();
         }
 
     private void showC () {
-        fragment_c fragment_c = new fragment_c();
+        Fragment_c fragment_c = new Fragment_c();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.main_FRAME, fragment_c);
         transaction.commit();
     }
 
     private void showD () {
-        fragment_d fragment_d = new fragment_d();
+        Fragment_d fragment_d = new Fragment_d();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.main_FRAME, fragment_d);
         transaction.commit();

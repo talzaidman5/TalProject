@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,328 +8,337 @@
     tools:context=".activitis.ActivitySignUpPage">
 
     <ImageView
+        android:id="@+id/img"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:id="@+id/img"/>
+        android:layout_alignParentTop="true" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/sign_up_IMG_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_margin="10dp"
         android:layout_centerHorizontal="true"
-        app:shapeAppearanceOverlay="@style/circleImageView"
-        android:src="@drawable/ic_launcher_background" />
-
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_launcher_background"
+        app:shapeAppearanceOverlay="@style/circleImageView" />
 
 
     <ScrollView
-        android:background="@drawable/corners"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sign_up_IMG_logo"
         android:layout_above="@+id/signUp_BTN_signUp"
+        android:layout_below="@id/sign_up_IMG_logo"
         android:layout_margin="20dp"
+        android:background="@drawable/corners"
         tools:ignore="NotSibling">
+
         <LinearLayout
+            android:id="@+id/first"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:gravity="right"
-            android:id="@+id/first">
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/signUp_TXT_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/signUp_TXT_title"
-                android:text="פרטי משתמש "
                 android:layout_centerHorizontal="true"
-                android:textSize="20dp"
-                android:gravity="center"
-                android:textStyle="bold"
                 android:fontFamily="@font/regular"
-                android:textColor="@color/black"/>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColorHint="@color/blue"
-            android:gravity="right"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:outlineAmbientShadowColor="@color/blue"
-            app:endIconMode="clear_text"
-            android:hint="שם פרטי"
-            android:id="@+id/signUp_EDT_firstName"
-            app:errorEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/blue"
-                android:textColorHint="@color/blue"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular" />
-
-            </com.google.android.material.textfield.TextInputLayout >
+                android:gravity="center"
+                android:text="פרטי משתמש "
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_EDT_firstName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/blue"
                 android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:hint="שם פרטי"
                 android:outlineAmbientShadowColor="@color/blue"
+                android:textColorHint="@color/blue"
                 app:endIconMode="clear_text"
-                android:hint="שם משפחה"
-                android:id="@+id/signUp_EDT_lastName"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/blue"
-                    android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="18dp"
-                    android:gravity="right"
+                    android:layout_marginRight="5dp"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
-                    />
+                    android:gravity="right"
+                    android:textColor="@color/blue"
+                    android:textColorHint="@color/blue"
+                    android:textSize="18dp" />
 
-            </com.google.android.material.textfield.TextInputLayout >
-
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_EDT_lastName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/blue"
                 android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
+                android:hint="שם משפחה"
+                android:outlineAmbientShadowColor="@color/blue"
+                android:textColorHint="@color/blue"
                 app:endIconMode="clear_text"
-                android:hint="מס' תעודת זהות"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                app:counterEnabled="true"
-                app:counterMaxLength="9"
-                android:id="@+id/signUp_EDT_id"
-                android:inputType="number"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    android:gravity="right"
+                    android:textColor="@color/blue"
+                    android:textColorHint="@color/blue"
+                    android:textSize="18dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_EDT_id"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="right"
+                android:hint="מס' תעודת זהות"
+                android:inputType="number"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/blue"
+                app:counterEnabled="true"
+                app:counterMaxLength="9"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    android:inputType="number"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/blue"
                     android:textSize="18dp"
-                    android:inputType="number"
                     app:counterEnabled="true"
-                    app:counterMaxLength="9"
-                    android:background="@android:drawable/dialog_holo_light_frame"
-                    android:fontFamily="@font/regular"   />
+                    app:counterMaxLength="9" />
 
-            </com.google.android.material.textfield.TextInputLayout >
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_EDT_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/blue"
                 android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
-                app:endIconMode="clear_text"
                 android:hint="כתובת מייל"
-                android:id="@+id/signUp_EDT_email"
                 android:inputType="number"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/blue"
                 android:textSize="18dp"
+                app:endIconMode="clear_text"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:textSize="18dp"
-                    android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/blue"
-                    android:background="@android:drawable/dialog_holo_light_frame"
-                    android:fontFamily="@font/regular"   />
+                    android:textSize="18dp" />
 
-            </com.google.android.material.textfield.TextInputLayout >
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_EDT_phone"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/blue"
-                android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
-                app:endIconMode="clear_text"
-                android:hint="מספר טלפון"
-                android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
-                android:id="@+id/signUp_EDT_phone"
+                android:layout_marginRight="5dp"
+                android:gravity="right"
+                android:hint="מספר טלפון"
                 android:inputType="number"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/blue"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
+                app:endIconMode="clear_text"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    android:inputType="number"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/blue"
                     android:textSize="18dp"
-                    android:inputType="number"
                     app:counterEnabled="true"
-                    app:counterMaxLength="10"
-                    android:background="@android:drawable/dialog_holo_light_frame"
-                    android:fontFamily="@font/regular"   />
+                    app:counterMaxLength="10" />
 
-            </com.google.android.material.textfield.TextInputLayout >
+            </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right">
 
-                <CheckBox
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/blue"
-                    android:id="@+id/signup_CHB_male"
-                    android:text="גבר"></CheckBox>
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/blue"
-                android:id="@+id/signup_CHB_female"
-                android:layout_marginRight="12dp"
-                android:text="אישה"></CheckBox>
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/signup_CHB_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="זכר"
+                        android:textColor="@color/blue" />
+
+                    <RadioButton
+                        android:id="@+id/signup_CHB_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="נקבה"
+                        android:textColor="@color/blue" />
+                </RadioGroup>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="מגדר:"
                     android:layout_marginRight="12dp"
+                    android:text="מגדר:"
                     android:textColor="@color/blue"></TextView>
             </LinearLayout>
+
             <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="18dp"
-                android:outlineSpotShadowColor="@color/black"
+                android:id="@+id/signUp_EDT_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
                 android:outlineAmbientShadowColor="@color/black"
-                    android:id="@+id/signUp_EDT_city"
-                    android:fontFamily="@font/regular"   />
+                android:outlineSpotShadowColor="@color/black"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_EDT_password"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/blue"
                 android:gravity="right"
-                app:endIconMode="password_toggle"
-
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
                 android:hint="סיסמא"
-                android:id="@+id/signUp_EDT_password"
                 android:inputType="number"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/blue"
+                app:endIconMode="password_toggle"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    android:gravity="right"
+                    android:inputType="numberPassword"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/blue"
-                    android:inputType="numberPassword"
-                    android:layout_marginRight="5dp"
-                    android:textSize="18dp"
-                    android:layout_marginLeft="5dp"
-                    android:gravity="right"
-                    android:background="@android:drawable/dialog_holo_light_frame"
-                    android:fontFamily="@font/regular"   />
+                    android:textSize="18dp" />
 
-            </com.google.android.material.textfield.TextInputLayout >
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner
                 android:id="@+id/signUp_SPI_country"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp"
-                android:outlineAmbientShadowColor="@color/white"
-                android:outlineSpotShadowColor="@color/white"
+                android:layout_marginTop="5dp"
                 android:background="@color/grey"
-                />
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
+                android:textColor="@color/black" />
 
 
             <TextView
                 android:id="@+id/signUp_TXT_blood_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="סוג דם"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:layout_margin="10dp"
                 android:layout_below="@+id/signUp_LLA_city"
-                android:textColor="@android:color/black"/>
+                android:layout_margin="10dp"
+                android:text="סוג דם"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/signUp_SPI_bloodTypes"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:popupBackground="@color/grey2"
                 android:layout_marginLeft="20dp"
-                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineSpotShadowColor="@color/black"
                 android:background="@drawable/spinner"
-                />
+                android:popupBackground="@color/grey2"
+                android:textColor="@color/black" />
+
             <TextView
                 android:id="@+id/signUp_TXT_birthDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="תאריך לידה"
-                android:layout_centerHorizontal="true"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:layout_margin="10dp"
                 android:layout_below="@+id/signUp_LLA_bloodType2"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
                 android:layout_marginTop="25dp"
-                android:textColor="@android:color/black"/>
+                android:text="תאריך לידה"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
 
             <TextView
+                android:id="@+id/signUp_TXT_birthDatePicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="בחר תאריך לידה"
                 android:textColor="@color/black"
-                android:textSize="16dp"
-                android:layout_margin="10dp"
-                android:id="@+id/signUp_TXT_birthDatePicker"/>
+                android:textSize="16dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signUp_BTN_signUp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="התחבר"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="15dp"
+                android:text="התחבר"
+                android:textColor="@color/blue"
                 android:textSize="22dp"
                 android:textStyle="bold"
-                android:layout_marginBottom="15dp"
-                android:textColor="@color/blue"
                 app:cornerRadius="10dp"
-                android:layout_gravity="center"
-                app:strokeColor="@color/black"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                app:strokeColor="@color/black" />
         </LinearLayout>
     </ScrollView>
 

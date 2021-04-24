@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,6 +45,7 @@ public class ActivityLogIn extends AppCompatActivity {
     private Gson gson = new Gson();
     private CheckBox main_page_CHECK_remember;
     public static final String CHANNEL_ID = "simplified_coding";
+    private TextView login_TXT_forgot;
 
     public static FirebaseAuth auth;
 
@@ -97,11 +99,13 @@ public class ActivityLogIn extends AppCompatActivity {
         main_page_BTN_signUp = findViewById(R.id.main_page_BTN_signUp);
         main_page_CHECK_remember = findViewById(R.id.main_page_CHECK_remember);
         this.viewForgotPassword = findViewById(R.id.viewForgotPassword);
+        login_TXT_forgot = findViewById(R.id.login_TXT_forgot);
 
     }
 
     public void onForgotPasswordClicked() {
         String mail = mainPage_EDIT_email.getEditText().getText().toString().trim();
+
         if (mail.isEmpty()) {
             mainPage_EDIT_email.setError("Invalid email");
             mainPage_EDIT_email.requestFocus();
@@ -134,6 +138,7 @@ public class ActivityLogIn extends AppCompatActivity {
 
         return newUser;
     }
+
     private AllUsers getAllFromMSP() {
 
         String data = msp.getString(Constants.KEY_MSP_ALL, "NA");
@@ -146,22 +151,25 @@ public class ActivityLogIn extends AppCompatActivity {
     }
 
 
-
     public void checkUser() {
         String email_txt = mainPage_EDIT_email.getEditText().getText().toString();
         String password_txt = mainPage_EDIT_password.getEditText().getText().toString();
-        newUser=  allUsers.getUserByEmail(email_txt);
-        if (TextUtils.isEmpty(email_txt) || TextUtils.isEmpty(password_txt))
-            Toast.makeText(ActivityLogIn.this, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show();
+        newUser = allUsers.getUserByEmail(email_txt);
+        if ((TextUtils.isEmpty(email_txt)) || (TextUtils.isEmpty(password_txt)))
+            if (TextUtils.isEmpty(email_txt))
+                mainPage_EDIT_email.getEditText().setError("אנא הכנס איימיל");
+        if (TextUtils.isEmpty(password_txt))
+            mainPage_EDIT_password.getEditText().setError("אנא הכנס סיסמא");
         else {
             auth.signInWithEmailAndPassword(email_txt, password_txt)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                login_TXT_forgot.setVisibility(View.INVISIBLE);
                                 putOnMSP();
                                 Intent intent;
-                                if(newUser!=null) {
+                                if (newUser != null) {
                                     if (newUser.getID() != null) {
                                         if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
                                             intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
@@ -173,8 +181,8 @@ public class ActivityLogIn extends AppCompatActivity {
                                         finish();
                                     }
                                 }
-                                } else
-                                    Toast.makeText(ActivityLogIn.this, "אחד הפרטים לא נכונים", Toast.LENGTH_SHORT).show();
+                            } else
+                                login_TXT_forgot.setVisibility(View.VISIBLE);
                         }
                     });
         }
