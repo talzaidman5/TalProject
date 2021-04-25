@@ -233,7 +233,6 @@
                 android:gravity="right"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:outlineAmbientShadowColor="@color/black"
-
                 android:hint="תרומה אחרונה:"
                 android:layout_gravity="right"
                 android:id="@+id/myProfile_TXT_lastDonation"

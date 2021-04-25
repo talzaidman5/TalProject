@@ -69,5 +69,6 @@ public class Fragment_d extends Fragment {
         fragmentD_research = view.findViewById(R.id.fragmentD_research);
         fragmentD_research2 = view.findViewById(R.id.fragmentD_research2);
         fragmentD_sign = view.findViewById(R.id.fragmentD_sign);
+
     }
 }

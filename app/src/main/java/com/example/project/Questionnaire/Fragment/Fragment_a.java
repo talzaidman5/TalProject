@@ -38,6 +38,7 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_street, questionnairePage_EDT_email, questionnairePage_EDT_mobilePhone, questionnairePage_EDT_OfficePhone, questionnairePage_EDT_HomePhone,
             questionnairePage_EDT_MotherCountry, questionnairePage_EDT_fatherCountry, questionnairePage_EDT_yearImmigration,
             questionnairePage_EDT_patientName;
+    private CheckBox isSign;
     public static boolean isData = true;
 
     private Button next;
@@ -136,6 +137,7 @@ public class Fragment_a extends Fragment {
         questionnairePage_EDT_patientName = view.findViewById(R.id.questionnairePage_EDT_patientName);
         radio_female = view.findViewById(R.id.radio_female);
         radio_male = view.findViewById(R.id.radio_male);
+        isSign = view.findViewById(R.id.fragmentD_sign);
     }
 
     private void putOnMSP() {

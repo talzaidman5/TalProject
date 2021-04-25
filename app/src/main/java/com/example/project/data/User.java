@@ -39,7 +39,7 @@ public class User {
     private GENDER gender;
     private ArrayList<BloodDonation> allBloodDonations;
     private String uuID;
-    private String age;
+    private int age;
     private Date lastBloodDonation;
     private String token;
 
@@ -63,7 +63,7 @@ public class User {
 
         this.allBloodDonations = new ArrayList<>();
         this.uuID = uuid;
-        //this.age = Calendar.getInstance().get(Calendar.YEAR) - birthDate.getYear();
+        this.age = Calendar.getInstance().get(Calendar.YEAR) - birthDate.getYear();
         this.canDonateBlood = false;
         this.gender = gender;
     }
@@ -163,11 +163,13 @@ public class User {
     }
 
 
-    public String getAge() {
+    public int getAge() {
+        Calendar today = Calendar.getInstance();
+        age = today.get(Calendar.YEAR) - birthDate.getYear() - 1900;
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

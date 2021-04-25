@@ -42,7 +42,7 @@
                 android:layout_gravity="right"
                 android:textSize="12dp"
                 android:textColor="@color/black"
-                android:id="@+id/textSign"
+                android:id="@+id/fragment_d_textSign"
                 android:layout_margin="10dp"
                 android:text="חתימת התורם/ת:"/>
 

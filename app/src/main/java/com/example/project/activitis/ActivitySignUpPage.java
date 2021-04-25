@@ -245,8 +245,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
             data = false;
         } else
             ((TextView) signUp_SPI_bloodTypes.getSelectedView()).setError(null);
-
-        age = getAge(date);
+        Calendar today = Calendar.getInstance();
+        age = today.get(Calendar.YEAR) - date.getYear() - 1900;
         if (age< 17 || age > 65) {
             signUp_TXT_birthDate.setTextColor(16711680);
             data = false;
@@ -457,7 +457,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private int getAge(Date date) {
         Calendar today = Calendar.getInstance();
 
-        int age = today.get(Calendar.YEAR) - date.getYear() - 1900;
+        int age = today.get(Calendar.YEAR) - date.getYear() + 1900;
 
         if (today.get(Calendar.DAY_OF_YEAR) < date.getDay()) {
             age--;
@@ -485,7 +485,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
             newUser.setImageUser("https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e");
         else
             newUser.setImageUser(filePath);
-        newUser.setAge(getAge(date)+"");
+        newUser.setAge(age);
 
     }
 

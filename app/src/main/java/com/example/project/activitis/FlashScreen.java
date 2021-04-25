@@ -120,6 +120,7 @@ public class FlashScreen extends AppCompatActivity {
             }
             else
             {
+                msp.putString(Constants.KEY_MSP, null);
                 startActivity(new Intent(FlashScreen.this, ActivityLogIn.class));
                 finish();
             }

@@ -1,7 +1,9 @@
 package com.example.project.Questionnaire.Fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -11,9 +13,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.project.R;
+import com.example.project.activitis.client.ActivityMainForm;
+import com.example.project.activitis.client.ActivityMyProfile;
+import com.example.project.activitis.client.ActivityProfileMenu;
 import com.example.project.data.AllUsers;
 import com.example.project.data.Form;
 import com.example.project.data.User;
@@ -44,7 +50,7 @@ public class Fragment_e extends Fragment {
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference myRef = database.getReference("FB");
     private SearchableSpinner spn_my_spinner;
-
+    private CheckBox fragmentD_sign;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -82,7 +88,8 @@ public class Fragment_e extends Fragment {
                 // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        // Continue with delete operation
+                      Intent intent = new Intent(getContext(), ActivityProfileMenu.class);
+                       startActivity(intent);
                     }
                 })
 
@@ -90,49 +97,22 @@ public class Fragment_e extends Fragment {
                 .setNegativeButton(android.R.string.no, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+
     }
 
 
     private void checkAlgo() {
+        if (form.getSign()) {
+            if (form.checkForm())
+                canDonateAlert(true);
+            else
+                canDonateAlert(false);
 
-        if (form.checkForm())
-            canDonateAlert(true);
-        else
-            canDonateAlert(false);
-
+        } else {
+            Toast.makeText(getContext(),"אנא אשר",Toast.LENGTH_LONG).show();
+        }
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private boolean checkAlgoTal() {
-        String s = Fragment_c.spn_my_spinner.getSelectedItem().toString();
-        String[] temp;
-        if (!s.equals("בחר"))
-            for (String str : algo)
-                if (str.contains(s)) {
-                    temp = str.split(" ");
-                    if (!temp[0].equals("מותר להתרים"))
-                        return false;
-                }
-//        if(fragment_c.isPregnancy)
-//            return false;
-//        if(fragment_c.isDental_care)
-//            return  false;
-
-        Date date = user.getLastBloodDonation();
-        Date tep = new Date();
-        tep.setMinutes(date.getDay());
-        tep.setYear(date.getYear());
-        tep.setMonth(date.getMonth());
-        Date now = new Date();
-        if (daysBetween(tep, now) < 100)
-            return false;
-        return true;
-    }
-
-    public int daysBetween(Date d1, Date d2) {
-        return (int) ((d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
-    }
 
     private AllUsers getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_MSP_ALL, "NA");

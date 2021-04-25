@@ -277,7 +277,7 @@ public class ActivityMyProfile extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                 dateLast = calendar.getTime();
+                dateLast = calendar.getTime();
                 currentUser.setLastBloodDonation(dateLast);
                 add_blood_donation_TXT_date.setText( getDateStr(dateLast));
 

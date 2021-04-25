@@ -21,8 +21,10 @@ public class Form {
     private Map<String, Boolean> allDiseases;
     private Map<String, Boolean> fragmentC;
     private boolean canUser;
+    private  boolean isSign;
 
-    public Form(User user, String previous_family_name, String city, String postal, String street, String officePhone, String homePhone, String motherCountry, String fatherCountry, String yearImmigration) {
+    public Form(User user, String previous_family_name, String city, String postal, String street, String officePhone,
+                String homePhone, String motherCountry, String fatherCountry, String yearImmigration) {
         this.user = user;
         this.previous_family_name = previous_family_name;
         this.city = city;
@@ -86,13 +88,14 @@ public class Form {
         this.date = date;
     }
 
-    public boolean isSign() {
+    public boolean getSign() {
         return sign;
     }
 
     public void setSign(boolean sign) {
         this.sign = sign;
     }
+
 
     public boolean isResearch() {
         return research;
