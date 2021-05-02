@@ -1,13 +1,19 @@
 package com.example.project.activitis.client;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -48,18 +54,21 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 
 public class ActivityMyProfile extends AppCompatActivity {
 
     private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private DatePickerDialog.OnDateSetListener mDateSetListener2;
     private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill;
-    private TextInputLayout myProfile_TXT_IDToFill,myProfile_TXT_lastDonation;
+    private TextInputLayout myProfile_TXT_IDToFill,myProfile_TXT_lastDonation,myProfile_SPI_bloodTypes;
     private TextView myProfile_TXT_nameToFill;
-    private Spinner myProfile_SPI_bloodTypes;
     private TextView myProfile_TXT_dateBirthToFill;
     private ImageView myProfile_BTN_logo;
     private ImageButton myProfile_BTN_addBloodDonation, myProfile_BTN_logout;
@@ -101,8 +110,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapterBloodTypes = ArrayAdapter.createFromResource(this,
                 R.array.bloods, android.R.layout.simple_spinner_item);
         adapterBloodTypes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        myProfile_SPI_bloodTypes.setAdapter(adapterBloodTypes);
-        myProfile_SPI_bloodTypes.setSelection(currentUser.getBloodType());
+        myProfile_SPI_bloodTypes.getEditText().setText(currentUser.getBloodType());
 
 
         myProfile_BTN_edit.setOnClickListener(new View.OnClickListener() {
@@ -210,7 +218,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void updateUserInfo() {
         currentUser.setID(myProfile_TXT_IDToFill.getEditText().getText().toString());
         currentUser.setPassword(myProfile_TXT_passwordToFill.getEditText().getText().toString());
-        currentUser.setBloodType(myProfile_SPI_bloodTypes.getSelectedItemPosition());
+      //  currentUser.setBloodType(myProfile_SPI_bloodTypes.getSelectedItemPosition());
         currentUser.setLastBloodDonation(dateLast);
         if (date != null)
             currentUser.setBirthDate(date);
@@ -249,6 +257,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     private void open() {
         // custom dialog
+        Intent intent = new Intent(this, NotifyService.class);
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_add_blood_donation);
         dialog.setTitle("Title...");
@@ -260,27 +269,26 @@ public class ActivityMyProfile extends AppCompatActivity {
         add_blood_donation_TXT_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
+              Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(ActivityMyProfile.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
+                DatePickerDialog dialog = new DatePickerDialog(ActivityMyProfile.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener2, year, month, day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 dialog.show();
             }
         });
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+        mDateSetListener2 = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                calendar.set(Calendar.MONTH, month + 1);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth - 1);
                 dateLast = calendar.getTime();
                 currentUser.setLastBloodDonation(dateLast);
-                add_blood_donation_TXT_date.setText( getDateStr(dateLast));
-
+                add_blood_donation_TXT_date.setText(getDateStr(dateLast));
             }
         };
         spinnerArray = new ArrayList<String>();
@@ -298,6 +306,29 @@ public class ActivityMyProfile extends AppCompatActivity {
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+        /*        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(),0,intent,0);
+                Calendar calendarData = Calendar.getInstance();
+                calendarData.set(Calendar.SECOND, 0);
+                calendarData.set(Calendar.MINUTE, 0);
+                calendarData.set(Calendar.HOUR, 0);
+                calendarData.set(Calendar.AM_PM, Calendar.AM);
+                calendarData.add(Calendar.DAY_OF_MONTH, 1);
+
+                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendarData.getTimeInMillis(), 60000 , pendingIntent);
+      SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                int lastTimeStarted = settings.getInt("last_time_started", -1);
+                Calendar calendar = Calendar.getInstance();
+                int today = calendar.get(Calendar.DAY_OF_YEAR);
+
+                if (today != lastTimeStarted) {
+                    //startSomethingOnce();
+
+                    SharedPreferences.Editor editor = settings.edit();
+                    editor.putInt("last_time_started", today);
+                    editor.commit();
+                }
+*/
                 saveToFirebase();
                 dialog.dismiss();
             }
@@ -308,7 +339,8 @@ public class ActivityMyProfile extends AppCompatActivity {
     }
 
     private void saveToFirebase() {
-        BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(), date, currentUser.getID());
+
+        BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(),  getDateStr(dateLast), currentUser.getID());
         currentUser.addBloodDonation(bloodDonation);
         String bloodDonationID = currentUser.getID() + "-" + currentUser.getAllBloodDonations().size();
         bloodDonation.setBooldDonationId(bloodDonationID);
@@ -331,7 +363,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_BTN_addBloodDonation = findViewById(R.id.myProfile_BTN_addBloodDonation);
         myProfile_BTN_logout = findViewById(R.id.myProfile_BTN_logout);
         add_blood_donation_TXT_date = findViewById(R.id.add_blood_donation_TXT_date);
-        myProfile_SPI_bloodTypes = findViewById(R.id.myProfile_SPI_bloodTypes);
+            myProfile_SPI_bloodTypes = findViewById(R.id.myProfile_SPI_bloodTypes);
         myProfile_TXT_lastDonation = findViewById(R.id.myProfile_TXT_lastDonation);
 
     }
@@ -353,7 +385,6 @@ public class ActivityMyProfile extends AppCompatActivity {
                     .load(urlImage)
                     .circleCrop()
                     .into(myProfile_BTN_logo);
-
         }
 
     }
@@ -365,7 +396,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     private String getDateStr (Date date){
         if (date != null)
-        return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+        return date.getDay()+"/"+date.getMonth()+"/"+(date.getYear()+1900);
         else
             return "N/A";
     }

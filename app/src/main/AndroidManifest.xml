@@ -2,11 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.project">
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:allowBackup="true"
@@ -15,7 +18,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
-        tools:replace="android:supportsRtl">
+        tools:replace="android:supportsRtl"
+        >
         <activity
             android:name=".activitis.manager.ActivityAllReports"
             android:screenOrientation="portrait"
@@ -30,6 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".activitis.client.NotifyService"
+            android:enabled="true" />
+
         <activity
             android:name=".activitis.ActivityHistoryBloodDonations"
             android:screenOrientation="portrait"
@@ -44,38 +51,38 @@
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
             android:name=".activitis.client.ActivityMyProfile"
-            android:theme="@style/Theme.MaterialComponents.DayNight"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.DayNight"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.client.ActivityProfileMenu$ActivityQuestionnairePage"
-            android:theme="@style/Theme.AppCompat"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.client.ActivityProfileMenu"
-            android:theme="@style/Theme.AppCompat"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.manager.ActivityMenuManager"
-            android:theme="@style/Theme.AppCompat"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.manager.ActivityPublishingReportsActivity"
-            android:theme="@style/Theme.AppCompat"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.ActivitySignUpPage"
-            android:theme="@style/Theme.MaterialComponents"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activitis.ActivityLogIn"
-            android:theme="@style/Theme.MaterialComponents"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents"
             android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 

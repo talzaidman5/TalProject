@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class BloodDonation {
     private String city;
-    private Date date;
+    private String date;
     private String userID;
     private String booldDonationId;
 
     public BloodDonation(){}
 
-    public BloodDonation(String city, Date date, String userID){
+    public BloodDonation(String city, String date, String userID){
         this.city = city;
         this.date = date;
         this.userID = userID;
@@ -32,11 +32,11 @@ public class BloodDonation {
         this.city = city;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

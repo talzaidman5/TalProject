@@ -142,7 +142,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.MONTH, month+1);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 date = calendar.getTime();
                 String finalDate = dayOfMonth + "/" + month + "/" + year;
@@ -249,6 +249,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
         age = today.get(Calendar.YEAR) - date.getYear() - 1900;
         if (age< 17 || age > 65) {
             signUp_TXT_birthDate.setTextColor(16711680);
+            signUp_TXT_birthDate.setError("גיל צריך להיות מעל 17 ועד 65");
             data = false;
         }
         return data;
@@ -475,12 +476,11 @@ public class ActivitySignUpPage extends AppCompatActivity {
         newUser.setEmail(signUp_EDT_email.getEditText().getText().toString());
         newUser.setPhoneNumber(signUp_EDT_phone.getEditText().getText().toString());
         newUser.setPassword(signUp_EDT_password.getEditText().getText().toString());
-        newUser.setBloodType(signUp_SPI_bloodTypes.getSelectedItemPosition());
+        newUser.setBloodType(signUp_SPI_bloodTypes.getSelectedItem().toString());
         newUser.setBirthDate(date);
 //        newUser.setLastBloodDonation(date);
         newUser.setUuID(uuid);
         newUser.setGender(selectedGender());
-        newUser.setBloodType(signUp_EDT_city.getSelectedItemPosition());
         if (filePath.equals(""))
             newUser.setImageUser("https://firebasestorage.googleapis.com/v0/b/final-project-ff1e8.appspot.com/o/images%2Fprofile.png?alt=media&token=b177f2a3-f5fd-4dc7-a749-cd3fff20827e");
         else

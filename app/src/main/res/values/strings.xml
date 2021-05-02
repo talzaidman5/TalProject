@@ -13,11 +13,11 @@
         <item>AB+</item>
     </string-array>
     <string-array name="export" formatted="false" translatable="false">
-    <item>איזור</item>
-    <item>תאריך</item>
-    <item>גיל</item>
-    <item>סוג דם</item>
-    <item>מגדר</item>
+        <item>בחר</item>
+        <item>עיר</item>
+        <item>תאריך</item>
+        <item>סוג דם</item>
+        <item>מגדר</item>
     </string-array>
     <string-array name="year" formatted="false" translatable="false">
         <item>2000</item>

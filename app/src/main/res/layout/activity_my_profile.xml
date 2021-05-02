@@ -193,20 +193,31 @@
 
             </com.google.android.material.textfield.TextInputLayout >
 
-
-            <Spinner
-                android:id="@+id/myProfile_SPI_bloodTypes"
-                android:layout_width="150dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="20dp"
+                android:textColorHint="@color/black"
                 android:gravity="right"
-                style="@style/AppTheme"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:outlineAmbientShadowColor="@color/black"
+
+                android:hint="סוג דם:"
+                android:layout_gravity="right"
+                android:id="@+id/myProfile_SPI_bloodTypes"
+                app:errorEnabled="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
                 android:textColor="@color/black"
-                android:background="@color/grey"
+                android:textColorHint="@color/black"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="18dp"
+                android:gravity="right"
+                android:background="@android:drawable/dialog_holo_light_frame"
+                android:fontFamily="@font/regular"
                 />
-
-
+            </com.google.android.material.textfield.TextInputLayout >
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="match_parent"

@@ -29,7 +29,7 @@ public class User {
     private String email;
     private String phoneNumber;
     private String password;
-    private int bloodType;
+    private String bloodType;
     private Date birthDate;
     private String imageUser;
     private String city;
@@ -44,7 +44,7 @@ public class User {
     private String token;
 
 
-    public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, int bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
+    public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ID = ID;
@@ -264,11 +264,11 @@ public class User {
             this.userType = USER_TYPE.CLIENT;
     }
 
-    public int getBloodType() {
+    public String getBloodType() {
         return bloodType;
     }
 
-    public void setBloodType(int bloodType) {
+    public void setBloodType(String bloodType) {
         this.bloodType = bloodType;
     }
 

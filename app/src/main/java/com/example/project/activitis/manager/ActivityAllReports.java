@@ -29,12 +29,22 @@ import com.example.project.data.BloodDonation;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -58,26 +68,24 @@ public class ActivityAllReports extends AppCompatActivity {
     private List<User> bloodDonationsUsers = new ArrayList<>();
     private Map<User.GENDER, Integer> bloodDonationsGander = new HashMap<User.GENDER, Integer>();
     private Map<String, Integer> bloodDonationsBlood = new HashMap<String, Integer>();
-    private ProgressBar activity_all_reports_PRB_progressBar;
-
+    String finalDate;
+    PieChart chart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_reports);
         readDataFB("Blood donations");
         activity_all_reports_TXT_data = findViewById(R.id.activity_all_reports_TXT_data);
-        activity_all_reports_PRB_progressBar = findViewById(R.id.activity_all_reports_PRB_progressBar);
         msp = new MySheredP(this);
-        activity_all_reports_PRB_progressBar.setVisibility(View.INVISIBLE);
         getFromMSP();
         getSupportActionBar().hide();
         activity_all_reports_BTN_export = findViewById(R.id.activity_all_reports_BTN_export);
         activity_all_reports_TXT_date = findViewById(R.id.activity_all_reports_TXT_date);
         main_BTN_allOptionToExport = findViewById(R.id.activity_all_reports_BTN_allOptionToExport);
-        anyChartView = findViewById(R.id.activity_all_reports_CHART_chart);
         ArrayAdapter<CharSequence> adapterBloodTypes = ArrayAdapter.createFromResource(this, R.array.export, android.R.layout.simple_spinner_item);
         adapterBloodTypes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         main_BTN_allOptionToExport.setAdapter(adapterBloodTypes);
+        chart = (PieChart) findViewById(R.id.activity_all_reports_CHART_chart);
         activity_all_reports_TXT_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,11 +105,11 @@ public class ActivityAllReports extends AppCompatActivity {
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                calendar.set(Calendar.MONTH, month+1);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth-1);
                 Date date = calendar.getTime();
 
-                String finalDate = getDateStr(date);
+                 finalDate = getDateStr(date);
                 activity_all_reports_TXT_date.setText(finalDate);
 
             }
@@ -109,26 +117,27 @@ public class ActivityAllReports extends AppCompatActivity {
         main_BTN_allOptionToExport.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (parentView.getItemAtPosition(position).equals("תאריך"))
+                activity_all_reports_TXT_date.setVisibility(View.VISIBLE);
+                if (parentView.getItemAtPosition(position).equals("תאריך")) {
                     activity_all_reports_TXT_date.setVisibility(View.VISIBLE);
-                else
+                    chart.setVisibility(View.INVISIBLE);
+                } else {
                     activity_all_reports_TXT_date.setVisibility(View.INVISIBLE);
+                    chart.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
             }
 
         });
         activity_all_reports_BTN_export.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activity_all_reports_PRB_progressBar.setVisibility(View.VISIBLE);
-
                 switch (main_BTN_allOptionToExport.getSelectedItem().toString()) {
-                    case "איזור": {
-                        returnLists(bloodDonationList, "איזור");
+                    case "עיר": {
+                        returnLists(bloodDonationList, "עיר");
                         setupPie(bloodDonations.keySet().toArray(new String[bloodDonations.keySet().size()]), bloodDonations.values().toArray(new Integer[bloodDonations.values().size()]));
 
                     }
@@ -171,7 +180,7 @@ public class ActivityAllReports extends AppCompatActivity {
     }
 
     private String getDateStr(Date date) {
-        return date.getDay() + "/" + date.getMonth() + "/" + date.getYear();
+        return date.getDay() + "/" + date.getMonth() + "/" + (date.getYear()+1900);
     }
 
 
@@ -193,7 +202,7 @@ public class ActivityAllReports extends AppCompatActivity {
 
     private void returnLists(ArrayList<BloodDonation> allBloodDonation, String type) {
         switch (type) {
-            case "איזור":
+            case "עיר":
                 activity_all_reports_TXT_data.setVisibility(View.INVISIBLE);
                 for (BloodDonation bloodDonation : allBloodDonation) {
                     if (bloodDonations.containsKey(bloodDonation.getCity()))
@@ -214,18 +223,16 @@ public class ActivityAllReports extends AppCompatActivity {
                 break;
             case "תאריך":
                 for (BloodDonation bloodDonation : allBloodDonation) {
-                    if (bloodDonation.getDate().getDay() == date.getDay() && bloodDonation.getDate().getMonth() == date.getMonth() &&
-                            bloodDonation.getDate().getYear() == date.getYear())
+                    if (bloodDonation.getDate().equals(finalDate))
                         bloodDonationsUsers.add(allUsers.getUserByID(bloodDonation.getUserID()));
                 }
                 break;
             case "סוג דם":
                 for (BloodDonation bloodDonation : allBloodDonation) {
-                    String[] stringArray = getResources().getStringArray(R.array.bloods);
                     if (bloodDonations.containsKey(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()))
-                        bloodDonationsBlood.put(stringArray[allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()], bloodDonationsBlood.get(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()) + 1);
+                        bloodDonationsBlood.put(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType(), bloodDonationsBlood.get(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()) + 1);
                     else
-                        bloodDonationsBlood.put(stringArray[allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()], 1);
+                        bloodDonationsBlood.put(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType(), 1);
                 }
                 break;
 
@@ -251,24 +258,31 @@ public class ActivityAllReports extends AppCompatActivity {
     }
 
     public void setupPie(String[] list, Integer[] present) {
+        ArrayList<PieEntry>visitios = new ArrayList<>();
+
         if (list.length != 0) {
-            Pie pie = AnyChart.pie();
-            List<DataEntry> dataEntries = new ArrayList<>();
             for (int i = 0; i < list.length; i++) {
-                dataEntries.add(new ValueDataEntry(list[i], present[i]));
+                visitios.add(new PieEntry( present[i],list[i]));
             }
-            pie.data(dataEntries);
-            activity_all_reports_PRB_progressBar.setVisibility(View.INVISIBLE);
-            anyChartView.setChart(pie);
+            PieDataSet pieDataSet = new PieDataSet(visitios,"מקרא");
+            pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            pieDataSet.setValueTextColor(Color.WHITE);
+            pieDataSet.setValueTextSize(16f);
+            PieData pieData = new PieData(pieDataSet);
+            chart.setData(pieData);
+            chart.getDescription().setEnabled(false);
+            chart.animate();
+            Toast.makeText(this, "אנא לחץ על התרשים כדי לצפות בו", Toast.LENGTH_SHORT).show();
+
         } else {
             Toast.makeText(this, "אין מידע", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void setupResourceChart(List<User> allUsersTemp) {
-        activity_all_reports_PRB_progressBar.setVisibility(View.INVISIBLE);
+        activity_all_reports_TXT_data.setVisibility(View.VISIBLE);
         if (allUsersTemp.size() != 0)
-            activity_all_reports_TXT_data.setText("תרמו ביום הנבחר " + (allUsersTemp.size()) + " התרמות דם");
+            activity_all_reports_TXT_data.setText("תרמו ביום  " +(allUsersTemp.size())+ finalDate + " "+ " התרמות דם");
         else
             Toast.makeText(this, "אין מידע", Toast.LENGTH_SHORT).show();
     }
@@ -278,4 +292,5 @@ public class ActivityAllReports extends AppCompatActivity {
         allUsers = new AllUsers(dataAll);
         return allUsers;
     }
+
 }
