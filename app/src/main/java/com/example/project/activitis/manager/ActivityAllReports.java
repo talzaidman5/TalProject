@@ -2,12 +2,25 @@ package com.example.project.activitis.manager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -44,6 +57,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,7 +71,7 @@ import java.util.Map;
 
 public class ActivityAllReports extends AppCompatActivity {
     private Spinner main_BTN_allOptionToExport;
-    private Button activity_all_reports_BTN_export;
+    private Button activity_all_reports_BTN_export,activity_all_reports_BTN_exportPDF;
     private AnyChartView anyChartView;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
@@ -68,8 +85,12 @@ public class ActivityAllReports extends AppCompatActivity {
     private List<User> bloodDonationsUsers = new ArrayList<>();
     private Map<User.GENDER, Integer> bloodDonationsGander = new HashMap<User.GENDER, Integer>();
     private Map<String, Integer> bloodDonationsBlood = new HashMap<String, Integer>();
-    String finalDate;
-    PieChart chart;
+    private String finalDate;
+    private PieChart chart;
+    private int pageHeight = 1120,pagewidth = 792;
+    private Bitmap bmp, scaledbmp;
+    private static final int PERMISSION_REQUEST_CODE = 200;
+    private ArrayList<PieEntry>arrayList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,13 +100,13 @@ public class ActivityAllReports extends AppCompatActivity {
         msp = new MySheredP(this);
         getFromMSP();
         getSupportActionBar().hide();
-        activity_all_reports_BTN_export = findViewById(R.id.activity_all_reports_BTN_export);
-        activity_all_reports_TXT_date = findViewById(R.id.activity_all_reports_TXT_date);
-        main_BTN_allOptionToExport = findViewById(R.id.activity_all_reports_BTN_allOptionToExport);
+        findViews();
+        arrayList = new ArrayList<>();
         ArrayAdapter<CharSequence> adapterBloodTypes = ArrayAdapter.createFromResource(this, R.array.export, android.R.layout.simple_spinner_item);
         adapterBloodTypes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         main_BTN_allOptionToExport.setAdapter(adapterBloodTypes);
         chart = (PieChart) findViewById(R.id.activity_all_reports_CHART_chart);
+        activity_all_reports_BTN_exportPDF.setVisibility(View.INVISIBLE);
         activity_all_reports_TXT_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,6 +182,26 @@ public class ActivityAllReports extends AppCompatActivity {
                 }
             }
         });
+        bmp = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
+        scaledbmp = Bitmap.createScaledBitmap(bmp, 140, 140, false);
+
+        activity_all_reports_BTN_exportPDF.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        generatePDF();
+                    }
+                }
+        );
+        if (!checkPermission())
+            requestPermission();
+    }
+
+    private void findViews() {
+        activity_all_reports_BTN_export = findViewById(R.id.activity_all_reports_BTN_export);
+        activity_all_reports_TXT_date = findViewById(R.id.activity_all_reports_TXT_date);
+        main_BTN_allOptionToExport = findViewById(R.id.activity_all_reports_BTN_allOptionToExport);
+        activity_all_reports_BTN_exportPDF = findViewById(R.id.activity_all_reports_BTN_exportPDF);
+
     }
 
     private String[] returnListString(Map<User.GENDER, Integer> map) {
@@ -235,7 +276,6 @@ public class ActivityAllReports extends AppCompatActivity {
                         bloodDonationsBlood.put(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType(), 1);
                 }
                 break;
-
         }
     }
 
@@ -251,20 +291,17 @@ public class ActivityAllReports extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
-
         });
     }
 
     public void setupPie(String[] list, Integer[] present) {
-        ArrayList<PieEntry>visitios = new ArrayList<>();
 
         if (list.length != 0) {
             for (int i = 0; i < list.length; i++) {
-                visitios.add(new PieEntry( present[i],list[i]));
+                arrayList.add(new PieEntry( present[i],list[i]));
             }
-            PieDataSet pieDataSet = new PieDataSet(visitios,"מקרא");
+            PieDataSet pieDataSet = new PieDataSet(arrayList,"מקרא");
             pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
             pieDataSet.setValueTextColor(Color.WHITE);
             pieDataSet.setValueTextSize(16f);
@@ -273,16 +310,17 @@ public class ActivityAllReports extends AppCompatActivity {
             chart.getDescription().setEnabled(false);
             chart.animate();
             Toast.makeText(this, "אנא לחץ על התרשים כדי לצפות בו", Toast.LENGTH_SHORT).show();
-
+            activity_all_reports_BTN_exportPDF.setVisibility(View.VISIBLE);
         } else {
             Toast.makeText(this, "אין מידע", Toast.LENGTH_SHORT).show();
+            activity_all_reports_BTN_exportPDF.setVisibility(View.INVISIBLE);
         }
     }
 
     public void setupResourceChart(List<User> allUsersTemp) {
         activity_all_reports_TXT_data.setVisibility(View.VISIBLE);
         if (allUsersTemp.size() != 0)
-            activity_all_reports_TXT_data.setText("תרמו ביום  " +(allUsersTemp.size())+ finalDate + " "+ " התרמות דם");
+            activity_all_reports_TXT_data.setText("תרמו " +allUsersTemp.size() + " התרמות דם");
         else
             Toast.makeText(this, "אין מידע", Toast.LENGTH_SHORT).show();
     }
@@ -293,4 +331,83 @@ public class ActivityAllReports extends AppCompatActivity {
         return allUsers;
     }
 
+    private void generatePDF() {
+        PdfDocument pdfDocument = new PdfDocument();
+
+        Paint paint = new Paint();
+        Paint title = new Paint();
+        Paint date = new Paint();
+
+        PdfDocument.PageInfo mypageInfo = new PdfDocument.PageInfo.Builder(pagewidth, pageHeight, 1).create();
+        PdfDocument.Page myPage = pdfDocument.startPage(mypageInfo);
+
+        Canvas canvas = myPage.getCanvas();
+        paint.setTextSize(50);
+        canvas.drawText("הפקת דוחות לפי "+main_BTN_allOptionToExport.getSelectedItem().toString(), 250, 150, paint);
+        canvas.drawBitmap(scaledbmp, 56, 40, paint);
+
+        date.setTextSize(15);
+        canvas.drawText(Calendar.getInstance().getTime().toString(), 510, 50, date);
+        canvas.drawBitmap(scaledbmp, 56, 40, date);
+
+        int x=0;
+        title.setTextAlign(Paint.Align.CENTER);
+
+        title.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+        title.setColor(ContextCompat.getColor(this, R.color.black));
+        title.setTextSize(25);
+        for (PieEntry pie:arrayList) {
+            canvas.drawText(pie.getLabel()+" - "+(int)pie.getValue(), 700, 300+x, title);
+            x+=60;
+        }
+
+        pdfDocument.finishPage(myPage);
+
+        File file = new File(Environment.getExternalStorageDirectory(), "file.pdf");
+
+        try {
+            pdfDocument.writeTo(new FileOutputStream(file));
+            pdfDocument.close();
+
+            Uri path = Uri.fromFile(file);
+            Intent emailIntent = new Intent(Intent.ACTION_SEND);
+            emailIntent .setType("vnd.android.cursor.dir/email");
+            String to[] = {"talzaidman5@gmail.com"};
+            emailIntent .putExtra(Intent.EXTRA_EMAIL, to);
+            emailIntent .putExtra(Intent.EXTRA_STREAM, path);
+            emailIntent .putExtra(Intent.EXTRA_SUBJECT, "Subject");
+            startActivity(Intent.createChooser(emailIntent , "Send email..."));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean checkPermission() {
+        int permission1 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int permission2 = ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE);
+        return permission1 == PackageManager.PERMISSION_GRANTED && permission2 == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0) {
+
+                boolean writeStorage = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                boolean readStorage = grantResults[1] == PackageManager.PERMISSION_GRANTED;
+
+                if (writeStorage && readStorage) {
+                    Toast.makeText(this, "Permission Granted..", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "Permission Denined.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        }
+    }
 }
+

@@ -11,16 +11,19 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="120dp"
         android:src="@drawable/logo"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/logo"/>
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logo">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/logo"
         android:background="@drawable/corners"
-        android:layout_margin="20dp">
+        android:layout_margin="10dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,7 +57,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/activity_all_reports_BTN_export"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:background="#FFFFFF"
         android:text="ייצא"
         android:layout_below="@id/activity_all_reports_BTN_allOptionToExport"></Button>
@@ -67,15 +70,27 @@
         android:layout_marginTop="10dp"
         android:layout_below="@+id/activity_all_reports_BTN_export"
         android:id="@+id/activity_all_reports_TXT_data"
-        android:layout_centerVertical="true"
         android:gravity="center"></TextView>
 
         <com.github.mikephil.charting.charts.PieChart
         android:layout_below="@+id/activity_all_reports_TXT_data"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activity_all_reports_CHART_chart"
-        android:layout_centerHorizontal="true"></com.github.mikephil.charting.charts.PieChart>
+        android:layout_width="350dp"
+        android:layout_height="320dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+        android:id="@+id/activity_all_reports_CHART_chart"></com.github.mikephil.charting.charts.PieChart>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_all_reports_BTN_exportPDF"
+            android:background="#FFFFFF"
+            android:text="PDF ייצא"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/activity_all_reports_CHART_chart"></Button>
 
 </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
