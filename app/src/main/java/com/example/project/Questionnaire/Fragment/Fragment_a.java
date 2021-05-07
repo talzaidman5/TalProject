@@ -31,7 +31,6 @@ public class Fragment_a extends Fragment {
     private User user;
     private Gson gson = new Gson();
     private Form form;
-    private boolean isSelected=false;
 
     private RadioButton radio_female, radio_male;
     private TextInputLayout questionnairePage_EDT_id, questionnairePage_EDT_first_name, questionnairePage_EDT_family_name,
@@ -52,12 +51,7 @@ public class Fragment_a extends Fragment {
 
         findViews(view);
         fillDataFromUserProfile();
-        questionnairePage_EDT_bloodDonationAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                isSelected=!isSelected;
-            }
-        });
+
         return view;
     }
 
@@ -73,7 +67,7 @@ public class Fragment_a extends Fragment {
                 questionnairePage_EDT_MotherCountry.getEditText().getText().toString(),
                 questionnairePage_EDT_fatherCountry.getEditText().getText().toString(),
                 questionnairePage_EDT_yearImmigration.getEditText().getText().toString(),
-                isSelected);
+                questionnairePage_EDT_bloodDonationAgain.isChecked());
 
         putOnMSP();
 
@@ -114,7 +108,7 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_MotherCountry.getEditText().setText(form.getMotherCountry());
             questionnairePage_EDT_fatherCountry.getEditText().setText(form.getFatherCountry());
             questionnairePage_EDT_yearImmigration.getEditText().setText(form.getYearImmigration());
-            questionnairePage_EDT_bloodDonationAgain.setSelected(form.isBloodDonationAgain());
+            questionnairePage_EDT_bloodDonationAgain.setChecked(form.isBloodDonationAgain());
         }
     }
 
