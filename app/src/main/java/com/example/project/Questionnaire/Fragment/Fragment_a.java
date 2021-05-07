@@ -31,6 +31,7 @@ public class Fragment_a extends Fragment {
     private User user;
     private Gson gson = new Gson();
     private Form form;
+    private boolean isSelected=false;
 
     private RadioButton radio_female, radio_male;
     private TextInputLayout questionnairePage_EDT_id, questionnairePage_EDT_first_name, questionnairePage_EDT_family_name,
@@ -38,7 +39,7 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_street, questionnairePage_EDT_email, questionnairePage_EDT_mobilePhone, questionnairePage_EDT_OfficePhone, questionnairePage_EDT_HomePhone,
             questionnairePage_EDT_MotherCountry, questionnairePage_EDT_fatherCountry, questionnairePage_EDT_yearImmigration,
             questionnairePage_EDT_patientName;
-    private CheckBox isSign;
+    private CheckBox isSign,questionnairePage_EDT_bloodDonationAgain;
     public static boolean isData = true;
 
     private Button next;
@@ -51,7 +52,12 @@ public class Fragment_a extends Fragment {
 
         findViews(view);
         fillDataFromUserProfile();
-
+        questionnairePage_EDT_bloodDonationAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isSelected=!isSelected;
+            }
+        });
         return view;
     }
 
@@ -66,13 +72,22 @@ public class Fragment_a extends Fragment {
                 questionnairePage_EDT_HomePhone.getEditText().getText().toString(),
                 questionnairePage_EDT_MotherCountry.getEditText().getText().toString(),
                 questionnairePage_EDT_fatherCountry.getEditText().getText().toString(),
-                questionnairePage_EDT_yearImmigration.getEditText().getText().toString());
+                questionnairePage_EDT_yearImmigration.getEditText().getText().toString(),
+                isSelected);
 
         putOnMSP();
 
     }
 
-    private Form getFromMSP() {
+    private User getUserFromMSP() {
+        String dataAll = msp.getString(Constants.KEY_FORM_DATA, "NA");
+        String dataUser = msp.getString(Constants.KEY_MSP, "NA");
+        form = new Form(dataAll);
+        user = new User(dataUser);
+        form.setUser(user);
+        return user;
+    }
+    private Form getFormFromMSP() {
         String dataAll = msp.getString(Constants.KEY_FORM_DATA, "NA");
         String dataUser = msp.getString(Constants.KEY_MSP, "NA");
         form = new Form(dataAll);
@@ -80,13 +95,14 @@ public class Fragment_a extends Fragment {
         form.setUser(user);
         return form;
     }
-
     private void fillDataFromUserProfile() {
-        getFromMSP();
+       user= getUserFromMSP();
+       form= getFormFromMSP();
         if (user != null) {
             questionnairePage_EDT_id.getEditText().setText(user.getID());
             questionnairePage_EDT_first_name.getEditText().setText(user.getFirstName());
             questionnairePage_EDT_family_name.getEditText().setText(user.getLastName());
+            questionnairePage_EDT_city.getEditText().setText(user.getCity());
             if (user.getGender().equals("MALE"))
                 radio_male.setChecked(true);
             else
@@ -98,7 +114,6 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_email.getEditText().setText(user.getEmail());
             questionnairePage_EDT_previous_family_name.getEditText().setText(form.getPrevious_family_name());
 
-            questionnairePage_EDT_city.getEditText().setText(form.getCity());
             questionnairePage_EDT_postal.getEditText().setText(form.getPostal());
             questionnairePage_EDT_street.getEditText().setText(form.getStreet());
             questionnairePage_EDT_mobilePhone.getEditText().setText(user.getPhoneNumber());
@@ -107,6 +122,7 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_MotherCountry.getEditText().setText(form.getMotherCountry());
             questionnairePage_EDT_fatherCountry.getEditText().setText(form.getFatherCountry());
             questionnairePage_EDT_yearImmigration.getEditText().setText(form.getYearImmigration());
+            questionnairePage_EDT_bloodDonationAgain.setSelected(form.isBloodDonationAgain());
         }
     }
 
@@ -117,7 +133,6 @@ public class Fragment_a extends Fragment {
 
 
     private void findViews(View view) {
-//        next = view.findViewById(R.id.next);
         questionnairePage_EDT_id = view.findViewById(R.id.questionnairePage_EDT_id);
         questionnairePage_EDT_first_name = view.findViewById(R.id.questionnairePage_EDT_first_name);
         questionnairePage_EDT_family_name = view.findViewById(R.id.questionnairePage_EDT_family_name);
@@ -138,6 +153,7 @@ public class Fragment_a extends Fragment {
         radio_female = view.findViewById(R.id.radio_female);
         radio_male = view.findViewById(R.id.radio_male);
         isSign = view.findViewById(R.id.fragmentD_sign);
+        questionnairePage_EDT_bloodDonationAgain = view.findViewById(R.id.questionnairePage_EDT_bloodDonationAgain);
     }
 
     private void putOnMSP() {

@@ -22,9 +22,9 @@ public class Form {
     private Map<String, Boolean> fragmentC;
     private boolean canUser;
     private  boolean isSign;
-
+    private boolean isBloodDonationAgain;
     public Form(User user, String previous_family_name, String city, String postal, String street, String officePhone,
-                String homePhone, String motherCountry, String fatherCountry, String yearImmigration) {
+                String homePhone, String motherCountry, String fatherCountry, String yearImmigration, boolean isBloodDonationAgain) {
         this.user = user;
         this.previous_family_name = previous_family_name;
         this.city = city;
@@ -35,14 +35,23 @@ public class Form {
         this.MotherCountry = motherCountry;
         this.fatherCountry = fatherCountry;
         this.yearImmigration = yearImmigration;
-        allDiseases = new HashMap<String, Boolean>();
-        fragmentC = new HashMap<String, Boolean>();
+        this.allDiseases = new HashMap<String, Boolean>();
+        this.fragmentC = new HashMap<String, Boolean>();
+        this.isBloodDonationAgain= isBloodDonationAgain;
     }
+
 
     public Form() {
 
     }
 
+    public boolean isBloodDonationAgain() {
+        return this.isBloodDonationAgain;
+    }
+
+    public void setBloodDonationAgain(boolean bloodDonationAgain) {
+        isBloodDonationAgain = bloodDonationAgain;
+    }
 
     public Form(String data) {
         this(createFormFromString(data));
@@ -66,6 +75,7 @@ public class Form {
         this.research2 = other.research2;
         this.date = other.date;
     }
+
 
     private static Form createFormFromString(String data) {
         Form temp;

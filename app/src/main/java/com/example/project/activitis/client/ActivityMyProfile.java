@@ -104,6 +104,16 @@ public class ActivityMyProfile extends AppCompatActivity {
         getFromMSP();
         initData();
 
+        Intent myIntent = new Intent(getApplicationContext() , NotifyService. class ) ;
+        AlarmManager alarmManager = (AlarmManager) getSystemService( ALARM_SERVICE ) ;
+        PendingIntent pendingIntent = PendingIntent. getService ( this, 0 , myIntent , 0 ) ;
+        Calendar calendar = Calendar. getInstance () ;
+        calendar.set(Calendar. SECOND , 0 ) ;
+        calendar.set(Calendar. MINUTE , 0 ) ;
+        calendar.set(Calendar. HOUR , 0 ) ;
+        calendar.set(Calendar. AM_PM , Calendar. AM ) ;
+        calendar.add(Calendar. DAY_OF_MONTH , 1 ) ;
+        alarmManager.setRepeating(AlarmManager. RTC_WAKEUP , calendar.getTimeInMillis() , 1000 * 60 , pendingIntent) ;
 
         myProfile_TXT_nameToFill.setEnabled(false);
 
@@ -269,13 +279,6 @@ public class ActivityMyProfile extends AppCompatActivity {
         add_blood_donation_TXT_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog dialog = new DatePickerDialog(ActivityMyProfile.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener2, year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
             }
         });
         mDateSetListener2 = new DatePickerDialog.OnDateSetListener() {
