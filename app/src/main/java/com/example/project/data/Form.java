@@ -74,6 +74,7 @@ public class Form {
         this.research = other.research;
         this.research2 = other.research2;
         this.date = other.date;
+        this.isBloodDonationAgain = other.isBloodDonationAgain;
     }
 
 
