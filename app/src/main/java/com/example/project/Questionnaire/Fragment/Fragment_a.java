@@ -79,7 +79,7 @@ public class Fragment_a extends Fragment {
 
     }
 
-    private User getUserFromMSP() {
+    private User getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_FORM_DATA, "NA");
         String dataUser = msp.getString(Constants.KEY_MSP, "NA");
         form = new Form(dataAll);
@@ -87,17 +87,9 @@ public class Fragment_a extends Fragment {
         form.setUser(user);
         return user;
     }
-    private Form getFormFromMSP() {
-        String dataAll = msp.getString(Constants.KEY_FORM_DATA, "NA");
-        String dataUser = msp.getString(Constants.KEY_MSP, "NA");
-        form = new Form(dataAll);
-        user = new User(dataUser);
-        form.setUser(user);
-        return form;
-    }
+
     private void fillDataFromUserProfile() {
-       user= getUserFromMSP();
-       form= getFormFromMSP();
+       user= getFromMSP();
         if (user != null) {
             questionnairePage_EDT_id.getEditText().setText(user.getID());
             questionnairePage_EDT_first_name.getEditText().setText(user.getFirstName());
