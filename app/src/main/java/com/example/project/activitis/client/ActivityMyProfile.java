@@ -166,7 +166,6 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_BTN_addBloodDonation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //   openPopUp();
                 open();
             }
         });
@@ -296,6 +295,9 @@ public class ActivityMyProfile extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month + 1);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth - 1);
+                String finalDate = dayOfMonth+"/"+month+"/" + (year+1900);
+                myProfile_TXT_dateBirthToFill.setText(finalDate);
+
                 dateLast = calendar.getTime();
                 currentUser.setLastBloodDonation(dateLast);
                 add_blood_donation_TXT_date.setText(getDateStr(dateLast));
@@ -384,7 +386,7 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_phoneNumberToFill.getEditText().setText(currentUser.getPhoneNumber());
             myProfile_TXT_passwordToFill.getEditText().setText(currentUser.getPassword());
             myProfile_TXT_nameToFill.setText(currentUser.getFirstName());
-            myProfile_TXT_dateBirthToFill.setText(currentUser.getBirthDate().getDay() + "/" + currentUser.getBirthDate().getMonth() + "/" + currentUser.getBirthDate().getYear());
+            myProfile_TXT_dateBirthToFill.setText(getDateStr(currentUser.getBirthDate()));
             myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
             myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
             myProfile_TXT_lastDonation.getEditText().setText(getDateStr(currentUser.getLastBloodDonation()));

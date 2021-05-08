@@ -141,7 +141,6 @@ public class User {
             this.lastBloodDonation = lastBloodDonation;
             return;
         }
-
         if( this.lastBloodDonation.before(lastBloodDonation))
             this.lastBloodDonation = lastBloodDonation;
     }
