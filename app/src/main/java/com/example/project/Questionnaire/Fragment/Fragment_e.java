@@ -17,6 +17,8 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.project.R;
+import com.example.project.activitis.ActivityLogIn;
+import com.example.project.activitis.ActivitySignUpPage;
 import com.example.project.activitis.client.ActivityMainForm;
 import com.example.project.activitis.client.ActivityMyProfile;
 import com.example.project.activitis.client.ActivityProfileMenu;
@@ -74,10 +76,13 @@ public class Fragment_e extends Fragment {
         canDonateAlert(res);
         user.setCanDonateBlood(res);
         putOnMSP();
-//            if (form.checkForm())
-//                canDonateAlert(true);
-//            else
-//                canDonateAlert(false);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        startActivity(new Intent(getContext(), ActivityProfileMenu.class));
+
     }
 
     private void putOnMSP() {

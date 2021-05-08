@@ -15,6 +15,7 @@ public class Form {
     private String homePhone;
     private String MotherCountry;
     private String fatherCountry;
+    private String countryBirth;
     private String date;
     private boolean sign,research,research2;
     private String yearImmigration;
@@ -23,7 +24,8 @@ public class Form {
     private  boolean isSign;
     private boolean isBloodDonationAgain;
     public Form(User user, String previous_family_name, String city, String postal, String street, String officePhone,
-                String homePhone, String motherCountry, String fatherCountry, String yearImmigration, boolean isBloodDonationAgain) {
+                String homePhone, String motherCountry, String fatherCountry, String yearImmigration,
+                boolean isBloodDonationAgain, String countryBirth) {
         this.user = user;
         this.previous_family_name = previous_family_name;
         this.city = city;
@@ -37,6 +39,7 @@ public class Form {
         this.allDiseases = new HashMap<String, Boolean>();
         this.fragmentC = new HashMap<String, Boolean>();
         this.isBloodDonationAgain= isBloodDonationAgain;
+        this.countryBirth = countryBirth;
     }
 
 
@@ -73,6 +76,7 @@ public class Form {
         this.research = other.research;
         this.research2 = other.research2;
         this.date = other.date;
+        this.countryBirth =other.countryBirth;
         this.isBloodDonationAgain = other.isBloodDonationAgain;
     }
 
@@ -84,6 +88,14 @@ public class Form {
         else
             temp = new Gson().fromJson(data, Form.class);
         return temp;
+    }
+
+    public String getCountryBirth() {
+        return countryBirth;
+    }
+
+    public void setCountryBirth(String countryBirth) {
+        this.countryBirth = countryBirth;
     }
 
     public User getUser() {

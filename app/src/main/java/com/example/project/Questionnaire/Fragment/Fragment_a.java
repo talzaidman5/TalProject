@@ -36,8 +36,7 @@ public class Fragment_a extends Fragment {
     private TextInputLayout questionnairePage_EDT_id, questionnairePage_EDT_first_name, questionnairePage_EDT_family_name,
             questionnairePage_EDT_dateBirth, questionnairePage_EDT_age, questionnairePage_EDT_previous_family_name, questionnairePage_EDT_city, questionnairePage_EDT_postal,
             questionnairePage_EDT_street, questionnairePage_EDT_email, questionnairePage_EDT_mobilePhone, questionnairePage_EDT_OfficePhone, questionnairePage_EDT_HomePhone,
-            questionnairePage_EDT_MotherCountry, questionnairePage_EDT_fatherCountry, questionnairePage_EDT_yearImmigration,
-            questionnairePage_EDT_patientName;
+            questionnairePage_EDT_MotherCountry, questionnairePage_EDT_fatherCountry, questionnairePage_EDT_CountryBirth, questionnairePage_EDT_yearImmigration;
     private CheckBox isSign,questionnairePage_EDT_bloodDonationAgain;
     public static boolean isData = true;
 
@@ -67,7 +66,8 @@ public class Fragment_a extends Fragment {
                 questionnairePage_EDT_MotherCountry.getEditText().getText().toString(),
                 questionnairePage_EDT_fatherCountry.getEditText().getText().toString(),
                 questionnairePage_EDT_yearImmigration.getEditText().getText().toString(),
-                questionnairePage_EDT_bloodDonationAgain.isChecked());
+                questionnairePage_EDT_bloodDonationAgain.isChecked(),
+                questionnairePage_EDT_CountryBirth.getEditText().getText().toString());
 
         putOnMSP();
 
@@ -107,6 +107,7 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_HomePhone.getEditText().setText(form.getHomePhone());
             questionnairePage_EDT_MotherCountry.getEditText().setText(form.getMotherCountry());
             questionnairePage_EDT_fatherCountry.getEditText().setText(form.getFatherCountry());
+            questionnairePage_EDT_CountryBirth.getEditText().setText(form.getCountryBirth());
             questionnairePage_EDT_yearImmigration.getEditText().setText(form.getYearImmigration());
             questionnairePage_EDT_bloodDonationAgain.setChecked(form.isBloodDonationAgain());
         }
@@ -134,8 +135,8 @@ public class Fragment_a extends Fragment {
         questionnairePage_EDT_HomePhone = view.findViewById(R.id.questionnairePage_EDT_HomePhone);
         questionnairePage_EDT_MotherCountry = view.findViewById(R.id.questionnairePage_EDT_MotherCountry);
         questionnairePage_EDT_fatherCountry = view.findViewById(R.id.questionnairePage_EDT_fatherCountry);
+        questionnairePage_EDT_CountryBirth = view.findViewById(R.id.questionnairePage_EDT_CountryBirth);
         questionnairePage_EDT_yearImmigration = view.findViewById(R.id.questionnairePage_EDT_yearImmigration);
-        questionnairePage_EDT_patientName = view.findViewById(R.id.questionnairePage_EDT_patientName);
         radio_female = view.findViewById(R.id.radio_female);
         radio_male = view.findViewById(R.id.radio_male);
         isSign = view.findViewById(R.id.fragmentD_sign);
@@ -153,74 +154,88 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_id.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_id.setError("");
+
         if (questionnairePage_EDT_first_name.getEditText().getText().length() == 0) {
             questionnairePage_EDT_first_name.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_first_name.setError("");
+
         if (questionnairePage_EDT_family_name.getEditText().getText().length() == 0) {
             questionnairePage_EDT_family_name.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_family_name.setError("");
+
         if (questionnairePage_EDT_dateBirth.getEditText().getText().length() == 0) {
             questionnairePage_EDT_dateBirth.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_dateBirth.setError("");
+
         if (questionnairePage_EDT_age.getEditText().getText().length() == 0) {
             questionnairePage_EDT_age.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_age.setError("");
+
         if (questionnairePage_EDT_previous_family_name.getEditText().getText().length() == 0) {
             questionnairePage_EDT_previous_family_name.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_previous_family_name.setError("");
+
         if (questionnairePage_EDT_city.getEditText().getText().length() == 0) {
             questionnairePage_EDT_city.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_city.setError("");
+
         if (questionnairePage_EDT_postal.getEditText().getText().length() == 0) {
             questionnairePage_EDT_postal.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_postal.setError("");
+
         if (questionnairePage_EDT_street.getEditText().getText().length() == 0) {
             questionnairePage_EDT_street.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_street.setError("");
+
         if (questionnairePage_EDT_email.getEditText().getText().length() == 0) {
             questionnairePage_EDT_email.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_email.setError("");
+
         if (questionnairePage_EDT_mobilePhone.getEditText().getText().length() == 0) {
             questionnairePage_EDT_mobilePhone.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_mobilePhone.setError("");
+
         if (questionnairePage_EDT_OfficePhone.getEditText().getText().length() == 0) {
             questionnairePage_EDT_OfficePhone.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_OfficePhone.setError("");
+
         if (questionnairePage_EDT_HomePhone.getEditText().getText().length() == 0) {
             questionnairePage_EDT_HomePhone.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_HomePhone.setError("");
+
         if (questionnairePage_EDT_MotherCountry.getEditText().getText().length() == 0) {
             questionnairePage_EDT_MotherCountry.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_MotherCountry.setError("");
+
         if (questionnairePage_EDT_fatherCountry.getEditText().getText().length() == 0) {
             questionnairePage_EDT_fatherCountry.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_fatherCountry.setError("");
+
+           if (questionnairePage_EDT_CountryBirth.getEditText().getText().length() == 0) {
+               questionnairePage_EDT_CountryBirth.setError("אנא השלם");
+            isData = false;
+        } else questionnairePage_EDT_CountryBirth.setError("");
+
         if (questionnairePage_EDT_yearImmigration.getEditText().getText().length() == 0) {
             questionnairePage_EDT_yearImmigration.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_yearImmigration.setError("");
-        if (questionnairePage_EDT_fatherCountry.getEditText().getText().length() == 0) {
-            questionnairePage_EDT_fatherCountry.setError("אנא השלם");
-            isData = false;
-        } else questionnairePage_EDT_fatherCountry.setError("");
-        if (questionnairePage_EDT_patientName.getEditText().getText().length() == 0) {
-            questionnairePage_EDT_patientName.setError("אנא השלם");
-            isData = false;
-        } else questionnairePage_EDT_patientName.setError("");
+
+
         return isData;
     }
 }
