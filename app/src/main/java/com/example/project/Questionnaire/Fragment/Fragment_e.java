@@ -50,18 +50,17 @@ public class Fragment_e extends Fragment {
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference myRef = database.getReference("FB");
     private SearchableSpinner spn_my_spinner;
-    private CheckBox fragmentD_sign;
-    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_e, container, false);
         spn_my_spinner = view.findViewById(R.id.spinner);
         msp = new MySheredP(getContext());
         getFromMSP();
+        checkAlgo();
 
         readFile();
         user = allUsers.getUserByEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-        checkAlgo();
 //        if (checkAlgo()) {
 //            if (user != null) {
 //                user.setCanDonateBlood(true);
@@ -73,6 +72,18 @@ public class Fragment_e extends Fragment {
         return view;
     }
 
+
+
+
+    private void checkAlgo() {
+       // if (form.getSign()) {
+            if (form.checkForm())
+                canDonateAlert(true);
+            else
+                canDonateAlert(false);
+
+
+    }
     private void canDonateAlert(boolean isCan) {
         String res= "";
         if(isCan)
@@ -88,8 +99,8 @@ public class Fragment_e extends Fragment {
                 // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                      Intent intent = new Intent(getContext(), ActivityProfileMenu.class);
-                       startActivity(intent);
+                        Intent intent = new Intent(getContext(), ActivityProfileMenu.class);
+                        startActivity(intent);
                     }
                 })
 
@@ -100,18 +111,6 @@ public class Fragment_e extends Fragment {
 
     }
 
-
-    private void checkAlgo() {
-        if (form.getSign()) {
-            if (form.checkForm())
-                canDonateAlert(true);
-            else
-                canDonateAlert(false);
-
-        } else {
-            Toast.makeText(getContext(),"אנא אשר",Toast.LENGTH_LONG).show();
-        }
-    }
 
 
     private AllUsers getFromMSP() {

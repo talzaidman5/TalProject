@@ -20,7 +20,6 @@ public class Form {
     private String yearImmigration;
     private Map<String, Boolean> allDiseases;
     private Map<String, Boolean> fragmentC;
-    private boolean canUser;
     private  boolean isSign;
     private boolean isBloodDonationAgain;
     public Form(User user, String previous_family_name, String city, String postal, String street, String officePhone,
@@ -154,18 +153,16 @@ public class Form {
 
     public boolean checkForm(){
         for (Map.Entry<String, Boolean> entry : allDiseases.entrySet()) {
-           if(entry.getValue())
-               canUser = false;
+           if(entry.getValue()==true)
                return false;
         }
 
         for (Map.Entry<String, Boolean> entry : fragmentC.entrySet()) {
-            if(entry.getValue())
-                canUser = false;
+            if(entry.getValue()==true)
                 return false;
         }
-        canUser = true;
         return true;
+
     }
     public String getCity() {
         return city;

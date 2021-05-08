@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,7 +20,7 @@ import com.example.project.R;
 public class ActivityMainForm extends AppCompatActivity {
     private Button main_form_BTN_prev, main_form_BTN_next;
     private int currentFragment = 0;
-
+    private CheckBox isSign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,8 @@ public class ActivityMainForm extends AppCompatActivity {
                 showE();
                 break;
             }
+            default:
+                showE();
         }
     }
 
@@ -103,10 +107,19 @@ public class ActivityMainForm extends AppCompatActivity {
     }
 
     private void showE () {
-        Fragment_e fragment_e = new Fragment_e();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.main_FRAME, fragment_e);
-        transaction.commit();
+        isSign = findViewById(R.id.fragmentD_sign);
+
+        if (isSign.isChecked()) {
+
+            Fragment_e fragment_e = new Fragment_e();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.main_FRAME, fragment_e);
+            transaction.commit();
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"אנא אשר",Toast.LENGTH_LONG).show();
+
+        }
     }
 
 
