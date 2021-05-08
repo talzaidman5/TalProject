@@ -78,7 +78,6 @@ public class ActivityMainForm extends AppCompatActivity {
 
 
         private void showA () {
-
             Fragment_a fragment_a = new Fragment_a();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.main_FRAME, fragment_a);

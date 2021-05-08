@@ -65,7 +65,6 @@ public class Fragment_e extends Fragment {
         checkAlgo();
 
         readFile();
-        user = allUsers.getUserByEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
         return view;
     }
@@ -73,9 +72,9 @@ public class Fragment_e extends Fragment {
 
     private void checkAlgo() {
         Boolean res = form.checkForm();
-        canDonateAlert(res);
         user.setCanDonateBlood(res);
         putOnMSP();
+        canDonateAlert(res);
     }
 
     @Override
@@ -124,6 +123,10 @@ public class Fragment_e extends Fragment {
         allUsers = new AllUsers(dataAll);
         String dataForm = msp.getString(Constants.KEY_FORM_DATA, "NA");
         form = new Form(dataForm);
+
+        String data = msp.getString(Constants.KEY_MSP, "NA");
+        user = new User(data);
+
         return allUsers;
     }
 

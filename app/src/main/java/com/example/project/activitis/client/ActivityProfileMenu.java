@@ -81,8 +81,6 @@ public class ActivityProfileMenu extends AppCompatActivity {
             public void onClick(View v) {
                 newEventDialog exNewEventDialog = new newEventDialog();
                 exNewEventDialog.show(getSupportFragmentManager(), "exe");
-
-
             }
         });
 

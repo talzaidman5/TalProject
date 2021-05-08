@@ -37,10 +37,9 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_dateBirth, questionnairePage_EDT_age, questionnairePage_EDT_previous_family_name, questionnairePage_EDT_city, questionnairePage_EDT_postal,
             questionnairePage_EDT_street, questionnairePage_EDT_email, questionnairePage_EDT_mobilePhone, questionnairePage_EDT_OfficePhone, questionnairePage_EDT_HomePhone,
             questionnairePage_EDT_MotherCountry, questionnairePage_EDT_fatherCountry, questionnairePage_EDT_CountryBirth, questionnairePage_EDT_yearImmigration;
-    private CheckBox isSign,questionnairePage_EDT_bloodDonationAgain;
+    private CheckBox questionnairePage_EDT_bloodDonationAgain;
     public static boolean isData = true;
 
-    private Button next;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -99,7 +98,6 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_age.getEditText().setText(user.getAge() + "");
             questionnairePage_EDT_email.getEditText().setText(user.getEmail());
             questionnairePage_EDT_previous_family_name.getEditText().setText(form.getPrevious_family_name());
-
             questionnairePage_EDT_postal.getEditText().setText(form.getPostal());
             questionnairePage_EDT_street.getEditText().setText(form.getStreet());
             questionnairePage_EDT_mobilePhone.getEditText().setText(user.getPhoneNumber());
@@ -139,7 +137,6 @@ public class Fragment_a extends Fragment {
         questionnairePage_EDT_yearImmigration = view.findViewById(R.id.questionnairePage_EDT_yearImmigration);
         radio_female = view.findViewById(R.id.radio_female);
         radio_male = view.findViewById(R.id.radio_male);
-        isSign = view.findViewById(R.id.fragmentD_sign);
         questionnairePage_EDT_bloodDonationAgain = view.findViewById(R.id.questionnairePage_EDT_bloodDonationAgain);
     }
 

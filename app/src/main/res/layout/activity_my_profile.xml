@@ -7,66 +7,68 @@
     android:background="@drawable/b"
     tools:context="com.example.project.activitis.ActivityLogIn"
     tools:ignore="MissingDefaultResource">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:id="@+id/images">
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/myProfile_BTN_edit"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_alignParentRight="true"
-        android:layout_margin="5dp"
-        android:background="@drawable/pencil" />
+
+    <RelativeLayout
+        android:id="@+id/images"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/myProfile_BTN_edit"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:background="@drawable/pencil" />
 
 
-    <ImageButton
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:id="@+id/myProfile_BTN_logout"
-        android:background="@drawable/exit" />
+        <ImageButton
+            android:id="@+id/myProfile_BTN_logout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/exit" />
 
 
+    </RelativeLayout>
 
-</RelativeLayout>
-    <com.google.android.material.imageview.ShapeableImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.google.android.material.imageview.ShapeableImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/myProfile_BTN_logo"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:layout_below="@+id/images"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
         android:background="@drawable/profile"
         android:shape="ring"
         app:shapeAppearanceOverlay="@style/circleImageView"
-        android:layout_below="@+id/images"
-        android:layout_gravity="center"
         tools:ignore="MissingClass" />
 
     <ImageButton
+        android:id="@+id/myProfile_BTN_addBloodDonation"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_below="@id/myProfile_BTN_logo"
-        android:background="@drawable/ic_add"
-        android:id="@+id/myProfile_BTN_addBloodDonation"/>
+        android:background="@drawable/ic_add" />
 
     <TextView
         android:id="@+id/myProfile_TXT_nameToFill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/myProfile_BTN_logo"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/regular"
         android:textColor="@color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/myProfile_BTN_logo"
         android:textSize="20dp" />
+
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/corners"
-        android:layout_margin="20dp"
         android:layout_below="@+id/myProfile_TXT_nameToFill"
+        android:layout_margin="20dp"
+        android:background="@drawable/corners"
         android:fontFamily="@font/regular">
 
         <LinearLayout
@@ -76,224 +78,215 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
-                 
-                android:hint="תעודת זהות:"
-                android:layout_gravity="right"
                 android:id="@+id/myProfile_TXT_IDToFill"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+
+                android:hint="תעודת זהות:"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="18dp"
-                    android:gravity="right"
+                    android:layout_marginRight="5dp"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
-                    />
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="18dp" />
 
-            </com.google.android.material.textfield.TextInputLayout >
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
-                 
-                android:hint="כתובת מייל:"
-                android:layout_gravity="right"
                 android:id="@+id/myProfile_TXT_emailToFill"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+
+                android:hint="כתובת מייל:"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="18dp"
-                    android:gravity="right"
+                    android:layout_marginRight="5dp"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
-                    />
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="18dp" />
 
-            </com.google.android.material.textfield.TextInputLayout >
-
-
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
-                 
-                android:hint="מספר טלפון:"
-                android:layout_gravity="right"
                 android:id="@+id/myProfile_TXT_phoneNumberToFill"
-                app:errorEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="18dp"
-                    android:gravity="right"
-                    android:background="@android:drawable/dialog_holo_light_frame"
-                    android:fontFamily="@font/regular"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout >
-
-
-
-            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
-                 
-                android:hint="סיסמא:"
                 android:layout_gravity="right"
-                android:id="@+id/myProfile_TXT_passwordToFill"
+                android:gravity="right"
+
+                android:hint="מספר טלפון:"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="18dp"
-                    android:gravity="right"
+                    android:layout_marginRight="5dp"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
-                    />
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="18dp" />
 
-            </com.google.android.material.textfield.TextInputLayout >
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/myProfile_TXT_passwordToFill"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
+                android:layout_gravity="right"
                 android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+
+                android:hint="סיסמא:"
                 android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/black"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="18dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/myProfile_SPI_bloodTypes"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
 
                 android:hint="סוג דם:"
-                android:layout_gravity="right"
-                android:id="@+id/myProfile_SPI_bloodTypes"
-                app:errorEnabled="true">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:textSize="18dp"
-                android:gravity="right"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
-                />
-            </com.google.android.material.textfield.TextInputLayout >
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:outlineAmbientShadowColor="@color/black"
-                android:hint="תאריך לידה:"
-                android:layout_gravity="right"
-                android:id="@+id/myProfile_TXT_dateBirthToFill"
-                app:errorEnabled="true"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="18dp"
-                    android:background="@android:drawable/dialog_holo_light_frame"
-                    android:fontFamily="@font/regular"
-                    />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
-                android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
-                android:hint="תרומה אחרונה:"
-                android:layout_gravity="right"
-                android:id="@+id/myProfile_TXT_lastDonation"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
-                    android:textSize="18dp"
-                    android:gravity="right"
-                    android:enabled="false"
+                    android:layout_marginRight="5dp"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
-                    />
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="18dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            </com.google.android.material.textfield.TextInputLayout >
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/myProfile_TXT_dateBirthToFill"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:drawable/dialog_holo_light_frame"
+                android:fontFamily="@font/regular"
+                android:gravity="right"
+                android:hint="תאריך לידה:"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/black"
+                android:textSize="18dp"
+                app:errorEnabled="true" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/myProfile_TXT_lastDonation"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:hint="תרומה אחרונה:"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/black"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:enabled="false"
+                    android:fontFamily="@font/regular"
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="18dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="right">
+                android:layout_gravity="right"
+                android:orientation="horizontal">
+
                 <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/my_profile_SWI_can_donate_blood"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/my_profile_SWI_can_donate_blood"
                     android:layout_marginRight="30dp"
-                    android:enabled="false"
-                    ></androidx.appcompat.widget.SwitchCompat>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:outlineSpotShadowColor="@color/black"
-                android:outlineAmbientShadowColor="@color/black"
-                android:layout_gravity="right"
-                android:fontFamily="@font/regular"
-                android:gravity="right"
-                android:layout_marginLeft="10dp"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:text="האם יכול לתרום דם?"/>
+                    android:clickable="false"/>
+
+                <TextView
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/regular"
+                    android:gravity="right"
+                    android:outlineAmbientShadowColor="@color/black"
+                    android:outlineSpotShadowColor="@color/black"
+                    android:text="האם יכול לתרום דם?"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
 
             </LinearLayout>
-
 
 
         </LinearLayout>

@@ -129,6 +129,7 @@ public class User {
         this.userType = other.userType;
         this.lastBloodDonation = other.lastBloodDonation;
         this.city = other.city;
+        this.canDonateBlood = other.canDonateBlood;
     }
 
     public Date getLastBloodDonation() {
