@@ -67,7 +67,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener mDateSetListener;
     private DatePickerDialog.OnDateSetListener mDateSetListener2;
     private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill;
-    private TextInputLayout myProfile_TXT_IDToFill,myProfile_TXT_lastDonation,myProfile_SPI_bloodTypes;
+    private TextInputLayout myProfile_TXT_IDToFill, myProfile_TXT_lastDonation, myProfile_SPI_bloodTypes;
     private TextView myProfile_TXT_nameToFill;
     private TextView myProfile_TXT_dateBirthToFill;
     private ImageView myProfile_BTN_logo;
@@ -104,16 +104,16 @@ public class ActivityMyProfile extends AppCompatActivity {
         getFromMSP();
         initData();
 
-        Intent myIntent = new Intent(getApplicationContext() , NotifyService. class ) ;
-        AlarmManager alarmManager = (AlarmManager) getSystemService( ALARM_SERVICE ) ;
-        PendingIntent pendingIntent = PendingIntent. getService ( this, 0 , myIntent , 0 ) ;
-        Calendar calendar = Calendar. getInstance () ;
-        calendar.set(Calendar. SECOND , 0 ) ;
-        calendar.set(Calendar. MINUTE , 0 ) ;
-        calendar.set(Calendar. HOUR , 0 ) ;
-        calendar.set(Calendar. AM_PM , Calendar. AM ) ;
-        calendar.add(Calendar. DAY_OF_MONTH , 1 ) ;
-        alarmManager.setRepeating(AlarmManager. RTC_WAKEUP , calendar.getTimeInMillis() , 1000 * 60 , pendingIntent) ;
+        Intent myIntent = new Intent(getApplicationContext(), NotifyService.class);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getService(this, 0, myIntent, 0);
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR, 0);
+        calendar.set(Calendar.AM_PM, Calendar.AM);
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1000 * 60, pendingIntent);
 
         myProfile_TXT_nameToFill.setEnabled(false);
 
@@ -227,7 +227,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void updateUserInfo() {
         currentUser.setID(myProfile_TXT_IDToFill.getEditText().getText().toString());
         currentUser.setPassword(myProfile_TXT_passwordToFill.getEditText().getText().toString());
-      //  currentUser.setBloodType(myProfile_SPI_bloodTypes.getSelectedItemPosition());
+        //  currentUser.setBloodType(myProfile_SPI_bloodTypes.getSelectedItemPosition());
         currentUser.setLastBloodDonation(dateLast);
         if (date != null)
             currentUser.setBirthDate(date);
@@ -290,17 +290,16 @@ public class ActivityMyProfile extends AppCompatActivity {
         mDateSetListener2 = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
+                month = month + 1;
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month + 1);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth - 1);
-                String finalDate = dayOfMonth+"/"+month+"/" + (year+1900);
+                calendar.set(Calendar.MONTH, month);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String finalDate = dayOfMonth + "/" + month + "/" + (year );
                 myProfile_TXT_dateBirthToFill.setText(finalDate);
-
-                dateLast = calendar.getTime();
+                dateLast = new Date(year-1900,month-1,dayOfMonth);
                 currentUser.setLastBloodDonation(dateLast);
-                add_blood_donation_TXT_date.setText(getDateStr(dateLast));
+                add_blood_donation_TXT_date.setText(finalDate);
             }
         };
         spinnerArray = new ArrayList<String>();
@@ -352,7 +351,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     private void saveToFirebase() {
 
-        BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(),  getDateStr(dateLast), currentUser.getID());
+        BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(), getDateStr(dateLast), currentUser.getID());
         currentUser.addBloodDonation(bloodDonation);
         String bloodDonationID = currentUser.getID() + "-" + currentUser.getAllBloodDonations().size();
         bloodDonation.setBooldDonationId(bloodDonationID);
@@ -375,7 +374,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_BTN_addBloodDonation = findViewById(R.id.myProfile_BTN_addBloodDonation);
         myProfile_BTN_logout = findViewById(R.id.myProfile_BTN_logout);
         add_blood_donation_TXT_date = findViewById(R.id.add_blood_donation_TXT_date);
-            myProfile_SPI_bloodTypes = findViewById(R.id.myProfile_SPI_bloodTypes);
+        myProfile_SPI_bloodTypes = findViewById(R.id.myProfile_SPI_bloodTypes);
         myProfile_TXT_lastDonation = findViewById(R.id.myProfile_TXT_lastDonation);
 
     }
@@ -406,9 +405,9 @@ public class ActivityMyProfile extends AppCompatActivity {
         msp.putString(Constants.KEY_MSP, json);
     }
 
-    private String getDateStr (Date date){
+    private String getDateStr(Date date) {
         if (date != null)
-        return date.getDay()+"/"+date.getMonth()+"/"+(date.getYear()+1900);
+            return date.getDate() + "/" + (date.getMonth()+1) + "/" + (date.getYear() + 1900);
         else
             return "N/A";
     }
