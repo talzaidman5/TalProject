@@ -227,7 +227,6 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void updateUserInfo() {
         currentUser.setID(myProfile_TXT_IDToFill.getEditText().getText().toString());
         currentUser.setPassword(myProfile_TXT_passwordToFill.getEditText().getText().toString());
-        //  currentUser.setBloodType(myProfile_SPI_bloodTypes.getSelectedItemPosition());
         currentUser.setLastBloodDonation(dateLast);
         if (date != null)
             currentUser.setBirthDate(date);

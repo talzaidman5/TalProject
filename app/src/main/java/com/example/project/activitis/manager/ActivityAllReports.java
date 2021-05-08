@@ -221,7 +221,7 @@ public class ActivityAllReports extends AppCompatActivity {
     }
 
     private String getDateStr(Date date) {
-        return date.getDay() + "/" + date.getMonth() + "/" + (date.getYear()+1900);
+        return date.getDate() + "/" + date.getMonth() + "/" + (date.getYear()+1900);
     }
 
 

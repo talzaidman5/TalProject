@@ -113,7 +113,7 @@ public class Fragment_a extends Fragment {
     }
 
     private String getDateStr(Date date) {
-        String res = date.getDay() + "/" + date.getMonth() + "/" + date.getYear();
+        String res = date.getDate() + "/" + date.getMonth() + "/" + date.getYear();
         return res;
     }
 

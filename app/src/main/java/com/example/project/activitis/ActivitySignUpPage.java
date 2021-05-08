@@ -460,7 +460,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
 
         int age = today.get(Calendar.YEAR) - date.getYear() + 1900;
 
-        if (today.get(Calendar.DAY_OF_YEAR) < date.getDay()) {
+        if (today.get(Calendar.DAY_OF_YEAR) < date.getDate()) {
             age--;
         }
 

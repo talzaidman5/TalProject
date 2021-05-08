@@ -63,7 +63,7 @@ public class Adapter_History extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
 private String getDateStr(Date date){
-        return date.getDay()+"/"+date.getMonth()+"/"+date.getYear();
+        return date.getDate()+"/"+date.getMonth()+"/"+date.getYear();
 }
 
     static class ViewHolder_Normal extends RecyclerView.ViewHolder implements View.OnClickListener {
