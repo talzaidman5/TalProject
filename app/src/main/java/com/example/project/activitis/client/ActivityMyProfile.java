@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.project.R;
@@ -74,6 +75,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private ImageButton myProfile_BTN_addBloodDonation, myProfile_BTN_logout;
     private MaterialButton myProfile_BTN_edit;
     private MySheredP msp;
+    private SwitchCompat my_profile_SWI_can_donate_blood;
     private Gson gson = new Gson();
     private User currentUser = new User();
     private AllUsers allUsers;
@@ -227,7 +229,6 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void updateUserInfo() {
         currentUser.setID(myProfile_TXT_IDToFill.getEditText().getText().toString());
         currentUser.setPassword(myProfile_TXT_passwordToFill.getEditText().getText().toString());
-        //  currentUser.setBloodType(myProfile_SPI_bloodTypes.getSelectedItemPosition());
         currentUser.setLastBloodDonation(dateLast);
         if (date != null)
             currentUser.setBirthDate(date);
@@ -376,6 +377,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         add_blood_donation_TXT_date = findViewById(R.id.add_blood_donation_TXT_date);
         myProfile_SPI_bloodTypes = findViewById(R.id.myProfile_SPI_bloodTypes);
         myProfile_TXT_lastDonation = findViewById(R.id.myProfile_TXT_lastDonation);
+        my_profile_SWI_can_donate_blood = findViewById(R.id.my_profile_SWI_can_donate_blood);
 
     }
 
@@ -389,6 +391,7 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
             myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
             myProfile_TXT_lastDonation.getEditText().setText(getDateStr(currentUser.getLastBloodDonation()));
+            my_profile_SWI_can_donate_blood.setChecked(currentUser.getCanDonateBlood());
 
             String urlImage = currentUser.getImageUser();
             myProfile_BTN_logo.setImageResource(android.R.color.transparent);

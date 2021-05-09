@@ -535,29 +535,6 @@
             </com.google.android.material.textfield.TextInputLayout >
 
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                android:gravity="right"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:outlineAmbientShadowColor="@color/black"
-                android:hint="לרשום לזכות: עבור חולה, שם החולה:"
-                android:id="@+id/questionnairePage_EDT_patientName"
-                android:layout_weight="1" >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="18dp"
-                    android:gravity="right"
-                    android:background="@android:drawable/dialog_holo_light_frame"
-                    android:fontFamily="@font/regular"  />
-            </com.google.android.material.textfield.TextInputLayout >
 
         </LinearLayout>
     </ScrollView>

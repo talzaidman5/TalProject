@@ -48,10 +48,11 @@
 
 
             <EditText
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:id="@+id/fragmentD_date"
+                android:editable="false"
                 android:ems="3"></EditText>
             <TextView
                 android:layout_width="wrap_content"

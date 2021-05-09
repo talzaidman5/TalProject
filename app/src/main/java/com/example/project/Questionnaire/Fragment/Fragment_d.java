@@ -23,6 +23,8 @@ import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
 import com.google.gson.Gson;
 
+import java.util.Date;
+
 
 public class Fragment_d extends Fragment {
     private Button next;
@@ -36,16 +38,23 @@ public class Fragment_d extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (view == null)
             view = inflater.inflate(R.layout.fragment_d, container, false);
         msp = new MySheredP(getContext());
         findViews();
         getFromMSP();
-
+        fragmentD_date.setText(getDateStr(new Date()));
         return view;
     }
+
+
+    private String getDateStr(Date date) {
+        return date.getDate() + "/" + (date.getMonth()+1) + "/" + (date.getYear()+1900);
+    }
+
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();

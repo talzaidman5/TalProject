@@ -17,6 +17,8 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.project.R;
+import com.example.project.activitis.ActivityLogIn;
+import com.example.project.activitis.ActivitySignUpPage;
 import com.example.project.activitis.client.ActivityMainForm;
 import com.example.project.activitis.client.ActivityMyProfile;
 import com.example.project.activitis.client.ActivityProfileMenu;
@@ -28,6 +30,7 @@ import com.example.project.utils.MySheredP;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import java.io.BufferedReader;
@@ -47,6 +50,8 @@ public class Fragment_e extends Fragment {
     private AllUsers allUsers;
     private User user;
     private Form form;
+    private Gson gson = new Gson();
+
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference myRef = database.getReference("FB");
     private SearchableSpinner spn_my_spinner;
@@ -60,33 +65,34 @@ public class Fragment_e extends Fragment {
         checkAlgo();
 
         readFile();
-        user = allUsers.getUserByEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-//        if (checkAlgo()) {
-//            if (user != null) {
-//                user.setCanDonateBlood(true);
-//                myRef.child("Users").child(user.getID()).setValue(user);
-//                Toast.makeText(getContext(), "אתה יכול לתרום דם!", Toast.LENGTH_SHORT);
-//                canDonateAlert();
-//            }
-//        }
+
         return view;
     }
 
 
-
-
     private void checkAlgo() {
-       // if (form.getSign()) {
-            if (form.checkForm())
-                canDonateAlert(true);
-            else
-                canDonateAlert(false);
+        Boolean res = form.checkForm();
+        user.setCanDonateBlood(res);
+        putOnMSP();
+        canDonateAlert(res);
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        startActivity(new Intent(getContext(), ActivityProfileMenu.class));
 
     }
+
+    private void putOnMSP() {
+        String jsonForm = gson.toJson(form);
+        msp.putString(Constants.KEY_FORM_DATA, jsonForm);
+
+    }
+
     private void canDonateAlert(boolean isCan) {
-        String res= "";
-        if(isCan)
+        String res = "";
+        if (isCan)
             res = "אתה יכול לתרום!";
         else
             res = "אינך יכול לתרום!";
@@ -112,12 +118,15 @@ public class Fragment_e extends Fragment {
     }
 
 
-
     private AllUsers getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_MSP_ALL, "NA");
         allUsers = new AllUsers(dataAll);
         String dataForm = msp.getString(Constants.KEY_FORM_DATA, "NA");
         form = new Form(dataForm);
+
+        String data = msp.getString(Constants.KEY_MSP, "NA");
+        user = new User(data);
+
         return allUsers;
     }
 

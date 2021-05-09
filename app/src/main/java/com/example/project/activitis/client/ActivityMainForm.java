@@ -38,7 +38,7 @@ public class ActivityMainForm extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         main_form_BTN_next = findViewById(R.id.main_form_BTN_next);
         main_form_BTN_prev = findViewById(R.id.main_form_BTN_prev);
-        showA("next");
+        showA();
 
         main_form_BTN_prev.setOnClickListener(new View.OnClickListener() {
             @Override
