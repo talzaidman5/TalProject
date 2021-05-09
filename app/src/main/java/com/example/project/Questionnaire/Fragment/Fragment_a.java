@@ -38,7 +38,7 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_street, questionnairePage_EDT_email, questionnairePage_EDT_mobilePhone, questionnairePage_EDT_OfficePhone, questionnairePage_EDT_HomePhone,
             questionnairePage_EDT_MotherCountry, questionnairePage_EDT_fatherCountry, questionnairePage_EDT_yearImmigration,
             questionnairePage_EDT_patientName;
-    private CheckBox isSign,questionnairePage_EDT_bloodDonationAgain;
+    private CheckBox questionnairePage_EDT_bloodDonationAgain;
     public static boolean isData = true;
 
     private Button next;
@@ -48,7 +48,6 @@ public class Fragment_a extends Fragment {
         if (view == null)
             view = inflater.inflate(R.layout.freagment_a, container, false);
         msp = new MySheredP(getContext());
-
         findViews(view);
         fillDataFromUserProfile();
 
@@ -56,8 +55,15 @@ public class Fragment_a extends Fragment {
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        checkData();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
+        checkData();
         form = new Form(user, questionnairePage_EDT_previous_family_name.getEditText().getText().toString(),
                 questionnairePage_EDT_city.getEditText().getText().toString(),
                 questionnairePage_EDT_postal.getEditText().getText().toString(),
@@ -138,7 +144,6 @@ public class Fragment_a extends Fragment {
         questionnairePage_EDT_patientName = view.findViewById(R.id.questionnairePage_EDT_patientName);
         radio_female = view.findViewById(R.id.radio_female);
         radio_male = view.findViewById(R.id.radio_male);
-        isSign = view.findViewById(R.id.fragmentD_sign);
         questionnairePage_EDT_bloodDonationAgain = view.findViewById(R.id.questionnairePage_EDT_bloodDonationAgain);
     }
 
