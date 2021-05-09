@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/b"
-    tools:context="com.example.project.activitis.ActivityLogIn"
-    tools:ignore="MissingDefaultResource">
+    tools:context="com.example.project.activitis.ActivityLogIn">
 
     <RelativeLayout
         android:id="@+id/images"
@@ -25,7 +24,7 @@
         <ImageButton
             android:id="@+id/myProfile_BTN_logout"
             android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_height="55dp"
             android:layout_margin="10dp"
             android:background="@drawable/exit" />
 
@@ -195,7 +194,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:gravity="right"
-
                 android:hint="סוג דם:"
                 android:outlineAmbientShadowColor="@color/black"
                 android:textColorHint="@color/black"
@@ -214,22 +212,32 @@
                     android:textSize="18dp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textview.MaterialTextView
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/myProfile_TXT_dateBirthToFill"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:fontFamily="@font/regular"
                 android:gravity="right"
                 android:hint="תאריך לידה:"
                 android:outlineAmbientShadowColor="@color/black"
                 android:textColorHint="@color/black"
-                android:textSize="18dp"
-                app:errorEnabled="true" />
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:fontFamily="@font/regular"
+                    android:gravity="right"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="18dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/myProfile_TXT_lastDonation"
