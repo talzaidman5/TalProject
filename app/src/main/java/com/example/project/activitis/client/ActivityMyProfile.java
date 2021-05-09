@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +14,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
@@ -27,6 +30,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.project.R;
@@ -45,6 +49,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.RemoteMessage;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -276,6 +281,15 @@ public class ActivityMyProfile extends AppCompatActivity {
 
         Button dialogButton = dialog.findViewById(R.id.popup_BTN_add);
         add_blood_donation_TXT_date = dialog.findViewById(R.id.add_blood_donation_TXT_date);
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+            CharSequence name= "name";
+            String desc = "desc";
+            int impro = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("notifyLemubit",name,impro);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
         add_blood_donation_TXT_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -318,29 +332,18 @@ public class ActivityMyProfile extends AppCompatActivity {
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        /*        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-                PendingIntent pendingIntent = PendingIntent.getService(getApplicationContext(),0,intent,0);
-                Calendar calendarData = Calendar.getInstance();
-                calendarData.set(Calendar.SECOND, 0);
-                calendarData.set(Calendar.MINUTE, 0);
-                calendarData.set(Calendar.HOUR, 0);
-                calendarData.set(Calendar.AM_PM, Calendar.AM);
-                calendarData.add(Calendar.DAY_OF_MONTH, 1);
 
-                alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendarData.getTimeInMillis(), 60000 , pendingIntent);
-      SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                int lastTimeStarted = settings.getInt("last_time_started", -1);
-                Calendar calendar = Calendar.getInstance();
-                int today = calendar.get(Calendar.DAY_OF_YEAR);
+                Intent intent1 = new Intent(getApplicationContext(),NotifyService.class);
+                PendingIntent pendingIntent =PendingIntent.getBroadcast(getApplicationContext(),0,intent1,0);
+                AlarmManager alarmManager =(AlarmManager) getSystemService(ALARM_SERVICE);
 
-                if (today != lastTimeStarted) {
-                    //startSomethingOnce();
+                long timeAtClick =dateLast.getTime(); //System.currentTimeMillis();
+                long tenSec = 7884000;
 
-                    SharedPreferences.Editor editor = settings.edit();
-                    editor.putInt("last_time_started", today);
-                    editor.commit();
-                }
-*/
+                alarmManager.set(AlarmManager.RTC_WAKEUP,timeAtClick+tenSec,pendingIntent);
+                currentUser.setCanDonateBlood(false);
+                myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
+
                 saveToFirebase();
                 dialog.dismiss();
             }

@@ -20,19 +20,12 @@
             android:theme="@style/AppTheme"
             tools:replace="android:supportsRtl"
             >
-        <receiver
-            android:name=".activitis.client.NotifyService"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name=".activitis.client.NotifyService" >
-                </action>
-            </intent-filter>
-        </receiver>
 
         <activity
             android:name=".activitis.manager.ActivityAllReports"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
+        <receiver android:name=".activitis.client.NotifyService"></receiver>
         <activity
             android:name=".activitis.FlashScreen"
             android:screenOrientation="portrait"

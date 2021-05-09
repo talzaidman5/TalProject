@@ -94,6 +94,7 @@ public class Fragment_e extends Fragment {
         String res = "";
         if (isCan)
             res = "אתה יכול לתרום!";
+
         else
             res = "אינך יכול לתרום!";
 
