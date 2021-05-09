@@ -487,7 +487,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
             newUser.setImageUser(filePath);
         newUser.setAge(age);
         newUser.setCity(signUp_EDT_city.getSelectedItem().toString());
-
+        newUser.setCanDonateBlood(false);
 
     }
 

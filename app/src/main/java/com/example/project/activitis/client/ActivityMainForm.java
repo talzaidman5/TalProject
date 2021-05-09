@@ -26,7 +26,7 @@ public class ActivityMainForm extends AppCompatActivity {
             questionnairePage_EDT_dateBirth, questionnairePage_EDT_age, questionnairePage_EDT_previous_family_name, questionnairePage_EDT_city, questionnairePage_EDT_postal,
             questionnairePage_EDT_street, questionnairePage_EDT_email, questionnairePage_EDT_mobilePhone, questionnairePage_EDT_OfficePhone, questionnairePage_EDT_HomePhone,
             questionnairePage_EDT_MotherCountry, questionnairePage_EDT_fatherCountry, questionnairePage_EDT_yearImmigration,
-            questionnairePage_EDT_patientName,questionnairePage_EDT_CountryBirth;
+            questionnairePage_EDT_CountryBirth;
     private CheckBox questionnairePage_EDT_bloodDonationAgain;
     private boolean isData=false;
     private String buttonClickPrev="prev";
@@ -38,18 +38,20 @@ public class ActivityMainForm extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         main_form_BTN_next = findViewById(R.id.main_form_BTN_next);
         main_form_BTN_prev = findViewById(R.id.main_form_BTN_prev);
-        showA();
+        showA("nexty");
 
         main_form_BTN_prev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                currentFragment--;
                 openCurrentFragment("prev");
             }
         });
         main_form_BTN_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                currentFragment++;
                 openCurrentFragment("next");
             }
         });
@@ -85,10 +87,6 @@ public class ActivityMainForm extends AppCompatActivity {
 
 
         private void showA (String click) {
-            if(click.equals(main_form_BTN_prev))
-                currentFragment--;
-            else
-                currentFragment++;
             Fragment_a fragment_a = new Fragment_a();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.main_FRAME, fragment_a);
@@ -96,30 +94,29 @@ public class ActivityMainForm extends AppCompatActivity {
         }
 
         private void showB (String click) {
-            if (checkData()) {
-                if(click.equals(main_form_BTN_prev))
-                    currentFragment--;
-                else
-                    currentFragment++;
+            if (click != buttonClickPrev) {
+                if (checkData()) {
+                    Fragment_b fragment_b = new Fragment_b();
+                    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.main_FRAME, fragment_b);
+                    transaction.commit();
+                } else {
+                    Toast.makeText(getApplicationContext(), "אנא השלם את הפרטים", Toast.LENGTH_LONG).show();
+                    if (click.equals(buttonClickPrev))
+                        currentFragment++;
+                    else
+                        currentFragment--;
+                }
+            } else {
                 Fragment_b fragment_b = new Fragment_b();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_FRAME, fragment_b);
                 transaction.commit();
-
-        }
-            else{
-                Toast.makeText(getApplicationContext(),"אנא השלם את הפרטים",Toast.LENGTH_LONG).show();
-
             }
-
-    }
+        }
 
 
     private void showC (String click) {
-        if(click.equals(main_form_BTN_prev))
-            currentFragment--;
-        else
-            currentFragment++;
             Fragment_c fragment_c = new Fragment_c();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.main_FRAME, fragment_c);
@@ -127,10 +124,6 @@ public class ActivityMainForm extends AppCompatActivity {
     }
 
     private void showD (String click) {
-        if(click.equals(main_form_BTN_prev))
-            currentFragment--;
-        else
-            currentFragment++;
         Fragment_d fragment_d = new Fragment_d();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.main_FRAME, fragment_d);
@@ -141,10 +134,6 @@ public class ActivityMainForm extends AppCompatActivity {
         isSign = findViewById(R.id.fragmentD_sign);
 
         if (isSign.isChecked()) {
-            if(click.equals(main_form_BTN_prev))
-                currentFragment--;
-            else
-                currentFragment++;
             Fragment_e fragment_e = new Fragment_e();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.main_FRAME, fragment_e);
@@ -152,6 +141,10 @@ public class ActivityMainForm extends AppCompatActivity {
         }
         else{
             Toast.makeText(getApplicationContext(),"אנא אשר",Toast.LENGTH_LONG).show();
+            if(click.equals(buttonClickPrev))
+                currentFragment++;
+            else
+                currentFragment--;
 
         }
     }
@@ -239,7 +232,7 @@ public class ActivityMainForm extends AppCompatActivity {
         questionnairePage_EDT_MotherCountry = findViewById(R.id.questionnairePage_EDT_MotherCountry);
         questionnairePage_EDT_fatherCountry = findViewById(R.id.questionnairePage_EDT_fatherCountry);
         questionnairePage_EDT_yearImmigration = findViewById(R.id.questionnairePage_EDT_yearImmigration);
-        questionnairePage_EDT_patientName = findViewById(R.id.questionnairePage_EDT_patientName);
+//        questionnairePage_EDT_patientName = findViewById(R.id.questionnairePage_EDT_patientName);
         questionnairePage_EDT_bloodDonationAgain = findViewById(R.id.questionnairePage_EDT_bloodDonationAgain);
         questionnairePage_EDT_CountryBirth = findViewById(R.id.questionnairePage_EDT_CountryBirth);
     }

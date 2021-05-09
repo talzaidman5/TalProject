@@ -243,10 +243,6 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_fatherCountry.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_fatherCountry.setError("");
-        if (questionnairePage_EDT_patientName.getEditText().getText().length() == 0) {
-            questionnairePage_EDT_patientName.setError("אנא השלם");
-            isData = false;
-        } else questionnairePage_EDT_patientName.setError("");
         return isData;
     }
 }
