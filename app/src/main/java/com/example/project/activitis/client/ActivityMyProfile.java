@@ -342,6 +342,7 @@ public class ActivityMyProfile extends AppCompatActivity {
                 alarmManager.set(AlarmManager.RTC_WAKEUP,timeAtClick+tenSec,pendingIntent);
                 currentUser.setCanDonateBlood(false);
                 myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
+                Toast.makeText(getApplicationContext(), "תודה שתרמת דם! נשמח לראותך שוב", Toast.LENGTH_SHORT).show();
 
                 saveToFirebase();
                 dialog.dismiss();
