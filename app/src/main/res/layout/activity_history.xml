@@ -4,8 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/b"
+    android:background="@color/white"
     tools:context=".activitis.client.ActivityHistoryBloodDonations">
+
+    <ImageView
+        android:id="@+id/mainPage_PNG_logo"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/logo_new"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,10 +20,10 @@
         android:fontFamily="@font/regular"
         android:text="היסטורית תרומות"
         android:textSize="30dp"
+        android:layout_below="@+id/mainPage_PNG_logo"
         android:textColor="@color/black"
         android:id="@+id/history_TXT_title"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
         />
 
     <TextView
@@ -34,7 +41,7 @@
         android:id="@+id/history_LST_past"
         android:layout_below="@id/history_TXT_title"
         android:layout_width="match_parent"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="10dp"
         android:layout_centerInParent="true"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"

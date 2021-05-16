@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@drawable/b"
+    android:background="@color/white"
     tools:context="com.example.project.activitis.client.ActivityProfileMenu">
 
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:src="@drawable/logo"
+        android:layout_height="160dp"
+        android:src="@drawable/logo_new"
         android:layout_marginTop="10dp"
         android:id="@+id/logo"/>
     <Button
