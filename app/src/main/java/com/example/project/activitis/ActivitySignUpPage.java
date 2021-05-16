@@ -336,7 +336,6 @@ public class ActivitySignUpPage extends AppCompatActivity {
                     @Override
                     public void onSuccess(
                             UploadTask.TaskSnapshot taskSnapshot) {
-
                     }
                 })
 
@@ -348,9 +347,6 @@ public class ActivitySignUpPage extends AppCompatActivity {
                         })
                         .addOnProgressListener(
                                 new OnProgressListener<UploadTask.TaskSnapshot>() {
-
-                                    // Progress Listener for loading
-                                    // percentage on the dialog box
                                     @Override
                                     public void onProgress(
                                             UploadTask.TaskSnapshot taskSnapshot) {
@@ -360,58 +356,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
         }
     }
 
-//    private void uploadImageOld() {
-//        if (filePath != null) {
-//
-//            // Code for showing progressDialog while uploading
-//            ProgressDialog progressDialog = new ProgressDialog(this);
-//            progressDialog.setTitle("Uploading...");
-//            progressDialog.show();
-//
-//            // Defining the child of storageReference
-//            imageUrl = "images/" + UUID.randomUUID().toString();
-//            StorageReference ref = storageReference.child(imageUrl);
-//            newUser.setImageUser(imageUrl);
-//            // adding listeners on upload
-//            // or failure of image
-//            ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(
-//                        UploadTask.TaskSnapshot taskSnapshot) {
-//                    // Image uploaded successfully
-//                    // Dismiss dialog
-//                    progressDialog.dismiss();
-//                    Toast.makeText(ActivitySignUpPage.this,
-//                            "Image Uploaded!!",
-//                            Toast.LENGTH_SHORT)
-//                            .show();
-//                }
-//            })
-//
-//                    .addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//                            progressDialog.dismiss();
-//                            Toast.makeText(ActivitySignUpPage.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    })
-//                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-//                            double progress
-//                                    = (100.0
-//                                    * taskSnapshot.getBytesTransferred()
-//                                    / taskSnapshot.getTotalByteCount());
-//                            progressDialog.setMessage(
-//                                    "Uploaded "
-//                                            + (int) progress + "%");
-//                        }
-//                    });
-//        }
-//    }
 
     private void register(String usernameTemp, String emailTemp, String passwordTemp) {
-//        if (!usernameTemp.equals("") && !emailTemp.equals("") && !passwordTemp.equals("")) {
         if (checkData()) {
             auth.createUserWithEmailAndPassword(emailTemp, passwordTemp).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @RequiresApi(api = Build.VERSION_CODES.O)
@@ -433,7 +379,6 @@ public class ActivitySignUpPage extends AppCompatActivity {
                                         startActivity(new Intent(ActivitySignUpPage.this, ActivityProfileMenu.class));
                                     else
                                         startActivity(new Intent(ActivitySignUpPage.this, ActivityMenuManager.class));
-
                                 } else
                                     Toast.makeText(ActivitySignUpPage.this, "error", Toast.LENGTH_SHORT);
                             }

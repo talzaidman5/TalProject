@@ -354,7 +354,6 @@ public class ActivityMyProfile extends AppCompatActivity {
     }
 
     private void saveToFirebase() {
-
         BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(), getDateStr(dateLast), currentUser.getID());
         currentUser.addBloodDonation(bloodDonation);
         String bloodDonationID = currentUser.getID() + "-" + currentUser.getAllBloodDonations().size();

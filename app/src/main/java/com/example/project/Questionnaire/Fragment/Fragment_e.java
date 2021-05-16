@@ -27,6 +27,7 @@ import com.example.project.data.Form;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -73,7 +74,9 @@ public class Fragment_e extends Fragment {
     private void checkAlgo() {
         Boolean res = form.checkForm();
         user.setCanDonateBlood(res);
-        putOnMSP();
+        myRef.child("Users").child(user.getID()).setValue(user);
+
+            putOnMSP();
         canDonateAlert(res);
     }
 
@@ -86,7 +89,9 @@ public class Fragment_e extends Fragment {
 
     private void putOnMSP() {
         String jsonForm = gson.toJson(form);
+        String jsonUser= gson.toJson(user);
         msp.putString(Constants.KEY_FORM_DATA, jsonForm);
+        msp.putString(Constants.KEY_MSP, jsonUser);
 
     }
 
@@ -94,7 +99,6 @@ public class Fragment_e extends Fragment {
         String res = "";
         if (isCan)
             res = "אתה יכול לתרום!";
-
         else
             res = "אינך יכול לתרום!";
 

@@ -26,8 +26,6 @@ import java.util.Map;
 
 public class Fragment_b extends Fragment {
     private View view;
-    private TextView fragment_b_TXT, test;
-    private Button next;
     private CheckBox one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve;
     private MySheredP msp;
     private Gson gson = new Gson();
@@ -108,7 +106,6 @@ public class Fragment_b extends Fragment {
         ten = view.findViewById(R.id.ten);
         eleven = view.findViewById(R.id.eleven);
         twelve = view.findViewById(R.id.twelve);
-        test = view.findViewById(R.id.test);
     }
 
 

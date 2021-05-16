@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
-import com.example.project.activitis.ActivityHistoryBloodDonations;
 import com.example.project.activitis.newEventDialog;
 import com.example.project.data.Position;
 import com.example.project.data.User;

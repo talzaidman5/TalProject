@@ -37,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activitis.ActivityHistoryBloodDonations"
+            android:name=".activitis.client.ActivityHistoryBloodDonations"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight" />
         <activity
