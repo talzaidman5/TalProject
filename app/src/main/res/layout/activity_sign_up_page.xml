@@ -8,27 +8,19 @@
     tools:context=".activitis.ActivitySignUpPage">
 
     <ImageView
-        android:id="@+id/img"
+        android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="140dp"
+        android:src="@drawable/logo_new"
         android:layout_alignParentTop="true" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/sign_up_IMG_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:src="@drawable/ic_launcher_background"
-        app:shapeAppearanceOverlay="@style/circleImageView" />
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/signUp_BTN_signUp"
-        android:layout_below="@id/sign_up_IMG_logo"
-        android:layout_margin="20dp"
+        android:layout_below="@id/logo"
+        android:layout_margin="10dp"
         android:background="@drawable/corners"
         tools:ignore="NotSibling">
 
@@ -51,6 +43,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/signUp_EDT_firstName"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -60,6 +53,7 @@
                 android:hint="שם פרטי"
                 android:outlineAmbientShadowColor="@color/blue"
                 android:textColorHint="@color/blue"
+                android:layout_marginTop="10dp"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true">
 
@@ -231,11 +225,13 @@
             <Spinner
                 android:id="@+id/signUp_EDT_city"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:fontFamily="@font/regular"
                 android:outlineAmbientShadowColor="@color/black"
                 android:outlineSpotShadowColor="@color/black"
                 android:textColor="@color/black"
+                android:background="@drawable/spinner"
+                android:layout_margin="15dp"
                 android:textSize="18dp" />
 
 

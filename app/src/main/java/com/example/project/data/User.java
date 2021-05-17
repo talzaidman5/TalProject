@@ -31,7 +31,6 @@ public class User {
     private String password;
     private String bloodType;
     private Date birthDate;
-    private String imageUser;
     private String city;
     private Boolean remember;
     private Boolean canDonateBlood;
@@ -44,7 +43,7 @@ public class User {
     private String token;
 
 
-    public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, String image, Boolean isRemember, String uuid, String city, GENDER gender) {
+    public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, Boolean isRemember, String uuid, String city, GENDER gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.ID = ID;
@@ -53,7 +52,6 @@ public class User {
         this.password = password;
         this.bloodType = bloodType;
         this.birthDate = birthDate;
-        this.imageUser = image;
         this.remember = isRemember;
         this.city = city;
         if (ID.equals(Constants.MANAGER_ID))
@@ -121,7 +119,6 @@ public class User {
         this.password = other.password;
         this.bloodType = other.bloodType;
         this.birthDate = other.birthDate;
-        this.imageUser = other.imageUser;
         this.remember = other.remember;
         this.gender = other.gender;
         this.uuID = other.uuID;
@@ -146,13 +143,7 @@ public class User {
             this.lastBloodDonation = lastBloodDonation;
     }
 
-    public void setImageUser(String imageUser) {
-        this.imageUser = imageUser;
-    }
 
-    public String getImageUser() {
-        return imageUser;
-    }
 
     public Boolean getRemember() {
         return remember;

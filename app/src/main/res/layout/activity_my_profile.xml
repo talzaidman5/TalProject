@@ -31,31 +31,25 @@
 
     </RelativeLayout>
 
-    <com.google.android.material.imageview.ShapeableImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/myProfile_BTN_logo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_below="@+id/images"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:background="@drawable/profile"
-        android:shape="ring"
-        app:shapeAppearanceOverlay="@style/circleImageView"
-        tools:ignore="MissingClass" />
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@drawable/logo_new"
+        android:layout_alignParentTop="true" />
 
     <ImageButton
         android:id="@+id/myProfile_BTN_addBloodDonation"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_below="@id/myProfile_BTN_logo"
+        android:layout_below="@id/logo"
         android:background="@drawable/ic_add" />
 
     <TextView
         android:id="@+id/myProfile_TXT_nameToFill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/myProfile_BTN_logo"
+        android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/regular"
         android:textColor="@color/black"

@@ -75,7 +75,6 @@ public class ActivityMyProfile extends AppCompatActivity {
     private TextInputLayout myProfile_TXT_emailToFill, myProfile_TXT_phoneNumberToFill, myProfile_TXT_passwordToFill;
     private TextInputLayout myProfile_TXT_IDToFill, myProfile_TXT_lastDonation, myProfile_SPI_bloodTypes,myProfile_TXT_dateBirthToFill;
     private TextView myProfile_TXT_nameToFill;
-    private ImageView myProfile_BTN_logo;
     private ImageButton myProfile_BTN_addBloodDonation, myProfile_BTN_logout;
     private MaterialButton myProfile_BTN_edit;
     private MySheredP msp;
@@ -93,9 +92,6 @@ public class ActivityMyProfile extends AppCompatActivity {
     private boolean editFlag = false;
     private StorageReference storageReference;
     private FirebaseStorage storage;
-
-    private String filePath = "";
-    private Uri fileUri;
 
 
     @Override
@@ -152,13 +148,7 @@ public class ActivityMyProfile extends AppCompatActivity {
             }
         });
 
-        myProfile_BTN_logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editFlag == true)
-                    getImage();
-            }
-        });
+
 
         myProfile_BTN_logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,8 +228,6 @@ public class ActivityMyProfile extends AppCompatActivity {
             currentUser.setBirthDate(date);
         currentUser.setEmail(myProfile_TXT_emailToFill.getEditText().getText().toString());
         currentUser.setPhoneNumber(myProfile_TXT_phoneNumberToFill.getEditText().getText().toString());
-        if (fileUri != null)
-            currentUser.setImageUser(fileUri.toString());
     }
 
     private boolean checkData() {
@@ -366,7 +354,6 @@ public class ActivityMyProfile extends AppCompatActivity {
 
 
     public void findView() {
-        myProfile_BTN_logo = findViewById(R.id.myProfile_BTN_logo);
         myProfile_TXT_emailToFill = findViewById(R.id.myProfile_TXT_emailToFill);
         myProfile_TXT_phoneNumberToFill = findViewById(R.id.myProfile_TXT_phoneNumberToFill);
         myProfile_TXT_passwordToFill = findViewById(R.id.myProfile_TXT_passwordToFill);
@@ -394,13 +381,6 @@ public class ActivityMyProfile extends AppCompatActivity {
             myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
             myProfile_TXT_lastDonation.getEditText().setText(getDateStr(currentUser.getLastBloodDonation()));
             my_profile_SWI_can_donate_blood.setChecked(currentUser.getCanDonateBlood());
-
-            String urlImage = currentUser.getImageUser();
-            myProfile_BTN_logo.setImageResource(android.R.color.transparent);
-            Glide.with(ActivityMyProfile.this)
-                    .load(urlImage)
-                    .circleCrop()
-                    .into(myProfile_BTN_logo);
         }
 
     }
@@ -423,60 +403,6 @@ public class ActivityMyProfile extends AppCompatActivity {
         date.setMonth(Integer.parseInt(s[1]));
         date.setYear(Integer.parseInt(s[2]));
             return date;
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            //Image Uri will not be null for RESULT_OK
-            fileUri = data.getData();
-            myProfile_BTN_logo.setImageURI(fileUri);
-
-
-            //You can also get File Path from intent
-            filePath = new ImagePicker().Companion.getFilePath(data);
-            uploadImage();
-        } else if (resultCode == ImagePicker.RESULT_ERROR) {
-            Toast.makeText(this, new ImagePicker().Companion.getError(data), Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void uploadImage() {
-        if (filePath != null) {
-            StorageReference ref = storageReference.child(fileUri.toString());
-            currentUser.setImageUser(fileUri.toString());
-
-            // adding listeners on upload
-            // or failure of image
-            ref.putFile(fileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(
-                        UploadTask.TaskSnapshot taskSnapshot) {
-
-                }
-            })
-
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // Error, Image not uploaded
-                        }
-                    })
-                    .addOnProgressListener(
-                            new OnProgressListener<UploadTask.TaskSnapshot>() {
-
-                                // Progress Listener for loading
-                                // percentage on the dialog box
-                                @Override
-                                public void onProgress(
-                                        UploadTask.TaskSnapshot taskSnapshot) {
-                                }
-                            });
-        }
     }
 
     private AllUsers getFromMSP() {
