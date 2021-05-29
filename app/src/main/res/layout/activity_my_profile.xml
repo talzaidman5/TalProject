@@ -18,8 +18,9 @@
             android:layout_height="28dp"
             android:layout_alignParentRight="true"
             android:layout_margin="5dp"
-            android:background="@drawable/pencil" />
-
+            android:background="@drawable/pencil"
+            app:backgroundTint="@color/black"
+    />
 
         <ImageButton
             android:id="@+id/myProfile_BTN_logout"
@@ -28,15 +29,14 @@
             android:layout_margin="10dp"
             android:background="@drawable/exit" />
 
-
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:src="@drawable/logo_new"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:src="@drawable/logo_new" />
 
     <ImageButton
         android:id="@+id/myProfile_BTN_addBloodDonation"
@@ -232,7 +232,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/myProfile_TXT_lastDonation"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -272,7 +271,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="30dp"
-                    android:clickable="false"/>
+                    android:clickable="false" />
 
                 <TextView
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"

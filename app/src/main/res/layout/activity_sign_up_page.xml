@@ -51,10 +51,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="שם פרטי"
-                android:outlineAmbientShadowColor="@color/blue"
-                android:textColorHint="@color/blue"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/black"
                 android:layout_marginTop="10dp"
+                app:hintTextColor="@color/red"
                 app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -65,8 +67,8 @@
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
                     android:gravity="right"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/blue"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="18dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -78,9 +80,11 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="שם משפחה"
-                android:outlineAmbientShadowColor="@color/blue"
-                android:textColorHint="@color/blue"
+                app:hintTextColor="@color/red"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColorHint="@color/black"
                 app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -91,8 +95,9 @@
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
                     android:gravity="right"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/blue"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    app:endIconTint="@color/black"
                     android:textSize="18dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -107,12 +112,14 @@
                 android:layout_marginRight="5dp"
                 android:gravity="right"
                 android:hint="מס' תעודת זהות"
+                app:hintTextColor="@color/red"
                 android:inputType="number"
                 android:outlineAmbientShadowColor="@color/black"
-                android:textColorHint="@color/blue"
+                android:textColorHint="@color/black"
                 app:counterEnabled="true"
                 app:counterMaxLength="9"
                 app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -121,8 +128,8 @@
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
                     android:inputType="number"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/blue"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="18dp"
                     app:counterEnabled="true"
                     app:counterMaxLength="9" />
@@ -136,11 +143,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="כתובת מייל"
+                app:hintTextColor="@color/red"
                 android:inputType="number"
                 android:outlineAmbientShadowColor="@color/black"
-                android:textColorHint="@color/blue"
+                android:textColorHint="@color/black"
                 android:textSize="18dp"
                 app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -151,8 +160,8 @@
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/blue"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="18dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -167,12 +176,14 @@
                 android:layout_marginRight="5dp"
                 android:gravity="right"
                 android:hint="מספר טלפון"
+                app:hintTextColor="@color/red"
                 android:inputType="number"
                 android:outlineAmbientShadowColor="@color/black"
-                android:textColorHint="@color/blue"
+                android:textColorHint="@color/black"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
                 app:endIconMode="clear_text"
+                app:endIconTint="@color/black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -181,8 +192,8 @@
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
                     android:inputType="number"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/blue"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="18dp"
                     app:counterEnabled="true"
                     app:counterMaxLength="10" />
@@ -204,14 +215,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="זכר"
-                        android:textColor="@color/blue" />
+                        android:textColor="@color/black" />
 
                     <RadioButton
                         android:id="@+id/signup_CHB_female"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="נקבה"
-                        android:textColor="@color/blue" />
+                        android:textColor="@color/black" />
                 </RadioGroup>
 
                 <TextView
@@ -219,7 +230,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="12dp"
                     android:text="מגדר:"
-                    android:textColor="@color/blue"></TextView>
+                    android:textColor="@color/black"></TextView>
             </LinearLayout>
 
             <Spinner
@@ -242,10 +253,12 @@
                 android:layout_height="wrap_content"
                 android:gravity="right"
                 android:hint="סיסמא"
+                app:hintTextColor="@color/red"
                 android:inputType="number"
                 android:outlineAmbientShadowColor="@color/black"
-                android:textColorHint="@color/blue"
+                android:textColorHint="@color/black"
                 app:endIconMode="password_toggle"
+                app:endIconTint="@color/black"
                 app:errorEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -257,8 +270,8 @@
                     android:fontFamily="@font/regular"
                     android:gravity="right"
                     android:inputType="numberPassword"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/blue"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
                     android:textSize="18dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -330,7 +343,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="15dp"
                 android:text="התחבר"
-                android:textColor="@color/blue"
+                android:textColor="@color/black"
                 android:textSize="22dp"
                 android:textStyle="bold"
                 app:cornerRadius="10dp"

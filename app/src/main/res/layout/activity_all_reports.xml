@@ -74,8 +74,8 @@
 
         <com.github.mikephil.charting.charts.PieChart
         android:layout_below="@+id/activity_all_reports_TXT_data"
-        android:layout_width="350dp"
-        android:layout_height="320dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
             android:layout_marginTop="10dp"
             android:layout_centerHorizontal="true"
         android:id="@+id/activity_all_reports_CHART_chart"></com.github.mikephil.charting.charts.PieChart>
