@@ -38,6 +38,7 @@ import com.example.project.activitis.ActivityLogIn;
 import com.example.project.data.AllUsers;
 import com.example.project.data.BloodDonation;
 import com.example.project.data.CheckValidation;
+import com.example.project.data.Encryption;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
@@ -329,10 +330,21 @@ public class ActivityMyProfile extends AppCompatActivity {
 
                 alarmManager.set(AlarmManager.RTC_WAKEUP,timeAtClick+tenSec,pendingIntent);
                 currentUser.setCanDonateBlood(false);
-                myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
+                String userIdEncrypt = null;
+                try {
+                    userIdEncrypt = Encryption.encrypt(currentUser.getID());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
                 Toast.makeText(getApplicationContext(), "תודה שתרמת דם! נשמח לראותך שוב", Toast.LENGTH_SHORT).show();
 
-                saveToFirebase();
+                try {
+                    saveToFirebase();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 dialog.dismiss();
             }
         });
@@ -341,12 +353,14 @@ public class ActivityMyProfile extends AppCompatActivity {
         dialog.show();
     }
 
-    private void saveToFirebase() {
+    private void saveToFirebase() throws Exception {
         BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(), getDateStr(dateLast), currentUser.getID());
         currentUser.addBloodDonation(bloodDonation);
         String bloodDonationID = currentUser.getID() + "-" + currentUser.getAllBloodDonations().size();
         bloodDonation.setBooldDonationId(bloodDonationID);
-        myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
+        String userIdEncrypt = null;
+        userIdEncrypt = Encryption.encrypt(currentUser.getID());
+        myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
         myRef.child("Blood donations").child(bloodDonationID).setValue(bloodDonation);
 
         putOnMSP_user();

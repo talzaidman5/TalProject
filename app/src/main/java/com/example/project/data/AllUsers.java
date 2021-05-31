@@ -60,6 +60,7 @@ public class AllUsers {
     }
     public User getUserByID(String id){
         for (User tempUser: allUser) {
+            if(tempUser.getID()!=null)
             if(tempUser.getID().equals(id))
                 return  tempUser;
         }
@@ -74,8 +75,9 @@ public class AllUsers {
         return null;
     } public User getUserByEmail(String email){
         for (User tempUser: allUser) {
-            if(tempUser.getEmail().equals(email))
-                return  tempUser;
+            if (tempUser.getEmail() != null)
+                if (tempUser.getEmail().equals(email))
+                    return tempUser;
         }
         return null;
     }

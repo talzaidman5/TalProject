@@ -23,6 +23,7 @@ import com.example.project.activitis.client.ActivityMainForm;
 import com.example.project.activitis.client.ActivityMyProfile;
 import com.example.project.activitis.client.ActivityProfileMenu;
 import com.example.project.data.AllUsers;
+import com.example.project.data.Encryption;
 import com.example.project.data.Form;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
@@ -63,7 +64,11 @@ public class Fragment_e extends Fragment {
         spn_my_spinner = view.findViewById(R.id.spinner);
         msp = new MySheredP(getContext());
         getFromMSP();
-        checkAlgo();
+        try {
+            checkAlgo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         readFile();
 
@@ -71,10 +76,11 @@ public class Fragment_e extends Fragment {
     }
 
 
-    private void checkAlgo() {
+    private void checkAlgo() throws Exception {
         Boolean res = form.checkForm();
         user.setCanDonateBlood(res);
-        myRef.child("Users").child(user.getID()).setValue(user);
+        String userIdEncrypt = Encryption.encrypt(user.getID());
+        myRef.child("Users").child(userIdEncrypt).setValue(user);
 
             putOnMSP();
         canDonateAlert(res);

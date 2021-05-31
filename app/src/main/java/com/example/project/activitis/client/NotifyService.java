@@ -23,6 +23,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.example.project.R;
 import com.example.project.data.AllUsers;
+import com.example.project.data.Encryption;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
@@ -35,7 +36,7 @@ public class NotifyService extends BroadcastReceiver {
     private AllUsers allUsers;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
-
+    private String userIdEncrypt;
         @Override
         public void onReceive(Context context, Intent intent) {
             msp = new MySheredP(context);
@@ -55,7 +56,13 @@ public class NotifyService extends BroadcastReceiver {
             NotificationManagerCompat notificationCompat = NotificationManagerCompat.from(context);
                 notificationCompat.notify(200,builder.build());
                 currentUser.setCanDonateBlood(true);
-            myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
+            try {
+                userIdEncrypt = Encryption.encrypt(currentUser.getID());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
 
 
         }

@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,6 +25,7 @@ import com.bumptech.glide.Glide;
 import com.example.project.activitis.client.ActivityProfileMenu;
 import com.example.project.activitis.manager.ActivityMenuManager;
 import com.example.project.data.CheckValidation;
+import com.example.project.data.Encryption;
 import com.github.drjacky.imagepicker.ImagePicker;
 
 
@@ -60,6 +62,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 public class ActivitySignUpPage extends AppCompatActivity {
     private MaterialButton signUp_BTN_signUp;
@@ -84,6 +88,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private RadioButton signup_CHB_female, signup_CHB_male;
 
     private int age;
+private    String userIdEncrypt = null;
 
 
     @SuppressLint("ResourceType")
@@ -275,7 +280,15 @@ public class ActivitySignUpPage extends AppCompatActivity {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         assert firebaseUser != null;
                         buildUser();
-                        myRef.child("Users").child(signUp_EDT_id.getEditText().getText().toString()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        try {
+                            userIdEncrypt = Encryption.encrypt(newUser.getID());
+                            userIdEncrypt = userIdEncrypt.substring(0,userIdEncrypt.length()-4);
+                        } catch (Exception e) {
+                            //   userIdEncrypt = newUser.getID();
+                            e.printStackTrace();
+                        }
+
+                        myRef.child("Users").child(userIdEncrypt.toString()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
@@ -290,6 +303,12 @@ public class ActivitySignUpPage extends AppCompatActivity {
                                     Toast.makeText(ActivitySignUpPage.this, "error", Toast.LENGTH_SHORT);
                             }
 
+
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.d("tall", e.getMessage().toString());
+                            }
                         });
                     }
                 }
