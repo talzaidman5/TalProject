@@ -77,7 +77,11 @@ public class ActivityLogIn extends AppCompatActivity {
         mainPage_BTN_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkUser();
+                try {
+                    checkUser();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         main_page_BTN_signUp.setOnClickListener(new View.OnClickListener() {
@@ -154,7 +158,7 @@ public class ActivityLogIn extends AppCompatActivity {
     }
 
 
-    public void checkUser() {
+    public void checkUser() throws Exception {
         String email_txt = mainPage_EDIT_email.getEditText().getText().toString();
         String password_txt = mainPage_EDIT_password.getEditText().getText().toString();
         newUser = allUsers.getUserByEmail(email_txt);

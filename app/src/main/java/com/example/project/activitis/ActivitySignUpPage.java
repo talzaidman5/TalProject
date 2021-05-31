@@ -138,7 +138,7 @@ private    String userIdEncrypt = null;
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month+1);
+                calendar.set(Calendar.MONTH, month+2);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 date = calendar.getTime();
                 String finalDate = dayOfMonth + "/" + month + "/" + year;
@@ -192,45 +192,40 @@ private    String userIdEncrypt = null;
     private boolean checkData() {
         data = true;
         if (signUp_EDT_firstName.getEditText().getText().length() < 2) {
-            signUp_EDT_firstName.setError("INVALID NAME");
+            signUp_EDT_firstName.setError("שם לא תקין");
             data = false;
         } else
             signUp_EDT_firstName.setError(null);
 
         if (signUp_EDT_lastName.getEditText().getText().length() < 2) {
-            signUp_EDT_lastName.setError("INVALID NAME");
+            signUp_EDT_lastName.setError("שם לא תקין");
             data = false;
         } else
             signUp_EDT_lastName.setError(null);
         if (!CheckValidation.checkID(signUp_EDT_id.getEditText().getText().toString())) {
-            signUp_EDT_id.setError("INVALID ID");
+            signUp_EDT_id.setError("תעודת זהות לא תקינה");
             data = false;
         } else
             signUp_EDT_id.setError(null);
 
         if (!CheckValidation.checkMail(signUp_EDT_email.getEditText().getText().toString())) {
-            signUp_EDT_email.setError("INVALID MAIL");
+            signUp_EDT_email.setError("כתובת מייל לא תקינה");
             data = false;
         } else
             signUp_EDT_email.setError(null);
         if (!CheckValidation.checkPhoneNumberISRAEL(signUp_EDT_phone.getEditText().getText().toString())) {
-            signUp_EDT_phone.setError("INVALID PHONE");
+            signUp_EDT_phone.setError("מספר טלפון לא תקין");
             data = false;
         } else
             signUp_EDT_phone.setError(null);
 
 
         if (signUp_EDT_password.getEditText().getText().length() < 5) {
-            signUp_EDT_password.setError("PASSWORD MUST ME AT LEAST 6 CHARS");
+            signUp_EDT_password.setError("סיסמא חייבת להיות לפחות בת 6 תווים");
             data = false;
         } else
             signUp_EDT_password.setError(null);
 
-        if (signUp_SPI_bloodTypes.getSelectedItem().toString().equals("N/A")) {
-            ((TextView) signUp_SPI_bloodTypes.getSelectedView()).setError("Error message");
-            data = false;
-        } else
-            ((TextView) signUp_SPI_bloodTypes.getSelectedView()).setError(null);
         Calendar today = Calendar.getInstance();
         age = today.get(Calendar.YEAR) - date.getYear() - 1900;
         if (age< 17 || age > 65) {
@@ -281,14 +276,38 @@ private    String userIdEncrypt = null;
                         assert firebaseUser != null;
                         buildUser();
                         try {
-                            userIdEncrypt = Encryption.encrypt(newUser.getID());
-                            userIdEncrypt = userIdEncrypt.substring(0,userIdEncrypt.length()-4);
+
+                            String email = Encryption.encrypt(newUser.getEmail());
+                            newUser.setEmail(email);
+
+                            String password = Encryption.encrypt(newUser.getPassword());
+                            newUser.setPassword(password);
+
+                            String phone = Encryption.encrypt(newUser.getPhoneNumber());
+                            newUser.setPhoneNumber(phone);
+
+                            String bloodType = Encryption.encrypt(newUser.getBloodType());
+                            newUser.setBloodType(bloodType);
+
+                            String name = Encryption.encrypt(newUser.getFirstName().toString());
+                            newUser.setFirstName(name);
+
+                            String fName = Encryption.encrypt(newUser.getLastName().toString());
+                            newUser.setLastName(fName);
+
+                            String age = Encryption.encrypt(newUser.getAge()+"");
+                            newUser.setAge(Integer.parseInt(age));
+
+                            String city = Encryption.encrypt(newUser.getCity()+"");
+                            newUser.setCity(city);
+
+
                         } catch (Exception e) {
                             //   userIdEncrypt = newUser.getID();
                             e.printStackTrace();
                         }
 
-                        myRef.child("Users").child(userIdEncrypt.toString()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            myRef.child("Users").child(newUser.getID()).setValue(newUser).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
@@ -307,7 +326,6 @@ private    String userIdEncrypt = null;
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.d("tall", e.getMessage().toString());
                             }
                         });
                     }

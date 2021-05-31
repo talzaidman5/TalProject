@@ -26,6 +26,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FlashScreen extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -72,7 +74,11 @@ public class FlashScreen extends AppCompatActivity {
                     allUsers.addToList(tempUser);
                 }
                 putOnMSP();
-                userExists();
+                try {
+                    userExists();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
             }
 
@@ -102,7 +108,7 @@ public class FlashScreen extends AppCompatActivity {
         });
 
     }
-    private void userExists() {
+    private void userExists() throws Exception {
         if (firebaseUser != null) {
             User tempUser = allUsers.getUserByEmail(firebaseUser.getEmail());
             if (tempUser != null) {

@@ -9,20 +9,10 @@ public class AllUsers {
 
     private List<User> allUser;
 
-    public List<User> getAllUser() {
-        return allUser;
-    }
-
-    public void setAllUser(List<User> allUser) {
-        this.allUser = allUser;
-    }
 
 
     public AllUsers(String data) {
         allUser =  createUsersFromString(data).allUser;
-    }
-    public static AllUsers AllUsers2(String data) {
-        return createUsersFromString(data);
     }
 
     public AllUsers() {
@@ -73,10 +63,11 @@ public class AllUsers {
                 return  tempUser;
         }
         return null;
-    } public User getUserByEmail(String email){
+    } public User getUserByEmail(String email) throws Exception {
+
         for (User tempUser: allUser) {
             if (tempUser.getEmail() != null)
-                if (tempUser.getEmail().equals(email))
+                if (Encryption.decrypt(tempUser.getEmail()).equals(email))
                     return tempUser;
         }
         return null;

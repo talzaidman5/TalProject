@@ -105,7 +105,11 @@ public class ActivityMyProfile extends AppCompatActivity {
         storageReference = storage.getReference();
         findView();
         getFromMSP();
-        initData();
+        try {
+            initData();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Intent myIntent = new Intent(getApplicationContext(), NotifyService.class);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -123,7 +127,11 @@ public class ActivityMyProfile extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapterBloodTypes = ArrayAdapter.createFromResource(this,
                 R.array.bloods, android.R.layout.simple_spinner_item);
         adapterBloodTypes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        myProfile_SPI_bloodTypes.getEditText().setText(currentUser.getBloodType());
+        try {
+            myProfile_SPI_bloodTypes.getEditText().setText(Encryption.decrypt(currentUser.getBloodType()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
         myProfile_BTN_edit.setOnClickListener(new View.OnClickListener() {
@@ -384,15 +392,15 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     }
 
-    public void initData() {
+    public void initData() throws Exception {
         changeTextsEnabled(false);
         if (currentUser.getID() != null) {
-            myProfile_TXT_phoneNumberToFill.getEditText().setText(currentUser.getPhoneNumber());
-            myProfile_TXT_passwordToFill.getEditText().setText(currentUser.getPassword());
-            myProfile_TXT_nameToFill.setText(currentUser.getFirstName());
+            myProfile_TXT_phoneNumberToFill.getEditText().setText(Encryption.decrypt(currentUser.getPhoneNumber()));
+            myProfile_TXT_passwordToFill.getEditText().setText(Encryption.decrypt(currentUser.getPassword()));
+            myProfile_TXT_nameToFill.setText(Encryption.decrypt(currentUser.getFirstName()));
             myProfile_TXT_dateBirthToFill.getEditText().setText(getDateStr(currentUser.getBirthDate()));
             myProfile_TXT_IDToFill.getEditText().setText(currentUser.getID());
-            myProfile_TXT_emailToFill.getEditText().setText(currentUser.getEmail());
+            myProfile_TXT_emailToFill.getEditText().setText(Encryption.decrypt(currentUser.getEmail()));
             myProfile_TXT_lastDonation.getEditText().setText(getDateStr(currentUser.getLastBloodDonation()));
             my_profile_SWI_can_donate_blood.setChecked(currentUser.getCanDonateBlood());
         }

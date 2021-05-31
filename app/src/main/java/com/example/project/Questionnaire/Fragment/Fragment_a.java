@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.project.R;
 import com.example.project.data.AllUsers;
+import com.example.project.data.Encryption;
 import com.example.project.data.Form;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
@@ -48,7 +49,11 @@ public class Fragment_a extends Fragment {
         msp = new MySheredP(getContext());
 
         findViews(view);
-        fillDataFromUserProfile();
+        try {
+            fillDataFromUserProfile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return view;
     }
@@ -88,13 +93,13 @@ public class Fragment_a extends Fragment {
         return user;
     }
 
-    private void fillDataFromUserProfile() {
+    private void fillDataFromUserProfile() throws Exception {
        user= getFromMSP();
         if (user != null) {
             questionnairePage_EDT_id.getEditText().setText(user.getID());
-            questionnairePage_EDT_first_name.getEditText().setText(user.getFirstName());
-            questionnairePage_EDT_family_name.getEditText().setText(user.getLastName());
-            questionnairePage_EDT_city.getEditText().setText(user.getCity());
+            questionnairePage_EDT_first_name.getEditText().setText(Encryption.decrypt(user.getFirstName()));
+            questionnairePage_EDT_family_name.getEditText().setText(Encryption.decrypt(user.getLastName()));
+            questionnairePage_EDT_city.getEditText().setText(Encryption.decrypt(user.getCity()));
             if (user.getGender().equals("MALE"))
                 radio_male.setChecked(true);
             else
@@ -103,8 +108,8 @@ public class Fragment_a extends Fragment {
             String finalDate = getDateStr(user.getBirthDate());
             questionnairePage_EDT_dateBirth.getEditText().setText(finalDate);
             questionnairePage_EDT_age.getEditText().setText(user.getAge() + "");
-            questionnairePage_EDT_email.getEditText().setText(user.getEmail());
-            questionnairePage_EDT_previous_family_name.getEditText().setText(form.getPrevious_family_name());
+            questionnairePage_EDT_email.getEditText().setText(Encryption.decrypt(user.getEmail()));
+            questionnairePage_EDT_previous_family_name.getEditText().setText(Encryption.decrypt(form.getPrevious_family_name()));
 
             questionnairePage_EDT_postal.getEditText().setText(form.getPostal());
             questionnairePage_EDT_street.getEditText().setText(form.getStreet());
