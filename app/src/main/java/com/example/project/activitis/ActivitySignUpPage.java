@@ -138,10 +138,10 @@ private    String userIdEncrypt = null;
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, month+2);
+                calendar.set(Calendar.MONTH, month+1);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 date = calendar.getTime();
-                String finalDate = dayOfMonth + "/" + month + "/" + year;
+                String finalDate = dayOfMonth + "/" + (month+1) + "/" + year;
                 signUp_TXT_birthDatePicker.setText(finalDate);
 
             }
@@ -276,6 +276,8 @@ private    String userIdEncrypt = null;
                         assert firebaseUser != null;
                         buildUser();
                         try {
+                            String city = Encryption.encrypt(newUser.getCity());
+                            newUser.setCity(city);
 
                             String email = Encryption.encrypt(newUser.getEmail());
                             newUser.setEmail(email);
@@ -298,8 +300,7 @@ private    String userIdEncrypt = null;
                             String age = Encryption.encrypt(newUser.getAge()+"");
                             newUser.setAge(Integer.parseInt(age));
 
-                            String city = Encryption.encrypt(newUser.getCity()+"");
-                            newUser.setCity(city);
+
 
 
                         } catch (Exception e) {
