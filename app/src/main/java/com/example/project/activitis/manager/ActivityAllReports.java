@@ -39,6 +39,7 @@ import com.anychart.charts.Pie;
 import com.example.project.R;
 import com.example.project.data.AllUsers;
 import com.example.project.data.BloodDonation;
+import com.example.project.data.Encryption;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
@@ -127,7 +128,7 @@ public class ActivityAllReports extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month+1);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth-1);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 Date date = calendar.getTime();
 
                  finalDate = getDateStr(date);
@@ -156,26 +157,43 @@ public class ActivityAllReports extends AppCompatActivity {
         activity_all_reports_BTN_export.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bloodDonations = new HashMap<>();
                 switch (main_BTN_allOptionToExport.getSelectedItem().toString()) {
                     case "עיר": {
-                        returnLists(bloodDonationList, "עיר");
+                        try {
+                            returnLists(bloodDonationList, "עיר");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         setupPie(bloodDonations.keySet().toArray(new String[bloodDonations.keySet().size()]), bloodDonations.values().toArray(new Integer[bloodDonations.values().size()]));
 
                     }
                     break;
                     case "תאריך":
                         if (!activity_all_reports_TXT_date.getText().equals("בחר תאריך")) {
-                            returnLists(bloodDonationList, "תאריך");
+                            try {
+                                returnLists(bloodDonationList, "תאריך");
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             setupResourceChart(bloodDonationsUsers);
                         }
                         break;
                     case "מגדר": {
-                        returnLists(bloodDonationList, "מגדר");
+                        try {
+                            returnLists(bloodDonationList, "מגדר");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         setupPie(returnListString(bloodDonationsGander), returnListInteger(bloodDonationsGander));
                     }
                     break;
                     case "סוג דם": {
-                        returnLists(bloodDonationList, "סוג דם");
+                        try {
+                            returnLists(bloodDonationList, "סוג דם");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
                         setupPie(returnListStringBlood(bloodDonationsBlood), returnListIntegerBlood(bloodDonationsBlood));
                     }
                     break;
@@ -241,7 +259,7 @@ public class ActivityAllReports extends AppCompatActivity {
         return integers;
     }
 
-    private void returnLists(ArrayList<BloodDonation> allBloodDonation, String type) {
+    private void returnLists(ArrayList<BloodDonation> allBloodDonation, String type) throws Exception {
         switch (type) {
             case "עיר":
                 activity_all_reports_TXT_data.setVisibility(View.INVISIBLE);
@@ -270,10 +288,10 @@ public class ActivityAllReports extends AppCompatActivity {
                 break;
             case "סוג דם":
                 for (BloodDonation bloodDonation : allBloodDonation) {
-                    if (bloodDonations.containsKey(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()))
-                        bloodDonationsBlood.put(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType(), bloodDonationsBlood.get(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()) + 1);
+                    if (bloodDonations.containsKey(Encryption.decrypt(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType())))
+                        bloodDonationsBlood.put(Encryption.decrypt(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()), bloodDonationsBlood.get(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()) + 1);
                     else
-                        bloodDonationsBlood.put(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType(), 1);
+                        bloodDonationsBlood.put(Encryption.decrypt(allUsers.getUserByID(bloodDonation.getUserID()).getBloodType()), 1);
                 }
                 break;
         }
@@ -283,6 +301,7 @@ public class ActivityAllReports extends AppCompatActivity {
         myRef.child("Blood donations").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                bloodDonationList = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     BloodDonation bloodDonation = ds.getValue(BloodDonation.class);
                     bloodDonationList.add(bloodDonation);
@@ -296,7 +315,7 @@ public class ActivityAllReports extends AppCompatActivity {
     }
 
     public void setupPie(String[] list, Integer[] present) {
-
+        arrayList = new ArrayList<>();
         if (list.length != 0) {
             for (int i = 0; i < list.length; i++) {
                 arrayList.add(new PieEntry( present[i],list[i]));

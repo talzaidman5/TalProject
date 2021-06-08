@@ -226,7 +226,6 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_TXT_dateBirthToFill.setEnabled(status);
         myProfile_TXT_emailToFill.setEnabled(status);
         myProfile_TXT_phoneNumberToFill.setEnabled(status);
-        myProfile_SPI_bloodTypes.setEnabled(status);
     }
 
     private void updateUserInfo() {
