@@ -23,6 +23,7 @@ import com.example.project.activitis.client.ActivityMainForm;
 import com.example.project.activitis.client.ActivityMyProfile;
 import com.example.project.activitis.client.ActivityProfileMenu;
 import com.example.project.data.AllUsers;
+import com.example.project.data.BloodDonation;
 import com.example.project.data.Encryption;
 import com.example.project.data.Form;
 import com.example.project.data.User;
@@ -97,7 +98,7 @@ public class Fragment_e extends Fragment {
         String res = "";
         if (isCan) {
             res = "אתה יכול לתרום!";
-
+        UpdateFB();
         }
         else
             res = "אינך יכול לתרום!";
@@ -117,6 +118,14 @@ public class Fragment_e extends Fragment {
                 .setNegativeButton(android.R.string.no, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+
+    }
+
+    private void UpdateFB() {
+        user.setCanDonateBlood(true);
+        myRef.child("Users").child(user.getID()).setValue(user);
+        String jsonUser = gson.toJson(user);
+        msp.putString(Constants.KEY_MSP, jsonUser);
 
     }
 
