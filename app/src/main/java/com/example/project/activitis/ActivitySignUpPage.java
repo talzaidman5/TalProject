@@ -1,32 +1,26 @@
 package com.example.project.activitis;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.project.activitis.client.ActivityProfileMenu;
-import com.example.project.activitis.manager.ActivityMenuManager;
+import com.example.project.activitis.manager.ActivityAllReports;
 import com.example.project.data.CheckValidation;
 import com.example.project.data.Encryption;
-import com.github.drjacky.imagepicker.ImagePicker;
 
 
 import androidx.annotation.NonNull;
@@ -40,7 +34,6 @@ import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
@@ -50,9 +43,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -62,8 +53,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 public class ActivitySignUpPage extends AppCompatActivity {
     private MaterialButton signUp_BTN_signUp;
@@ -318,7 +307,7 @@ private    String userIdEncrypt = null;
                                     if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
                                         startActivity(new Intent(ActivitySignUpPage.this, ActivityProfileMenu.class));
                                     else
-                                        startActivity(new Intent(ActivitySignUpPage.this, ActivityMenuManager.class));
+                                        startActivity(new Intent(ActivitySignUpPage.this, ActivityAllReports.class));
                                 } else
                                     Toast.makeText(ActivitySignUpPage.this, "error", Toast.LENGTH_SHORT);
                             }

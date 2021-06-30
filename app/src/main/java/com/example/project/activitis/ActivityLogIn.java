@@ -16,9 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project.R;
 import com.example.project.activitis.client.ActivityProfileMenu;
-import com.example.project.activitis.manager.ActivityMenuManager;
+import com.example.project.activitis.manager.ActivityAllReports;
 import com.example.project.data.AllUsers;
-import com.example.project.data.Position;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
@@ -32,8 +31,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
-
-import java.util.Date;
 
 public class ActivityLogIn extends AppCompatActivity {
 
@@ -141,7 +138,7 @@ public class ActivityLogIn extends AppCompatActivity {
             if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
                 startActivity(new Intent(ActivityLogIn.this, ActivityProfileMenu.class));
             else
-                startActivity(new Intent(ActivityLogIn.this, ActivityMenuManager.class));
+                startActivity(new Intent(ActivityLogIn.this, ActivityAllReports.class));
 
         return newUser;
     }
@@ -181,7 +178,7 @@ public class ActivityLogIn extends AppCompatActivity {
                                         if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
                                             intent = new Intent(ActivityLogIn.this, ActivityProfileMenu.class);
                                         else
-                                            intent = new Intent(ActivityLogIn.this, ActivityMenuManager.class);
+                                            intent = new Intent(ActivityLogIn.this, ActivityAllReports.class);
 
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
