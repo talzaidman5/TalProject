@@ -91,7 +91,6 @@ public class Fragment_e extends Fragment {
     }
 
     private void canDonateAlert(boolean isCan) {
-
         String res = "";
         if (isCan) {
             res = "אתה יכול לתרום!";

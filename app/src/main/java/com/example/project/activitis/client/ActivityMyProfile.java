@@ -7,33 +7,23 @@ import android.app.Dialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
-import androidx.core.app.NotificationManagerCompat;
 
-import com.bumptech.glide.Glide;
 import com.example.project.R;
 import com.example.project.activitis.ActivityLogIn;
 import com.example.project.data.AllUsers;
@@ -43,31 +33,24 @@ import com.example.project.data.Encryption;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
-import com.github.drjacky.imagepicker.ImagePicker;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.messaging.RemoteMessage;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
 
 public class ActivityMyProfile extends AppCompatActivity {
@@ -145,7 +128,6 @@ public class ActivityMyProfile extends AppCompatActivity {
                     myProfile_BTN_edit.setBackgroundResource(R.drawable.save);
 
                 } else {
-
                     if (checkData()) {
                         changeTextsEnabled(false);
                         myProfile_BTN_edit.setBackgroundResource(R.drawable.pencil);
@@ -199,11 +181,8 @@ public class ActivityMyProfile extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                Date date = calendar.getTime();
-
                 String finalDate = dayOfMonth + "/" + month + "/" + year;
                 myProfile_TXT_dateBirthToFill.getEditText().setText(finalDate);
-
             }
         };
 
@@ -214,7 +193,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void changeTextsEnabled(boolean status) {
         myProfile_TXT_IDToFill.setEnabled(status);
         myProfile_TXT_passwordToFill.setEnabled(status);
-        myProfile_TXT_dateBirthToFill.setEnabled(status);
+//        myProfile_TXT_dateBirthToFill.setEnabled(status);
         myProfile_TXT_emailToFill.setEnabled(status);
         myProfile_TXT_phoneNumberToFill.setEnabled(status);
     }
@@ -248,17 +227,15 @@ public class ActivityMyProfile extends AppCompatActivity {
             data = false;
         }
 
-        if (myProfile_TXT_dateBirthToFill.getEditText().getText().length() == 0) {
-            myProfile_TXT_dateBirthToFill.setError("INVALID DATE");
-            data = false;
-        }
+//        if (myProfile_TXT_dateBirthToFill.getEditText().getText().length() == 0) {
+//            myProfile_TXT_dateBirthToFill.setError("INVALID DATE");
+//            data = false;
+//        }
         return data;
     }
 
 
     private void addBloodDonation() {
-        // custom dialog
-        Intent intent = new Intent(this, NotifyService.class);
         final Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.popup_add_blood_donation);
         dialog.setTitle("Title...");
@@ -267,6 +244,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
         Button dialogButton = dialog.findViewById(R.id.popup_BTN_add);
         add_blood_donation_TXT_date = dialog.findViewById(R.id.add_blood_donation_TXT_date);
+
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
             CharSequence name= "name";
             int impro = NotificationManager.IMPORTANCE_DEFAULT;
@@ -317,7 +295,6 @@ public class ActivityMyProfile extends AppCompatActivity {
         dialogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent1 = new Intent(getApplicationContext(),NotifyService.class);
                 PendingIntent pendingIntent =PendingIntent.getBroadcast(getApplicationContext(),0,intent1,0);
                 AlarmManager alarmManager =(AlarmManager) getSystemService(ALARM_SERVICE);
