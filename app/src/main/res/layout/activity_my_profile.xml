@@ -201,6 +201,7 @@
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
                     android:gravity="right"
+                    android:enabled="false"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="18dp" />
@@ -226,6 +227,7 @@
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"
                     android:gravity="right"
+                    android:enabled="false"
                     android:textColor="@color/black"
                     android:textColorHint="@color/black"
                     android:textSize="18dp" />

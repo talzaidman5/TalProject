@@ -48,7 +48,7 @@ public class ActivityProfileMenu extends AppCompatActivity {
         msp = new MySheredP(this);
         findViews();
         getFromMSP();
-        // readDataPositions();
+
         main_TXT_name.setText("היי " + newUser.getFirstName());
         menu_BTN_activityPosition.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,25 +135,7 @@ public class ActivityProfileMenu extends AppCompatActivity {
         finish();
     }
 
-//    public void readDataPositions() {
-//        myRef.child("ActivityPosition").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                    Position position = ds.getValue(Position.class);
-//                    positions.add(position);
-//                }
-//                putOnMSP();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//
-//        });
-//
-//    }
+
 
     private void getFromMSP() {
         String dataPos = msp.getString(Constants.KEY_MSP_POS, "NA");
@@ -164,9 +146,5 @@ public class ActivityProfileMenu extends AppCompatActivity {
 
     }
 
-    private void putOnMSP() {
-        String jsonPositions = gson.toJson(positions);
-        msp.putString(Constants.KEY_MSP_POS, jsonPositions);
-    }
 
 }
