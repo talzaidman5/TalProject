@@ -127,12 +127,10 @@ public class ActivityProfileMenu extends AppCompatActivity {
 
     void openHistoryPage() {
         startActivity(new Intent(ActivityProfileMenu.this, ActivityHistoryBloodDonations.class));
-        finish();
     }
 
     void openMenu() {
         startActivity(new Intent(ActivityProfileMenu.this, ActivityMyProfile.class));
-        finish();
     }
 
 

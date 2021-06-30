@@ -13,7 +13,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.project.R;
@@ -56,6 +58,8 @@ public class Fragment_e extends Fragment {
 
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference myRef = database.getReference("FB");
+    private ImageView canBlood;
+    private Button end;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -68,6 +72,7 @@ public class Fragment_e extends Fragment {
             e.printStackTrace();
         }
         readFile();
+
         return view;
     }
 
@@ -75,8 +80,7 @@ public class Fragment_e extends Fragment {
     private void checkAlgo() throws Exception {
         Boolean res = form.checkForm();
         user.setCanDonateBlood(res);
-        String userIdEncrypt = Encryption.encrypt(user.getID());
-        myRef.child("Users").child(userIdEncrypt).setValue(user);
+        myRef.child("Users").child(user.getID()).setValue(user);
 
         putOnMSP();
         canDonateAlert(res);
@@ -93,13 +97,15 @@ public class Fragment_e extends Fragment {
     private void canDonateAlert(boolean isCan) {
         String res = "";
         if (isCan) {
-            res = "אתה יכול לתרום!";
-        UpdateFB();
+            res = "הנך יכול לתרום!";
+            UpdateFB();
         }
-        else
+        else {
             res = "אינך יכול לתרום!";
+        }
+        Toast.makeText(getContext(), res, Toast.LENGTH_LONG).show();
 
-        new AlertDialog.Builder(getContext())
+      /*  new AlertDialog.Builder(getContext())
                 .setTitle("")
                 .setMessage(res)
 
@@ -114,7 +120,7 @@ public class Fragment_e extends Fragment {
                 .setNegativeButton(android.R.string.no, null)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
-
+*/
     }
 
     private void UpdateFB() {

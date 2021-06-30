@@ -281,6 +281,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:textColor="@color/black"
+                    android:inputType="number"
                     android:textColorHint="@color/black"
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="5dp"
@@ -393,6 +394,7 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="18dp"
                     android:gravity="right"
+                    android:inputType="number"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"  />
             </com.google.android.material.textfield.TextInputLayout >
@@ -419,6 +421,7 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="18dp"
                     android:gravity="right"
+                    android:inputType="number"
                     android:background="@android:drawable/dialog_holo_light_frame"
                     android:fontFamily="@font/regular"  />
             </com.google.android.material.textfield.TextInputLayout >

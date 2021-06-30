@@ -201,7 +201,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     private void updateUserInfo() {
         currentUser.setID(myProfile_TXT_IDToFill.getEditText().getText().toString());
         currentUser.setPassword(myProfile_TXT_passwordToFill.getEditText().getText().toString());
-        currentUser.setLastBloodDonation(getStringDate(myProfile_TXT_lastDonation.getEditText().getText().toString()));
+       // currentUser.setLastBloodDonation(getStringDate(myProfile_TXT_lastDonation.getEditText().getText().toString()));
         if (date != null)
             currentUser.setBirthDate(date);
         currentUser.setEmail(myProfile_TXT_emailToFill.getEditText().getText().toString());
@@ -312,7 +312,7 @@ public class ActivityMyProfile extends AppCompatActivity {
                 }
                 currentUser.updateCountBlood();
 
-                myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
+                myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
                 Toast.makeText(getApplicationContext(), "תודה שתרמת דם! נשמח לראותך שוב", Toast.LENGTH_SHORT).show();
                 try {
                     saveToFirebase();

@@ -263,6 +263,8 @@ public class ActivityAllReports extends AppCompatActivity {
 
     private void returnLists(ArrayList<BloodDonation> allBloodDonation, String type) throws Exception {
         bloodDonations.clear();
+        bloodDonationsGander.clear();
+        bloodDonationsUsers.clear();
         switch (type) {
             case "עיר":
                 activity_all_reports_TXT_data.setVisibility(View.INVISIBLE);
@@ -281,10 +283,11 @@ public class ActivityAllReports extends AppCompatActivity {
                         g = "אישה";
                    else
                        g="גבר";
-                    if (bloodDonationsGander.containsKey(allUsers.getUserByID(bloodDonation.getUserID()).getGender()))
-                        bloodDonationsGander.put(g, bloodDonationsGander.get(allUsers.getUserByID(bloodDonation.getUserID()).getGender()) + 1);
+                    if (bloodDonationsGander.containsKey(g))
+                        bloodDonationsGander.put(g, bloodDonationsGander.get(g) + 1);
                     else
                         bloodDonationsGander.put(g, 1);
+                 //   bloodDonationsGander.put(g, bloodDonationsGander.get(g) + 1);
 
                 }
                 break;

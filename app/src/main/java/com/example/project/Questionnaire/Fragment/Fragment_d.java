@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.project.R;
@@ -33,7 +34,6 @@ public class Fragment_d extends Fragment {
     private MySheredP msp;
     private Gson gson = new Gson();
     private Form form;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

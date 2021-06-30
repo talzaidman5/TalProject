@@ -1,5 +1,6 @@
 package com.example.project.activitis.client;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -80,8 +81,12 @@ public class ActivityMainForm extends AppCompatActivity {
                 showE(click);
                 break;
             }
-            default:
-                showE(click);
+            case(7):{
+                Intent intent = new Intent(this, ActivityProfileMenu.class);
+                startActivity(intent);
+            }
+//            default:
+//                showE(click);
         }
     }
 
@@ -192,10 +197,6 @@ public class ActivityMainForm extends AppCompatActivity {
             questionnairePage_EDT_mobilePhone.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_mobilePhone.setError("");
-        if (questionnairePage_EDT_OfficePhone.getEditText().getText().length() == 0) {
-            questionnairePage_EDT_OfficePhone.setError("אנא השלם");
-            isData = false;
-        } else questionnairePage_EDT_OfficePhone.setError("");
         if (questionnairePage_EDT_HomePhone.getEditText().getText().length() == 0)
             if (questionnairePage_EDT_MotherCountry.getEditText().getText().length() == 0) {
                 questionnairePage_EDT_MotherCountry.setError("אנא השלם");
