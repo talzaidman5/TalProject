@@ -172,7 +172,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         myProfile_BTN_addBloodDonation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                open();
+                addBloodDonation();
             }
         });
 
@@ -256,7 +256,7 @@ public class ActivityMyProfile extends AppCompatActivity {
     }
 
 
-    private void open() {
+    private void addBloodDonation() {
         // custom dialog
         Intent intent = new Intent(this, NotifyService.class);
         final Dialog dialog = new Dialog(this);
@@ -269,7 +269,6 @@ public class ActivityMyProfile extends AppCompatActivity {
         add_blood_donation_TXT_date = dialog.findViewById(R.id.add_blood_donation_TXT_date);
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
             CharSequence name= "name";
-            String desc = "desc";
             int impro = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel("notifyLemubit",name,impro);
 
@@ -297,7 +296,7 @@ public class ActivityMyProfile extends AppCompatActivity {
                 calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 String finalDate = dayOfMonth + "/" + month + "/" + (year );
-                myProfile_TXT_dateBirthToFill.getEditText().setText(finalDate);
+                myProfile_TXT_lastDonation.getEditText().setText(finalDate);
                 dateLast = new Date(year-1900,month-1,dayOfMonth);
                 currentUser.setLastBloodDonation(dateLast);
                 add_blood_donation_TXT_date.setText(finalDate);
