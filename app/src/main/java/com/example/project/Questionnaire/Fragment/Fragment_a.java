@@ -81,37 +81,31 @@ public class Fragment_a extends Fragment {
         putOnMSP();
     }
 
-    private User getFromMSP() {
+    private void getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_FORM_DATA, "NA");
         String dataUser = msp.getString(Constants.KEY_MSP, "NA");
         form = new Form(dataAll);
         user = new User(dataUser);
-        form.setUser(user);
-        return user;
+//        form.setUser(user);
+//        return user;
     }
 
     private void fillDataFromUserProfile() throws Exception {
-       user= getFromMSP();
+        getFromMSP();
         if (user != null) {
             questionnairePage_EDT_id.getEditText().setText(user.getID());
             questionnairePage_EDT_first_name.getEditText().setText(Encryption.decrypt(user.getFirstName()));
             questionnairePage_EDT_family_name.getEditText().setText(Encryption.decrypt(user.getLastName()));
             questionnairePage_EDT_city.getEditText().setText(Encryption.decrypt(user.getCity()));
-            if (user.getGender().equals("MALE"))
-                radio_male.setChecked(true);
-            else
-                radio_female.setChecked(true);
 
             String finalDate = getDateStr(user.getBirthDate());
             questionnairePage_EDT_dateBirth.getEditText().setText(finalDate);
             questionnairePage_EDT_age.getEditText().setText(user.getAge() + "");
             questionnairePage_EDT_email.getEditText().setText(Encryption.decrypt(user.getEmail()));
-            questionnairePage_EDT_previous_family_name.getEditText().setText(Encryption.decrypt(form.getPrevious_family_name()));
+            questionnairePage_EDT_previous_family_name.getEditText().setText(form.getPrevious_family_name());
             questionnairePage_EDT_mobilePhone.getEditText().setText(Encryption.decrypt(user.getPhoneNumber()));
-
             questionnairePage_EDT_postal.getEditText().setText(form.getPostal());
             questionnairePage_EDT_street.getEditText().setText(form.getStreet());
-            questionnairePage_EDT_mobilePhone.getEditText().setText(user.getPhoneNumber());
             questionnairePage_EDT_OfficePhone.getEditText().setText(form.getOfficePhone());
             questionnairePage_EDT_HomePhone.getEditText().setText(form.getHomePhone());
             questionnairePage_EDT_MotherCountry.getEditText().setText(form.getMotherCountry());
@@ -119,6 +113,11 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_CountryBirth.getEditText().setText(form.getCountryBirth());
             questionnairePage_EDT_yearImmigration.getEditText().setText(form.getYearImmigration());
             questionnairePage_EDT_bloodDonationAgain.setChecked(form.isBloodDonationAgain());
+
+            if (user.getGender().equals("MALE"))
+                radio_male.setChecked(true);
+            else
+                radio_female.setChecked(true);
         }
     }
 
@@ -229,8 +228,8 @@ public class Fragment_a extends Fragment {
             isData = false;
         } else questionnairePage_EDT_fatherCountry.setError("");
 
-           if (questionnairePage_EDT_CountryBirth.getEditText().getText().length() == 0) {
-               questionnairePage_EDT_CountryBirth.setError("אנא השלם");
+        if (questionnairePage_EDT_CountryBirth.getEditText().getText().length() == 0) {
+            questionnairePage_EDT_CountryBirth.setError("אנא השלם");
             isData = false;
         } else questionnairePage_EDT_CountryBirth.setError("");
 

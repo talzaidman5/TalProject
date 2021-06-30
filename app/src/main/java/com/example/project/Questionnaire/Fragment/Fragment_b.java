@@ -56,10 +56,9 @@ public class Fragment_b extends Fragment {
 
     }
 
-    private Form getFromMSP() {
+    private void getFromMSP() {
         String dataAll = msp.getString(Constants.KEY_FORM_DATA, "NA");
         form = new Form(dataAll);
-        return form;
     }
 
     private void setDes() {
@@ -107,7 +106,6 @@ public class Fragment_b extends Fragment {
         eleven = view.findViewById(R.id.eleven);
         twelve = view.findViewById(R.id.twelve);
     }
-
 
     private void checkData() {
         form.getAllDiseases().put("one", one.isChecked());
