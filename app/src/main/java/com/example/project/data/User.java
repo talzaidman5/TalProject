@@ -133,6 +133,7 @@ public class User {
         this.lastBloodDonation = other.lastBloodDonation;
         this.city = other.city;
         this.canDonateBlood = other.canDonateBlood;
+        this.countBloodDonations = other.countBloodDonations;
     }
 
     public Date getLastBloodDonation() {
