@@ -84,7 +84,7 @@ public class ActivityAllReports extends AppCompatActivity {
     private AllUsers allUsers;
     private Map<String, Integer> bloodDonations = new HashMap<String, Integer>();
     private List<User> bloodDonationsUsers = new ArrayList<>();
-    private Map<User.GENDER, Integer> bloodDonationsGander = new HashMap<User.GENDER, Integer>();
+    private Map<String, Integer> bloodDonationsGander = new HashMap<String, Integer>();
     private Map<String, Integer> bloodDonationsBlood = new HashMap<String, Integer>();
     private String finalDate;
     private PieChart chart;
@@ -206,6 +206,8 @@ public class ActivityAllReports extends AppCompatActivity {
         activity_all_reports_BTN_exportPDF.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(), "Permission Granted..", Toast.LENGTH_SHORT).show();
+
                         generatePDF();
                     }
                 }
@@ -222,7 +224,7 @@ public class ActivityAllReports extends AppCompatActivity {
 
     }
 
-    private String[] returnListString(Map<User.GENDER, Integer> map) {
+    private String[] returnListString(Map<String, Integer> map) {
         String[] strings = new String[map.size()];
         for (int i = 0; i < map.size(); i++)
             strings[i] = map.keySet().toArray()[i].toString();
@@ -243,7 +245,7 @@ public class ActivityAllReports extends AppCompatActivity {
     }
 
 
-    private Integer[] returnListInteger(Map<User.GENDER, Integer> map) {
+    private Integer[] returnListInteger(Map<String, Integer> map) {
         Integer[] integers = new Integer[map.size()];
         for (int i = 0; i < map.size(); i++)
             integers[i] = (Integer) map.values().toArray()[i];
@@ -260,6 +262,7 @@ public class ActivityAllReports extends AppCompatActivity {
     }
 
     private void returnLists(ArrayList<BloodDonation> allBloodDonation, String type) throws Exception {
+        bloodDonations.clear();
         switch (type) {
             case "עיר":
                 activity_all_reports_TXT_data.setVisibility(View.INVISIBLE);
@@ -273,10 +276,15 @@ public class ActivityAllReports extends AppCompatActivity {
             case "מגדר":
                 activity_all_reports_TXT_data.setVisibility(View.INVISIBLE);
                 for (BloodDonation bloodDonation : allBloodDonation) {
+                    String g = "";
+                   if(allUsers.getUserByID(bloodDonation.getUserID()).getGender()  == User.GENDER.FEMALE )
+                        g = "אישה";
+                   else
+                       g="גבר";
                     if (bloodDonationsGander.containsKey(allUsers.getUserByID(bloodDonation.getUserID()).getGender()))
-                        bloodDonationsGander.put(allUsers.getUserByID(bloodDonation.getUserID()).getGender(), bloodDonationsGander.get(allUsers.getUserByID(bloodDonation.getUserID()).getGender()) + 1);
+                        bloodDonationsGander.put(g, bloodDonationsGander.get(allUsers.getUserByID(bloodDonation.getUserID()).getGender()) + 1);
                     else
-                        bloodDonationsGander.put(allUsers.getUserByID(bloodDonation.getUserID()).getGender(), 1);
+                        bloodDonationsGander.put(g, 1);
 
                 }
                 break;
@@ -375,14 +383,20 @@ public class ActivityAllReports extends AppCompatActivity {
         title.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
         title.setColor(ContextCompat.getColor(this, R.color.black));
         title.setTextSize(25);
+
+        if(!main_BTN_allOptionToExport.getSelectedItem().toString().equals("סוג דם"))
+            canvas.drawText(main_BTN_allOptionToExport.getSelectedItem().toString()+" : "+"כמות", 700, 300, title);
+        else
+            canvas.drawText("כמות : "+ main_BTN_allOptionToExport.getSelectedItem().toString() ,+ 700, 300, title);
+
         for (PieEntry pie:arrayList) {
-            canvas.drawText(pie.getLabel()+" - "+(int)pie.getValue(), 700, 300+x, title);
-            x+=60;
+            x += 60;
+            canvas.drawText(pie.getLabel() + " : " + (int) pie.getValue(), 700, 300 + x, title);
         }
 
         pdfDocument.finishPage(myPage);
 
-        File file = new File(Environment.getExternalStorageDirectory(), "file.pdf");
+        File file = new File(Environment.getExternalStorageDirectory(), "הפקת דוח לפי "+main_BTN_allOptionToExport.getSelectedItem().toString()+".pdf");
 
         try {
             pdfDocument.writeTo(new FileOutputStream(file));

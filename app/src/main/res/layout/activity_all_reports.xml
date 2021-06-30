@@ -58,7 +58,7 @@
         android:id="@+id/activity_all_reports_BTN_export"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/button_s"
         android:text="ייצא"
         android:layout_below="@id/activity_all_reports_BTN_allOptionToExport"></Button>
     <TextView
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/activity_all_reports_BTN_exportPDF"
-            android:background="#FFFFFF"
+            android:background="@drawable/button_s"
             android:text="PDF ייצא"
             android:textColor="@color/white"
             android:layout_margin="10dp"
