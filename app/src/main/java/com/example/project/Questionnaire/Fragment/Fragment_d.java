@@ -27,14 +27,12 @@ import java.util.Date;
 
 
 public class Fragment_d extends Fragment {
-    private Button next;
     private CheckBox fragmentD_sign, fragmentD_research, fragmentD_research2;
     private View view;
     private EditText fragmentD_date;
     private MySheredP msp;
     private Gson gson = new Gson();
     private Form form;
-    public static boolean isSign=false;
 
 
     @Override

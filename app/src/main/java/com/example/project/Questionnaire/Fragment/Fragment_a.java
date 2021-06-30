@@ -54,7 +54,6 @@ public class Fragment_a extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return view;
     }
 
@@ -79,9 +78,7 @@ public class Fragment_a extends Fragment {
                 questionnairePage_EDT_yearImmigration.getEditText().getText().toString(),
                 questionnairePage_EDT_bloodDonationAgain.isChecked(),
                 questionnairePage_EDT_CountryBirth.getEditText().getText().toString());
-
         putOnMSP();
-
     }
 
     private User getFromMSP() {

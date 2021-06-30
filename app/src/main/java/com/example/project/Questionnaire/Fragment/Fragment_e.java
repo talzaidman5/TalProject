@@ -45,7 +45,6 @@ import java.util.Date;
 
 
 public class Fragment_e extends Fragment {
-
     String fileName = "determination_algorithm.txt";
     private ArrayList<String> algo = new ArrayList<>();
     private View view;
@@ -57,12 +56,10 @@ public class Fragment_e extends Fragment {
 
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final DatabaseReference myRef = database.getReference("FB");
-    private SearchableSpinner spn_my_spinner;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_e, container, false);
-        spn_my_spinner = view.findViewById(R.id.spinner);
         msp = new MySheredP(getContext());
         getFromMSP();
         try {
@@ -157,7 +154,6 @@ public class Fragment_e extends Fragment {
                     if (temp.length > 1) {
                         String s = temp[0] + " " + temp[2];
                         algo.add(s);
-
                     }
                 }
             }

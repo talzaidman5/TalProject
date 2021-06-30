@@ -19,8 +19,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private Context mContext;
-
     private final int VIEW_TYPE_NORMAL = 0;
 
     private Context context;
@@ -55,18 +53,17 @@ public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int pos) {
         Position temp = getItem(pos);
 
-
-            ViewHolder_Normal mHolder = (ViewHolder_Normal) holder;
-            mHolder.position_LBL_title.setText( temp.getLocation());
-            mHolder.position_LBL_subTitle.setText(temp.getStartHour()+"-"+temp.getEndHour());
-            mHolder.position_TXT_city.setText(getDateStr(temp.getDate()));
+        ViewHolder_Normal mHolder = (ViewHolder_Normal) holder;
+        mHolder.position_LBL_title.setText(temp.getLocation());
+        mHolder.position_LBL_subTitle.setText(temp.getStartHour() + "-" + temp.getEndHour());
+        mHolder.position_TXT_city.setText(getDateStr(temp.getDate()));
 
 
         Glide
-                    .with(context)
-                    .load(temp.getMainImage())
-                    .centerCrop()
-                    .into(mHolder.position_IMG_back);
+                .with(context)
+                .load(temp.getMainImage())
+                .centerCrop()
+                .into(mHolder.position_IMG_back);
 
     }
 
@@ -74,9 +71,9 @@ public class Adapter_Position extends RecyclerView.Adapter<RecyclerView.ViewHold
         return positions.get(position);
     }
 
-private String getDateStr(Date date){
-        return date.getDate()+"/"+date.getMonth()+"/"+date.getYear();
-}
+    private String getDateStr(Date date) {
+        return date.getDate() + "/" + date.getMonth() + "/" + date.getYear();
+    }
 
     static class ViewHolder_Normal extends RecyclerView.ViewHolder implements View.OnClickListener {
 

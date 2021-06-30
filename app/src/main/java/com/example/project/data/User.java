@@ -31,12 +31,11 @@ public class User {
     private Boolean canDonateBlood;
     private USER_TYPE userType;
     private GENDER gender;
- //   private ArrayList<BloodDonation> allBloodDonations;
     private String uuID;
     private int age;
     private Date lastBloodDonation;
     private String token;
-    private  int countBloodDonations;
+    private int countBloodDonations;
 
     public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, Boolean isRemember, String uuid, String city, GENDER gender) {
         this.firstName = firstName;
@@ -55,7 +54,6 @@ public class User {
         else
             this.userType = USER_TYPE.CLIENT;
 
-       // this.allBloodDonations = new ArrayList<>();
         this.uuID = uuid;
         this.age = Calendar.getInstance().get(Calendar.YEAR) - birthDate.getYear();
         this.canDonateBlood = false;
@@ -63,10 +61,10 @@ public class User {
     }
 
 
-
-    public void updateCountBlood(){
-        this.countBloodDonations ++;
+    public void updateCountBlood() {
+        this.countBloodDonations++;
     }
+
     public int getCountBloodDonations() {
         return countBloodDonations;
     }
@@ -131,7 +129,6 @@ public class User {
         this.remember = other.remember;
         this.gender = other.gender;
         this.uuID = other.uuID;
-     //   this.allBloodDonations = other.allBloodDonations;
         this.userType = other.userType;
         this.lastBloodDonation = other.lastBloodDonation;
         this.city = other.city;
@@ -149,10 +146,9 @@ public class User {
             this.lastBloodDonation = lastBloodDonation;
             return;
         }
-        if( this.lastBloodDonation.before(lastBloodDonation))
+        if (this.lastBloodDonation.before(lastBloodDonation))
             this.lastBloodDonation = lastBloodDonation;
     }
-
 
 
     public Boolean getRemember() {
@@ -183,35 +179,15 @@ public class User {
         return temp;
     }
 
-    /*public ArrayList<BloodDonation> addBloodDonation(BloodDonation bloodDonation) {
-        Log.d("tal",bloodDonation.getCity());
-
-        if (allBloodDonations == null)
-            allBloodDonations = new ArrayList<>();
-        allBloodDonations.add(bloodDonation);
-        return allBloodDonations;
-    }*/
-
 
     public User() {
         this.remember = false;
         this.userType = USER_TYPE.CLIENT;
-
     }
 
     public String getFirstName() {
         return firstName;
     }
-
-   /* public ArrayList<BloodDonation> getAllBloodDonations() {
-        if (allBloodDonations == null)
-            allBloodDonations = new ArrayList<>();
-        return allBloodDonations;
-    }*/
-
- /*   public void setAllBloodDonations(ArrayList<BloodDonation> allBloodDonations) {
-        this.allBloodDonations = allBloodDonations;
-    }*/
 
     public void setFirstName(String fullName) {
         this.firstName = fullName;

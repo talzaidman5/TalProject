@@ -33,7 +33,6 @@ public class FlashScreen extends AppCompatActivity {
     private AllUsers allUsers = new AllUsers();
     private MySheredP msp;
     private Gson gson = new Gson();
-    private String uuid;
     private ArrayList<Position> positions = new ArrayList<>();
     private FirebaseUser firebaseUser;
 
@@ -44,25 +43,11 @@ public class FlashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_flash_screen);
         getSupportActionBar().hide();
 
-
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         msp = new MySheredP(this);
-        uuid = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
         readDataPositions();
-
     }
 
-
-
-    public void onTokenRefresh() {
-        // Get updated InstanceID token.
-        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-
-        // If you want to send messages to this application instance or
-        // manage this apps subscriptions on the server side, send the
-        // Instance ID token to your app server.
-        //sendRegistrationToServer(refreshedToken);
-    }
     public void readFB() {
         myRef.child("Users").addValueEventListener(new ValueEventListener() {
             @Override
