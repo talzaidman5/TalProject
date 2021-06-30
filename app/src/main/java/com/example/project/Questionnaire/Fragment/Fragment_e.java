@@ -87,7 +87,7 @@ public class Fragment_e extends Fragment {
 
     private void putOnMSP() {
         String jsonForm = gson.toJson(form);
-        String jsonUser= gson.toJson(user);
+        String jsonUser = gson.toJson(user);
         msp.putString(Constants.KEY_FORM_DATA, jsonForm);
         msp.putString(Constants.KEY_MSP, jsonUser);
     }

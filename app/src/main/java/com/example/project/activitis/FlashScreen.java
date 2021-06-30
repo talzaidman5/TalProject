@@ -9,7 +9,7 @@ import android.provider.Settings;
 
 import com.example.project.R;
 import com.example.project.activitis.client.ActivityProfileMenu;
-import com.example.project.activitis.manager.ActivityMenuManager;
+import com.example.project.activitis.manager.ActivityAllReports;
 import com.example.project.data.AllUsers;
 import com.example.project.data.Position;
 import com.example.project.data.User;
@@ -26,8 +26,6 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class FlashScreen extends AppCompatActivity {
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -116,7 +114,7 @@ public class FlashScreen extends AppCompatActivity {
                     String json = gson.toJson(tempUser);
                     msp.putString(Constants.KEY_MSP, json);
                     if(tempUser.getID().equals(Constants.MANAGER_ID)) {
-                        startActivity(new Intent(FlashScreen.this, ActivityMenuManager.class));
+                        startActivity(new Intent(FlashScreen.this, ActivityAllReports.class));
                         finish();
                     } else {
                         startActivity(new Intent(FlashScreen.this, ActivityProfileMenu.class));

@@ -64,16 +64,6 @@
             android:theme="@style/Theme.AppCompat"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activitis.manager.ActivityMenuManager"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
-            android:name=".activitis.manager.ActivityPublishingReportsActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
             android:name=".activitis.ActivitySignUpPage"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents"
