@@ -369,7 +369,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         bloodDonation.setBooldDonationId(bloodDonationID);
         String userIdEncrypt = null;
         userIdEncrypt = Encryption.encrypt(currentUser.getID());
-        ///myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
+       myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
         myRef.child("Blood donations").child(bloodDonationID).setValue(bloodDonation);
 
         putOnMSP_user();
