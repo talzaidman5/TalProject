@@ -28,23 +28,17 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
 public class ActivityLogIn extends AppCompatActivity {
 
     private Button main_page_BTN_signUp, viewForgotPassword;
     private MaterialButton mainPage_BTN_signIn;
-    final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final DatabaseReference myRef = database.getReference("FB");
     private AllUsers allUsers = new AllUsers();
     private User newUser;
     private TextInputLayout mainPage_EDIT_password, mainPage_EDIT_email;
     private MySheredP msp;
     private Gson gson = new Gson();
-    private CheckBox main_page_CHECK_remember;
-    public static final String CHANNEL_ID = "simplified_coding";
     private TextView login_TXT_forgot;
 
     public static FirebaseAuth auth;
@@ -101,7 +95,6 @@ public class ActivityLogIn extends AppCompatActivity {
         mainPage_BTN_signIn = findViewById(R.id.mainPage_BTN_signIn);
         mainPage_EDIT_password = findViewById(R.id.mainPage_EDIT_password);
         main_page_BTN_signUp = findViewById(R.id.main_page_BTN_signUp);
-        main_page_CHECK_remember = findViewById(R.id.main_page_CHECK_remember);
         this.viewForgotPassword = findViewById(R.id.viewForgotPassword);
         login_TXT_forgot = findViewById(R.id.login_TXT_forgot);
 

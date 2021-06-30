@@ -7,22 +7,14 @@ import java.util.Map;
 
 public class Form {
     private User user;
-    private String previous_family_name;
-    private String city;
-    private String postal;
-    private String street;
-    private String OfficePhone;
-    private String homePhone;
-    private String MotherCountry;
-    private String fatherCountry;
-    private String countryBirth;
-    private String date;
-    private boolean sign,research,research2;
-    private String yearImmigration;
+    private String previous_family_name, city, postal, street, OfficePhone, homePhone,
+            MotherCountry, fatherCountry, countryBirth, yearImmigration, date;
+    private boolean sign, research, research2;
     private Map<String, Boolean> allDiseases;
     private Map<String, Boolean> fragmentC;
-    private  boolean isSign;
+    private boolean isSign;
     private boolean isBloodDonationAgain;
+
     public Form(User user, String previous_family_name, String city, String postal, String street, String officePhone,
                 String homePhone, String motherCountry, String fatherCountry, String yearImmigration,
                 boolean isBloodDonationAgain, String countryBirth) {
@@ -38,7 +30,7 @@ public class Form {
         this.yearImmigration = yearImmigration;
         this.allDiseases = new HashMap<String, Boolean>();
         this.fragmentC = new HashMap<String, Boolean>();
-        this.isBloodDonationAgain= isBloodDonationAgain;
+        this.isBloodDonationAgain = isBloodDonationAgain;
         this.countryBirth = countryBirth;
     }
 
@@ -76,7 +68,7 @@ public class Form {
         this.research = other.research;
         this.research2 = other.research2;
         this.date = other.date;
-        this.countryBirth =other.countryBirth;
+        this.countryBirth = other.countryBirth;
         this.isBloodDonationAgain = other.isBloodDonationAgain;
     }
 
@@ -163,19 +155,20 @@ public class Form {
         this.previous_family_name = previous_family_name;
     }
 
-    public boolean checkForm(){
+    public boolean checkForm() {
         for (Map.Entry<String, Boolean> entry : allDiseases.entrySet()) {
-           if(entry.getValue()==true)
-               return false;
+            if (entry.getValue() == true)
+                return false;
         }
 
         for (Map.Entry<String, Boolean> entry : fragmentC.entrySet()) {
-            if(entry.getValue()==true)
+            if (entry.getValue() == true)
                 return false;
         }
         return true;
 
     }
+
     public String getCity() {
         return city;
     }

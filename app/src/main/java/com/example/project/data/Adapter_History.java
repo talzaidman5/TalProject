@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Adapter_History extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private Context mContext;
 
     private final int VIEW_TYPE_NORMAL = 0;
     private Context context;
@@ -53,18 +52,18 @@ public class Adapter_History extends RecyclerView.Adapter<RecyclerView.ViewHolde
         BloodDonation temp = getItem(pos);
 
 
-            ViewHolder_Normal mHolder = (ViewHolder_Normal) holder;
-            mHolder.history_TXT_Date.setText(temp.getDate());
-            mHolder.history_TXT_Place.setText(temp.getCity());
+        ViewHolder_Normal mHolder = (ViewHolder_Normal) holder;
+        mHolder.history_TXT_Date.setText(temp.getDate());
+        mHolder.history_TXT_Place.setText(temp.getCity());
     }
 
     private BloodDonation getItem(int position) {
         return bloodDonations.get(position);
     }
 
-private String getDateStr(Date date){
-        return date.getDate()+"/"+date.getMonth()+"/"+date.getYear();
-}
+    private String getDateStr(Date date) {
+        return date.getDate() + "/" + date.getMonth() + "/" + date.getYear();
+    }
 
     static class ViewHolder_Normal extends RecyclerView.ViewHolder implements View.OnClickListener {
 

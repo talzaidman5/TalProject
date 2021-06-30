@@ -74,10 +74,8 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private User newUser = new User();
     private ArrayList<String> spinnerArray;
     private Spinner signUp_EDT_city;
-    private RadioButton signup_CHB_female, signup_CHB_male;
-
+    private RadioButton signup_CHB_female;
     private int age;
-private    String userIdEncrypt = null;
 
 
     @SuppressLint("ResourceType")
@@ -248,7 +246,6 @@ private    String userIdEncrypt = null;
         signUp_TXT_birthDatePicker = findViewById(R.id.signUp_TXT_birthDatePicker);
         signUp_EDT_city = findViewById(R.id.signUp_EDT_city);
         signup_CHB_female = findViewById(R.id.signup_CHB_female);
-        signup_CHB_male = findViewById(R.id.signup_CHB_male);
         signUp_TXT_birthDate = findViewById(R.id.signUp_TXT_birthDate);
 
     }
@@ -293,7 +290,6 @@ private    String userIdEncrypt = null;
 
 
                         } catch (Exception e) {
-                            //   userIdEncrypt = newUser.getID();
                             e.printStackTrace();
                         }
 
@@ -328,23 +324,8 @@ private    String userIdEncrypt = null;
                 }
             });
         }
-//        else {
-//            checkData();
-//        }
-
     }
 
-    private int getAge(Date date) {
-        Calendar today = Calendar.getInstance();
-
-        int age = today.get(Calendar.YEAR) - date.getYear() + 1900;
-
-        if (today.get(Calendar.DAY_OF_YEAR) < date.getDate()) {
-            age--;
-        }
-
-        return age;
-    }
 
     private void buildUser() {
         newUser.setFirstName(signUp_EDT_firstName.getEditText().getText().toString());

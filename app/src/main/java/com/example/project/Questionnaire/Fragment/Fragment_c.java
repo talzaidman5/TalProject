@@ -33,13 +33,11 @@ import java.util.Map;
 
 public class Fragment_c extends Fragment {
     private View view;
-    private Button next;
-    private ArrayList<String> spinnerArray;
     public static Spinner spn_my_spinner;
     private ArrayList<String> algo = new ArrayList<>();
     String fileName = "determination_algorithm.txt";
     private CheckBox one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve,
-            thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty;
+            thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen;
     private MySheredP msp;
     private Gson gson = new Gson();
     private Form form;
@@ -51,8 +49,6 @@ public class Fragment_c extends Fragment {
 
         findViews(view);
         msp = new MySheredP(getContext());
-
-        spinnerArray = new ArrayList<String>();
 
         readFile();
         getFromMSP();
@@ -176,7 +172,6 @@ public class Fragment_c extends Fragment {
         seventeen = view.findViewById(R.id.seventeen);
         eighteen = view.findViewById(R.id.eighteen);
         nineteen = view.findViewById(R.id.nineteen);
-        twenty = view.findViewById(R.id.twenty);
     }
 
     private void readFile() {
