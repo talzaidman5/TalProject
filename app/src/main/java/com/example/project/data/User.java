@@ -1,15 +1,10 @@
 package com.example.project.data;
 
-import android.os.Build;
-import android.text.format.Time;
-
-import androidx.annotation.RequiresApi;
+import android.util.Log;
 
 import com.example.project.utils.Constants;
 import com.google.gson.Gson;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -36,12 +31,12 @@ public class User {
     private Boolean canDonateBlood;
     private USER_TYPE userType;
     private GENDER gender;
-    private ArrayList<BloodDonation> allBloodDonations;
+ //   private ArrayList<BloodDonation> allBloodDonations;
     private String uuID;
     private int age;
     private Date lastBloodDonation;
     private String token;
-
+    private  int countBloodDonations;
 
     public User(String firstName, String lastName, String ID, String email, String phoneNumber, String password, String bloodType, Date birthDate, Boolean isRemember, String uuid, String city, GENDER gender) {
         this.firstName = firstName;
@@ -54,16 +49,30 @@ public class User {
         this.birthDate = birthDate;
         this.remember = isRemember;
         this.city = city;
+        this.countBloodDonations = 0;
         if (ID.equals(Constants.MANAGER_ID))
             this.userType = USER_TYPE.MANAGER;
         else
             this.userType = USER_TYPE.CLIENT;
 
-        this.allBloodDonations = new ArrayList<>();
+       // this.allBloodDonations = new ArrayList<>();
         this.uuID = uuid;
         this.age = Calendar.getInstance().get(Calendar.YEAR) - birthDate.getYear();
         this.canDonateBlood = false;
         this.gender = gender;
+    }
+
+
+
+    public void updateCountBlood(){
+        this.countBloodDonations ++;
+    }
+    public int getCountBloodDonations() {
+        return countBloodDonations;
+    }
+
+    public void setCountBloodDonations(int countBloodDonations) {
+        this.countBloodDonations = countBloodDonations;
     }
 
     public GENDER getGender() {
@@ -122,7 +131,7 @@ public class User {
         this.remember = other.remember;
         this.gender = other.gender;
         this.uuID = other.uuID;
-        this.allBloodDonations = other.allBloodDonations;
+     //   this.allBloodDonations = other.allBloodDonations;
         this.userType = other.userType;
         this.lastBloodDonation = other.lastBloodDonation;
         this.city = other.city;
@@ -173,11 +182,14 @@ public class User {
         return temp;
     }
 
-    public void addBloodDonation(BloodDonation bloodDonation) {
+    /*public ArrayList<BloodDonation> addBloodDonation(BloodDonation bloodDonation) {
+        Log.d("tal",bloodDonation.getCity());
+
         if (allBloodDonations == null)
             allBloodDonations = new ArrayList<>();
         allBloodDonations.add(bloodDonation);
-    }
+        return allBloodDonations;
+    }*/
 
 
     public User() {
@@ -190,15 +202,15 @@ public class User {
         return firstName;
     }
 
-    public ArrayList<BloodDonation> getAllBloodDonations() {
+   /* public ArrayList<BloodDonation> getAllBloodDonations() {
         if (allBloodDonations == null)
             allBloodDonations = new ArrayList<>();
         return allBloodDonations;
-    }
+    }*/
 
-    public void setAllBloodDonations(ArrayList<BloodDonation> allBloodDonations) {
+ /*   public void setAllBloodDonations(ArrayList<BloodDonation> allBloodDonations) {
         this.allBloodDonations = allBloodDonations;
-    }
+    }*/
 
     public void setFirstName(String fullName) {
         this.firstName = fullName;

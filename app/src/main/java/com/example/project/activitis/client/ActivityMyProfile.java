@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -357,17 +358,18 @@ public class ActivityMyProfile extends AppCompatActivity {
         });
 
 
-        dialog.show();
+       dialog.show();
     }
 
     private void saveToFirebase() throws Exception {
         BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(), getDateStr(dateLast), currentUser.getID());
-        currentUser.addBloodDonation(bloodDonation);
-        String bloodDonationID = currentUser.getID() + "-" + currentUser.getAllBloodDonations().size();
+      // currentUser.setAllBloodDonations(currentUser.addBloodDonation(bloodDonation));
+        currentUser.updateCountBlood();
+        String bloodDonationID = currentUser.getID() + "-" + currentUser.getCountBloodDonations();
         bloodDonation.setBooldDonationId(bloodDonationID);
         String userIdEncrypt = null;
         userIdEncrypt = Encryption.encrypt(currentUser.getID());
-        myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
+        ///myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
         myRef.child("Blood donations").child(bloodDonationID).setValue(bloodDonation);
 
         putOnMSP_user();

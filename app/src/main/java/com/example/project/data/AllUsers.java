@@ -1,5 +1,12 @@
 package com.example.project.data;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -41,13 +48,13 @@ public class AllUsers {
         }
     }
 
-    public ArrayList getAllReportsData(){
+    /*public ArrayList getAllReportsData(){
         ArrayList<BloodDonation> all = new ArrayList<>();
         for (int i = 0; i < allUser.size(); i++) {
             all.addAll(allUser.get(i).getAllBloodDonations());
         }
         return all;
-    }
+    }*/
     public User getUserByID(String id){
         for (User tempUser: allUser) {
             if(tempUser.getID()!=null)
@@ -72,4 +79,6 @@ public class AllUsers {
         }
         return null;
     }
+
+
 }
