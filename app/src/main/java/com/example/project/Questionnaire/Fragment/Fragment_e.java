@@ -69,9 +69,7 @@ public class Fragment_e extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         readFile();
-
         return view;
     }
 
@@ -82,29 +80,25 @@ public class Fragment_e extends Fragment {
         String userIdEncrypt = Encryption.encrypt(user.getID());
         myRef.child("Users").child(userIdEncrypt).setValue(user);
 
-            putOnMSP();
+        putOnMSP();
         canDonateAlert(res);
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        startActivity(new Intent(getContext(), ActivityProfileMenu.class));
-
-    }
 
     private void putOnMSP() {
         String jsonForm = gson.toJson(form);
         String jsonUser= gson.toJson(user);
         msp.putString(Constants.KEY_FORM_DATA, jsonForm);
         msp.putString(Constants.KEY_MSP, jsonUser);
-
     }
 
     private void canDonateAlert(boolean isCan) {
+
         String res = "";
-        if (isCan)
+        if (isCan) {
             res = "אתה יכול לתרום!";
+
+        }
         else
             res = "אינך יכול לתרום!";
 
@@ -112,8 +106,6 @@ public class Fragment_e extends Fragment {
                 .setTitle("")
                 .setMessage(res)
 
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(getContext(), ActivityProfileMenu.class);

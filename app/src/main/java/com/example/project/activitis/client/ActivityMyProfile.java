@@ -151,7 +151,7 @@ public class ActivityMyProfile extends AppCompatActivity {
                         myProfile_BTN_edit.setBackgroundResource(R.drawable.pencil);
                         editFlag = false;
                         updateUserInfo();
-                        putOnMSP_user();
+                        putOnMSP_user(currentUser);
                         Toast.makeText(getApplicationContext(), "הפרטים נשמרו!", Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -210,16 +210,6 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     }
 
-    private void getImage() {
-        ImagePicker.Companion
-                .with(this)
-                .crop()
-                .cropOval()
-                .cropSquare()
-                .compress(1024)
-                .maxResultSize(1080, 1080)
-                .start();
-    }
 
     private void changeTextsEnabled(boolean status) {
         myProfile_TXT_IDToFill.setEnabled(status);
@@ -344,10 +334,10 @@ public class ActivityMyProfile extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                currentUser.updateCountBlood();
 
                 myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
                 Toast.makeText(getApplicationContext(), "תודה שתרמת דם! נשמח לראותך שוב", Toast.LENGTH_SHORT).show();
-                currentUser.updateCountBlood();
                 try {
                     saveToFirebase();
                 } catch (Exception e) {
@@ -367,8 +357,7 @@ public class ActivityMyProfile extends AppCompatActivity {
         bloodDonation.setBooldDonationId(bloodDonationID);
         myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
         myRef.child("Blood donations").child(bloodDonationID).setValue(bloodDonation);
-
-        putOnMSP_user();
+        putOnMSP_user(currentUser);
     }
 
 
@@ -404,8 +393,8 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     }
 
-    private void putOnMSP_user() {
-        String json = gson.toJson(currentUser);
+    private void putOnMSP_user(User s) {
+        String json = gson.toJson(s);
         msp.putString(Constants.KEY_MSP, json);
     }
 

@@ -110,6 +110,7 @@ public class Fragment_a extends Fragment {
             questionnairePage_EDT_age.getEditText().setText(user.getAge() + "");
             questionnairePage_EDT_email.getEditText().setText(Encryption.decrypt(user.getEmail()));
             questionnairePage_EDT_previous_family_name.getEditText().setText(Encryption.decrypt(form.getPrevious_family_name()));
+            questionnairePage_EDT_mobilePhone.getEditText().setText(Encryption.decrypt(user.getPhoneNumber()));
 
             questionnairePage_EDT_postal.getEditText().setText(form.getPostal());
             questionnairePage_EDT_street.getEditText().setText(form.getStreet());
@@ -215,10 +216,6 @@ public class Fragment_a extends Fragment {
             isData = false;
         } else questionnairePage_EDT_mobilePhone.setError("");
 
-        if (questionnairePage_EDT_OfficePhone.getEditText().getText().length() == 0) {
-            questionnairePage_EDT_OfficePhone.setError("אנא השלם");
-            isData = false;
-        } else questionnairePage_EDT_OfficePhone.setError("");
 
         if (questionnairePage_EDT_HomePhone.getEditText().getText().length() == 0) {
             questionnairePage_EDT_HomePhone.setError("אנא השלם");
