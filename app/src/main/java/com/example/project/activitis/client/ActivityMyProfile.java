@@ -347,7 +347,7 @@ public class ActivityMyProfile extends AppCompatActivity {
 
                 myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
                 Toast.makeText(getApplicationContext(), "תודה שתרמת דם! נשמח לראותך שוב", Toast.LENGTH_SHORT).show();
-
+                currentUser.updateCountBlood();
                 try {
                     saveToFirebase();
                 } catch (Exception e) {
@@ -363,13 +363,9 @@ public class ActivityMyProfile extends AppCompatActivity {
 
     private void saveToFirebase() throws Exception {
         BloodDonation bloodDonation = new BloodDonation(spn_my_spinner.getSelectedItem().toString(), getDateStr(dateLast), currentUser.getID());
-      // currentUser.setAllBloodDonations(currentUser.addBloodDonation(bloodDonation));
-        currentUser.updateCountBlood();
         String bloodDonationID = currentUser.getID() + "-" + currentUser.getCountBloodDonations();
         bloodDonation.setBooldDonationId(bloodDonationID);
-        String userIdEncrypt = null;
-        userIdEncrypt = Encryption.encrypt(currentUser.getID());
-       myRef.child("Users").child(userIdEncrypt).setValue(currentUser);
+        myRef.child("Users").child(currentUser.getID()).setValue(currentUser);
         myRef.child("Blood donations").child(bloodDonationID).setValue(bloodDonation);
 
         putOnMSP_user();
