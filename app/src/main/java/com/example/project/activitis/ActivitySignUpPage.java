@@ -66,7 +66,6 @@ public class ActivitySignUpPage extends AppCompatActivity {
     private Gson gson = new Gson();
     private String uuid;
     private FirebaseStorage storage;
-    private StorageReference storageReference;
     private FirebaseAuth auth;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference myRef = database.getReference("FB");
@@ -90,7 +89,6 @@ public class ActivitySignUpPage extends AppCompatActivity {
         getSupportActionBar().hide();
 
         storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference();
         auth = FirebaseAuth.getInstance();
 
         ArrayAdapter<CharSequence> adapterBloodTypes = ArrayAdapter.createFromResource(this,
@@ -300,10 +298,13 @@ public class ActivitySignUpPage extends AppCompatActivity {
                                     getFromMSP();
                                     allUsers.addToList(newUser);
                                     putOnMSP();
-                                    if (newUser.getUserType().equals(User.USER_TYPE.CLIENT))
+                                    if (newUser.getUserType().equals(User.USER_TYPE.CLIENT)) {
                                         startActivity(new Intent(ActivitySignUpPage.this, ActivityProfileMenu.class));
-                                    else
+                                        finish();
+                                    }  else {
                                         startActivity(new Intent(ActivitySignUpPage.this, ActivityAllReports.class));
+                                        finish();
+                                    }
                                 } else
                                     Toast.makeText(ActivitySignUpPage.this, "error", Toast.LENGTH_SHORT);
                             }
@@ -348,7 +349,7 @@ public class ActivitySignUpPage extends AppCompatActivity {
     }
 
     private User.GENDER selectedGender() {
-        if (signup_CHB_female.isSelected())
+        if (signup_CHB_female.isChecked())
             return User.GENDER.FEMALE;
         else
             return User.GENDER.MALE;

@@ -43,7 +43,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_below="@id/logo"
-        android:src="@drawable/ic_add" />
+        android:background="@drawable/ic_add" />
 
     <TextView
         android:id="@+id/myProfile_TXT_nameToFill"

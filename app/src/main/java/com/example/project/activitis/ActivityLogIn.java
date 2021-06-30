@@ -18,6 +18,7 @@ import com.example.project.R;
 import com.example.project.activitis.client.ActivityProfileMenu;
 import com.example.project.activitis.manager.ActivityAllReports;
 import com.example.project.data.AllUsers;
+import com.example.project.data.Position;
 import com.example.project.data.User;
 import com.example.project.utils.Constants;
 import com.example.project.utils.MySheredP;
@@ -28,7 +29,11 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
+
+import java.util.Date;
 
 public class ActivityLogIn extends AppCompatActivity {
 
@@ -40,6 +45,8 @@ public class ActivityLogIn extends AppCompatActivity {
     private MySheredP msp;
     private Gson gson = new Gson();
     private TextView login_TXT_forgot;
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference myRef = database.getReference("FB");
 
     public static FirebaseAuth auth;
 
@@ -56,7 +63,7 @@ public class ActivityLogIn extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
 
-    /*   myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://www.mdais.org/images/whatsup.jpg"));
+     /*  myRef.child("ActivityPosition").child("0").setValue(new Position("בית חולים תה\"ש רמת גן, - שרותי הדם מד\"א",2,new Date(),"09:00","17:00","https://www.mdais.org/images/whatsup.jpg"));
         myRef.child("ActivityPosition").child("1").setValue(new Position("עראבה, מרכז העיר\t",14,new Date(),"16:00","19:00","https://www.mdais.org/images/whatsup.jpg"));
         myRef.child("ActivityPosition").child("2").setValue(new Position("כרכום, מועדון\t",22,new Date(),"09:00","20:00:00","https://www.mdais.org/images/whatsup.jpg"));
         myRef.child("ActivityPosition").child("3").setValue(new Position("דרך משה פלימן 4 חיפה, קניון חיפה מול קסטרו\t",151,new Date(),"16:00","20:00:00","https://www.mdais.org/images/whatsup.jpg"));
@@ -145,6 +152,7 @@ public class ActivityLogIn extends AppCompatActivity {
 
     public void openSignUpPage() {
         startActivity(new Intent(ActivityLogIn.this, ActivitySignUpPage.class));
+        finish();
     }
 
 
